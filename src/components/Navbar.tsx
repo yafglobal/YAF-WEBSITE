@@ -2,9 +2,13 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { motion, AnimatePresence, useMotionValueEvent, useScroll } from "motion/react";
 import { List, X, ArrowRight } from "@phosphor-icons/react";
+
 import ThemeToggle from "./ThemeToggle";
+
+const MotionLink = motion.create(Link);
 
 const navLinks = [
   { label: "Home", href: "/" },
@@ -51,7 +55,7 @@ export default function Navbar() {
   const handleNavClick = (href: string, index: number) => {
     setActiveSection(index);
     setMobileOpen(false);
-    if (href === "#") {
+    if (href === "/") {
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
   };
@@ -86,9 +90,9 @@ export default function Navbar() {
             `}
           >
             {/* Logo */}
-            <a
-              href="#"
-              onClick={() => handleNavClick("#", 0)}
+            <Link
+              href="/"
+              onClick={() => handleNavClick("/", 0)}
               className="relative z-10 flex items-center shrink-0"
             >
               <motion.div
@@ -105,7 +109,7 @@ export default function Navbar() {
                   priority
                 />
               </motion.div>
-            </a>
+            </Link>
 
             {/* Desktop Pill Links */}
             <div className="hidden md:flex items-center">
@@ -117,7 +121,7 @@ export default function Navbar() {
                 `}
               >
                 {navLinks.map((link, index) => (
-                  <a
+                  <Link
                     key={link.label}
                     href={link.href}
                     onClick={() => handleNavClick(link.href, index)}
@@ -147,7 +151,7 @@ export default function Navbar() {
                       />
                     )}
                     <span className="relative z-10">{link.label}</span>
-                  </a>
+                  </Link>
                 ))}
               </div>
             </div>
@@ -155,8 +159,8 @@ export default function Navbar() {
             {/* Desktop CTA */}
             <div className="hidden md:flex items-center gap-2">
               <ThemeToggle />
-              <a
-                href="#contact"
+              <Link
+                href="/#contact"
                 className={`
                   px-4 py-2 text-[13px] font-medium rounded-full
                   transition-all duration-300
@@ -165,9 +169,9 @@ export default function Navbar() {
                 `}
               >
                 Contact
-              </a>
-              <a
-                href="#give"
+              </Link>
+              <Link
+                href="/#give"
                 className="
                   group relative px-5 py-2.5 text-[13px] font-semibold
                   bg-gradient-to-b from-gold to-gold-dim text-[#1A1A00]
@@ -185,7 +189,7 @@ export default function Navbar() {
                     className="transition-transform duration-300 group-hover:translate-x-0.5"
                   />
                 </span>
-              </a>
+              </Link>
             </div>
 
             {/* Mobile toggle */}
@@ -247,7 +251,7 @@ export default function Navbar() {
               className="flex flex-col items-center gap-2 w-full max-w-xs"
             >
               {navLinks.map((link, i) => (
-                <motion.a
+                <MotionLink
                   key={link.label}
                   href={link.href}
                   initial={{ opacity: 0, x: -30 }}
@@ -271,12 +275,12 @@ export default function Navbar() {
                     />
                   )}
                   {link.label}
-                </motion.a>
+                </MotionLink>
               ))}
 
               {/* Mobile CTA */}
-              <motion.a
-                href="#give"
+              <MotionLink
+                href="/#give"
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 0.45 }}
@@ -290,10 +294,10 @@ export default function Navbar() {
                 "
               >
                 Give Online
-              </motion.a>
+              </MotionLink>
 
-              <motion.a
-                href="#contact"
+              <MotionLink
+                href="/#contact"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.5 }}
@@ -301,7 +305,7 @@ export default function Navbar() {
                 className="mt-2 text-sm text-[var(--color-text-secondary)] hover:text-fire transition-colors"
               >
                 Contact Us
-              </motion.a>
+              </MotionLink>
             </motion.div>
           </motion.div>
         )}
