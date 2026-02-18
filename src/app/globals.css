@@ -1,6 +1,7 @@
 @import "tailwindcss";
 
 @theme inline {
+  /* ── Dark mode (default) ─────────────────── */
   --color-background: #0A0A0A;
   --color-foreground: #F5F5F5;
   --color-fire: #FF4D00;
@@ -11,8 +12,42 @@
   --color-charcoal-light: #1E1E1E;
   --color-smoke: #2A2A2A;
   --color-ash: #8A8A8A;
-  --font-display: var(--font-syne);
-  --font-body: var(--font-jakarta);
+  --color-surface: #141414;
+  --color-surface-hover: #1E1E1E;
+  --color-border: rgba(255, 255, 255, 0.06);
+  --color-border-hover: rgba(255, 255, 255, 0.12);
+  --color-text-primary: #F5F5F5;
+  --color-text-secondary: #8A8A8A;
+  --color-text-muted: rgba(255, 255, 255, 0.5);
+  --color-overlay: rgba(10, 10, 10, 0.7);
+  --font-display: var(--font-unbounded);
+  --font-body: var(--font-instrument);
+}
+
+/* ── Light mode variables ──────────────────── */
+html.light {
+  --logo-filter: brightness(0.2);
+  --color-background: #FAFAF8;
+  --color-foreground: #1A1A1A;
+  --color-charcoal: #F0EDE8;
+  --color-charcoal-light: #F5F3EF;
+  --color-smoke: #E8E5E0;
+  --color-ash: #6B6B6B;
+  --color-surface: #FFFFFF;
+  --color-surface-hover: #F5F3EF;
+  --color-border: rgba(0, 0, 0, 0.08);
+  --color-border-hover: rgba(0, 0, 0, 0.15);
+  --color-text-primary: #1A1A1A;
+  --color-text-secondary: #6B6B6B;
+  --color-text-muted: rgba(0, 0, 0, 0.45);
+  --color-overlay: rgba(250, 250, 248, 0.7);
+}
+
+/* ── View Transitions ──────────────────────── */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
 }
 
 /* ── Smooth scroll ─────────────────────────── */
@@ -22,9 +57,10 @@ html {
 
 body {
   background: var(--color-background);
-  color: var(--color-foreground);
+  color: var(--color-text-primary);
   font-family: var(--font-body), system-ui, sans-serif;
   overflow-x: hidden;
+  transition: background-color 0s, color 0s;
 }
 
 /* ── Selection ─────────────────────────────── */
@@ -49,8 +85,14 @@ body {
 .text-glow-fire {
   text-shadow: 0 0 40px rgba(255, 77, 0, 0.5), 0 0 80px rgba(255, 77, 0, 0.2);
 }
+html.light .text-glow-fire {
+  text-shadow: 0 0 30px rgba(255, 77, 0, 0.3);
+}
 .text-glow-gold {
   text-shadow: 0 0 40px rgba(255, 215, 0, 0.4), 0 0 80px rgba(255, 215, 0, 0.15);
+}
+html.light .text-glow-gold {
+  text-shadow: 0 0 30px rgba(255, 215, 0, 0.25);
 }
 
 /* ── Grain overlay ─────────────────────────── */
@@ -69,7 +111,6 @@ body {
   20%, 98% { opacity: 0; }
   100% { opacity: 1; }
 }
-
 .hero-slide {
   animation: heroFade 25s infinite;
 }
@@ -81,22 +122,11 @@ body {
 
 /* ── Floating particles ────────────────────── */
 @keyframes float-up {
-  0% {
-    transform: translateY(100vh) scale(0);
-    opacity: 0;
-  }
-  10% {
-    opacity: 1;
-  }
-  90% {
-    opacity: 0.6;
-  }
-  100% {
-    transform: translateY(-20vh) scale(1);
-    opacity: 0;
-  }
+  0% { transform: translateY(100vh) scale(0); opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 0.6; }
+  100% { transform: translateY(-20vh) scale(1); opacity: 0; }
 }
-
 .particle {
   position: absolute;
   width: 4px;
@@ -105,14 +135,6 @@ body {
   border-radius: 50%;
   animation: float-up linear infinite;
   pointer-events: none;
-}
-
-/* ── Diagonal clip transition ──────────────── */
-.clip-diagonal {
-  clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
-}
-.clip-diagonal-reverse {
-  clip-path: polygon(0 15%, 100% 0, 100% 100%, 0 100%);
 }
 
 /* ── Marquee ───────────────────────────────── */
@@ -130,6 +152,12 @@ body {
     radial-gradient(ellipse at 20% 50%, rgba(255, 77, 0, 0.08) 0%, transparent 50%),
     radial-gradient(ellipse at 80% 20%, rgba(255, 215, 0, 0.05) 0%, transparent 50%),
     radial-gradient(ellipse at 50% 80%, rgba(255, 107, 43, 0.06) 0%, transparent 50%);
+}
+html.light .mesh-gradient {
+  background:
+    radial-gradient(ellipse at 20% 50%, rgba(255, 77, 0, 0.04) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 20%, rgba(255, 215, 0, 0.03) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 80%, rgba(255, 107, 43, 0.03) 0%, transparent 50%);
 }
 
 /* ── Ember pulse ───────────────────────────── */
@@ -156,4 +184,15 @@ body {
   width: 100%;
   height: 100%;
   border: none;
+}
+
+
+/* ── CTA shimmer ───────────────────────────── */
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+.shimmer-btn {
+  background-size: 200% auto;
+  animation: shimmer 3s linear infinite;
 }
