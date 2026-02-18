@@ -15,12 +15,12 @@ export default function Marquee() {
   const repeatedWords = [...words, ...words, ...words, ...words];
 
   return (
-    <div className="relative py-6 overflow-hidden bg-charcoal border-y border-white/5">
+    <div className="relative py-6 overflow-hidden bg-[var(--color-charcoal)] border-y border-[var(--color-border)]">
       <div className="animate-marquee flex whitespace-nowrap">
         {repeatedWords.map((word, i) => (
           <span
             key={i}
-            className="mx-8 font-display text-lg md:text-xl font-bold tracking-widest text-white/10 uppercase"
+            className="mx-8 font-display text-lg md:text-xl font-bold tracking-widest text-[var(--color-text-primary)]/10 uppercase"
           >
             {word}
             <span className="inline-block mx-8 text-fire/30">&bull;</span>

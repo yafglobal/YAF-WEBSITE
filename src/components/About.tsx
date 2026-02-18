@@ -54,7 +54,7 @@ export default function About() {
             </ScrollReveal>
 
             <ScrollReveal delay={0.2}>
-              <p className="mt-8 text-ash text-base md:text-lg leading-relaxed max-w-lg">
+              <p className="mt-8 text-[var(--color-text-secondary)] text-base md:text-lg leading-relaxed max-w-lg">
                 Welcome to YAF, a youth community with a balanced commitment to
                 spiritual growth and personal development. We are a community of
                 mentors, leaders, and associates who focus on balancing talents
@@ -63,7 +63,7 @@ export default function About() {
             </ScrollReveal>
 
             <ScrollReveal delay={0.3}>
-              <p className="mt-4 text-white/50 text-base leading-relaxed max-w-lg">
+              <p className="mt-4 text-[var(--color-text-muted)] text-base leading-relaxed max-w-lg">
                 Kingdom Giant, welcome to YAF.
               </p>
             </ScrollReveal>
@@ -71,7 +71,7 @@ export default function About() {
             <ScrollReveal delay={0.4}>
               <a
                 href="#"
-                className="inline-flex items-center gap-2 mt-10 px-8 py-4 bg-white/5 border border-white/10 text-white font-display font-semibold text-sm tracking-wide uppercase rounded-full hover:bg-white/10 hover:border-fire/30 transition-all duration-300 group"
+                className="inline-flex items-center gap-2 mt-10 px-8 py-4 bg-[var(--color-surface)] border border-[var(--color-border)] text-[var(--color-text-primary)] font-display font-semibold text-sm tracking-wide uppercase rounded-full hover:bg-[var(--color-surface-hover)] hover:border-fire/30 transition-all duration-300 group"
               >
                 Learn more about us
                 <span className="inline-block transition-transform group-hover:translate-x-1">
@@ -97,7 +97,7 @@ export default function About() {
                     sizes="(max-width: 768px) 100vw, 50vw"
                   />
                   {/* Gradient fade on edges */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] via-transparent to-transparent opacity-60" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[var(--color-background)] via-transparent to-transparent opacity-60" />
                 </motion.div>
 
                 {/* Decorative fire accent */}
@@ -113,13 +113,13 @@ export default function About() {
           {stats.map((stat, i) => (
             <ScrollReveal key={stat.label} delay={0.1 * i}>
               <div className="text-center group">
-                <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-white/5 border border-white/5 mb-4 group-hover:border-fire/20 group-hover:bg-fire/5 transition-all duration-300">
+                <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-[var(--color-surface)] border border-[var(--color-border)] mb-4 group-hover:border-fire/20 group-hover:bg-fire/5 transition-all duration-300">
                   <stat.icon size={24} className="text-fire" weight="fill" />
                 </div>
-                <p className="font-display font-extrabold text-3xl md:text-4xl text-white tracking-tight">
+                <p className="font-display font-extrabold text-3xl md:text-4xl text-[var(--color-text-primary)] tracking-tight">
                   {stat.value}
                 </p>
-                <p className="mt-1 text-ash text-sm tracking-wider uppercase">
+                <p className="mt-1 text-[var(--color-text-secondary)] text-sm tracking-wider uppercase">
                   {stat.label}
                 </p>
               </div>

@@ -78,7 +78,7 @@ export default function AppSection() {
             </ScrollReveal>
 
             <ScrollReveal delay={0.2}>
-              <p className="mt-8 text-ash text-base md:text-lg leading-relaxed max-w-lg">
+              <p className="mt-8 text-[var(--color-text-secondary)] text-base md:text-lg leading-relaxed max-w-lg">
                 Youth Alive is going Mobile! Get ready to connect, grow, and stay
                 inspired wherever you are. The Youth Alive mobile app is
                 launching soon with devotionals, events, chats, and more — all in
@@ -90,9 +90,9 @@ export default function AppSection() {
             <div className="mt-8 flex flex-wrap gap-3">
               {appFeatures.map((feat, i) => (
                 <ScrollReveal key={feat.text} delay={0.3 + i * 0.08}>
-                  <div className="flex items-center gap-2 px-4 py-2.5 bg-white/5 border border-white/8 rounded-xl">
+                  <div className="flex items-center gap-2 px-4 py-2.5 bg-[var(--color-surface)] border border-[var(--color-border)] rounded-xl">
                     <feat.icon size={16} className="text-fire" weight="fill" />
-                    <span className="text-white/70 text-sm">{feat.text}</span>
+                    <span className="text-[var(--color-text-secondary)] text-sm">{feat.text}</span>
                   </div>
                 </ScrollReveal>
               ))}
@@ -106,7 +106,7 @@ export default function AppSection() {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="Enter your email"
-                  className="flex-1 px-5 py-4 bg-white/5 border border-white/10 rounded-xl text-white placeholder:text-white/30 focus:outline-none focus:border-fire/40 transition-colors text-sm"
+                  className="flex-1 px-5 py-4 bg-[var(--color-surface)] border border-[var(--color-border)] rounded-xl text-[var(--color-text-primary)] placeholder:text-[var(--color-text-muted)] focus:outline-none focus:border-fire/40 transition-colors text-sm"
                 />
                 <button className="px-6 py-4 bg-fire text-white font-display font-semibold text-sm rounded-xl hover:bg-fire-light transition-all duration-300 hover:shadow-[0_0_30px_rgba(255,77,0,0.3)] flex items-center gap-2 justify-center whitespace-nowrap">
                   <Bell size={16} weight="fill" />
@@ -125,7 +125,7 @@ export default function AppSection() {
                   height={28}
                   className="opacity-30 hover:opacity-50 transition-opacity cursor-pointer"
                 />
-                <span className="text-white/20 text-xs">
+                <span className="text-[var(--color-text-muted)] text-xs">
                   Available soon on iOS & Android
                 </span>
               </div>

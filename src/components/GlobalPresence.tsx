@@ -43,7 +43,7 @@ export default function GlobalPresence() {
 
       {/* Mesh gradient overlay */}
       <div className="absolute inset-0 mesh-gradient" />
-      <div className="absolute inset-0 bg-gradient-to-b from-[#0A0A0A] via-transparent to-[#0A0A0A]" />
+      <div className="absolute inset-0 bg-gradient-to-b from-[var(--color-background)] via-transparent to-[var(--color-background)]" />
 
       <div className="relative z-10 max-w-[1400px] mx-auto px-6 md:px-10">
         <div className="grid md:grid-cols-2 gap-16 items-center">
@@ -66,7 +66,7 @@ export default function GlobalPresence() {
             </ScrollReveal>
 
             <ScrollReveal delay={0.2}>
-              <p className="mt-8 text-ash text-base md:text-lg leading-relaxed max-w-lg">
+              <p className="mt-8 text-[var(--color-text-secondary)] text-base md:text-lg leading-relaxed max-w-lg">
                 Connect with any of our locations worldwide. Youth Alive is a
                 global movement reaching young people in every continent with the
                 message of faith, purpose, and empowerment.
@@ -77,11 +77,11 @@ export default function GlobalPresence() {
             <div className="mt-10 flex flex-wrap gap-3">
               {regions.map((region, i) => (
                 <ScrollReveal key={region.name} delay={0.3 + i * 0.08}>
-                  <div className="px-5 py-3 bg-white/5 border border-white/8 rounded-2xl hover:border-fire/20 hover:bg-fire/5 transition-all duration-300 cursor-default">
-                    <p className="text-white font-display font-semibold text-sm">
+                  <div className="px-5 py-3 bg-[var(--color-surface)] border border-[var(--color-border)] rounded-2xl hover:border-fire/20 hover:bg-fire/5 transition-all duration-300 cursor-default">
+                    <p className="text-[var(--color-text-primary)] font-display font-semibold text-sm">
                       {region.name}
                     </p>
-                    <p className="text-ash text-xs mt-0.5">{region.count}</p>
+                    <p className="text-[var(--color-text-secondary)] text-xs mt-0.5">{region.count}</p>
                   </div>
                 </ScrollReveal>
               ))}
@@ -108,7 +108,7 @@ export default function GlobalPresence() {
                 {/* Glow ring */}
                 <div className="absolute inset-0 rounded-full border border-fire/10 animate-pulse" />
                 <div className="absolute inset-4 rounded-full border border-gold/10" />
-                <div className="absolute inset-8 rounded-full border border-white/5" />
+                <div className="absolute inset-8 rounded-full border border-[var(--color-border)]" />
 
                 {/* Globe image */}
                 <motion.div

@@ -59,11 +59,11 @@ export default function Community() {
       {/* Dark overlay */}
       <motion.div
         style={{ opacity: overlayOpacity }}
-        className="absolute inset-0 bg-[#0A0A0A]"
+        className="absolute inset-0 bg-[var(--color-background)]"
       />
 
       {/* Gradient overlays for seamless blending */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#0A0A0A] via-transparent to-[#0A0A0A]" />
+      <div className="absolute inset-0 bg-gradient-to-b from-[var(--color-background)] via-transparent to-[var(--color-background)]" />
 
       {/* Mesh glow */}
       <div className="absolute inset-0">
@@ -73,7 +73,7 @@ export default function Community() {
       <div className="relative z-10 max-w-[1400px] mx-auto px-6 md:px-10 text-center">
         {/* Icon */}
         <ScrollReveal>
-          <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-white/5 border border-white/10 mb-8">
+          <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-white/10 border border-white/20 mb-8">
             <Image
               src="/images/yaf-pc.svg"
               alt="YAF Professional Community"
@@ -95,7 +95,7 @@ export default function Community() {
         </ScrollReveal>
 
         <ScrollReveal delay={0.2}>
-          <p className="mt-8 text-white/50 text-base md:text-lg leading-relaxed max-w-2xl mx-auto">
+          <p className="mt-8 text-white/60 text-base md:text-lg leading-relaxed max-w-2xl mx-auto">
             Get more information from our community page, connect with
             vision-driven individuals to get inspired, participate in job fairs,
             attend workshops and so many more valuable resources to get you ahead

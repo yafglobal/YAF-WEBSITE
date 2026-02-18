@@ -40,33 +40,33 @@ export default function VideoSection() {
           </ScrollReveal>
 
           <ScrollReveal delay={0.2}>
-            <p className="mt-6 text-ash text-base md:text-lg max-w-2xl mx-auto leading-relaxed">
+            <p className="mt-6 text-[var(--color-text-secondary)] text-base md:text-lg max-w-2xl mx-auto leading-relaxed">
               Watch highlights from Jubilee 1.0 and other powerful gatherings
               that are transforming lives across the globe.
             </p>
           </ScrollReveal>
         </div>
 
-        {/* Video embed */}
+        {/* Video embed with fire border */}
         <ScrollReveal delay={0.3}>
           <motion.div
             style={{ scale: videoScale }}
-            className="relative group"
+            className="relative"
           >
-            {/* Glow frame */}
-            <div className="absolute -inset-px bg-gradient-to-b from-fire/20 via-white/5 to-fire/10 rounded-[18px] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
-            <div className="relative video-container bg-charcoal border border-white/5 rounded-2xl overflow-hidden shadow-[0_20px_80px_rgba(0,0,0,0.5)]">
-              <iframe
-                src="https://www.youtube.com/embed/optmgB8AZDI?si=JO3ZUiv-qZIMWffu"
-                title="JUBILEE 1.0 | YOUTHALIVE GLOBAL"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowFullScreen
-              />
+            {/* Fire border wrapper */}
+            <div className="fire-border">
+              <div className="video-container bg-[var(--color-surface)]">
+                <iframe
+                  src="https://www.youtube.com/embed/optmgB8AZDI?si=JO3ZUiv-qZIMWffu"
+                  title="JUBILEE 1.0 | YOUTHALIVE GLOBAL"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowFullScreen
+                />
+              </div>
             </div>
 
-            {/* Decorative glow */}
-            <div className="absolute -bottom-10 left-1/2 -translate-x-1/2 w-2/3 h-20 bg-fire/10 blur-[60px] rounded-full" />
+            {/* Decorative glow beneath */}
+            <div className="absolute -bottom-10 left-1/2 -translate-x-1/2 w-2/3 h-20 bg-fire/15 blur-[60px] rounded-full" />
           </motion.div>
         </ScrollReveal>
       </div>
