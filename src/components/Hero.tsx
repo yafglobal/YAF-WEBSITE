@@ -2,8 +2,9 @@
 
 import { useRef } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { motion, useScroll, useTransform } from "motion/react";
-import { ArrowDown } from "@phosphor-icons/react";
+import ThreeDButton from "./ui/ThreeDButton";
 
 const slides = [
   "/images/slider-1.jpeg",
@@ -135,48 +136,31 @@ export default function Hero() {
           purpose-driven living.
         </motion.p>
 
-        {/* CTA */}
+        {/* 3D CTA Buttons */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.4, duration: 0.8 }}
-          className="mt-10 flex flex-col sm:flex-row items-center gap-4"
+          className="mt-10 flex flex-col sm:flex-row gap-6 justify-center items-center px-4 sm:px-0"
         >
-          <a
-            href="#about"
-            className="group px-8 py-4 bg-fire text-white font-display font-semibold text-sm tracking-wide uppercase rounded-full hover:bg-fire-light transition-all duration-300 hover:shadow-[0_0_40px_rgba(255,77,0,0.4)] flex items-center gap-2"
+          <Link href="#give">
+            <ThreeDButton variant="fire">
+              Give
+            </ThreeDButton>
+          </Link>
+
+          <Link
+            href="https://www.youtube.com/@YouthAliveGlobal/streams"
+            target="_blank"
+            rel="noopener noreferrer"
           >
-            Connect with us globally
-            <span className="inline-block transition-transform group-hover:translate-x-1">
-              &rarr;
-            </span>
-          </a>
-          <a
-            href="#events"
-            className="px-8 py-4 border border-white/20 text-white/80 font-display font-medium text-sm tracking-wide uppercase rounded-full hover:border-white/40 hover:text-white transition-all duration-300"
-          >
-            Upcoming Events
-          </a>
+            <ThreeDButton variant="gold">
+              Watch Online
+            </ThreeDButton>
+          </Link>
         </motion.div>
       </motion.div>
 
-      {/* Scroll indicator */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 2, duration: 1 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2"
-      >
-        <span className="text-white/30 text-xs tracking-widest uppercase font-display">
-          Scroll
-        </span>
-        <motion.div
-          animate={{ y: [0, 8, 0] }}
-          transition={{ duration: 1.5, repeat: Infinity }}
-        >
-          <ArrowDown size={18} className="text-fire/60" />
-        </motion.div>
-      </motion.div>
     </section>
   );
 }

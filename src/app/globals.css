@@ -196,3 +196,182 @@ html.light .mesh-gradient {
   background-size: 200% auto;
   animation: shimmer 3s linear infinite;
 }
+
+/* ================================
+   3D Button Styles
+   ================================ */
+
+.btn3d {
+  /* Fire variant (default) */
+  --btn-front: linear-gradient(180deg, #FF6B2B 0%, #FF4D00 50%, #CC3D00 100%);
+  --btn-edge: #8A2900;
+  --btn-edge-bottom: #5C1B00;
+  --btn-glow: rgba(255, 77, 0, 0.7);
+
+  position: relative;
+  border: none;
+  outline: none;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+  transition: filter 250ms, transform 250ms;
+  -webkit-tap-highlight-color: transparent;
+  transform-style: preserve-3d;
+  transform: perspective(800px) rotateX(12deg) rotateY(10deg) rotateZ(-2deg);
+}
+
+.btn3d.btn3d--gold {
+  --btn-front: linear-gradient(180deg, #FFE066 0%, #FFD700 50%, #C9A227 100%);
+  --btn-edge: #8A6D15;
+  --btn-edge-bottom: #5C4A0F;
+  --btn-glow: rgba(255, 215, 0, 0.7);
+}
+
+.btn3d:hover {
+  filter: brightness(110%);
+  transform: perspective(800px) rotateX(12deg) rotateY(10deg) rotateZ(-2deg) translateY(-3px);
+}
+
+.btn3d:active {
+  transform: perspective(800px) rotateX(12deg) rotateY(10deg) rotateZ(-2deg) translateY(2px);
+}
+
+/* Glow shadow underneath */
+.btn3d .btn3d-bg {
+  position: absolute;
+  top: 8px;
+  left: -10px;
+  width: calc(100% + 20px);
+  height: calc(100% + 16px);
+  border-radius: 24px;
+  background: var(--btn-glow);
+  filter: blur(25px);
+  transform: translateZ(-40px);
+  opacity: 0.8;
+  transition: all 250ms;
+}
+
+.btn3d:hover .btn3d-bg {
+  opacity: 1;
+  filter: blur(30px);
+  transform: translateZ(-40px) scale(1.1);
+}
+
+/* Front face of button */
+.btn3d .btn3d-wrap {
+  position: relative;
+  padding: 18px 48px 18px 56px;
+  border-radius: 14px;
+  background: var(--btn-front);
+  transform: translateY(0);
+  box-shadow:
+    0 6px 0 0 var(--btn-edge-bottom),
+    0 8px 0 0 var(--btn-edge);
+  transition: transform 250ms cubic-bezier(0.3, 0.7, 0.4, 1), box-shadow 250ms;
+  will-change: transform;
+  overflow: hidden;
+}
+
+.btn3d:hover .btn3d-wrap {
+  transform: translateY(-2px);
+  box-shadow:
+    0 8px 0 0 var(--btn-edge-bottom),
+    0 10px 0 0 var(--btn-edge);
+}
+
+.btn3d:active .btn3d-wrap {
+  transform: translateY(4px);
+  box-shadow:
+    0 2px 0 0 var(--btn-edge-bottom),
+    0 3px 0 0 var(--btn-edge);
+}
+
+/* Logo watermark - embossed effect */
+.btn3d .btn3d-watermark {
+  position: absolute;
+  left: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  opacity: 0.15;
+  filter: blur(0.5px);
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.btn3d .btn3d-watermark-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 1px 0 rgba(0, 0, 0, 0.3)) drop-shadow(0 -1px 0 rgba(255, 255, 255, 0.1));
+}
+
+/* Hover: logo glows and lifts */
+.btn3d:hover .btn3d-watermark {
+  opacity: 1;
+  transform: translateY(-50%) translateX(4px) translateY(-3px) scale(1.1);
+  filter: blur(0) drop-shadow(0 0 12px var(--btn-glow));
+}
+
+/* Active: logo settles */
+.btn3d:active .btn3d-watermark {
+  opacity: 0.2;
+  transform: translateY(-50%) scale(0.95);
+}
+
+.btn3d .btn3d-content {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  color: white;
+  font-size: 18px;
+  font-weight: 600;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+  letter-spacing: 0.02em;
+  z-index: 1;
+}
+
+.btn3d .btn3d-label {
+  display: flex;
+}
+
+.btn3d .btn3d-arrow {
+  color: white;
+  opacity: 0.9;
+  filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.2));
+  transition: transform 0.3s ease;
+}
+
+.btn3d:hover .btn3d-arrow {
+  transform: translateX(4px);
+}
+
+/* Responsive sizing for 3D buttons */
+@media (max-width: 640px) {
+  .btn3d {
+    transform: perspective(800px) rotateX(10deg) rotateY(8deg) rotateZ(-1deg);
+  }
+
+  .btn3d:hover {
+    transform: perspective(800px) rotateX(10deg) rotateY(8deg) rotateZ(-1deg) translateY(-3px);
+  }
+
+  .btn3d .btn3d-wrap {
+    padding: 14px 32px 14px 44px;
+  }
+
+  .btn3d .btn3d-content {
+    font-size: 16px;
+    gap: 10px;
+  }
+
+  .btn3d .btn3d-watermark {
+    width: 32px;
+    height: 32px;
+    left: 6px;
+  }
+}
