@@ -217,7 +217,7 @@ html.light .mesh-gradient {
   transition: filter 250ms, transform 250ms;
   -webkit-tap-highlight-color: transparent;
   transform-style: preserve-3d;
-  transform: perspective(800px) rotateX(12deg) rotateY(10deg) rotateZ(-2deg);
+  transform: perspective(600px) rotateX(18deg) rotateY(10deg) rotateZ(-2deg);
 }
 
 .btn3d.btn3d--gold {
@@ -229,11 +229,11 @@ html.light .mesh-gradient {
 
 .btn3d:hover {
   filter: brightness(110%);
-  transform: perspective(800px) rotateX(12deg) rotateY(10deg) rotateZ(-2deg) translateY(-3px);
+  transform: perspective(600px) rotateX(18deg) rotateY(10deg) rotateZ(-2deg) translateY(-3px);
 }
 
 .btn3d:active {
-  transform: perspective(800px) rotateX(12deg) rotateY(10deg) rotateZ(-2deg) translateY(2px);
+  transform: perspective(600px) rotateX(18deg) rotateY(10deg) rotateZ(-2deg) translateY(2px);
 }
 
 /* Glow shadow underneath */
@@ -265,25 +265,28 @@ html.light .mesh-gradient {
   background: var(--btn-front);
   transform: translateY(0);
   box-shadow:
-    0 6px 0 0 var(--btn-edge-bottom),
-    0 8px 0 0 var(--btn-edge);
+    0 10px 0 0 var(--btn-edge-bottom),
+    0 12px 0 0 var(--btn-edge),
+    0 14px 6px rgba(0, 0, 0, 0.3);
   transition: transform 250ms cubic-bezier(0.3, 0.7, 0.4, 1), box-shadow 250ms;
   will-change: transform;
   overflow: hidden;
 }
 
 .btn3d:hover .btn3d-wrap {
-  transform: translateY(-2px);
+  transform: translateY(-3px);
   box-shadow:
-    0 8px 0 0 var(--btn-edge-bottom),
-    0 10px 0 0 var(--btn-edge);
+    0 13px 0 0 var(--btn-edge-bottom),
+    0 15px 0 0 var(--btn-edge),
+    0 18px 10px rgba(0, 0, 0, 0.3);
 }
 
 .btn3d:active .btn3d-wrap {
-  transform: translateY(4px);
+  transform: translateY(6px);
   box-shadow:
-    0 2px 0 0 var(--btn-edge-bottom),
-    0 3px 0 0 var(--btn-edge);
+    0 3px 0 0 var(--btn-edge-bottom),
+    0 4px 0 0 var(--btn-edge),
+    0 5px 3px rgba(0, 0, 0, 0.2);
 }
 
 /* Logo watermark - embossed effect */
@@ -353,11 +356,11 @@ html.light .mesh-gradient {
 /* Responsive sizing for 3D buttons */
 @media (max-width: 640px) {
   .btn3d {
-    transform: perspective(800px) rotateX(10deg) rotateY(8deg) rotateZ(-1deg);
+    transform: perspective(600px) rotateX(16deg) rotateY(8deg) rotateZ(-1deg);
   }
 
   .btn3d:hover {
-    transform: perspective(800px) rotateX(10deg) rotateY(8deg) rotateZ(-1deg) translateY(-3px);
+    transform: perspective(600px) rotateX(16deg) rotateY(8deg) rotateZ(-1deg) translateY(-3px);
   }
 
   .btn3d .btn3d-wrap {
