@@ -65,35 +65,43 @@ export const continents: ContinentData[] = [
     mapUrl:
       "https://maps.google.com/?q=1+Churchill+Cl+Green+Street+Green+Rd+Dartford+DA1+1QE+United+Kingdom",
     images: [
+      /* 0 — hero (clean, color) */
       {
         src: "/ukyaf/joyful-praise-gathering.webp",
         alt: "Joyful praise gathering in the UK",
       },
+      /* 1 — small square (clean, color) */
+      {
+        src: "/ukyaf/youth-worship-hands-raised.webp",
+        alt: "Youth worship with hands raised",
+      },
+      /* 2 — small square (clean, color – small watermark) */
+      {
+        src: "/ukyaf/youth-fellowship-friends.webp",
+        alt: "Youth fellowship friends together",
+      },
+      /* 3 — wide (overlay cropped by landscape ratio) */
+      {
+        src: "/ukyaf/ayac-worship-leader.webp",
+        alt: "AYAC worship leader performing",
+        objectPosition: "center top",
+      },
+      /* 4 — wide (overlay cropped by landscape ratio) */
       {
         src: "/ukyaf/ayac-worship-vocalist.webp",
         alt: "Worship vocalist at AYAC Europe",
         objectPosition: "center top",
       },
-      {
-        src: "/ukyaf/youth-worship-hands-raised.webp",
-        alt: "Youth worship with hands raised",
-      },
-      {
-        src: "/ukyaf/ayac-worship-leader.webp",
-        alt: "AYAC worship leader performing",
-      },
+      /* 5 — small square (clean, B&W) */
       {
         src: "/ukyaf/southampton-congregation-worship.webp",
         alt: "Southampton congregation in worship",
       },
+      /* 6 — small square (overlay cropped by top position) */
       {
         src: "/ukyaf/ayac-keyboardist.webp",
         alt: "Keyboardist at AYAC Europe worship",
         objectPosition: "center top",
-      },
-      {
-        src: "/ukyaf/youth-fellowship-friends.webp",
-        alt: "Youth fellowship friends together",
       },
     ],
   },
