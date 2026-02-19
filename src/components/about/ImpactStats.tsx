@@ -134,13 +134,13 @@ export default function ImpactStats() {
         </div>
 
         {/* Stats grid */}
-        <div ref={counterRef} className="grid grid-cols-2 md:grid-cols-5 gap-6 md:gap-4">
+        <div ref={counterRef} className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 md:gap-4">
           {stats.map((stat, i) => (
             <ScrollReveal key={stat.label} delay={0.1 * i}>
               <motion.div
                 whileHover={{ y: -4 }}
                 transition={{ duration: 0.3 }}
-                className="relative group text-center p-6 md:p-8 rounded-2xl bg-white/[0.03] border border-white/[0.06] hover:border-fire/20 hover:bg-fire/[0.03] transition-all duration-500"
+                className="relative group text-center p-4 md:p-8 rounded-2xl bg-white/[0.03] border border-white/[0.06] hover:border-fire/20 hover:bg-fire/[0.03] transition-all duration-500"
               >
                 {/* Icon */}
                 <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-fire/10 mb-5 group-hover:bg-fire/15 transition-colors duration-300">
@@ -148,7 +148,7 @@ export default function ImpactStats() {
                 </div>
 
                 {/* Number */}
-                <p className="font-display font-extrabold text-3xl md:text-4xl text-white tracking-tight">
+                <p className="font-display font-extrabold text-2xl md:text-4xl text-white tracking-tight">
                   <AnimatedCounter
                     value={stat.value}
                     suffix={stat.suffix}

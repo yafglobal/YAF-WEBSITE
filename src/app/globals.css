@@ -445,3 +445,54 @@ html.light .mesh-gradient {
     left: 6px;
   }
 }
+
+/* Extra small devices */
+@media (max-width: 374px) {
+  .btn3d {
+    transform: perspective(500px) rotateX(14deg) rotateY(6deg) rotateZ(-1deg);
+  }
+
+  .btn3d:hover {
+    transform: perspective(500px) rotateX(14deg) rotateY(6deg) rotateZ(-1deg) translateY(-2px);
+  }
+
+  .btn3d .btn3d-wrap {
+    padding: 12px 24px 12px 36px;
+  }
+
+  .btn3d .btn3d-content {
+    font-size: 14px;
+    gap: 8px;
+  }
+
+  .btn3d .btn3d-watermark {
+    width: 26px;
+    height: 26px;
+    left: 5px;
+  }
+}
+
+/* Reduce fire border padding on small screens */
+@media (max-width: 640px) {
+  .fire-border {
+    padding: 2px;
+    border-radius: 14px;
+  }
+
+  .fire-border::before {
+    inset: -3px;
+    border-radius: 18px;
+    filter: blur(10px);
+  }
+
+  .fire-border > * {
+    border-radius: 12px;
+  }
+}
+
+/* Reduce video container border radius on mobile */
+@media (max-width: 640px) {
+  .video-container {
+    border-radius: 12px;
+  }
+}

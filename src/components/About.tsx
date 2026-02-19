@@ -109,14 +109,14 @@ export default function About() {
         </div>
 
         {/* Stats row */}
-        <div className="mt-28 grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
+        <div className="mt-20 md:mt-28 grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-12">
           {stats.map((stat, i) => (
             <ScrollReveal key={stat.label} delay={0.1 * i}>
               <div className="text-center group">
                 <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-[var(--color-surface)] border border-[var(--color-border)] mb-4 group-hover:border-fire/20 group-hover:bg-fire/5 transition-all duration-300">
                   <stat.icon size={24} className="text-fire" weight="fill" />
                 </div>
-                <p className="font-display font-extrabold text-3xl md:text-4xl text-[var(--color-text-primary)] tracking-tight">
+                <p className="font-display font-extrabold text-2xl md:text-4xl text-[var(--color-text-primary)] tracking-tight">
                   {stat.value}
                 </p>
                 <p className="mt-1 text-[var(--color-text-secondary)] text-sm tracking-wider uppercase">

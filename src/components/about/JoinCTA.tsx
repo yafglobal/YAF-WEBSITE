@@ -73,7 +73,7 @@ export default function JoinCTA() {
             {/* Primary CTA */}
             <a
               href="/"
-              className="group relative inline-flex items-center gap-3 px-10 py-5 bg-fire text-white font-display font-bold text-base tracking-wide rounded-full overflow-hidden transition-all duration-500 hover:shadow-[0_0_50px_rgba(255,77,0,0.4)]"
+              className="group relative inline-flex items-center gap-3 px-7 py-4 md:px-10 md:py-5 bg-fire text-white font-display font-bold text-sm md:text-base tracking-wide rounded-full overflow-hidden transition-all duration-500 hover:shadow-[0_0_50px_rgba(255,77,0,0.4)]"
             >
               {/* Shimmer effect */}
               <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent shimmer-btn" />
@@ -88,7 +88,7 @@ export default function JoinCTA() {
             {/* Secondary CTA */}
             <a
               href="/#give"
-              className="group inline-flex items-center gap-3 px-10 py-5 bg-transparent border border-[var(--color-border)] text-[var(--color-text-primary)] font-display font-bold text-base tracking-wide rounded-full hover:border-gold/40 hover:bg-gold/5 transition-all duration-300"
+              className="group inline-flex items-center gap-3 px-7 py-4 md:px-10 md:py-5 bg-transparent border border-[var(--color-border)] text-[var(--color-text-primary)] font-display font-bold text-sm md:text-base tracking-wide rounded-full hover:border-gold/40 hover:bg-gold/5 transition-all duration-300"
             >
               Give Online
               <ArrowRight

@@ -205,7 +205,7 @@ export default function WhatWeOffer() {
                               transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
                               className="overflow-hidden"
                             >
-                              <p className="mt-3 text-[var(--color-text-secondary)] text-sm leading-relaxed pl-[52px]">
+                              <p className="mt-3 text-[var(--color-text-secondary)] text-sm leading-relaxed pl-0 md:pl-[52px]">
                                 {item.description}
                               </p>
                             </motion.div>
@@ -222,7 +222,7 @@ export default function WhatWeOffer() {
           {/* Right: Visual display */}
           <div className="lg:col-span-7 relative">
             <ScrollReveal delay={0.3} direction="right">
-              <div className="relative aspect-[4/3] md:aspect-[16/10] rounded-3xl overflow-hidden bg-[var(--color-surface)]">
+              <div className="relative aspect-[4/3] lg:aspect-[16/10] rounded-3xl overflow-hidden bg-[var(--color-surface)]">
                 {/* Dynamic gradient background based on active item */}
                 <AnimatePresence mode="wait">
                   <motion.div
@@ -261,7 +261,7 @@ export default function WhatWeOffer() {
                     </div>
 
                     {/* Content overlay */}
-                    <div className="absolute inset-0 flex flex-col items-center justify-center p-10 md:p-16 text-center">
+                    <div className="absolute inset-0 flex flex-col items-center justify-center p-6 md:p-16 text-center">
                       <motion.div
                         initial={{ y: 20, opacity: 0 }}
                         animate={{ y: 0, opacity: 1 }}
@@ -278,7 +278,7 @@ export default function WhatWeOffer() {
                         initial={{ y: 20, opacity: 0 }}
                         animate={{ y: 0, opacity: 1 }}
                         transition={{ delay: 0.3, duration: 0.5 }}
-                        className="mt-4 font-display font-extrabold text-3xl md:text-5xl lg:text-6xl text-[var(--color-text-primary)] tracking-tight"
+                        className="mt-4 font-display font-extrabold text-2xl md:text-5xl lg:text-6xl text-[var(--color-text-primary)] tracking-tight"
                       >
                         {offerings[activeIndex].title}
                       </motion.h3>
@@ -287,7 +287,7 @@ export default function WhatWeOffer() {
                         initial={{ y: 20, opacity: 0 }}
                         animate={{ y: 0, opacity: 1 }}
                         transition={{ delay: 0.4, duration: 0.5 }}
-                        className="mt-6 text-[var(--color-text-secondary)] text-base md:text-lg max-w-md leading-relaxed"
+                        className="mt-4 md:mt-6 text-[var(--color-text-secondary)] text-sm md:text-lg max-w-md leading-relaxed"
                       >
                         {offerings[activeIndex].description}
                       </motion.p>

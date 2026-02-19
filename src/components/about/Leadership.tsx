@@ -77,7 +77,7 @@ export default function Leadership() {
         />
 
         {/* Leaders grid */}
-        <div className="grid md:grid-cols-3 gap-6 md:gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-8">
           {leaders.map((leader, i) => (
             <ScrollReveal key={leader.name} delay={0.15 * i}>
               <motion.div
@@ -102,7 +102,7 @@ export default function Leadership() {
                   <div className="absolute inset-0 bg-gradient-to-t from-fire/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
                   {/* Content at bottom */}
-                  <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8">
+                  <div className="absolute bottom-0 left-0 right-0 p-4 md:p-8">
                     {/* Role tag */}
                     <div
                       className="inline-block mb-3 px-3 py-1 rounded-full bg-fire/20 backdrop-blur-sm border border-fire/20 opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all duration-500"
@@ -123,7 +123,7 @@ export default function Leadership() {
                     </p>
 
                     {/* Bio on hover */}
-                    <p className="mt-3 text-white/50 text-xs leading-relaxed max-h-0 overflow-hidden group-hover:max-h-24 transition-all duration-500 ease-out">
+                    <p className="mt-3 text-white/50 text-xs leading-relaxed max-h-0 overflow-hidden group-hover:max-h-32 md:group-hover:max-h-24 transition-all duration-500 ease-out">
                       {leader.bio}
                     </p>
                   </div>
