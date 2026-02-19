@@ -4,9 +4,9 @@ import Footer from "@/components/Footer";
 import CommunityPage from "@/components/community/CommunityPage";
 
 export const metadata: Metadata = {
-  title: "Professional Community | Youth Alive Global",
+  title: "Global Community | Youth Alive Global",
   description:
-    "Connect with vision-driven professionals across the globe. Access job fairs, workshops, mentorship, and career opportunities through the Youth Alive Professional Community.",
+    "Explore Youth Alive communities across Africa, Europe, and North America. Find locations, browse event galleries, and connect with young believers worldwide.",
 };
 
 export default function CommunityRoute() {
