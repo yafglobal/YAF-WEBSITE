@@ -73,20 +73,6 @@ export default function WatchHub({ continents, allVideos, playlists }: WatchHubP
         {/* All Playlists */}
         {Object.keys(playlistsByContinent).length > 0 && (
           <div className="mt-8 md:mt-12">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="px-6 md:px-12 mb-4"
-            >
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-black text-[var(--color-text-primary)] tracking-tight uppercase">
-                All Playlists
-              </h2>
-              <p className="mt-2 text-sm text-[var(--color-text-muted)]">
-                Browse all video playlists from Youth Alive fellowships worldwide
-              </p>
-            </motion.div>
-
             {Object.entries(playlistsByContinent).map(([continent, entries]) => (
               <div key={continent} className="mt-6 md:mt-10">
                 <motion.div
