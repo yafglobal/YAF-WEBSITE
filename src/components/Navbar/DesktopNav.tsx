@@ -14,6 +14,7 @@ interface DesktopNavProps {
   scrolled: boolean;
   pathname: string;
   onNavClick: () => void;
+  lightHero?: boolean;
 }
 
 export default function DesktopNav({
@@ -21,6 +22,7 @@ export default function DesktopNav({
   scrolled,
   pathname,
   onNavClick,
+  lightHero = false,
 }: DesktopNavProps) {
   const [watchHovered, setWatchHovered] = useState(false);
   const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -66,7 +68,9 @@ export default function DesktopNav({
                         ? "text-[var(--color-text-primary)]"
                         : scrolled
                           ? "text-[var(--color-text-muted)] hover:text-[var(--color-text-primary)]"
-                          : "text-white/80 hover:text-white"
+                          : lightHero
+                            ? "text-[var(--color-text-muted)] hover:text-[var(--color-text-primary)]"
+                            : "text-white/80 hover:text-white"
                     }
                   `}
                 >
@@ -117,7 +121,9 @@ export default function DesktopNav({
                 ? "text-plum"
                 : scrolled
                   ? "text-[var(--color-text-muted)] hover:text-[var(--color-text-primary)]"
-                  : "text-white/80 hover:text-white"
+                  : lightHero
+                    ? "text-[var(--color-text-muted)] hover:text-[var(--color-text-primary)]"
+                    : "text-white/80 hover:text-white"
             }
           `}
         >

@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 export default function CommunityRoute() {
   return (
     <main className="relative grain">
-      <Navbar />
+      <Navbar lightHero />
       <CommunityPage />
       <Footer />
     </main>

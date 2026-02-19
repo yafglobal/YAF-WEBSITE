@@ -11,7 +11,11 @@ import { navLinks } from "./navConfig";
 import DesktopNav from "./DesktopNav";
 import MobileNav from "./MobileNav";
 
-export default function Navbar() {
+interface NavbarProps {
+  lightHero?: boolean;
+}
+
+export default function Navbar({ lightHero = false }: NavbarProps) {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const { scrollY } = useScroll();
@@ -108,6 +112,7 @@ export default function Navbar() {
               scrolled={scrolled}
               pathname={pathname}
               onNavClick={handleNavClick}
+              lightHero={lightHero}
             />
 
             <MobileNav
