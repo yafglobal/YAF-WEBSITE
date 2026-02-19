@@ -105,8 +105,8 @@ export default function LeaderCard({ leader, index }: { leader: Leader; index: n
 
             <p className="mt-1 text-[var(--color-text-secondary)] text-sm">{leader.subtitle}</p>
 
-            {/* Bio on hover */}
-            <p className="mt-3 text-[var(--color-text-muted)] text-xs leading-relaxed max-h-0 overflow-hidden group-hover:max-h-24 transition-all duration-500 ease-out">
+            {/* Bio — always visible on mobile, hover-reveal on desktop */}
+            <p className="mt-3 text-[var(--color-text-muted)] text-xs leading-relaxed max-h-24 md:max-h-0 overflow-hidden md:group-hover:max-h-24 transition-all duration-500 ease-out">
               {leader.bio}
             </p>
           </div>

@@ -77,23 +77,24 @@ const ThemeSection = () => {
 
         {/* Tab Navigation */}
         <ScrollReveal delay={0.2} className="flex justify-center mb-6 sm:mb-12 px-4 sm:px-0">
-          <div className="bg-[var(--glass-bg)] backdrop-blur-md rounded-2xl p-2 shadow-lg border border-[var(--color-border-medium)]">
+          <div className="bg-[var(--glass-bg)] backdrop-blur-md rounded-2xl p-1.5 sm:p-2 shadow-lg border border-[var(--color-border-medium)] max-w-full">
             <div className="flex">
               {[
-                { id: "2026", label: "2026 Global Church Theme" },
-                { id: "2025", label: "2025 Youth Alive Themes" },
+                { id: "2026", label: "2026 Church Theme", mobileLabel: "2026 Theme" },
+                { id: "2025", label: "2025 Youth Themes", mobileLabel: "2025 Youth" },
               ].map((tab) => (
                 <button
                   key={tab.id}
                   onClick={() => setActiveTab(tab.id as "2026" | "2025")}
                   className={cn(
-                    "px-4 sm:px-8 py-3 sm:py-4 rounded-xl font-semibold text-sm sm:text-lg transition-all duration-300 cursor-pointer",
+                    "px-3 sm:px-8 py-2.5 sm:py-4 rounded-xl font-semibold text-xs sm:text-lg transition-all duration-300 cursor-pointer whitespace-nowrap",
                     activeTab === tab.id
                       ? "bg-plum text-white shadow-md"
                       : "text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] hover:bg-[var(--color-surface-hover)]"
                   )}
                 >
-                  {tab.label}
+                  <span className="sm:hidden">{tab.mobileLabel}</span>
+                  <span className="hidden sm:inline">{tab.label}</span>
                 </button>
               ))}
             </div>
@@ -423,13 +424,13 @@ const ThemeSection = () => {
               className="space-y-8 sm:space-y-10"
             >
               {/* Region Selector — Pill Toggle */}
-              <div className="flex justify-center">
+              <div className="flex justify-center overflow-x-auto community-nav-scroll px-4 sm:px-0">
                 <div className="bg-[var(--glass-bg)] backdrop-blur-md rounded-2xl p-1.5 shadow-lg border border-[var(--color-border-medium)] inline-flex">
                   {youthThemes2025.map((theme, index) => (
                     <button
                       key={theme.region}
                       onClick={() => setActiveRegion(index)}
-                      className="relative flex items-center gap-2 px-5 sm:px-7 py-2.5 sm:py-3 rounded-xl font-semibold text-sm sm:text-base cursor-pointer"
+                      className="relative flex items-center gap-1.5 sm:gap-2 px-3 sm:px-7 py-2.5 sm:py-3 rounded-xl font-semibold text-xs sm:text-base cursor-pointer whitespace-nowrap"
                     >
                       {activeRegion === index && (
                         <motion.div

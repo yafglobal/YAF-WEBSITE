@@ -423,9 +423,9 @@ export default function DailyScriptureCard() {
         </div>
       </motion.div>
 
-      {/* Decorative Elements */}
-      <div className="absolute -top-4 -right-4 w-24 h-24 border border-plum/20 rounded-full pointer-events-none" />
-      <div className="absolute -bottom-6 -left-6 w-32 h-32 border border-[var(--color-border)] rounded-full pointer-events-none" />
+      {/* Decorative Elements — hidden on mobile to prevent overflow */}
+      <div className="hidden sm:block absolute -top-4 -right-4 w-24 h-24 border border-plum/20 rounded-full pointer-events-none" />
+      <div className="hidden sm:block absolute -bottom-6 -left-6 w-32 h-32 border border-[var(--color-border)] rounded-full pointer-events-none" />
     </div>
   );
 }

@@ -138,7 +138,7 @@ export default function ImpactStats() {
         />
 
         {/* Stats — poster-style with giant numbers and dividers */}
-        <div ref={counterRef} className="grid grid-cols-2 md:grid-cols-5 gap-0">
+        <div ref={counterRef} className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-0">
           {stats.map((stat, i) => (
             <ScrollReveal key={stat.label} delay={0.08 * i}>
               <div className="relative group text-center py-8 md:py-10 px-3">
@@ -153,7 +153,7 @@ export default function ImpactStats() {
                 </div>
 
                 {/* Giant number */}
-                <p className="font-display font-extrabold text-4xl sm:text-5xl lg:text-6xl text-[var(--color-text-primary)] tracking-tight leading-none">
+                <p className="font-display font-extrabold text-3xl sm:text-4xl lg:text-6xl text-[var(--color-text-primary)] tracking-tight leading-none">
                   <AnimatedCounter value={stat.value} suffix={stat.suffix} inView={isInView} />
                 </p>
 
@@ -162,8 +162,8 @@ export default function ImpactStats() {
                   {stat.label}
                 </p>
 
-                {/* Description on hover */}
-                <p className="mt-2 text-[var(--color-text-muted)] text-xs leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-300 max-w-[160px] mx-auto">
+                {/* Description — always visible on mobile, hover on desktop */}
+                <p className="mt-2 text-[var(--color-text-muted)] text-xs leading-relaxed md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300 max-w-[160px] mx-auto">
                   {stat.description}
                 </p>
               </div>

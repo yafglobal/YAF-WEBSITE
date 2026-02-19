@@ -15,6 +15,7 @@ interface ProgramRowProps {
   isHovered: boolean;
   onMouseEnter: () => void;
   onMouseLeave: () => void;
+  onTap: () => void;
 }
 
 export default function ProgramRow({
@@ -27,14 +28,16 @@ export default function ProgramRow({
   isHovered,
   onMouseEnter,
   onMouseLeave,
+  onTap,
 }: ProgramRowProps) {
   return (
     <motion.div
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
+      onClick={onTap}
       className="group relative overflow-hidden rounded-2xl border border-[var(--color-border)] hover:border-plum/20 transition-all duration-500 cursor-pointer"
     >
-      {/* Background image that reveals on hover */}
+      {/* Background image that reveals on hover/tap */}
       <AnimatePresence>
         {isHovered && (
           <motion.div
@@ -58,14 +61,14 @@ export default function ProgramRow({
 
         {/* Icon */}
         <div
-          className={`shrink-0 w-14 h-14 rounded-2xl bg-gradient-to-br ${accent} flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}
+          className={`shrink-0 w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-gradient-to-br ${accent} flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}
         >
           <IconComponent size={24} className="text-[var(--color-text-primary)]" weight="fill" />
         </div>
 
         {/* Content */}
         <div className="flex-1 min-w-0">
-          <h3 className="font-display font-bold text-xl md:text-2xl text-[var(--color-text-primary)]">
+          <h3 className="font-display font-bold text-lg sm:text-xl md:text-2xl text-[var(--color-text-primary)]">
             {title}
           </h3>
           <motion.p
@@ -81,18 +84,20 @@ export default function ProgramRow({
           </motion.p>
         </div>
 
-        {/* Arrow */}
+        {/* Arrow — rotates when expanded on mobile */}
         <ArrowRight
           size={24}
-          className="shrink-0 text-[var(--color-text-muted)] group-hover:text-plum group-hover:translate-x-1 transition-all duration-300"
+          className={`shrink-0 text-[var(--color-text-muted)] group-hover:text-plum transition-all duration-300 ${
+            isHovered ? "text-plum rotate-90 md:rotate-0 md:translate-x-1" : ""
+          }`}
           weight="bold"
         />
       </div>
 
       {/* Bottom accent line */}
       <motion.div
-        initial={{ scaleX: 0 }}
-        whileHover={{ scaleX: 1 }}
+        initial={false}
+        animate={{ scaleX: isHovered ? 1 : 0 }}
         className={`absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r ${accent} origin-left`}
       />
     </motion.div>

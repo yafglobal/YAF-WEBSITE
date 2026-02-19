@@ -22,7 +22,7 @@ export default function BibleReadingPlanSection() {
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-plum/10 rounded-full blur-[120px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
-        <div className="flex flex-col lg:flex-row items-center justify-between gap-20">
+        <div className="flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-20">
           <div className="max-w-2xl text-center lg:text-left">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -33,11 +33,11 @@ export default function BibleReadingPlanSection() {
               <span className="text-plum text-xs tracking-[0.5em] uppercase mb-8 block font-black">
                 Personal Growth
               </span>
-              <h2 className="font-display text-6xl md:text-8xl font-bold text-[var(--color-text-primary)] mb-10 leading-[0.9] tracking-tighter">
+              <h2 className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-bold text-[var(--color-text-primary)] mb-8 sm:mb-10 leading-[0.9] tracking-tighter">
                 Master the Word <br />
                 <span className="italic text-plum">in 2026</span>
               </h2>
-              <p className="text-xl md:text-2xl text-[var(--color-text-secondary)] font-light leading-relaxed mb-16 max-w-xl mx-auto lg:mx-0">
+              <p className="text-base sm:text-xl md:text-2xl text-[var(--color-text-secondary)] font-light leading-relaxed mb-10 sm:mb-16 max-w-xl mx-auto lg:mx-0">
                 Join our 53-week journey through the scriptures. Deepen your faith, understand your
                 purpose, and stay on fire for God throughout the year.
               </p>
@@ -45,7 +45,7 @@ export default function BibleReadingPlanSection() {
               <div className="flex flex-col sm:flex-row items-center gap-6 justify-center lg:justify-start">
                 <Link
                   href="/bible-plan"
-                  className="group flex items-center gap-4 bg-plum text-white px-10 py-6 rounded-2xl font-bold uppercase text-[10px] tracking-[0.3em] hover:bg-plum-light transition-all duration-500 shadow-xl active:scale-95"
+                  className="group flex items-center gap-3 sm:gap-4 bg-plum text-white px-6 py-4 sm:px-10 sm:py-6 rounded-2xl font-bold uppercase text-[10px] tracking-[0.3em] hover:bg-plum-light transition-all duration-500 shadow-xl active:scale-95"
                 >
                   <BookOpenText
                     weight="bold"
@@ -58,7 +58,7 @@ export default function BibleReadingPlanSection() {
                 <a
                   href="/bible-plan-2026.pdf"
                   download
-                  className="group flex items-center gap-4 border border-[var(--color-border-medium)] text-[var(--color-text-primary)] px-10 py-6 rounded-2xl font-bold uppercase text-[10px] tracking-[0.3em] hover:bg-[var(--color-surface-hover)] transition-all duration-500 active:scale-95"
+                  className="group flex items-center gap-3 sm:gap-4 border border-[var(--color-border-medium)] text-[var(--color-text-primary)] px-6 py-4 sm:px-10 sm:py-6 rounded-2xl font-bold uppercase text-[10px] tracking-[0.3em] hover:bg-[var(--color-surface-hover)] transition-all duration-500 active:scale-95"
                 >
                   <DownloadSimple
                     weight="bold"

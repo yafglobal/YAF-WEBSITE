@@ -71,6 +71,7 @@ export default function ProgramsSection() {
                 isHovered={hoveredIndex === i}
                 onMouseEnter={() => setHoveredIndex(i)}
                 onMouseLeave={() => setHoveredIndex(null)}
+                onTap={() => setHoveredIndex(hoveredIndex === i ? null : i)}
               />
             </ScrollReveal>
           ))}
