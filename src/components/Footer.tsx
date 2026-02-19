@@ -26,11 +26,11 @@ const resourceLinks = [
 ];
 
 const socialLinks = [
-  { icon: YoutubeLogo, label: "YouTube", href: "#" },
-  { icon: FacebookLogo, label: "Facebook", href: "#" },
-  { icon: InstagramLogo, label: "Instagram", href: "#" },
-  { icon: XLogo, label: "Twitter / X", href: "#" },
-  { icon: TiktokLogo, label: "TikTok", href: "#" },
+  { icon: YoutubeLogo, label: "YouTube", href: "https://www.youtube.com/@youthaliveglobal?sub_confirmation=1" },
+  { icon: FacebookLogo, label: "Facebook", href: "https://www.facebook.com/Youthaliveglobal" },
+  { icon: InstagramLogo, label: "Instagram", href: "https://www.instagram.com/youthaliveglobal" },
+  { icon: XLogo, label: "Twitter / X", href: "https://x.com/youthaliveglb" },
+  { icon: TiktokLogo, label: "TikTok", href: "https://www.tiktok.com/@youthaliveglobal" },
 ];
 
 export default function Footer() {
@@ -191,6 +191,8 @@ export default function Footer() {
                   <a
                     key={link.label}
                     href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="flex items-center gap-3 p-3 rounded-xl bg-[var(--color-surface)] border border-[var(--color-border)] hover:border-fire/20 hover:bg-fire/5 transition-all duration-300 group"
                   >
                     <link.icon
@@ -219,6 +221,8 @@ export default function Footer() {
               <a
                 key={link.label}
                 href={link.href}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="p-2.5 text-[var(--color-text-muted)] hover:text-fire rounded-lg hover:bg-fire/5 transition-all"
                 aria-label={link.label}
               >

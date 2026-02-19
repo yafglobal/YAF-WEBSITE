@@ -62,7 +62,7 @@ export default function GiveSection() {
         </ScrollReveal>
 
         <ScrollReveal delay={0.2}>
-          <p className="mt-8 text-white/50 text-lg md:text-xl leading-relaxed max-w-xl mx-auto italic font-light">
+          <p className="mt-8 text-white/50 text-base md:text-xl leading-relaxed max-w-xl mx-auto italic font-light">
             &ldquo;Every man according as he purposeth in his heart, so let him
             give; not grudgingly, or of necessity.&rdquo;
           </p>
@@ -74,7 +74,9 @@ export default function GiveSection() {
         <ScrollReveal delay={0.3}>
           <div className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-4">
             <a
-              href="#"
+              href="https://business.payaza.africa/pay/livingfaithchurch-youthalive"
+              target="_blank"
+              rel="noopener noreferrer"
               className="group relative inline-flex items-center gap-3 px-8 py-4 md:px-12 md:py-5 overflow-hidden rounded-full transition-all duration-500"
             >
               {/* Shimmer background */}
@@ -92,7 +94,7 @@ export default function GiveSection() {
             </a>
             <a
               href="#"
-              className="px-8 py-5 border border-white/20 text-white/70 font-display font-medium text-sm tracking-wide uppercase rounded-full hover:border-white/40 hover:text-white transition-all duration-300"
+              className="px-6 py-4 md:px-8 md:py-5 border border-white/20 text-white/70 font-display font-medium text-xs md:text-sm tracking-wide uppercase rounded-full hover:border-white/40 hover:text-white transition-all duration-300"
             >
               Learn About Giving
             </a>

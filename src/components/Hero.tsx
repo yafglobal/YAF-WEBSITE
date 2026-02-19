@@ -150,7 +150,7 @@ export default function Hero() {
           </Link>
 
           <Link
-            href="https://www.youtube.com/@YouthAliveGlobal/streams"
+            href="https://www.youtube.com/@youthaliveglobal/streams?sub_confirmation=1"
             target="_blank"
             rel="noopener noreferrer"
           >
