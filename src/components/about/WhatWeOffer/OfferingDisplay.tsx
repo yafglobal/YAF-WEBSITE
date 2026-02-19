@@ -31,7 +31,7 @@ export default function OfferingDisplay({ offerings, activeIndex }: OfferingDisp
               style={{
                 background: `
                   radial-gradient(ellipse at 30% 20%, ${active.glowColor} 0%, transparent 50%),
-                  radial-gradient(ellipse at 70% 80%, rgba(255, 215, 0, 0.06) 0%, transparent 50%)
+                  radial-gradient(ellipse at 70% 80%, rgba(212, 160, 185, 0.06) 0%, transparent 50%)
                 `,
               }}
             />
@@ -43,7 +43,7 @@ export default function OfferingDisplay({ offerings, activeIndex }: OfferingDisp
                 animate={{ scale: 1, opacity: 0.08, rotate: 0 }}
                 transition={{ duration: 0.8 }}
               >
-                <ActiveIcon size={280} weight="fill" className="text-fire" />
+                <ActiveIcon size={280} weight="fill" className="text-plum" />
               </motion.div>
             </div>
 

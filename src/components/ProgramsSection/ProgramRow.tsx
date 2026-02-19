@@ -32,7 +32,7 @@ export default function ProgramRow({
     <motion.div
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
-      className="group relative overflow-hidden rounded-2xl border border-[var(--color-border)] hover:border-fire/20 transition-all duration-500 cursor-pointer"
+      className="group relative overflow-hidden rounded-2xl border border-[var(--color-border)] hover:border-plum/20 transition-all duration-500 cursor-pointer"
     >
       {/* Background image that reveals on hover */}
       <AnimatePresence>
@@ -52,7 +52,7 @@ export default function ProgramRow({
 
       <div className="relative z-10 flex items-center gap-4 md:gap-10 p-4 md:p-8">
         {/* Number */}
-        <span className="hidden md:block font-display font-bold text-3xl text-[var(--color-border-hover)] group-hover:text-fire/30 transition-colors w-12">
+        <span className="hidden md:block font-display font-bold text-3xl text-[var(--color-border-hover)] group-hover:text-plum/30 transition-colors w-12">
           0{index + 1}
         </span>
 
@@ -84,7 +84,7 @@ export default function ProgramRow({
         {/* Arrow */}
         <ArrowRight
           size={24}
-          className="shrink-0 text-[var(--color-text-muted)] group-hover:text-fire group-hover:translate-x-1 transition-all duration-300"
+          className="shrink-0 text-[var(--color-text-muted)] group-hover:text-plum group-hover:translate-x-1 transition-all duration-300"
           weight="bold"
         />
       </div>

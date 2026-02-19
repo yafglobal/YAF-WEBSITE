@@ -69,7 +69,7 @@ export default function MobileNav({
             className="fixed inset-0 z-40 bg-[var(--color-background)]/98 backdrop-blur-2xl flex flex-col items-center justify-center"
           >
             {/* Decorative ember glow */}
-            <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[300px] h-[300px] rounded-full bg-fire/5 blur-[100px]" />
+            <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[300px] h-[300px] rounded-full bg-plum/5 blur-[100px]" />
 
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -91,7 +91,7 @@ export default function MobileNav({
                     rounded-2xl transition-colors duration-300
                     ${
                       activeSection === i
-                        ? "text-fire bg-fire/10"
+                        ? "text-plum bg-plum/10"
                         : "text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] hover:bg-[var(--color-surface)]"
                     }
                   `}
@@ -99,7 +99,7 @@ export default function MobileNav({
                   {activeSection === i && (
                     <motion.span
                       layoutId="mobile-nav-pill"
-                      className="absolute left-4 top-1/2 -translate-y-1/2 w-1 h-6 bg-fire rounded-full"
+                      className="absolute left-4 top-1/2 -translate-y-1/2 w-1 h-6 bg-plum rounded-full"
                     />
                   )}
                   {link.label}
@@ -115,9 +115,9 @@ export default function MobileNav({
                 onClick={onClose}
                 className="
                   mt-6 w-full text-center py-4 text-lg font-semibold
-                  bg-gradient-to-b from-gold to-gold-dim text-[#1A1A00]
+                  bg-gradient-to-b from-plum-tint to-plum-muted text-[#1A1A00]
                   rounded-2xl
-                  hover:shadow-[var(--shadow-gold-md)]
+                  hover:shadow-[var(--shadow-plum-tint-md)]
                   transition-all duration-300 active:scale-95
                 "
               >
@@ -130,7 +130,7 @@ export default function MobileNav({
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.5 }}
                 onClick={onClose}
-                className="mt-2 text-sm text-[var(--color-text-secondary)] hover:text-fire transition-colors"
+                className="mt-2 text-sm text-[var(--color-text-secondary)] hover:text-plum transition-colors"
               >
                 Contact Us
               </MotionLink>

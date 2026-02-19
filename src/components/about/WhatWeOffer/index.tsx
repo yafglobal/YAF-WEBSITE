@@ -29,18 +29,18 @@ export default function WhatWeOffer() {
         <div className="text-center max-w-3xl mx-auto mb-20">
           <ScrollReveal>
             <div className="inline-flex items-center gap-2 mb-6">
-              <Sparkle size={16} weight="fill" className="text-gold" />
-              <span className="text-fire font-display text-xs tracking-[0.4em] uppercase font-semibold">
+              <Sparkle size={16} weight="fill" className="text-plum-tint" />
+              <span className="text-plum font-display text-xs tracking-[0.4em] uppercase font-semibold">
                 What We Offer
               </span>
-              <Sparkle size={16} weight="fill" className="text-gold" />
+              <Sparkle size={16} weight="fill" className="text-plum-tint" />
             </div>
           </ScrollReveal>
 
           <ScrollReveal delay={0.1}>
             <h2 className="font-display font-extrabold text-4xl md:text-5xl lg:text-6xl leading-[1.05] tracking-tight">
               Just For{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-fire via-fire-light to-gold">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-plum via-plum-light to-plum-tint">
                 You
               </span>
             </h2>

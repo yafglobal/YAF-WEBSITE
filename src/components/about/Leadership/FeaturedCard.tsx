@@ -39,7 +39,7 @@ export default function FeaturedCard({ leader }: { leader: Leader }) {
             <div className="absolute inset-0 bg-gradient-to-t from-[var(--color-surface)] via-transparent to-transparent md:hidden z-[3]" />
 
             {/* Hover glow */}
-            <div className="absolute inset-0 bg-gradient-to-r from-fire/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-[3]" />
+            <div className="absolute inset-0 bg-gradient-to-r from-plum/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-[3]" />
 
             {/* Audio toggle */}
             <button
@@ -55,7 +55,7 @@ export default function FeaturedCard({ leader }: { leader: Leader }) {
               {isMuted ? (
                 <SpeakerSlash size={18} weight="fill" className="text-foreground/80" />
               ) : (
-                <SpeakerHigh size={18} weight="fill" className="text-fire" />
+                <SpeakerHigh size={18} weight="fill" className="text-plum" />
               )}
             </button>
 
@@ -66,8 +66,8 @@ export default function FeaturedCard({ leader }: { leader: Leader }) {
               }`}
             >
               <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-fire opacity-75" />
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-fire" />
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-plum opacity-75" />
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-plum" />
               </span>
               <span className="text-foreground/80 text-[10px] tracking-widest uppercase font-semibold">
                 Now Playing
@@ -77,13 +77,13 @@ export default function FeaturedCard({ leader }: { leader: Leader }) {
 
           {/* Text side */}
           <div className="relative flex flex-col justify-center p-8 md:p-12 lg:p-16">
-            <span className="font-display font-extrabold text-8xl lg:text-9xl text-fire/[0.06] absolute top-4 right-8 select-none pointer-events-none">
+            <span className="font-display font-extrabold text-8xl lg:text-9xl text-plum/[0.06] absolute top-4 right-8 select-none pointer-events-none">
               01
             </span>
 
             <div className="inline-flex items-center gap-2 mb-6">
-              <div className="w-8 h-[2px] bg-fire" />
-              <span className="text-fire text-xs font-semibold tracking-[0.3em] uppercase">
+              <div className="w-8 h-[2px] bg-plum" />
+              <span className="text-plum text-xs font-semibold tracking-[0.3em] uppercase">
                 {leader.role}
               </span>
             </div>
@@ -98,12 +98,12 @@ export default function FeaturedCard({ leader }: { leader: Leader }) {
               {leader.bio}
             </p>
 
-            <div className="mt-8 w-16 h-[2px] bg-gradient-to-r from-fire to-transparent" />
+            <div className="mt-8 w-16 h-[2px] bg-gradient-to-r from-plum to-transparent" />
           </div>
         </div>
 
         {/* Ring */}
-        <div className="absolute inset-0 rounded-3xl ring-1 ring-inset ring-[var(--color-border)] group-hover:ring-fire/15 transition-all duration-500" />
+        <div className="absolute inset-0 rounded-3xl ring-1 ring-inset ring-[var(--color-border)] group-hover:ring-plum/15 transition-all duration-500" />
       </motion.div>
     </ScrollReveal>
   );

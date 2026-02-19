@@ -14,7 +14,7 @@ export default function ResourcesColumn() {
             <li key={link.label}>
               <a
                 href={link.href}
-                className="text-[var(--color-text-secondary)] text-sm hover:text-fire transition-colors duration-300 inline-flex items-center gap-1 group"
+                className="text-[var(--color-text-secondary)] text-sm hover:text-plum transition-colors duration-300 inline-flex items-center gap-1 group"
               >
                 {link.label}
                 <ArrowUpRight

@@ -19,7 +19,7 @@ Use `bun run build` to verify changes compile.
 - **Tailwind CSS 4** (via `@tailwindcss/postcss`, configured in `postcss.config.mjs`)
 - **Motion 12** (Framer Motion) for scroll-driven animations
 - **Phosphor Icons** (`@phosphor-icons/react`)
-- **Fonts**: Unbounded (display/headings, `--font-unbounded`) and Instrument Sans (body, `--font-instrument`) via `next/font/google`
+- **Fonts**: Montserrat (display + body, `--font-montserrat`) via `next/font/google`
 
 ## Architecture
 
@@ -36,15 +36,15 @@ Each component in `src/components/` is self-contained with its own scroll animat
 
 Dark mode is default. Light mode toggled via `ThemeToggle.tsx` which adds/removes `.light` class on `<html>`. Theme persists to `localStorage` and is restored via an inline `<script>` in `layout.tsx` to prevent flash. All theme colors are CSS variables defined in `globals.css` under `@theme`.
 
-**Core palette**: charcoal `#0A0A0A` background, fire `#FF4D00` primary accent, gold `#FFD700` secondary accent.
+**Core palette**: charcoal `#0A0A0A` background, plum `#861657` primary accent, plum-tint `#D4A0B9` secondary accent.
 
 ### Key Patterns
 
-- **Hydration safety**: Pre-computed particle/random data as const arrays — never use `Math.random()` at render time
-- **CSS-first animations**: Hero slideshow (`heroFade` keyframes, 5-slide 25s cycle), marquee, grain overlay, 3D buttons, fire borders — all in `globals.css`
+- **Hydration safety**: Never use `typeof window !== "undefined"` branches in `useState` initializers or render logic — this causes server/client mismatches. Instead use `useSyncExternalStore` with a `getServerSnapshot` that returns a stable default (e.g. `"dark"` for theme). Pre-computed particle/random data as const arrays — never use `Math.random()` at render time. See `ThemeToggle.tsx` for the canonical pattern.
+- **CSS-first animations**: Hero slideshow (`heroFade` keyframes, 5-slide 25s cycle), marquee, grain overlay, 3D buttons, plum borders — all in `globals.css`
 - **Motion animations**: Parallax (`useScroll`/`useTransform`), scroll reveals, hover interactions — in components
 - **Remote images**: `next.config.ts` allows `storage.googleapis.com/gci-static-assets/**`
-- **3D buttons**: `src/components/ui/ThreeDButton.tsx` — CSS perspective transforms with fire/gold variants
+- **3D buttons**: `src/components/ui/ThreeDButton.tsx` — CSS perspective transforms with plum/plum-tint variants
 
 ### Path Alias
 

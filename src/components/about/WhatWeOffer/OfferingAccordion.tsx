@@ -47,7 +47,7 @@ export default function OfferingAccordion({
               {isActive && (
                 <motion.div
                   layoutId="offerBorder"
-                  className="absolute inset-0 rounded-2xl ring-1 ring-fire/20"
+                  className="absolute inset-0 rounded-2xl ring-1 ring-plum/20"
                   transition={{ duration: 0.4 }}
                 />
               )}
@@ -56,7 +56,7 @@ export default function OfferingAccordion({
                 {/* Number */}
                 <span
                   className={`font-display text-sm font-bold mt-1 transition-colors duration-300 ${
-                    isActive ? "text-fire" : "text-[var(--color-text-muted)]"
+                    isActive ? "text-plum" : "text-[var(--color-text-muted)]"
                   }`}
                 >
                   {item.number}
@@ -66,14 +66,14 @@ export default function OfferingAccordion({
                   <div className="flex items-center gap-3">
                     <div
                       className={`w-10 h-10 rounded-xl flex items-center justify-center transition-all duration-300 ${
-                        isActive ? "bg-fire/10" : "bg-[var(--color-surface)] group-hover:bg-fire/5"
+                        isActive ? "bg-plum/10" : "bg-[var(--color-surface)] group-hover:bg-plum/5"
                       }`}
                     >
                       <Icon
                         size={20}
                         weight="fill"
                         className={`transition-colors duration-300 ${
-                          isActive ? "text-fire" : "text-[var(--color-text-secondary)]"
+                          isActive ? "text-plum" : "text-[var(--color-text-secondary)]"
                         }`}
                       />
                     </div>

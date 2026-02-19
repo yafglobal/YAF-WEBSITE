@@ -35,9 +35,9 @@ export default function BrandColumn() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="your@email.com"
-              className="flex-1 px-4 py-3 bg-[var(--color-surface)] border border-[var(--color-border)] rounded-xl text-[var(--color-text-primary)] placeholder:text-[var(--color-text-muted)] focus:outline-none focus:border-fire/40 transition-colors text-sm"
+              className="flex-1 px-4 py-3 bg-[var(--color-surface)] border border-[var(--color-border)] rounded-xl text-[var(--color-text-primary)] placeholder:text-[var(--color-text-muted)] focus:outline-none focus:border-plum/40 transition-colors text-sm"
             />
-            <button className="px-4 py-3 bg-fire text-white rounded-xl hover:bg-fire-light transition-all duration-300 cursor-pointer">
+            <button className="px-4 py-3 bg-plum text-white rounded-xl hover:bg-plum-light transition-all duration-300 cursor-pointer">
               <PaperPlaneTilt size={18} weight="fill" />
             </button>
           </div>

@@ -96,38 +96,35 @@ export default function ImpactStats() {
   const lineWidth = useTransform(scrollYProgress, [0.1, 0.5], ["0%", "100%"]);
 
   return (
-    <section
-      ref={sectionRef}
-      className="relative py-28 md:py-36 overflow-hidden"
-    >
+    <section ref={sectionRef} className="relative py-28 md:py-36 overflow-hidden">
       {/* Dark textured background with dot pattern */}
       <motion.div style={{ y: bgY }} className="absolute inset-0 -top-20 -bottom-20 z-0">
         <div className="absolute inset-0 bg-[var(--color-charcoal)]" />
         <div
           className="absolute inset-0 opacity-20"
           style={{
-            backgroundImage: `radial-gradient(circle at 1px 1px, rgba(255,77,0,0.18) 1px, transparent 0)`,
+            backgroundImage: `radial-gradient(circle at 1px 1px, rgba(134,22,87,0.18) 1px, transparent 0)`,
             backgroundSize: "48px 48px",
           }}
         />
       </motion.div>
 
       {/* Ambient glows */}
-      <div className="absolute top-0 left-1/4 w-[600px] h-[400px] bg-fire/8 rounded-full blur-[180px] pointer-events-none z-[1]" />
-      <div className="absolute bottom-0 right-1/3 w-[500px] h-[350px] bg-gold/5 rounded-full blur-[150px] pointer-events-none z-[1]" />
+      <div className="absolute top-0 left-1/4 w-[600px] h-[400px] bg-plum/8 rounded-full blur-[180px] pointer-events-none z-[1]" />
+      <div className="absolute bottom-0 right-1/3 w-[500px] h-[350px] bg-plum-tint/5 rounded-full blur-[150px] pointer-events-none z-[1]" />
 
       <div className="relative z-10 max-w-[1400px] mx-auto px-6 md:px-10">
         {/* Header */}
         <div className="text-center mb-16">
           <ScrollReveal>
-            <p className="text-fire font-display text-xs tracking-[0.4em] uppercase font-semibold mb-4">
+            <p className="text-plum font-display text-xs tracking-[0.4em] uppercase font-semibold mb-4">
               Our Impact
             </p>
           </ScrollReveal>
           <ScrollReveal delay={0.1}>
             <h2 className="font-display font-extrabold text-4xl md:text-5xl lg:text-6xl leading-[1.05] tracking-tight text-foreground">
               Setting the World{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-fire via-fire-light to-gold text-glow-fire">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-plum via-plum-light to-plum-tint text-glow-plum">
                 Ablaze
               </span>
             </h2>
@@ -137,7 +134,7 @@ export default function ImpactStats() {
         {/* Animated connecting line */}
         <motion.div
           style={{ width: lineWidth }}
-          className="h-[1px] mb-14 bg-gradient-to-r from-transparent via-fire/30 to-transparent mx-auto max-w-5xl"
+          className="h-[1px] mb-14 bg-gradient-to-r from-transparent via-plum/30 to-transparent mx-auto max-w-5xl"
         />
 
         {/* Stats — poster-style with giant numbers and dividers */}
@@ -151,17 +148,13 @@ export default function ImpactStats() {
                 )}
 
                 {/* Icon */}
-                <div className="inline-flex items-center justify-center w-10 h-10 rounded-xl bg-fire/10 mb-5 group-hover:bg-fire/20 transition-colors duration-300">
-                  <stat.icon size={20} weight="fill" className="text-fire" />
+                <div className="inline-flex items-center justify-center w-10 h-10 rounded-xl bg-plum/10 mb-5 group-hover:bg-plum/20 transition-colors duration-300">
+                  <stat.icon size={20} weight="fill" className="text-plum" />
                 </div>
 
                 {/* Giant number */}
                 <p className="font-display font-extrabold text-4xl sm:text-5xl lg:text-6xl text-foreground tracking-tight leading-none">
-                  <AnimatedCounter
-                    value={stat.value}
-                    suffix={stat.suffix}
-                    inView={isInView}
-                  />
+                  <AnimatedCounter value={stat.value} suffix={stat.suffix} inView={isInView} />
                 </p>
 
                 {/* Label */}

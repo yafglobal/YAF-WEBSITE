@@ -37,7 +37,7 @@ export default function LeaderCard({ leader, index }: { leader: Leader; index: n
           <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-background/20 to-transparent z-[3]" />
 
           {/* Hover glow */}
-          <div className="absolute inset-0 bg-gradient-to-t from-fire/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-[3]" />
+          <div className="absolute inset-0 bg-gradient-to-t from-plum/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-[3]" />
 
           {/* Audio toggle */}
           <button
@@ -53,7 +53,7 @@ export default function LeaderCard({ leader, index }: { leader: Leader; index: n
             {isMuted ? (
               <SpeakerSlash size={18} weight="fill" className="text-foreground/80" />
             ) : (
-              <SpeakerHigh size={18} weight="fill" className="text-fire" />
+              <SpeakerHigh size={18} weight="fill" className="text-plum" />
             )}
           </button>
 
@@ -64,8 +64,8 @@ export default function LeaderCard({ leader, index }: { leader: Leader; index: n
             }`}
           >
             <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-fire opacity-75" />
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-fire" />
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-plum opacity-75" />
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-plum" />
             </span>
             <span className="text-foreground/80 text-[10px] tracking-widest uppercase font-semibold">
               Now Playing
@@ -75,8 +75,8 @@ export default function LeaderCard({ leader, index }: { leader: Leader; index: n
           {/* Content at bottom */}
           <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8 z-[4]">
             <div className="inline-flex items-center gap-2 mb-3">
-              <div className="w-5 h-[1.5px] bg-fire" />
-              <span className="text-fire text-xs font-semibold tracking-wider uppercase">
+              <div className="w-5 h-[1.5px] bg-plum" />
+              <span className="text-plum text-xs font-semibold tracking-wider uppercase">
                 {leader.role}
               </span>
             </div>
@@ -95,17 +95,17 @@ export default function LeaderCard({ leader, index }: { leader: Leader; index: n
 
           {/* Corner accent on hover */}
           <div className="absolute top-0 right-0 w-20 h-20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-[4]">
-            <div className="absolute top-4 right-4 w-8 h-[2px] bg-fire" />
-            <div className="absolute top-4 right-4 w-[2px] h-8 bg-fire" />
+            <div className="absolute top-4 right-4 w-8 h-[2px] bg-plum" />
+            <div className="absolute top-4 right-4 w-[2px] h-8 bg-plum" />
           </div>
 
           {/* Ring */}
-          <div className="absolute inset-0 rounded-2xl ring-1 ring-inset ring-[var(--color-border)] group-hover:ring-fire/20 transition-all duration-500 z-[4]" />
+          <div className="absolute inset-0 rounded-2xl ring-1 ring-inset ring-[var(--color-border)] group-hover:ring-plum/20 transition-all duration-500 z-[4]" />
         </div>
 
         {/* Number indicator */}
-        <div className="absolute -top-3 -left-3 w-10 h-10 rounded-xl bg-[var(--color-surface)] border border-[var(--color-border)] flex items-center justify-center group-hover:border-fire/30 group-hover:bg-fire/10 transition-all duration-300 z-10">
-          <span className="font-display font-bold text-sm text-[var(--color-text-secondary)] group-hover:text-fire transition-colors">
+        <div className="absolute -top-3 -left-3 w-10 h-10 rounded-xl bg-[var(--color-surface)] border border-[var(--color-border)] flex items-center justify-center group-hover:border-plum/30 group-hover:bg-plum/10 transition-all duration-300 z-10">
+          <span className="font-display font-bold text-sm text-[var(--color-text-secondary)] group-hover:text-plum transition-colors">
             {String(index + 2).padStart(2, "0")}
           </span>
         </div>

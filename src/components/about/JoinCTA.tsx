@@ -48,7 +48,7 @@ export default function JoinCTA() {
         className="absolute inset-0 z-[2]"
         style={{
           background: `
-            radial-gradient(ellipse at 50% 55%, rgba(255, 77, 0, 0.12) 0%, transparent 55%),
+            radial-gradient(ellipse at 50% 55%, rgba(134, 22, 87, 0.12) 0%, transparent 55%),
             linear-gradient(to top, var(--color-overlay), transparent)
           `,
         }}
@@ -66,7 +66,7 @@ export default function JoinCTA() {
               height: e.size,
               animationDuration: `${e.dur}s`,
               animationDelay: `${e.del}s`,
-              background: e.isGold ? "var(--color-gold)" : "var(--color-fire)",
+              background: e.isGold ? "var(--color-plum-tint)" : "var(--color-plum)",
             }}
           />
         ))}
@@ -75,7 +75,7 @@ export default function JoinCTA() {
       {/* Content */}
       <div className="relative z-10 max-w-[1400px] mx-auto px-6 md:px-10 text-center">
         <ScrollReveal>
-          <p className="text-fire font-display text-xs tracking-[0.4em] uppercase font-semibold mb-6">
+          <p className="text-plum font-display text-xs tracking-[0.4em] uppercase font-semibold mb-6">
             Get Involved
           </p>
         </ScrollReveal>
@@ -83,7 +83,7 @@ export default function JoinCTA() {
         <ScrollReveal delay={0.1}>
           <h2 className="font-display font-extrabold text-4xl md:text-6xl lg:text-8xl leading-[1] tracking-tight max-w-5xl mx-auto">
             Ready to Become a{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-fire via-fire-light to-gold text-glow-fire">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-plum via-plum-light to-plum-tint text-glow-plum">
               Kingdom Giant?
             </span>
           </h2>
@@ -101,7 +101,7 @@ export default function JoinCTA() {
             {/* Primary CTA */}
             <Link
               href="/"
-              className="group relative inline-flex items-center gap-3 px-10 py-5 bg-fire text-white font-display font-bold text-base tracking-wide rounded-full overflow-hidden transition-all duration-500 hover:shadow-[0_0_60px_rgba(255,77,0,0.5)]"
+              className="group relative inline-flex items-center gap-3 px-10 py-5 bg-plum text-white font-display font-bold text-base tracking-wide rounded-full overflow-hidden transition-all duration-500 hover:shadow-[0_0_60px_rgba(134,22,87,0.5)]"
             >
               {/* Shimmer effect */}
               <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent shimmer-btn" />
@@ -116,24 +116,24 @@ export default function JoinCTA() {
             {/* Secondary CTA */}
             <Link
               href="/#give"
-              className="group inline-flex items-center gap-3 px-10 py-5 bg-transparent border border-[var(--color-border)] text-[var(--color-text-primary)] font-display font-bold text-base tracking-wide rounded-full hover:border-gold/40 hover:bg-gold/5 transition-all duration-300"
+              className="group inline-flex items-center gap-3 px-10 py-5 bg-transparent border border-[var(--color-border)] text-[var(--color-text-primary)] font-display font-bold text-base tracking-wide rounded-full hover:border-plum-tint/40 hover:bg-plum-tint/5 transition-all duration-300"
             >
               Give Online
               <ArrowRight
                 size={20}
                 weight="bold"
-                className="text-gold transition-transform group-hover:translate-x-1"
+                className="text-plum-tint transition-transform group-hover:translate-x-1"
               />
             </Link>
           </div>
         </ScrollReveal>
 
-        {/* Decorative fire line */}
+        {/* Decorative plum line */}
         <ScrollReveal delay={0.4}>
           <div className="mt-16 flex items-center justify-center gap-3">
-            <div className="w-16 h-[1px] bg-gradient-to-r from-transparent to-fire/50" />
-            <div className="w-2 h-2 rounded-full bg-fire/40" />
-            <div className="w-16 h-[1px] bg-gradient-to-l from-transparent to-fire/50" />
+            <div className="w-16 h-[1px] bg-gradient-to-r from-transparent to-plum/50" />
+            <div className="w-2 h-2 rounded-full bg-plum/40" />
+            <div className="w-16 h-[1px] bg-gradient-to-l from-transparent to-plum/50" />
           </div>
         </ScrollReveal>
       </div>

@@ -23,7 +23,7 @@ export default function Marquee() {
             className="mx-4 md:mx-8 font-display text-base md:text-xl font-bold tracking-widest text-[var(--color-text-primary)]/10 uppercase"
           >
             {word}
-            <span className="inline-block mx-4 md:mx-8 text-fire/30">&bull;</span>
+            <span className="inline-block mx-4 md:mx-8 text-plum/30">&bull;</span>
           </span>
         ))}
       </div>

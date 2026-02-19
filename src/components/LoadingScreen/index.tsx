@@ -28,7 +28,7 @@ export default function LoadingScreen() {
           <motion.div
             className="absolute inset-0 pointer-events-none"
             animate={{
-              background: `radial-gradient(circle at 50% 60%, rgba(255, 77, 0, ${0.15 * intensity}) 0%, rgba(255, 140, 0, ${0.08 * intensity}) 30%, rgba(255, 215, 0, ${0.03 * intensity}) 50%, transparent 70%)`,
+              background: `radial-gradient(circle at 50% 60%, rgba(134, 22, 87, ${0.15 * intensity}) 0%, rgba(155, 61, 112, ${0.08 * intensity}) 30%, rgba(212, 160, 185, ${0.03 * intensity}) 50%, transparent 70%)`,
             }}
             transition={{ duration: 0.8 }}
           />
@@ -51,7 +51,7 @@ export default function LoadingScreen() {
               transition={{ duration: 0.6, ease: "easeOut" }}
               style={{
                 background:
-                  "radial-gradient(circle at 50% 50%, rgba(255,200,50,0.9) 0%, rgba(255,77,0,0.4) 40%, transparent 70%)",
+                  "radial-gradient(circle at 50% 50%, rgba(212,160,185,0.9) 0%, rgba(134,22,87,0.4) 40%, transparent 70%)",
               }}
             />
           )}

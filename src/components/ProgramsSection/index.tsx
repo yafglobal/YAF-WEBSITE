@@ -21,22 +21,22 @@ export default function ProgramsSection() {
   return (
     <section id="sermons" ref={sectionRef} className="relative py-32 md:py-44 overflow-hidden">
       {/* Ambient glows */}
-      <div className="absolute top-20 left-0 w-[500px] h-[500px] bg-gold/3 rounded-full blur-[200px] pointer-events-none" />
-      <div className="absolute bottom-20 right-0 w-[400px] h-[400px] bg-fire/5 rounded-full blur-[150px] pointer-events-none" />
+      <div className="absolute top-20 left-0 w-[500px] h-[500px] bg-plum-tint/3 rounded-full blur-[200px] pointer-events-none" />
+      <div className="absolute bottom-20 right-0 w-[400px] h-[400px] bg-plum/5 rounded-full blur-[150px] pointer-events-none" />
 
       <div className="relative z-10 max-w-[1400px] mx-auto px-6 md:px-10">
         {/* Header */}
         <div className="grid md:grid-cols-2 gap-8 items-end mb-20">
           <div>
             <ScrollReveal>
-              <p className="text-fire font-display text-xs tracking-[0.3em] uppercase font-semibold mb-4">
+              <p className="text-plum font-display text-xs tracking-[0.3em] uppercase font-semibold mb-4">
                 Our Programmes
               </p>
             </ScrollReveal>
             <ScrollReveal delay={0.1}>
               <h2 className="font-display font-extrabold text-4xl md:text-5xl lg:text-6xl leading-[1.05] tracking-tight">
                 Our focus is on{" "}
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-gold via-fire to-fire-light">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-plum-tint via-plum to-plum-light">
                   YOU
                 </span>
               </h2>
@@ -54,7 +54,7 @@ export default function ProgramsSection() {
         {/* Animated divider line */}
         <motion.div
           style={{ width: lineWidth }}
-          className="h-px bg-gradient-to-r from-fire via-gold to-transparent mb-16"
+          className="h-px bg-gradient-to-r from-plum via-plum-tint to-transparent mb-16"
         />
 
         {/* Programs - Interactive accordion/reveal */}

@@ -25,7 +25,7 @@ export default function FireCore({ phase, intensity }: FireCoreProps) {
         }}
         style={{
           background:
-            "radial-gradient(circle, rgba(255, 77, 0, 0.5) 0%, rgba(255, 140, 0, 0.2) 50%, transparent 70%)",
+            "radial-gradient(circle, rgba(134, 22, 87, 0.5) 0%, rgba(155, 61, 112, 0.2) 50%, transparent 70%)",
           filter: `blur(${20 + 20 * intensity}px)`,
         }}
       />
@@ -57,7 +57,7 @@ export default function FireCore({ phase, intensity }: FireCoreProps) {
             style={{
               width: 20 + i * 4,
               borderRadius: "50% 50% 50% 50% / 60% 60% 40% 40%",
-              background: `linear-gradient(to top, var(--color-fire) 0%, var(--color-fire-light) ${40 - i * 5}%, var(--color-gold) ${75 + i * 3}%, rgba(255, 255, 200, 0.9) 100%)`,
+              background: `linear-gradient(to top, var(--color-plum) 0%, var(--color-plum-light) ${40 - i * 5}%, var(--color-plum-tint) ${75 + i * 3}%, rgba(245, 230, 239, 0.9) 100%)`,
               filter: `blur(${2 + i}px)`,
               transformOrigin: "bottom center",
               left: `${-10 + i * 5 - 10}px`,
@@ -82,7 +82,7 @@ export default function FireCore({ phase, intensity }: FireCoreProps) {
         }}
         style={{
           background:
-            "radial-gradient(circle, rgba(255,255,220,0.9) 0%, rgba(255,200,50,0.6) 40%, rgba(255,77,0,0.3) 70%, transparent 100%)",
+            "radial-gradient(circle, rgba(245,230,239,0.9) 0%, rgba(212,160,185,0.6) 40%, rgba(134,22,87,0.3) 70%, transparent 100%)",
           filter: `blur(${4 + 6 * intensity}px)`,
         }}
       />

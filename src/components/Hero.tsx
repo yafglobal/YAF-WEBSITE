@@ -105,7 +105,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5, duration: 0.8 }}
-          className="text-fire font-display text-sm md:text-base tracking-[0.35em] uppercase font-semibold mb-6"
+          className="text-plum font-display text-sm md:text-base tracking-[0.35em] uppercase font-semibold mb-6"
         >
           Youth Alive Global
         </motion.p>
@@ -117,10 +117,8 @@ export default function Hero() {
           transition={{ delay: 0.7, duration: 1, ease: [0.22, 1, 0.36, 1] }}
           className="font-display font-extrabold text-foreground leading-[0.9] tracking-tight"
         >
-          <span className="block text-[clamp(3.5rem,12vw,10rem)] text-glow-fire">
-            KINGDOM
-          </span>
-          <span className="block text-[clamp(3.5rem,12vw,10rem)] text-transparent bg-clip-text bg-gradient-to-r from-gold via-fire-light to-fire">
+          <span className="block text-[clamp(3.5rem,12vw,10rem)] text-glow-plum">KINGDOM</span>
+          <span className="block text-[clamp(3.5rem,12vw,10rem)] text-transparent bg-clip-text bg-gradient-to-r from-plum-tint via-plum-light to-plum">
             GIANTS
           </span>
         </motion.h1>
@@ -132,8 +130,8 @@ export default function Hero() {
           transition={{ delay: 1.1, duration: 0.8 }}
           className="mt-6 md:mt-8 text-[var(--color-text-muted)] text-sm md:text-lg max-w-md font-light leading-relaxed px-2 sm:px-0"
         >
-          An enfired community of young people committed to spiritual growth and
-          purpose-driven living.
+          An enfired community of young people committed to spiritual growth and purpose-driven
+          living.
         </motion.p>
 
         {/* 3D CTA Buttons */}
@@ -144,9 +142,7 @@ export default function Hero() {
           className="mt-10 flex flex-col sm:flex-row gap-6 justify-center items-center px-4 sm:px-0"
         >
           <Link href="#give">
-            <ThreeDButton variant="fire">
-              Give
-            </ThreeDButton>
+            <ThreeDButton variant="plum">Give</ThreeDButton>
           </Link>
 
           <Link
@@ -154,13 +150,10 @@ export default function Hero() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <ThreeDButton variant="gold">
-              Watch Online
-            </ThreeDButton>
+            <ThreeDButton variant="plum-tint">Watch Online</ThreeDButton>
           </Link>
         </motion.div>
       </motion.div>
-
     </section>
   );
 }

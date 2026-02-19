@@ -21,8 +21,8 @@ export const offerings: Offering[] = [
     description:
       "Encounter the depths of God's word through powerful sermons, Bible study sessions, and life-transforming altar calls. Build an unshakeable foundation of faith.",
     icon: Cross,
-    color: "from-fire to-fire-light",
-    glowColor: "rgba(255, 77, 0, 0.15)",
+    color: "from-plum to-plum-light",
+    glowColor: "rgba(134, 22, 87, 0.15)",
   },
   {
     id: "career",
@@ -32,8 +32,8 @@ export const offerings: Offering[] = [
     description:
       "Job fairs, workshops, mentorship programs, and networking opportunities designed to launch and accelerate your career. Be a kingdom giant in your industry.",
     icon: Briefcase,
-    color: "from-gold to-gold-dim",
-    glowColor: "rgba(255, 215, 0, 0.12)",
+    color: "from-plum-tint to-plum-muted",
+    glowColor: "rgba(212, 160, 185, 0.12)",
   },
   {
     id: "worship",
@@ -43,8 +43,8 @@ export const offerings: Offering[] = [
     description:
       "Experience electrifying worship that sets your spirit ablaze. Our praise sessions are designed to usher you into a deeper, more intimate encounter with God.",
     icon: MusicNote,
-    color: "from-fire via-fire-light to-gold",
-    glowColor: "rgba(255, 107, 43, 0.12)",
+    color: "from-plum via-plum-light to-plum-tint",
+    glowColor: "rgba(168, 90, 138, 0.12)",
   },
   {
     id: "development",
@@ -54,8 +54,8 @@ export const offerings: Offering[] = [
     description:
       "From leadership training to health awareness, creative arts to financial literacy — we invest in every dimension of your life to produce well-rounded kingdom ambassadors.",
     icon: BookOpen,
-    color: "from-gold-dim to-fire",
-    glowColor: "rgba(184, 150, 12, 0.12)",
+    color: "from-plum-muted to-plum",
+    glowColor: "rgba(176, 106, 150, 0.12)",
   },
   {
     id: "community",
@@ -65,7 +65,7 @@ export const offerings: Offering[] = [
     description:
       "Build lifelong connections with fellow purpose-driven youth. Engage in events, retreats, and activities tailored to broaden your perspective and deepen friendships.",
     icon: Handshake,
-    color: "from-fire-light to-gold",
-    glowColor: "rgba(255, 107, 43, 0.12)",
+    color: "from-plum-light to-plum-tint",
+    glowColor: "rgba(168, 90, 138, 0.12)",
   },
 ];

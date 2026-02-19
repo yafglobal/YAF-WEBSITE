@@ -6,9 +6,9 @@ export const MotionLink = motion.create(Link);
 export const navLinks = [
   { label: "Home", href: "/" },
   { label: "About", href: "/about" },
-  { label: "Sermons", href: "/#sermons" },
-  { label: "Events", href: "/#events" },
+  { label: "Watch", href: "/watch" },
+  { label: "Bible Plan", href: "/#bible-plan" },
   { label: "Community", href: "/#community" },
 ];
 
-export const sectionIds = ["", "about", "sermons", "events", "community"];
+export const sectionIds = ["", "about", "watch", "bible-plan", "community"];

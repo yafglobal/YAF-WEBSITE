@@ -68,8 +68,8 @@ export default function AboutHero() {
           transition={{ duration: 0.6, delay: 0.3 }}
           className="flex items-center gap-3 mb-8"
         >
-          <div className="w-12 h-[2px] bg-fire" />
-          <span className="text-fire font-display text-xs tracking-[0.4em] uppercase font-semibold">
+          <div className="w-12 h-[2px] bg-plum" />
+          <span className="text-plum font-display text-xs tracking-[0.4em] uppercase font-semibold">
             Who We Are
           </span>
         </motion.div>
@@ -93,7 +93,7 @@ export default function AboutHero() {
               transition={{ duration: 0.9, delay: 0.55, ease: [0.22, 1, 0.36, 1] }}
             >
               <h1 className="font-display font-extrabold text-5xl sm:text-6xl md:text-7xl lg:text-[5.8rem] leading-[1] tracking-tight">
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-fire via-fire-light to-gold">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-plum via-plum-light to-plum-tint">
                   Alive
                 </span>{" "}
                 Fellowship
@@ -106,7 +106,7 @@ export default function AboutHero() {
           initial={{ scaleX: 0 }}
           animate={{ scaleX: 1 }}
           transition={{ duration: 1.2, delay: 1, ease: [0.22, 1, 0.36, 1] }}
-          className="h-[2px] mt-8 bg-gradient-to-r from-fire via-gold/60 to-transparent max-w-xl origin-left"
+          className="h-[2px] mt-8 bg-gradient-to-r from-plum via-plum-tint/60 to-transparent max-w-xl origin-left"
         />
 
         <motion.p
@@ -128,7 +128,7 @@ export default function AboutHero() {
           <motion.div
             animate={{ y: [0, 8, 0] }}
             transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-            className="w-[1px] h-10 bg-gradient-to-b from-fire to-transparent"
+            className="w-[1px] h-10 bg-gradient-to-b from-plum to-transparent"
           />
           <span className="text-[var(--color-text-muted)] text-xs tracking-[0.3em] uppercase">
             Scroll to explore
@@ -138,7 +138,7 @@ export default function AboutHero() {
 
       <motion.div
         style={{ width: edgeLine }}
-        className="absolute bottom-0 left-0 h-[1px] z-20 bg-gradient-to-r from-fire via-gold to-transparent"
+        className="absolute bottom-0 left-0 h-[1px] z-20 bg-gradient-to-r from-plum via-plum-tint to-transparent"
       />
     </section>
   );

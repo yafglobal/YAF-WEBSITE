@@ -15,7 +15,7 @@ interface ContactFormCardProps {
 }
 
 const inputClasses =
-  "w-full px-5 py-3.5 bg-[var(--color-surface)] border border-[var(--color-border)] rounded-xl text-[var(--color-text-primary)] placeholder:text-[var(--color-text-muted)] focus:outline-none focus:border-fire/40 focus:ring-1 focus:ring-fire/20 transition-all text-sm";
+  "w-full px-5 py-3.5 bg-[var(--color-surface)] border border-[var(--color-border)] rounded-xl text-[var(--color-text-primary)] placeholder:text-[var(--color-text-muted)] focus:outline-none focus:border-plum/40 focus:ring-1 focus:ring-plum/20 transition-all text-sm";
 const labelClasses =
   "block text-xs font-display font-semibold text-[var(--color-text-secondary)] tracking-wide uppercase mb-2";
 
@@ -29,7 +29,7 @@ export default function ContactFormCard({
   return (
     <ScrollReveal direction="right" delay={0.15}>
       <div className="relative bg-[var(--color-background)]/85 backdrop-blur-xl border border-[var(--color-border-medium)] rounded-2xl p-8 md:p-10">
-        <div className="absolute -inset-px rounded-2xl bg-gradient-to-br from-fire/5 via-transparent to-gold/5 -z-10 blur-sm" />
+        <div className="absolute -inset-px rounded-2xl bg-gradient-to-br from-plum/5 via-transparent to-plum-tint/5 -z-10 blur-sm" />
         <h2 className="font-display font-bold text-xl md:text-2xl text-[var(--color-text-primary)] mb-2">
           Send Us a Message
         </h2>
@@ -112,7 +112,7 @@ export default function ContactFormCard({
               <button
                 type="submit"
                 disabled={sending}
-                className="group relative w-full mt-2 py-4 px-6 bg-gradient-to-r from-fire to-fire-light text-[var(--color-text-primary)] font-display font-semibold text-sm tracking-wide uppercase rounded-xl overflow-hidden transition-all duration-300 hover:shadow-[0_0_40px_rgba(255,77,0,0.3)] active:scale-[0.98] disabled:opacity-70 disabled:cursor-not-allowed cursor-pointer"
+                className="group relative w-full mt-2 py-4 px-6 bg-gradient-to-r from-plum to-plum-light text-[var(--color-text-primary)] font-display font-semibold text-sm tracking-wide uppercase rounded-xl overflow-hidden transition-all duration-300 hover:shadow-[0_0_40px_rgba(134,22,87,0.3)] active:scale-[0.98] disabled:opacity-70 disabled:cursor-not-allowed cursor-pointer"
               >
                 <span className="relative z-10 flex items-center justify-center gap-2">
                   {sending ? (

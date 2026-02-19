@@ -27,8 +27,8 @@ export default function ProgressBar({ phase, progress }: ProgressBarProps) {
           className="absolute top-0 left-0 h-full rounded-full"
           style={{
             background:
-              "linear-gradient(90deg, var(--color-fire), var(--color-fire-orange), var(--color-gold))",
-            boxShadow: "0 0 12px rgba(255, 77, 0, 0.6)",
+              "linear-gradient(90deg, var(--color-plum), var(--color-plum-mid), var(--color-plum-tint))",
+            boxShadow: "0 0 12px rgba(134, 22, 87, 0.6)",
           }}
           animate={{ width: `${progress}%` }}
           transition={{ duration: 0.3, ease: "easeOut" }}

@@ -18,14 +18,14 @@ export default function OurStory() {
   return (
     <section ref={sectionRef} className="relative py-32 md:py-44 overflow-hidden">
       {/* Ambient glows */}
-      <div className="absolute top-20 left-0 w-[500px] h-[500px] bg-fire/5 rounded-full blur-[160px] pointer-events-none" />
-      <div className="absolute bottom-20 right-0 w-[400px] h-[400px] bg-gold/4 rounded-full blur-[140px] pointer-events-none" />
+      <div className="absolute top-20 left-0 w-[500px] h-[500px] bg-plum/5 rounded-full blur-[160px] pointer-events-none" />
+      <div className="absolute bottom-20 right-0 w-[400px] h-[400px] bg-plum-tint/4 rounded-full blur-[140px] pointer-events-none" />
 
       <div className="max-w-[1400px] mx-auto px-6 md:px-10">
         {/* Top: Large statement */}
         <div className="max-w-4xl">
           <ScrollReveal>
-            <p className="text-fire font-display text-xs tracking-[0.4em] uppercase font-semibold mb-6">
+            <p className="text-plum font-display text-xs tracking-[0.4em] uppercase font-semibold mb-6">
               Our Story
             </p>
           </ScrollReveal>
@@ -33,7 +33,7 @@ export default function OurStory() {
           <ScrollReveal delay={0.1}>
             <h2 className="font-display font-extrabold text-4xl md:text-5xl lg:text-6xl leading-[1.05] tracking-tight">
               An All-Rounded{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-fire via-fire-light to-gold">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-plum via-plum-light to-plum-tint">
                 Experience
               </span>
             </h2>
@@ -42,7 +42,7 @@ export default function OurStory() {
           {/* Animated divider */}
           <motion.div
             style={{ width: lineWidth }}
-            className="h-[2px] mt-8 bg-gradient-to-r from-fire via-gold to-transparent"
+            className="h-[2px] mt-8 bg-gradient-to-r from-plum via-plum-tint to-transparent"
           />
         </div>
 
@@ -74,29 +74,27 @@ export default function OurStory() {
             <div>
               <ScrollReveal delay={0.3}>
                 <p className="text-[var(--color-text-secondary)] text-base md:text-lg leading-[1.8] mb-6 max-w-xl">
-                  Community, development, and fellowship all in one place. Youth
-                  Alive Fellowship is your platform for spiritual edification,
-                  career advancement, and personal growth.
+                  Community, development, and fellowship all in one place. Youth Alive Fellowship is
+                  your platform for spiritual edification, career advancement, and personal growth.
                 </p>
               </ScrollReveal>
 
               <ScrollReveal delay={0.4}>
                 <p className="text-[var(--color-text-secondary)] text-base md:text-lg leading-[1.8] mb-8 max-w-xl">
-                  We are a community of mentors, leaders, and associates who focus
-                  on balancing talents and God-given purpose. Get ready for a 360
-                  life transformation.
+                  We are a community of mentors, leaders, and associates who focus on balancing
+                  talents and God-given purpose. Get ready for a 360 life transformation.
                 </p>
               </ScrollReveal>
 
               {/* Pull quote */}
               <ScrollReveal delay={0.5}>
                 <div className="relative py-6">
-                  <span className="font-display font-extrabold text-6xl md:text-7xl leading-none text-transparent bg-clip-text bg-gradient-to-br from-fire/40 to-gold/20 select-none">
+                  <span className="font-display font-extrabold text-6xl md:text-7xl leading-none text-transparent bg-clip-text bg-gradient-to-br from-plum/40 to-plum-tint/20 select-none">
                     &ldquo;
                   </span>
                   <p className="mt-1 text-[var(--color-text-primary)] font-display font-bold text-xl md:text-2xl leading-snug">
                     Kingdom Giant, welcome to{" "}
-                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-fire to-gold">
+                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-plum to-plum-tint">
                       YAF
                     </span>
                     &rdquo;
@@ -107,16 +105,19 @@ export default function OurStory() {
               {/* Pillars */}
               <ScrollReveal delay={0.6}>
                 <div className="mt-4 flex flex-wrap gap-3">
-                  {["Spiritual Growth", "Career Advancement", "Personal Development", "Community"].map(
-                    (pillar) => (
-                      <span
-                        key={pillar}
-                        className="px-4 py-2 text-sm font-medium text-[var(--color-text-secondary)] bg-[var(--color-surface)] border border-[var(--color-border)] rounded-full hover:border-fire/20 hover:text-fire transition-all duration-300"
-                      >
-                        {pillar}
-                      </span>
-                    )
-                  )}
+                  {[
+                    "Spiritual Growth",
+                    "Career Advancement",
+                    "Personal Development",
+                    "Community",
+                  ].map((pillar) => (
+                    <span
+                      key={pillar}
+                      className="px-4 py-2 text-sm font-medium text-[var(--color-text-secondary)] bg-[var(--color-surface)] border border-[var(--color-border)] rounded-full hover:border-plum/20 hover:text-plum transition-all duration-300"
+                    >
+                      {pillar}
+                    </span>
+                  ))}
                 </div>
               </ScrollReveal>
             </div>

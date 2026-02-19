@@ -17,7 +17,7 @@ export default function SuccessMessage() {
         animate={{ scale: 1 }}
         transition={{ type: "spring", stiffness: 300, damping: 20, delay: 0.1 }}
       >
-        <CheckCircle size={64} className="text-fire mb-4" weight="fill" />
+        <CheckCircle size={64} className="text-plum mb-4" weight="fill" />
       </motion.div>
       <h3 className="font-display font-bold text-lg text-[var(--color-text-primary)]">
         Message Sent!

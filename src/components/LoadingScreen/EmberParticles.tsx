@@ -32,12 +32,12 @@ export default function EmberParticles({ phase, intensity }: EmberParticlesProps
           style={{
             width: ember.size,
             height: ember.size,
-            /* --color-gold / --color-fire-light / --color-fire */
-            background: i % 3 === 0 ? "#FFD700" : i % 3 === 1 ? "#FF6B2B" : "#FF4D00",
+            /* --color-plum-tint / --color-plum-light / --color-plum */
+            background: i % 3 === 0 ? "#D4A0B9" : i % 3 === 1 ? "#A85A8A" : "#861657",
             left: `${ember.x}%`,
             bottom: "50%",
             filter: "blur(0.5px)",
-            boxShadow: `0 0 ${ember.size * 2}px ${i % 2 === 0 ? "rgba(255,77,0,0.6)" : "rgba(255,215,0,0.6)"}`,
+            boxShadow: `0 0 ${ember.size * 2}px ${i % 2 === 0 ? "rgba(134,22,87,0.6)" : "rgba(212,160,185,0.6)"}`,
           }}
         />
       ))}
@@ -67,9 +67,9 @@ export default function EmberParticles({ phase, intensity }: EmberParticlesProps
               style={{
                 width: b.size,
                 height: b.size,
-                /* --color-gold / --color-fire-light / --color-gold-cream */
-                background: i % 3 === 0 ? "#FFD700" : i % 3 === 1 ? "#FF6B2B" : "#FFFBE6",
-                boxShadow: `0 0 ${b.size * 3}px rgba(255,165,0,0.8)`,
+                /* --color-plum-tint / --color-plum-light / --color-plum-cream */
+                background: i % 3 === 0 ? "#D4A0B9" : i % 3 === 1 ? "#A85A8A" : "#F5E6EF",
+                boxShadow: `0 0 ${b.size * 3}px rgba(168,90,138,0.8)`,
               }}
             />
           );

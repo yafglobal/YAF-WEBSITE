@@ -23,19 +23,15 @@ export default function About() {
   const imageY = useTransform(scrollYProgress, [0, 1], ["10%", "-10%"]);
 
   return (
-    <section
-      id="about"
-      ref={sectionRef}
-      className="relative py-32 md:py-44 overflow-hidden"
-    >
+    <section id="about" ref={sectionRef} className="relative py-32 md:py-44 overflow-hidden">
       {/* Ambient glow */}
-      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-fire/5 rounded-full blur-[150px] pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-gold/5 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-plum/5 rounded-full blur-[150px] pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-plum-tint/5 rounded-full blur-[120px] pointer-events-none" />
 
       <div className="max-w-[1400px] mx-auto px-6 md:px-10">
         {/* Section label */}
         <ScrollReveal>
-          <p className="text-fire font-display text-xs tracking-[0.4em] uppercase font-semibold mb-4">
+          <p className="text-plum font-display text-xs tracking-[0.4em] uppercase font-semibold mb-4">
             Who We Are
           </p>
         </ScrollReveal>
@@ -46,7 +42,7 @@ export default function About() {
             <ScrollReveal delay={0.1}>
               <h2 className="font-display font-extrabold text-4xl md:text-5xl lg:text-6xl leading-[1.05] tracking-tight">
                 Welcome to an{" "}
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-fire via-fire-light to-gold">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-plum via-plum-light to-plum-tint">
                   &ldquo;ENFIRED&rdquo;
                 </span>{" "}
                 Community
@@ -55,10 +51,9 @@ export default function About() {
 
             <ScrollReveal delay={0.2}>
               <p className="mt-8 text-[var(--color-text-secondary)] text-base md:text-lg leading-relaxed max-w-lg">
-                Welcome to YAF, a youth community with a balanced commitment to
-                spiritual growth and personal development. We are a community of
-                mentors, leaders, and associates who focus on balancing talents
-                and God-given purpose.
+                Welcome to YAF, a youth community with a balanced commitment to spiritual growth and
+                personal development. We are a community of mentors, leaders, and associates who
+                focus on balancing talents and God-given purpose.
               </p>
             </ScrollReveal>
 
@@ -71,7 +66,7 @@ export default function About() {
             <ScrollReveal delay={0.4}>
               <a
                 href="#"
-                className="inline-flex items-center gap-2 mt-10 px-8 py-4 bg-[var(--color-surface)] border border-[var(--color-border)] text-[var(--color-text-primary)] font-display font-semibold text-sm tracking-wide uppercase rounded-full hover:bg-[var(--color-surface-hover)] hover:border-fire/30 transition-all duration-300 group"
+                className="inline-flex items-center gap-2 mt-10 px-8 py-4 bg-[var(--color-surface)] border border-[var(--color-border)] text-[var(--color-text-primary)] font-display font-semibold text-sm tracking-wide uppercase rounded-full hover:bg-[var(--color-surface-hover)] hover:border-plum/30 transition-all duration-300 group"
               >
                 Learn more about us
                 <span className="inline-block transition-transform group-hover:translate-x-1">
@@ -100,9 +95,9 @@ export default function About() {
                   <div className="absolute inset-0 bg-gradient-to-t from-[var(--color-background)] via-transparent to-transparent opacity-60" />
                 </motion.div>
 
-                {/* Decorative fire accent */}
-                <div className="absolute -bottom-6 -left-6 w-32 h-32 bg-fire/20 rounded-full blur-[60px]" />
-                <div className="absolute -top-6 -right-6 w-24 h-24 bg-gold/15 rounded-full blur-[50px]" />
+                {/* Decorative plum accent */}
+                <div className="absolute -bottom-6 -left-6 w-32 h-32 bg-plum/20 rounded-full blur-[60px]" />
+                <div className="absolute -top-6 -right-6 w-24 h-24 bg-plum-tint/15 rounded-full blur-[50px]" />
               </div>
             </ScrollReveal>
           </div>
@@ -113,8 +108,8 @@ export default function About() {
           {stats.map((stat, i) => (
             <ScrollReveal key={stat.label} delay={0.1 * i}>
               <div className="text-center group">
-                <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-[var(--color-surface)] border border-[var(--color-border)] mb-4 group-hover:border-fire/20 group-hover:bg-fire/5 transition-all duration-300">
-                  <stat.icon size={24} className="text-fire" weight="fill" />
+                <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-[var(--color-surface)] border border-[var(--color-border)] mb-4 group-hover:border-plum/20 group-hover:bg-plum/5 transition-all duration-300">
+                  <stat.icon size={24} className="text-plum" weight="fill" />
                 </div>
                 <p className="font-display font-extrabold text-2xl md:text-4xl text-[var(--color-text-primary)] tracking-tight">
                   {stat.value}

@@ -44,7 +44,7 @@ export default function DesktopNav({
                     ? "text-[var(--color-text-primary)]"
                     : scrolled
                       ? "text-[var(--color-text-muted)] hover:text-[var(--color-text-primary)]"
-                      : "text-fire hover:text-fire-light text-glow-fire"
+                      : "text-white/80 hover:text-white"
                 }
               `}
             >
@@ -52,9 +52,9 @@ export default function DesktopNav({
               {activeSection === index && (
                 <motion.span
                   layoutId="nav-pill"
-                  className="absolute inset-0 bg-fire rounded-full"
+                  className="absolute inset-0 bg-plum rounded-full"
                   style={{
-                    boxShadow: "var(--shadow-fire-sm), inset 0 1px 0 var(--glass-highlight)",
+                    boxShadow: "var(--shadow-plum-sm), inset 0 1px 0 var(--glass-highlight)",
                   }}
                   transition={{
                     type: "spring",
@@ -79,10 +79,10 @@ export default function DesktopNav({
             transition-all duration-300
             ${
               pathname === "/contact"
-                ? "text-fire"
+                ? "text-plum"
                 : scrolled
                   ? "text-[var(--color-text-muted)] hover:text-[var(--color-text-primary)]"
-                  : "text-fire hover:text-fire-light text-glow-fire"
+                  : "text-white/80 hover:text-white"
             }
           `}
         >
@@ -92,10 +92,10 @@ export default function DesktopNav({
           href="/#give"
           className="
             group relative px-5 py-2.5 text-[13px] font-semibold
-            bg-gradient-to-b from-gold to-gold-dim text-[#1A1A00]
+            bg-gradient-to-b from-plum-tint to-plum-muted text-[#1A1A00]
             rounded-full overflow-hidden
             transition-all duration-300
-            hover:shadow-[var(--shadow-gold-md)]
+            hover:shadow-[var(--shadow-plum-tint-md)]
             active:scale-95
           "
         >

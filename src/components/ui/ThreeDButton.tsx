@@ -5,20 +5,20 @@ import Image from "next/image";
 
 interface ThreeDButtonProps {
   children: ReactNode;
-  variant?: "fire" | "gold";
+  variant?: "plum" | "plum-tint";
   className?: string;
   onClick?: () => void;
 }
 
 export default function ThreeDButton({
   children,
-  variant = "fire",
+  variant = "plum",
   className = "",
   onClick,
 }: ThreeDButtonProps) {
   return (
     <button
-      className={`btn3d ${variant === "gold" ? "btn3d--gold" : ""} ${className}`}
+      className={`btn3d ${variant === "plum-tint" ? "btn3d--plum-tint" : ""} ${className}`}
       onClick={onClick}
     >
       <div className="btn3d-bg" />
