@@ -46,13 +46,9 @@ export default function ContactPage() {
     "w-full px-5 py-3.5 bg-[var(--color-surface)] border border-[var(--color-border)] rounded-xl text-[var(--color-text-primary)] placeholder:text-[var(--color-text-muted)] focus:outline-none focus:border-fire/40 focus:ring-1 focus:ring-fire/20 transition-all text-sm";
 
   return (
-    <section className="relative min-h-screen overflow-hidden">
-      {/* WebGL fire background */}
+    <section className="relative min-h-screen">
+      {/* WebGL background — fixed, full viewport */}
       <WebGLBackground />
-
-      {/* Decorative radials */}
-      <div className="absolute top-0 left-0 w-[600px] h-[600px] bg-fire/5 rounded-full blur-[180px] -translate-x-1/2 -translate-y-1/2 pointer-events-none" />
-      <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-gold/5 rounded-full blur-[150px] translate-x-1/3 translate-y-1/3 pointer-events-none" />
 
       <div className="relative z-10 max-w-[1400px] mx-auto px-6 md:px-10 pt-32 md:pt-40 pb-20 md:pb-32">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20 items-start">
