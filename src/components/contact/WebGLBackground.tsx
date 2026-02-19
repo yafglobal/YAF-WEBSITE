@@ -9,197 +9,198 @@ const VERTEX_SHADER = `
   }
 `;
 
-// Volumetric fire with domain-warped FBM, ridge tendrils,
-// curl-noise swirling, bloom glow, and drifting ember particles.
+// Flowing ember cosmos — organic morphing blobs with domain-warped plasma,
+// energy ribbons, soft bokeh orbs, bloom glow, and theme-adaptive palette.
 const FRAGMENT_SHADER = `
   precision highp float;
 
   uniform vec2 u_resolution;
   uniform float u_time;
   uniform float u_opacity;
+  uniform float u_theme; // 0.0 = dark, 1.0 = light
 
-  // ── 3D Hash noise (fast, no textures) ─────────────────
-  float hash(vec3 p) {
-    p = fract(p * 0.3183099 + 0.1);
-    p *= 17.0;
-    return fract(p.x * p.y * p.z * (p.x + p.y + p.z));
+  /* ── Noise primitives ────────────────────────────── */
+  float hash21(vec2 p) {
+    p = fract(p * vec2(123.34, 456.21));
+    p += dot(p, p + 45.32);
+    return fract(p.x * p.y);
   }
 
-  float noise3D(vec3 p) {
-    vec3 i = floor(p);
-    vec3 f = fract(p);
-    f = f * f * (3.0 - 2.0 * f); // smoothstep
-
+  float noise2D(vec2 p) {
+    vec2 i = floor(p);
+    vec2 f = fract(p);
+    f = f * f * (3.0 - 2.0 * f);
     return mix(
-      mix(mix(hash(i + vec3(0,0,0)), hash(i + vec3(1,0,0)), f.x),
-          mix(hash(i + vec3(0,1,0)), hash(i + vec3(1,1,0)), f.x), f.y),
-      mix(mix(hash(i + vec3(0,0,1)), hash(i + vec3(1,0,1)), f.x),
-          mix(hash(i + vec3(0,1,1)), hash(i + vec3(1,1,1)), f.x), f.y),
-      f.z
+      mix(hash21(i), hash21(i + vec2(1.0, 0.0)), f.x),
+      mix(hash21(i + vec2(0.0, 1.0)), hash21(i + vec2(1.0, 1.0)), f.x),
+      f.y
     );
   }
 
-  // ── Rotation matrix for octave variation ──────────────
-  // Rotating between FBM octaves prevents axis-aligned artifacts
-  // and creates more organic, swirling patterns
-  mat2 rot(float a) {
-    float s = sin(a), c = cos(a);
-    return mat2(c, -s, s, c);
+  /* Cheap 2-octave FBM for warping */
+  float fbm2(vec2 p) {
+    return noise2D(p) * 0.6 + noise2D(p * 2.1 + 3.7) * 0.3 + noise2D(p * 4.3 + 7.1) * 0.1;
   }
 
-  // ── FBM with rotated octaves ──────────────────────────
-  float fbm(vec3 p) {
-    float val = 0.0;
-    float amp = 0.5;
-    float freq = 1.0;
-    for (int i = 0; i < 6; i++) {
-      val += amp * noise3D(p * freq);
-      // Rotate XZ between octaves for organic flow
-      p.xz = rot(0.75) * p.xz;
-      p.yz = rot(0.5) * p.yz;
-      freq *= 2.02;
-      amp *= 0.49;
-    }
-    return val;
-  }
-
-  // ── Ridge noise — creates bright fire tendrils ────────
-  float ridgeNoise(vec3 p) {
-    return 1.0 - abs(noise3D(p) * 2.0 - 1.0);
-  }
-
-  float ridgeFBM(vec3 p) {
-    float val = 0.0;
-    float amp = 0.5;
-    float freq = 1.0;
-    for (int i = 0; i < 5; i++) {
-      float r = ridgeNoise(p * freq);
-      r = r * r; // sharpen the ridges
-      val += amp * r;
-      p.xz = rot(0.6) * p.xz;
-      freq *= 2.1;
-      amp *= 0.45;
-    }
-    return val;
-  }
-
-  // ── Domain warping — noise feeds into noise ───────────
-  // This is what creates the organic, fluid, smoke-like movement
-  float warpedFire(vec2 uv, float t) {
-    vec3 p = vec3(uv * 3.0, t * 0.4);
-
-    // First warp layer
-    float warp1 = fbm(p + vec3(0.0, -t * 0.6, t * 0.2));
-    // Second warp layer (feeds first result back in)
-    float warp2 = fbm(p + vec3(warp1 * 1.8, -t * 0.8, warp1));
-    // Final fire shape — double-warped
-    float fire = fbm(p + vec3(warp2 * 1.5, -t * 1.0 + warp1 * 0.5, warp2 * 0.8));
-
-    return fire;
+  /* ── Smooth min for organic blob merging ─────────── */
+  float smin(float a, float b, float k) {
+    float h = clamp(0.5 + 0.5 * (b - a) / k, 0.0, 1.0);
+    return mix(b, a, h) - k * h * (1.0 - h);
   }
 
   void main() {
     vec2 uv = gl_FragCoord.xy / u_resolution;
     float aspect = u_resolution.x / u_resolution.y;
     vec2 st = vec2((uv.x - 0.5) * aspect, uv.y - 0.5);
-    float t = u_time * 0.5;
+    float t = u_time * 0.25; // slow, hypnotic pace
 
-    // ── 1. Main fire volume (domain-warped FBM) ─────────
-    float fireBase = warpedFire(st, t);
+    /* ── 1. Domain-warped plasma field ────────────────
+       Base layer — creates a smooth, flowing gradient
+       that covers the entire screen. Double domain-warp
+       gives organic, fluid motion. */
 
-    // Height-based falloff — fire rises from the bottom
-    float heightMask = smoothstep(0.6, -0.5, st.y);
-    // Side falloff for a natural fire shape
-    float sideFade = 1.0 - smoothstep(0.3, 0.8, abs(st.x));
-    fireBase *= heightMask * sideFade;
+    vec2 warpUV = st * 1.8;
+    float w1 = fbm2(warpUV + vec2(t * 0.3, -t * 0.2));
+    float w2 = fbm2(warpUV + vec2(w1 * 1.5 - t * 0.1, w1 * 0.8 + t * 0.15));
+    float plasma = fbm2(warpUV + vec2(w2 * 1.2, -w2 + t * 0.2));
 
-    // ── 2. Ridge tendrils — bright fire wisps ───────────
-    vec3 tendrilCoord = vec3(st * 4.0, t * 0.6);
-    tendrilCoord.y -= t * 1.2; // tendrils rise fast
-    // Curl the tendrils with a swirl
-    float swirl = sin(st.y * 4.0 + t) * 0.3;
-    tendrilCoord.x += swirl;
-    float tendrils = ridgeFBM(tendrilCoord);
-    tendrils *= heightMask * 0.7;
+    // Plasma interference — overlapping sine waves for structure
+    float interference = 0.0;
+    interference += sin(st.x * 5.0 + t * 0.8 + plasma * 3.0) * 0.5 + 0.5;
+    interference += sin(st.y * 4.0 - t * 0.6 + w1 * 4.0) * 0.5 + 0.5;
+    interference += sin((st.x + st.y) * 3.5 + t * 0.5) * 0.5 + 0.5;
+    interference /= 3.0;
 
-    // ── 3. Combine fire layers ──────────────────────────
-    float fireFinal = fireBase * 0.7 + tendrils * 0.4;
+    float baseField = mix(plasma, interference, 0.35);
 
-    // Boost intensity in the core center
-    float coreFocus = 1.0 - smoothstep(0.0, 0.5, length(st * vec2(1.2, 0.8)));
-    fireFinal *= 0.6 + coreFocus * 0.6;
+    /* ── 2. Morphing metaballs ───────────────────────
+       7 organic blobs on slow orbital paths. SDF smooth
+       union makes them merge and separate fluidly.
+       Noise-distorted edges for organic feel. */
 
-    // ── 4. Fire color palette ───────────────────────────
-    // Temperature mapping: dark embers → deep red → fire orange → gold → white-hot
-    vec3 col;
-    float temp = clamp(fireFinal, 0.0, 1.0);
+    // Each blob: position via Lissajous, pulsing radius
+    vec2 bp[7];
+    float br[7];
+    bp[0] = vec2(sin(t * 0.83)       * 0.40, cos(t * 0.59)       * 0.35);
+    bp[1] = vec2(cos(t * 0.71 + 1.0) * 0.50, sin(t * 0.47 + 2.0) * 0.30);
+    bp[2] = vec2(sin(t * 0.53 + 3.0) * 0.35, cos(t * 0.79 + 1.5) * 0.45);
+    bp[3] = vec2(cos(t * 0.91 + 0.5) * 0.45, sin(t * 0.37 + 4.0) * 0.38);
+    bp[4] = vec2(sin(t * 0.43 + 2.5) * 0.38, cos(t * 0.67 + 3.0) * 0.32);
+    bp[5] = vec2(cos(t * 0.37 + 5.0) * 0.30, sin(t * 0.89 + 1.0) * 0.48);
+    bp[6] = vec2(sin(t * 0.67 + 4.0) * 0.52, cos(t * 0.41 + 5.0) * 0.42);
 
-    vec3 c0 = vec3(0.12, 0.02, 0.0);    // near-black ember
-    vec3 c1 = vec3(0.5, 0.05, 0.0);     // deep red
-    vec3 c2 = vec3(1.0, 0.3, 0.0);      // fire orange (#FF4D00)
-    vec3 c3 = vec3(1.0, 0.65, 0.0);     // orange-gold
-    vec3 c4 = vec3(1.0, 0.84, 0.0);     // gold (#FFD700)
-    vec3 c5 = vec3(1.0, 0.95, 0.7);     // white-hot
+    br[0] = 0.14 + 0.03 * sin(t * 1.3);
+    br[1] = 0.17 + 0.04 * sin(t * 1.0 + 1.0);
+    br[2] = 0.11 + 0.02 * sin(t * 1.6 + 2.0);
+    br[3] = 0.15 + 0.03 * sin(t * 1.2 + 3.0);
+    br[4] = 0.13 + 0.03 * sin(t * 0.9 + 4.0);
+    br[5] = 0.19 + 0.04 * sin(t * 1.4 + 5.0);
+    br[6] = 0.12 + 0.02 * sin(t * 1.1 + 6.0);
 
-    // Multi-stop gradient
-    col = mix(c0, c1, smoothstep(0.0, 0.15, temp));
-    col = mix(col, c2, smoothstep(0.15, 0.35, temp));
-    col = mix(col, c3, smoothstep(0.35, 0.55, temp));
-    col = mix(col, c4, smoothstep(0.55, 0.75, temp));
-    col = mix(col, c5, smoothstep(0.75, 1.0, temp));
-
-    // ── 5. Bloom / glow simulation ──────────────────────
-    // Soft glow around bright areas
-    float bloom = smoothstep(0.4, 0.9, fireFinal);
-    col += vec3(1.0, 0.4, 0.05) * bloom * 0.25;
-
-    // ── 6. Ember particles ──────────────────────────────
-    // 20 glowing particles that drift upward with sway and trails
-    float embers = 0.0;
-    for (int i = 0; i < 20; i++) {
-      float fi = float(i);
-      // Varied speeds and offsets
-      float speed = 0.08 + fract(fi * 0.317) * 0.15;
-      float phase = fract(fi * 0.7618);
-      // Spawn position — clustered toward center-bottom
-      float xSpawn = (fract(fi * 0.1537 + 0.2) - 0.5) * aspect * 0.8;
-      // Continuous loop via fract
-      float life = fract(u_time * speed + phase);
-      float yPos = mix(-0.5, 0.6, life);
-      // Organic horizontal sway
-      float sway = sin(u_time * 0.7 + fi * 2.7) * 0.08
-                 + sin(u_time * 1.3 + fi * 4.1) * 0.03;
-      vec2 ePos = vec2(xSpawn + sway, yPos);
-
-      float d = length(st - ePos);
-      // Soft glow falloff
-      float glow = 0.0015 / (d * d + 0.0003);
-
-      // Brightness: fade in, stay, fade out
-      float fadeIn = smoothstep(0.0, 0.1, life);
-      float fadeOut = 1.0 - smoothstep(0.7, 1.0, life);
-      float pulse = 0.6 + 0.4 * sin(u_time * 2.5 + fi * 5.0);
-
-      embers += glow * fadeIn * fadeOut * pulse * 0.12;
+    float field = 1e5;
+    for (int i = 0; i < 7; i++) {
+      // Distort the distance with noise for organic edges
+      vec2 diff = st - bp[i];
+      float nDist = noise2D(diff * 8.0 + t * 0.5) * 0.06;
+      float d = length(diff) - br[i] + nDist;
+      field = smin(field, d, 0.22);
     }
 
-    // Warm ember color
-    col += vec3(1.0, 0.6, 0.15) * embers;
+    // Convert SDF to smooth density
+    float blobDensity = 1.0 - smoothstep(-0.08, 0.25, field);
 
-    // ── 7. Subtle pulsing (breathing) ───────────────────
-    float breath = 0.92 + 0.08 * sin(u_time * 0.4);
-    col *= breath;
+    /* ── 3. Energy ribbons ──────────────────────────
+       5 flowing parametric curves with glow trails
+       that wind across the entire viewport. */
 
-    // ── 8. Vignette ─────────────────────────────────────
-    float vig = 1.0 - smoothstep(0.4, 1.1, length(uv - 0.5) * 1.3);
-    col *= vig;
+    float ribbons = 0.0;
+    for (int i = 0; i < 5; i++) {
+      float fi = float(i);
+      float phase = fi * 1.2566; // ~2PI/5
+      float speed = 0.3 + fi * 0.06;
+      float amp = 0.12 + fi * 0.04;
+      float freq = 2.5 + fi * 0.4;
 
-    // ── 9. Final alpha — based on fire intensity ────────
-    float alpha = fireFinal + embers * 0.5;
+      // Compound curve for more interesting shapes
+      float curveY = sin(st.x * freq + t * speed + phase) * amp
+                   + cos(st.x * freq * 0.6 + t * speed * 1.4 + phase * 1.7) * amp * 0.4
+                   + noise2D(vec2(st.x * 2.0 + t * 0.15, fi * 7.0)) * 0.06;
+
+      float d = abs(st.y - curveY);
+      // Sharp core + wide glow
+      float core = 0.002 / (d * d + 0.0008);
+      float glow = 0.006 / (d * d + 0.004);
+      ribbons += (core * 0.6 + glow * 0.4) * 0.012;
+    }
+
+    /* ── 4. Bokeh particles ─────────────────────────
+       8 large, soft, diffuse circles that drift slowly
+       for a sense of depth. */
+
+    float bokeh = 0.0;
+    for (int i = 0; i < 8; i++) {
+      float fi = float(i);
+      float speed = 0.06 + fract(fi * 0.27) * 0.04;
+      float xP = sin(t * speed * 3.0 + fi * 2.4) * aspect * 0.5;
+      float yP = cos(t * speed * 2.0 + fi * 1.8) * 0.45;
+      float size = 0.08 + fract(fi * 0.41) * 0.12;
+
+      float d = length(st - vec2(xP, yP));
+      float b = smoothstep(size, size * 0.2, d);
+      float pulse = 0.5 + 0.5 * sin(t * 0.8 + fi * 3.5);
+      bokeh += b * pulse * 0.12;
+    }
+
+    /* ── 5. Combine all layers ──────────────────────── */
+    float combined = baseField * 0.45 + blobDensity * 0.55 + ribbons + bokeh;
+    combined = clamp(combined, 0.0, 1.0);
+
+    /* ── 6. Color palette — theme adaptive ──────────── */
+    float temp = combined;
+
+    // Dark mode: charcoal → deep red → fire orange → gold → white-hot
+    vec3 dark0 = vec3(0.06, 0.01, 0.0);
+    vec3 dark1 = vec3(0.35, 0.04, 0.0);
+    vec3 dark2 = vec3(1.0, 0.30, 0.0);   // #FF4D00
+    vec3 dark3 = vec3(1.0, 0.60, 0.05);
+    vec3 dark4 = vec3(1.0, 0.84, 0.0);   // #FFD700
+    vec3 dark5 = vec3(1.0, 0.95, 0.75);  // white-hot
+
+    vec3 darkCol = mix(dark0, dark1, smoothstep(0.0, 0.15, temp));
+    darkCol = mix(darkCol, dark2, smoothstep(0.15, 0.35, temp));
+    darkCol = mix(darkCol, dark3, smoothstep(0.35, 0.55, temp));
+    darkCol = mix(darkCol, dark4, smoothstep(0.55, 0.78, temp));
+    darkCol = mix(darkCol, dark5, smoothstep(0.78, 1.0, temp));
+
+    // Light mode: warm ivory → soft peach → amber → golden → bright gold
+    vec3 lit0 = vec3(0.96, 0.93, 0.88);
+    vec3 lit1 = vec3(0.95, 0.72, 0.45);
+    vec3 lit2 = vec3(0.98, 0.50, 0.12);
+    vec3 lit3 = vec3(1.0, 0.68, 0.15);
+    vec3 lit4 = vec3(1.0, 0.82, 0.25);
+    vec3 lit5 = vec3(1.0, 0.92, 0.55);
+
+    vec3 litCol = mix(lit0, lit1, smoothstep(0.0, 0.15, temp));
+    litCol = mix(litCol, lit2, smoothstep(0.15, 0.35, temp));
+    litCol = mix(litCol, lit3, smoothstep(0.35, 0.55, temp));
+    litCol = mix(litCol, lit4, smoothstep(0.55, 0.78, temp));
+    litCol = mix(litCol, lit5, smoothstep(0.78, 1.0, temp));
+
+    vec3 col = mix(darkCol, litCol, u_theme);
+
+    /* ── 7. Bloom glow ─────────────────────────────── */
+    float bloom = smoothstep(0.45, 1.0, combined);
+    vec3 bloomTint = mix(vec3(1.0, 0.35, 0.0), vec3(1.0, 0.75, 0.3), u_theme);
+    col += bloomTint * bloom * 0.2;
+
+    /* ── 8. Breathing pulse ────────────────────────── */
+    col *= 0.93 + 0.07 * sin(u_time * 0.35);
+
+    /* ── 9. Final output ───────────────────────────── */
+    float alpha = combined * u_opacity;
     alpha = clamp(alpha, 0.0, 1.0);
-    alpha *= u_opacity;
 
-    gl_FragColor = vec4(col * alpha, alpha);
+    gl_FragColor = vec4(col, alpha);
   }
 `;
 
@@ -242,8 +243,9 @@ export default function WebGLBackground() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const rafRef = useRef<number>(0);
 
-  const getOpacity = useCallback(() => {
-    return document.documentElement.classList.contains("light") ? 0.55 : 0.85;
+  const getThemeValues = useCallback(() => {
+    const isLight = document.documentElement.classList.contains("light");
+    return { opacity: isLight ? 0.5 : 0.8, theme: isLight ? 1.0 : 0.0 };
   }, []);
 
   useEffect(() => {
@@ -264,7 +266,6 @@ export default function WebGLBackground() {
     const program = createProgram(gl, vs, fs);
     if (!program) return;
 
-    // Full-screen quad
     const buffer = gl.createBuffer();
     gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
     gl.bufferData(
@@ -277,6 +278,7 @@ export default function WebGLBackground() {
     const resLoc = gl.getUniformLocation(program, "u_resolution");
     const timeLoc = gl.getUniformLocation(program, "u_time");
     const opacityLoc = gl.getUniformLocation(program, "u_opacity");
+    const themeLoc = gl.getUniformLocation(program, "u_theme");
 
     gl.enableVertexAttribArray(posLoc);
     gl.vertexAttribPointer(posLoc, 2, gl.FLOAT, false, 0, 0);
@@ -284,9 +286,9 @@ export default function WebGLBackground() {
     gl.enable(gl.BLEND);
     gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
 
-    let opacity = getOpacity();
+    let { opacity, theme } = getThemeValues();
 
-    // Resize — render at slightly lower DPR for performance
+    // Resize — cap DPR for performance with complex shader
     const resize = () => {
       const dpr = Math.min(window.devicePixelRatio, 1.5);
       const w = canvas.clientWidth;
@@ -300,16 +302,17 @@ export default function WebGLBackground() {
     ro.observe(canvas);
     resize();
 
-    // Theme observer
+    // Theme observer — updates both opacity and color palette
     const mo = new MutationObserver(() => {
-      opacity = getOpacity();
+      const vals = getThemeValues();
+      opacity = vals.opacity;
+      theme = vals.theme;
     });
     mo.observe(document.documentElement, {
       attributes: true,
       attributeFilter: ["class"],
     });
 
-    // Render loop
     const startTime = performance.now();
     const render = () => {
       const t = (performance.now() - startTime) / 1000;
@@ -321,6 +324,7 @@ export default function WebGLBackground() {
       gl.uniform2f(resLoc, canvas.width, canvas.height);
       gl.uniform1f(timeLoc, t);
       gl.uniform1f(opacityLoc, opacity);
+      gl.uniform1f(themeLoc, theme);
 
       gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
       rafRef.current = requestAnimationFrame(render);
@@ -337,12 +341,12 @@ export default function WebGLBackground() {
       gl.deleteShader(fs);
       gl.deleteProgram(program);
     };
-  }, [getOpacity]);
+  }, [getThemeValues]);
 
   return (
     <canvas
       ref={canvasRef}
-      className="absolute inset-0 w-full h-full pointer-events-none"
+      className="fixed inset-0 w-full h-full pointer-events-none"
       aria-hidden="true"
     />
   );

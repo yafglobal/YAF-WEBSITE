@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { motion, AnimatePresence, useMotionValueEvent, useScroll } from "motion/react";
 import { List, X, ArrowRight } from "@phosphor-icons/react";
 
@@ -25,14 +26,26 @@ export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [activeSection, setActiveSection] = useState(0);
   const { scrollY } = useScroll();
+  const pathname = usePathname();
 
   // Track scroll position — always visible, just morphs appearance
   useMotionValueEvent(scrollY, "change", (latest) => {
     setScrolled(latest > 60);
   });
 
-  // Detect active section via IntersectionObserver
+  // Set active nav item based on current route
   useEffect(() => {
+    const matchIndex = navLinks.findIndex((link) => {
+      if (link.href === "/") return pathname === "/";
+      return pathname.startsWith(link.href.split("#")[0]) && link.href.split("#")[0] !== "/";
+    });
+    setActiveSection(matchIndex);
+  }, [pathname]);
+
+  // Scroll-based section detection (only works on homepage where sections exist)
+  useEffect(() => {
+    if (pathname !== "/") return;
+
     const observers: IntersectionObserver[] = [];
 
     sectionIds.forEach((id, index) => {
@@ -50,7 +63,7 @@ export default function Navbar() {
     });
 
     return () => observers.forEach((obs) => obs.disconnect());
-  }, []);
+  }, [pathname]);
 
   const handleNavClick = (href: string, index: number) => {
     setActiveSection(index);
@@ -131,7 +144,9 @@ export default function Navbar() {
                       ${
                         activeSection === index
                           ? "text-white"
-                          : "text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)]"
+                          : scrolled
+                            ? "text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)]"
+                            : "text-white/70 hover:text-white"
                       }
                     `}
                   >
@@ -164,8 +179,13 @@ export default function Navbar() {
                 className={`
                   px-4 py-2 text-[13px] font-medium rounded-full
                   transition-all duration-300
-                  text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)]
-                  hover:bg-[var(--color-surface-hover)]
+                  ${
+                    pathname === "/contact"
+                      ? "text-fire"
+                      : scrolled
+                        ? "text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] hover:bg-[var(--color-surface-hover)]"
+                        : "text-white/70 hover:text-white"
+                  }
                 `}
               >
                 Contact

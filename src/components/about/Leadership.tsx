@@ -10,8 +10,15 @@ const leaders = [
     name: "Bishop David Oyedepo",
     role: "Presiding Bishop",
     subtitle: "Living Faith Church Worldwide",
-    image: "/images/about/bishop-oyedepo.jpg",
+    image: "/images/about/BISHOPYAF.png",
     bio: "Bishop David Oyedepo is the founder and presiding Bishop of Living Faith Church Worldwide (Winners Chapel International), one of the largest church networks in Africa with presence in over 80 nations.",
+  },
+  {
+    name: "Pastor David Oyedepo Jnr.",
+    role: "Pastor",
+    subtitle: "Youth Alive Fellowship",
+    image: "/images/about/PSTRDAVIDOYEDEPOJNR.png",
+    bio: "Pastor David Oyedepo Jnr. serves as a Pastor at Living Faith Church, bringing dynamic teaching and leadership to the youth ministry. He is passionate about raising a generation of purpose-driven kingdom giants.",
   },
   {
     name: "Pastor Steve Ogah",
@@ -19,13 +26,6 @@ const leaders = [
     subtitle: "Living Faith Church Worldwide",
     image: "/images/about/pastor-steve-ogah.png",
     bio: "Pastor Steve Ogah is the Global Youth Pastor of Living Faith Church Worldwide and Chief of Staff to Bishop David Oyedepo. A Covenant University pioneer graduate, he mentors young adults through teachings on purposeful living, vision, and the help of the Holy Spirit.",
-  },
-  {
-    name: "Pastor David Oyedepo Jnr.",
-    role: "Pastor",
-    subtitle: "Youth Alive Fellowship",
-    image: "/images/about/pastor-david-jnr.png",
-    bio: "Pastor David Oyedepo Jnr. serves as a Pastor at Living Faith Church, bringing dynamic teaching and leadership to the youth ministry. He is passionate about raising a generation of purpose-driven kingdom giants.",
   },
 ];
 
@@ -89,12 +89,12 @@ export default function Leadership() {
           >
             <div className="grid md:grid-cols-2 min-h-[420px] md:min-h-[520px]">
               {/* Image side */}
-              <div className="relative aspect-[3/4] md:aspect-auto overflow-hidden">
+              <div className="relative aspect-[3/4] overflow-hidden">
                 <Image
                   src={featured.image}
                   alt={featured.name}
                   fill
-                  className="object-cover transition-transform duration-700 group-hover:scale-105"
+                  className="object-cover object-[center_25%] transition-transform duration-700 group-hover:scale-105"
                   sizes="(max-width: 768px) 100vw, 50vw"
                 />
                 {/* Fade into text side */}
