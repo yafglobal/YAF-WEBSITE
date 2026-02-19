@@ -28,11 +28,9 @@ export default function Navbar() {
     setScrolled(latest > 60);
   });
 
-  const handleNavClick = (href: string) => {
+  const handleNavClick = () => {
     setMobileOpen(false);
-    if (href === "/") {
-      window.scrollTo({ top: 0 });
-    }
+    window.scrollTo({ top: 0 });
   };
 
   return (
@@ -89,7 +87,7 @@ export default function Navbar() {
             {/* Logo */}
             <Link
               href="/"
-              onClick={() => handleNavClick("/")}
+              onClick={handleNavClick}
               className="relative z-10 flex items-center shrink-0"
             >
               <motion.div animate={{ scale: scrolled ? 0.85 : 1 }} transition={{ duration: 0.3 }}>

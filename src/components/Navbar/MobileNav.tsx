@@ -10,7 +10,7 @@ interface MobileNavProps {
   mobileOpen: boolean;
   activeSection: number;
   onToggle: () => void;
-  onNavClick: (href: string) => void;
+  onNavClick: () => void;
   onClose: () => void;
 }
 
@@ -88,7 +88,7 @@ export default function MobileNav({
                       initial={{ opacity: 0, x: -30 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: 0.12 + i * 0.06, ease: [0.22, 1, 0.36, 1] }}
-                      onClick={() => onNavClick(link.href)}
+                      onClick={onNavClick}
                       className={`
                         relative w-full text-center py-4 text-2xl font-display font-bold
                         rounded-2xl transition-colors duration-300 block
