@@ -35,7 +35,10 @@ export default function Footer() {
   }, [shouldLoadVideo]);
 
   return (
-    <footer id="contact" className="relative overflow-hidden footer-video">
+    <footer
+      id="contact"
+      className="relative overflow-hidden footer-video min-h-[60vh] md:min-h-[80vh] flex flex-col"
+    >
       {/* Mux Video Background */}
       <div ref={containerRef} className="absolute inset-0 z-0 overflow-hidden">
         {shouldLoadVideo ? (
@@ -72,10 +75,10 @@ export default function Footer() {
       <div className="absolute top-0 left-0 right-0 h-px z-[2] bg-gradient-to-r from-transparent via-plum/40 to-transparent" />
 
       {/* Content layer */}
-      <div className="relative z-[2]">
+      <div className="relative z-[2] flex-1 flex flex-col justify-center">
         {/* Main footer content */}
-        <div className="max-w-[1400px] mx-auto px-6 md:px-10 pt-16 pb-8">
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-12 gap-10 md:gap-8">
+        <div className="max-w-[1400px] mx-auto px-6 md:px-10 py-8 md:py-12 w-full">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-12 gap-6 md:gap-8">
             <BrandColumn />
             <ResourcesColumn />
             <ContactColumn />
