@@ -14,7 +14,7 @@ export default function BiblePlanRoute() {
     <main className="relative grain">
       <Navbar />
       <BiblePlanPage />
-      <Footer />
+      <Footer transparent />
     </main>
   );
 }

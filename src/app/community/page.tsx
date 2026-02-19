@@ -14,7 +14,7 @@ export default function CommunityRoute() {
     <main className="relative grain">
       <Navbar />
       <CommunityPage />
-      <Footer transparent />
+      <Footer />
     </main>
   );
 }
