@@ -66,6 +66,7 @@ export default function OurStory() {
                 />
                 {/* Gradient overlay */}
                 <div className="absolute inset-0 bg-gradient-to-t from-[var(--color-background)]/60 via-transparent to-transparent" />
+                <div className="absolute inset-0 rounded-2xl ring-1 ring-inset ring-white/[0.06]" />
               </motion.div>
             </ScrollReveal>
 
@@ -83,8 +84,6 @@ export default function OurStory() {
                   sizes="(max-width: 768px) 55vw, 35vw"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[var(--color-background)]/40 via-transparent to-transparent" />
-
-                {/* Decorative border glow */}
                 <div className="absolute inset-0 ring-1 ring-inset ring-white/10 rounded-2xl" />
               </motion.div>
             </ScrollReveal>
@@ -111,12 +110,15 @@ export default function OurStory() {
               </p>
             </ScrollReveal>
 
-            {/* Pull quote */}
+            {/* Pull quote — decorative quotation mark treatment */}
             <ScrollReveal delay={0.5}>
-              <div className="relative pl-6 py-4">
-                <div className="absolute left-0 top-0 bottom-0 w-[3px] bg-gradient-to-b from-fire via-gold to-transparent rounded-full" />
-                <p className="text-[var(--color-text-primary)] font-display font-bold text-xl md:text-2xl leading-snug">
-                  &ldquo;Kingdom Giant, welcome to{" "}
+              <div className="relative py-6">
+                {/* Large decorative opening quote */}
+                <span className="font-display font-extrabold text-6xl md:text-7xl leading-none text-transparent bg-clip-text bg-gradient-to-br from-fire/40 to-gold/20 select-none">
+                  &ldquo;
+                </span>
+                <p className="mt-1 text-[var(--color-text-primary)] font-display font-bold text-xl md:text-2xl leading-snug">
+                  Kingdom Giant, welcome to{" "}
                   <span className="text-transparent bg-clip-text bg-gradient-to-r from-fire to-gold">
                     YAF
                   </span>
@@ -127,7 +129,7 @@ export default function OurStory() {
 
             {/* Pillars */}
             <ScrollReveal delay={0.6}>
-              <div className="mt-10 flex flex-wrap gap-3">
+              <div className="mt-8 flex flex-wrap gap-3">
                 {["Spiritual Growth", "Career Advancement", "Personal Development", "Community"].map(
                   (pillar) => (
                     <span
