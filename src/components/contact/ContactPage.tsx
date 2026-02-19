@@ -2,13 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import {
-  MapPin,
-  Phone,
-  EnvelopeSimple,
-  PaperPlaneTilt,
-  CheckCircle,
-} from "@phosphor-icons/react";
+import { MapPin, Phone, EnvelopeSimple, PaperPlaneTilt, CheckCircle } from "@phosphor-icons/react";
 import ScrollReveal from "@/components/ScrollReveal";
 import Grainient from "./Grainient";
 
@@ -38,8 +32,7 @@ export default function ContactPage() {
 
   // Track theme changes for Grainient color adaptation
   useEffect(() => {
-    const checkTheme = () =>
-      setIsLight(document.documentElement.classList.contains("light"));
+    const checkTheme = () => setIsLight(document.documentElement.classList.contains("light"));
     checkTheme();
 
     const mo = new MutationObserver(checkTheme);
@@ -52,9 +45,7 @@ export default function ContactPage() {
 
   const colors = isLight ? lightColors : darkColors;
 
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
@@ -75,9 +66,9 @@ export default function ContactPage() {
     "w-full px-5 py-3.5 bg-[var(--color-surface)] border border-[var(--color-border)] rounded-xl text-[var(--color-text-primary)] placeholder:text-[var(--color-text-muted)] focus:outline-none focus:border-fire/40 focus:ring-1 focus:ring-fire/20 transition-all text-sm";
 
   return (
-    <section className="relative min-h-screen">
-      {/* Grainient background — fixed, full viewport */}
-      <div className="fixed inset-0 pointer-events-none" aria-hidden="true">
+    <section className="relative min-h-screen overflow-hidden">
+      {/* Grainient background — scoped to contact section */}
+      <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
         <Grainient
           color1={colors.color1}
           color2={colors.color2}
@@ -130,9 +121,8 @@ export default function ContactPage() {
 
             <ScrollReveal delay={0.15}>
               <p className="text-[var(--color-text-secondary)] text-base md:text-lg leading-relaxed max-w-lg">
-                Have questions about Youth Alive Global, our programs, or how to
-                get involved? We&apos;d love to hear from you. Reach out to us
-                through any of the channels below.
+                Have questions about Youth Alive Global, our programs, or how to get involved?
+                We&apos;d love to hear from you. Reach out to us through any of the channels below.
               </p>
             </ScrollReveal>
 
@@ -178,11 +168,7 @@ export default function ContactPage() {
               <ScrollReveal delay={0.3}>
                 <div className="flex items-start gap-4 group">
                   <div className="shrink-0 w-11 h-11 rounded-xl bg-fire/10 flex items-center justify-center group-hover:bg-fire/20 transition-colors">
-                    <EnvelopeSimple
-                      size={22}
-                      className="text-fire"
-                      weight="fill"
-                    />
+                    <EnvelopeSimple size={22} className="text-fire" weight="fill" />
                   </div>
                   <div>
                     <p className="font-display font-bold text-sm text-[var(--color-text-primary)] mb-1">
@@ -209,8 +195,7 @@ export default function ContactPage() {
                 Send Us a Message
               </h2>
               <p className="text-[var(--color-text-secondary)] text-sm mb-8">
-                Fill in the form below and we&apos;ll get back to you as soon as
-                possible.
+                Fill in the form below and we&apos;ll get back to you as soon as possible.
               </p>
 
               <AnimatePresence mode="wait">
@@ -232,11 +217,7 @@ export default function ContactPage() {
                         delay: 0.1,
                       }}
                     >
-                      <CheckCircle
-                        size={64}
-                        className="text-fire mb-4"
-                        weight="fill"
-                      />
+                      <CheckCircle size={64} className="text-fire mb-4" weight="fill" />
                     </motion.div>
                     <h3 className="font-display font-bold text-lg text-[var(--color-text-primary)]">
                       Message Sent!

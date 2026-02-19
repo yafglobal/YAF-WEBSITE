@@ -27,18 +27,48 @@ const resourceLinks = [
 ];
 
 const socialLinks = [
-  { icon: YoutubeLogo, label: "YouTube", href: "https://www.youtube.com/@youthaliveglobal?sub_confirmation=1", color: "#FF0000", glow: "rgba(255, 0, 0, 0.4)" },
-  { icon: FacebookLogo, label: "Facebook", href: "https://www.facebook.com/Youthaliveglobal", color: "#1877F2", glow: "rgba(24, 119, 242, 0.4)" },
-  { icon: InstagramLogo, label: "Instagram", href: "https://www.instagram.com/youthaliveglobal", color: "#E4405F", glow: "rgba(228, 64, 95, 0.4)" },
-  { icon: XLogo, label: "Twitter / X", href: "https://x.com/youthaliveglb", color: "var(--color-text-primary)", glow: "rgba(128, 128, 128, 0.3)" },
-  { icon: TiktokLogo, label: "TikTok", href: "https://www.tiktok.com/@youthaliveglobal", color: "#00F2EA", glow: "rgba(0, 242, 234, 0.4)" },
+  {
+    icon: YoutubeLogo,
+    label: "YouTube",
+    href: "https://www.youtube.com/@youthaliveglobal?sub_confirmation=1",
+    color: "#FF0000",
+    glow: "rgba(255, 0, 0, 0.4)",
+  },
+  {
+    icon: FacebookLogo,
+    label: "Facebook",
+    href: "https://www.facebook.com/Youthaliveglobal",
+    color: "#1877F2",
+    glow: "rgba(24, 119, 242, 0.4)",
+  },
+  {
+    icon: InstagramLogo,
+    label: "Instagram",
+    href: "https://www.instagram.com/youthaliveglobal",
+    color: "#E4405F",
+    glow: "rgba(228, 64, 95, 0.4)",
+  },
+  {
+    icon: XLogo,
+    label: "Twitter / X",
+    href: "https://x.com/youthaliveglb",
+    color: "var(--color-text-primary)",
+    glow: "rgba(128, 128, 128, 0.3)",
+  },
+  {
+    icon: TiktokLogo,
+    label: "TikTok",
+    href: "https://www.tiktok.com/@youthaliveglobal",
+    color: "#00F2EA",
+    glow: "rgba(0, 242, 234, 0.4)",
+  },
 ];
 
 export default function Footer() {
   const [email, setEmail] = useState("");
 
   return (
-    <footer id="contact" className="relative overflow-hidden">
+    <footer id="contact" className="relative overflow-hidden bg-[var(--color-background)]">
       {/* Top fire gradient line */}
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-fire/40 to-transparent" />
 
@@ -93,8 +123,8 @@ export default function Footer() {
                 style={{ filter: "var(--logo-filter, brightness(2))" }}
               />
               <p className="mt-5 text-[var(--color-text-secondary)] text-sm leading-relaxed max-w-sm">
-                A global youth movement with a balanced commitment to spiritual
-                growth, personal development, and purpose-driven living.
+                A global youth movement with a balanced commitment to spiritual growth, personal
+                development, and purpose-driven living.
               </p>
 
               {/* Newsletter */}
@@ -151,30 +181,15 @@ export default function Footer() {
               </h4>
               <div className="space-y-4">
                 <div className="flex items-start gap-3 text-[var(--color-text-secondary)] text-sm">
-                  <MapPin
-                    size={16}
-                    className="text-fire mt-0.5 shrink-0"
-                    weight="fill"
-                  />
-                  <span>
-                    Global Youth Office, Living Faith Church, Canaanland, Ota,
-                    Nigeria.
-                  </span>
+                  <MapPin size={16} className="text-fire mt-0.5 shrink-0" weight="fill" />
+                  <span>Global Youth Office, Living Faith Church, Canaanland, Ota, Nigeria.</span>
                 </div>
                 <div className="flex items-center gap-3 text-[var(--color-text-secondary)] text-sm">
-                  <Phone
-                    size={16}
-                    className="text-fire shrink-0"
-                    weight="fill"
-                  />
+                  <Phone size={16} className="text-fire shrink-0" weight="fill" />
                   <span>+234 816 287 9125</span>
                 </div>
                 <div className="flex items-center gap-3 text-[var(--color-text-secondary)] text-sm">
-                  <EnvelopeSimple
-                    size={16}
-                    className="text-fire shrink-0"
-                    weight="fill"
-                  />
+                  <EnvelopeSimple size={16} className="text-fire shrink-0" weight="fill" />
                   <span>info@winnersyouth.org</span>
                 </div>
               </div>
@@ -263,8 +278,7 @@ export default function Footer() {
         {/* Bottom bar */}
         <div className="mt-16 pt-8 border-t border-[var(--color-border)] flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-[var(--color-text-muted)] text-xs">
-            &copy; {new Date().getFullYear()} Youth Alive Global. All rights
-            reserved.
+            &copy; {new Date().getFullYear()} Youth Alive Global. All rights reserved.
           </p>
           <div className="flex items-center gap-1">
             {socialLinks.map((link) => (
@@ -279,7 +293,9 @@ export default function Footer() {
                 {/* Glow on hover */}
                 <div
                   className="absolute inset-0 rounded-lg opacity-0 group-hover/icon:opacity-100 transition-opacity duration-300"
-                  style={{ background: `radial-gradient(circle, ${link.glow.replace("0.4", "0.1")}, transparent 70%)` }}
+                  style={{
+                    background: `radial-gradient(circle, ${link.glow.replace("0.4", "0.1")}, transparent 70%)`,
+                  }}
                 />
                 <link.icon
                   size={16}
