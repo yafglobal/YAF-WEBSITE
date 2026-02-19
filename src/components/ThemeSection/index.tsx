@@ -422,38 +422,45 @@ const ThemeSection = () => {
               transition={{ duration: 0.5 }}
               className="space-y-8 sm:space-y-10"
             >
-              {/* Region Selector */}
+              {/* Region Selector — Pill Toggle */}
               <div className="flex justify-center">
-                <div className="flex gap-3 sm:gap-4 flex-wrap justify-center">
+                <div className="bg-[var(--glass-bg)] backdrop-blur-md rounded-2xl p-1.5 shadow-lg border border-[var(--color-border-medium)] inline-flex">
                   {youthThemes2025.map((theme, index) => (
-                    <motion.button
+                    <button
                       key={theme.region}
                       onClick={() => setActiveRegion(index)}
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: index * 0.1 }}
-                      className={cn(
-                        "flex items-center gap-2.5 px-5 sm:px-6 py-3 sm:py-3.5 rounded-2xl font-semibold text-sm sm:text-base transition-all duration-300 cursor-pointer border",
-                        activeRegion === index
-                          ? "bg-[var(--color-surface)] border-plum/40 text-[var(--color-text-primary)] shadow-lg shadow-plum/5"
-                          : "bg-[var(--glass-bg)] border-[var(--color-border)] text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] hover:border-[var(--color-border-hover)]"
-                      )}
+                      className="relative flex items-center gap-2 px-5 sm:px-7 py-2.5 sm:py-3 rounded-xl font-semibold text-sm sm:text-base cursor-pointer"
                     >
+                      {activeRegion === index && (
+                        <motion.div
+                          layoutId="regionPill"
+                          className="absolute inset-0 rounded-xl bg-plum shadow-md"
+                          transition={{
+                            type: "spring",
+                            stiffness: 400,
+                            damping: 35,
+                          }}
+                        />
+                      )}
                       <MapPin
                         size={16}
                         weight={activeRegion === index ? "fill" : "regular"}
-                        className={
-                          activeRegion === index ? "text-plum" : "text-[var(--color-text-muted)]"
-                        }
+                        className={cn(
+                          "relative z-10 transition-colors duration-300",
+                          activeRegion === index ? "text-white" : "text-[var(--color-text-muted)]"
+                        )}
                       />
-                      <span>{theme.region}</span>
-                      {activeRegion === index && (
-                        <motion.div
-                          layoutId="regionDot"
-                          className="w-1.5 h-1.5 rounded-full bg-plum"
-                        />
-                      )}
-                    </motion.button>
+                      <span
+                        className={cn(
+                          "relative z-10 transition-colors duration-300",
+                          activeRegion === index
+                            ? "text-white"
+                            : "text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)]"
+                        )}
+                      >
+                        {theme.region}
+                      </span>
+                    </button>
                   ))}
                 </div>
               </div>
