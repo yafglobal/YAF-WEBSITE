@@ -4,7 +4,7 @@ import { useRef } from "react";
 import Image from "next/image";
 import { motion, useScroll, useTransform } from "motion/react";
 import { ArrowRight } from "@phosphor-icons/react";
-import ScrollReveal from "../ScrollReveal";
+import ScrollReveal from "@/components/ScrollReveal";
 
 /* Pre-computed ember particles for hydration safety */
 const embers = [

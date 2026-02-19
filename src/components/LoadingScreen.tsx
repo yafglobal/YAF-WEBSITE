@@ -54,27 +54,20 @@ const burstEmberData = [
 ];
 
 export default function LoadingScreen() {
+  const alreadyShown = useRef(
+    typeof window !== "undefined" && sessionStorage.getItem("yag-loaded") === "1"
+  );
   const [phase, setPhase] = useState<
     "igniting" | "burning" | "blazing" | "burst" | "done"
-  >("igniting");
-  const [visible, setVisible] = useState(true);
+  >(alreadyShown.current ? "done" : "igniting");
+  const [visible, setVisible] = useState(!alreadyShown.current);
   const [progress, setProgress] = useState(0);
-  const hasRun = useRef(false);
 
-  // Check if loading screen has already been shown this session
+  // Lock scroll during loading on mount
   useEffect(() => {
-    if (hasRun.current) return;
-    hasRun.current = true;
-
-    const alreadyShown = sessionStorage.getItem("yag-loaded");
-    if (alreadyShown) {
-      setVisible(false);
-      setPhase("done");
-      return;
+    if (!alreadyShown.current) {
+      document.body.style.overflow = "hidden";
     }
-
-    // Lock scroll during loading
-    document.body.style.overflow = "hidden";
   }, []);
 
   const handleComplete = useCallback(() => {
@@ -97,9 +90,17 @@ export default function LoadingScreen() {
   useEffect(() => {
     if (phase === "done" || !visible) return;
 
-    let progressInterval: ReturnType<typeof setInterval>;
     let minTimeReached = false;
     let pageReady = false;
+    let currentProgress = 0;
+
+    // Simulate progress with acceleration
+    const progressInterval = setInterval(() => {
+      if (currentProgress < 90) {
+        currentProgress += (90 - currentProgress) * 0.08;
+        setProgress(Math.min(currentProgress, 90));
+      }
+    }, 50);
 
     const checkReady = () => {
       if (minTimeReached && pageReady) {
@@ -119,15 +120,6 @@ export default function LoadingScreen() {
     setTimeout(() => {
       setPhase("burning");
     }, 800);
-
-    // Simulate progress with acceleration
-    let currentProgress = 0;
-    progressInterval = setInterval(() => {
-      if (currentProgress < 90) {
-        currentProgress += (90 - currentProgress) * 0.08;
-        setProgress(Math.min(currentProgress, 90));
-      }
-    }, 50);
 
     // Detect page readiness
     const onReady = () => {

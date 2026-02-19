@@ -3,7 +3,7 @@
 import { useRef, useEffect, useState } from "react";
 import { motion, useScroll, useTransform, useInView } from "motion/react";
 import { Globe, Users, Fire, Church, HandsClapping } from "@phosphor-icons/react";
-import ScrollReveal from "../ScrollReveal";
+import ScrollReveal from "@/components/ScrollReveal";
 
 const stats = [
   {
@@ -102,7 +102,7 @@ export default function ImpactStats() {
     >
       {/* Dark textured background with dot pattern */}
       <motion.div style={{ y: bgY }} className="absolute inset-0 -top-20 -bottom-20 z-0">
-        <div className="absolute inset-0 bg-charcoal" />
+        <div className="absolute inset-0 bg-[var(--color-charcoal)]" />
         <div
           className="absolute inset-0 opacity-20"
           style={{

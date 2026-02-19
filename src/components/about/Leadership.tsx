@@ -5,7 +5,7 @@ import Image from "next/image";
 import MuxPlayer from "@mux/mux-player-react";
 import { motion, useScroll, useTransform } from "motion/react";
 import { SpeakerHigh, SpeakerSlash } from "@phosphor-icons/react";
-import ScrollReveal from "../ScrollReveal";
+import ScrollReveal from "@/components/ScrollReveal";
 
 interface VideoConfig {
   type: "local" | "mux";

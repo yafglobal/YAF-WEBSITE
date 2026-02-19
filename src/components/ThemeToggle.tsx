@@ -1,16 +1,16 @@
 "use client";
 
-import { useRef, useCallback, useEffect, useState } from "react";
+import { useRef, useCallback, useState } from "react";
 import { flushSync } from "react-dom";
 import { Sun, Moon } from "@phosphor-icons/react";
 
 export default function ThemeToggle() {
-  const [isDark, setIsDark] = useState(true);
+  const [isDark, setIsDark] = useState(() =>
+    typeof window !== "undefined"
+      ? !document.documentElement.classList.contains("light")
+      : true
+  );
   const buttonRef = useRef<HTMLButtonElement>(null);
-
-  useEffect(() => {
-    setIsDark(!document.documentElement.classList.contains("light"));
-  }, []);
 
   const toggleTheme = useCallback(async () => {
     const nextDark = !isDark;

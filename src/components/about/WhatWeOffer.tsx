@@ -10,7 +10,7 @@ import {
   Sparkle,
   Handshake,
 } from "@phosphor-icons/react";
-import ScrollReveal from "../ScrollReveal";
+import ScrollReveal from "@/components/ScrollReveal";
 
 const offerings = [
   {

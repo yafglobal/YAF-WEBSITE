@@ -3,7 +3,7 @@
 import { useRef } from "react";
 import Image from "next/image";
 import { motion, useScroll, useTransform } from "motion/react";
-import ScrollReveal from "../ScrollReveal";
+import ScrollReveal from "@/components/ScrollReveal";
 
 export default function OurStory() {
   const sectionRef = useRef<HTMLDivElement>(null);

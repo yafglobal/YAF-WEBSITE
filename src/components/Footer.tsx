@@ -68,7 +68,7 @@ export default function Footer() {
   const [email, setEmail] = useState("");
 
   return (
-    <footer id="contact" className="relative overflow-hidden bg-[var(--color-background)]">
+    <footer id="contact" className="relative overflow-hidden">
       {/* Top fire gradient line */}
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-fire/40 to-transparent" />
 

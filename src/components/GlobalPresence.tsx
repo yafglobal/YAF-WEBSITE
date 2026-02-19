@@ -3,7 +3,7 @@
 import { useRef } from "react";
 import Image from "next/image";
 import { motion, useScroll, useTransform } from "motion/react";
-import { MapPin, GlobeHemisphereWest, Compass, Airplane } from "@phosphor-icons/react";
+import { MapPin, Compass, Airplane } from "@phosphor-icons/react";
 import ScrollReveal from "./ScrollReveal";
 
 const regions = [

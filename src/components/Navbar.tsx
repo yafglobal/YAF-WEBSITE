@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useMemo, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -28,19 +28,18 @@ export default function Navbar() {
   const { scrollY } = useScroll();
   const pathname = usePathname();
 
+  // Derive active nav index from route
+  const routeActiveIndex = useMemo(() => {
+    return navLinks.findIndex((link) => {
+      if (link.href === "/") return pathname === "/";
+      return pathname.startsWith(link.href.split("#")[0]) && link.href.split("#")[0] !== "/";
+    });
+  }, [pathname]);
+
   // Track scroll position — always visible, just morphs appearance
   useMotionValueEvent(scrollY, "change", (latest) => {
     setScrolled(latest > 60);
   });
-
-  // Set active nav item based on current route
-  useEffect(() => {
-    const matchIndex = navLinks.findIndex((link) => {
-      if (link.href === "/") return pathname === "/";
-      return pathname.startsWith(link.href.split("#")[0]) && link.href.split("#")[0] !== "/";
-    });
-    setActiveSection(matchIndex);
-  }, [pathname]);
 
   // Scroll-based section detection (only works on homepage where sections exist)
   useEffect(() => {
