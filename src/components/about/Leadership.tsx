@@ -4,6 +4,7 @@ import { useRef, useState, useEffect, useCallback } from "react";
 import Image from "next/image";
 import MuxPlayer from "@mux/mux-player-react";
 import { motion, useScroll, useTransform } from "motion/react";
+import { SpeakerHigh, SpeakerSlash } from "@phosphor-icons/react";
 import ScrollReveal from "../ScrollReveal";
 
 interface VideoConfig {
@@ -62,12 +63,14 @@ const leaders: Leader[] = [
 function VideoOverlay({
   video,
   isHovered,
+  isMuted,
 }: {
   video: VideoConfig;
   isHovered: boolean;
+  isMuted: boolean;
 }) {
   const localRef = useRef<HTMLVideoElement>(null);
-  const muxRef = useRef<HTMLElement & { play: () => void; pause: () => void }>(
+  const muxRef = useRef<HTMLElement & { play: () => void; pause: () => void; muted: boolean }>(
     null
   );
   const [isPlaying, setIsPlaying] = useState(false);
@@ -86,6 +89,12 @@ function VideoOverlay({
     }
   }, [isHovered, video.type]);
 
+  // Sync muted state
+  useEffect(() => {
+    if (localRef.current) localRef.current.muted = isMuted;
+    if (muxRef.current) muxRef.current.muted = isMuted;
+  }, [isMuted]);
+
   const handlePlaying = useCallback(() => setIsPlaying(true), []);
   const handlePause = useCallback(() => setIsPlaying(false), []);
 
@@ -96,7 +105,7 @@ function VideoOverlay({
       <video
         ref={localRef}
         src={video.src}
-        muted
+        muted={isMuted}
         loop
         playsInline
         preload="metadata"
@@ -113,7 +122,7 @@ function VideoOverlay({
     <MuxPlayer
       ref={muxRef as React.RefObject<any>}
       playbackId={video.playbackId}
-      muted
+      muted={isMuted}
       loop
       playsInline
       preload="metadata"
@@ -213,6 +222,7 @@ export default function Leadership() {
 
 function FeaturedCard({ leader }: { leader: Leader }) {
   const [isHovered, setIsHovered] = useState(false);
+  const [isMuted, setIsMuted] = useState(true);
 
   return (
     <ScrollReveal>
@@ -235,7 +245,7 @@ function FeaturedCard({ leader }: { leader: Leader }) {
             />
 
             {/* Video overlay */}
-            <VideoOverlay video={leader.video} isHovered={isHovered} />
+            <VideoOverlay video={leader.video} isHovered={isHovered} isMuted={isMuted} />
 
             {/* Fade into text side */}
             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-[var(--color-surface)] hidden md:block z-[3]" />
@@ -243,6 +253,26 @@ function FeaturedCard({ leader }: { leader: Leader }) {
 
             {/* Hover glow */}
             <div className="absolute inset-0 bg-gradient-to-r from-fire/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-[3]" />
+
+            {/* Audio toggle — top left */}
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                setIsMuted((m) => !m);
+              }}
+              className={`absolute top-4 left-4 z-[5] w-10 h-10 rounded-full bg-background/60 backdrop-blur-sm flex items-center justify-center transition-all duration-400 hover:bg-background/80 ${
+                isHovered
+                  ? "opacity-100 scale-100"
+                  : "opacity-0 scale-90 pointer-events-none"
+              }`}
+              aria-label={isMuted ? "Unmute video" : "Mute video"}
+            >
+              {isMuted ? (
+                <SpeakerSlash size={18} weight="fill" className="text-foreground/80" />
+              ) : (
+                <SpeakerHigh size={18} weight="fill" className="text-fire" />
+              )}
+            </button>
 
             {/* Play indicator */}
             <div
@@ -302,6 +332,7 @@ function FeaturedCard({ leader }: { leader: Leader }) {
 
 function LeaderCard({ leader, index }: { leader: Leader; index: number }) {
   const [isHovered, setIsHovered] = useState(false);
+  const [isMuted, setIsMuted] = useState(true);
 
   return (
     <ScrollReveal delay={0.15 * (index + 1)}>
@@ -323,13 +354,33 @@ function LeaderCard({ leader, index }: { leader: Leader; index: number }) {
           />
 
           {/* Video overlay */}
-          <VideoOverlay video={leader.video} isHovered={isHovered} />
+          <VideoOverlay video={leader.video} isHovered={isHovered} isMuted={isMuted} />
 
           {/* Gradient overlay */}
           <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-background/20 to-transparent z-[3]" />
 
           {/* Hover glow */}
           <div className="absolute inset-0 bg-gradient-to-t from-fire/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-[3]" />
+
+          {/* Audio toggle — top left */}
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              setIsMuted((m) => !m);
+            }}
+            className={`absolute top-4 left-4 z-[5] w-10 h-10 rounded-full bg-background/60 backdrop-blur-sm flex items-center justify-center transition-all duration-400 hover:bg-background/80 ${
+              isHovered
+                ? "opacity-100 scale-100"
+                : "opacity-0 scale-90 pointer-events-none"
+            }`}
+            aria-label={isMuted ? "Unmute video" : "Mute video"}
+          >
+            {isMuted ? (
+              <SpeakerSlash size={18} weight="fill" className="text-foreground/80" />
+            ) : (
+              <SpeakerHigh size={18} weight="fill" className="text-fire" />
+            )}
+          </button>
 
           {/* Play indicator */}
           <div
