@@ -12,3 +12,10 @@ export const navLinks = [
 ];
 
 export const sectionIds = ["", "about", "watch", "bible-plan", "community"];
+
+export const watchDropdownItems = [
+  { label: "All Videos", href: "/watch", flag: "" },
+  { label: "Africa", href: "/watch/africa", flag: "🇳🇬" },
+  { label: "North America", href: "/watch/north-america", flag: "🇨🇦" },
+  { label: "Europe", href: "/watch/europe", flag: "🇬🇧" },
+];

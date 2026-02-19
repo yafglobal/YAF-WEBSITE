@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from "motion/react";
 import { List, X } from "@phosphor-icons/react";
 
 import ThemeToggle from "@/components/ThemeToggle";
-import { navLinks, MotionLink } from "./navConfig";
+import { navLinks, watchDropdownItems, MotionLink } from "./navConfig";
 
 interface MobileNavProps {
   mobileOpen: boolean;
@@ -78,33 +78,61 @@ export default function MobileNav({
               transition={{ delay: 0.1 }}
               className="flex flex-col items-center gap-2 w-full max-w-xs"
             >
-              {navLinks.map((link, i) => (
-                <MotionLink
-                  key={link.label}
-                  href={link.href}
-                  initial={{ opacity: 0, x: -30 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.12 + i * 0.06, ease: [0.22, 1, 0.36, 1] }}
-                  onClick={() => onNavClick(link.href, i)}
-                  className={`
-                    relative w-full text-center py-4 text-2xl font-display font-bold
-                    rounded-2xl transition-colors duration-300
-                    ${
-                      activeSection === i
-                        ? "text-plum bg-plum/10"
-                        : "text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] hover:bg-[var(--color-surface)]"
-                    }
-                  `}
-                >
-                  {activeSection === i && (
-                    <motion.span
-                      layoutId="mobile-nav-pill"
-                      className="absolute left-4 top-1/2 -translate-y-1/2 w-1 h-6 bg-plum rounded-full"
-                    />
-                  )}
-                  {link.label}
-                </MotionLink>
-              ))}
+              {navLinks.map((link, i) => {
+                const isWatch = link.label === "Watch";
+
+                return (
+                  <div key={link.label} className="w-full">
+                    <MotionLink
+                      href={link.href}
+                      initial={{ opacity: 0, x: -30 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: 0.12 + i * 0.06, ease: [0.22, 1, 0.36, 1] }}
+                      onClick={() => onNavClick(link.href, i)}
+                      className={`
+                        relative w-full text-center py-4 text-2xl font-display font-bold
+                        rounded-2xl transition-colors duration-300 block
+                        ${
+                          activeSection === i
+                            ? "text-plum bg-plum/10"
+                            : "text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] hover:bg-[var(--color-surface)]"
+                        }
+                      `}
+                    >
+                      {activeSection === i && (
+                        <motion.span
+                          layoutId="mobile-nav-pill"
+                          className="absolute left-4 top-1/2 -translate-y-1/2 w-1 h-6 bg-plum rounded-full"
+                        />
+                      )}
+                      {link.label}
+                    </MotionLink>
+
+                    {/* Watch sub-items */}
+                    {isWatch && (
+                      <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ delay: 0.12 + i * 0.06 + 0.1 }}
+                        className="flex flex-wrap justify-center gap-2 mt-1 mb-2"
+                      >
+                        {watchDropdownItems.slice(1).map((item) => (
+                          <MotionLink
+                            key={item.href}
+                            href={item.href}
+                            onClick={onClose}
+                            initial={{ opacity: 0, scale: 0.9 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            className="px-3 py-1.5 text-xs font-medium rounded-full border border-[var(--color-border)] text-[var(--color-text-muted)] hover:text-plum hover:border-plum/30 transition-colors"
+                          >
+                            {item.flag} {item.label}
+                          </MotionLink>
+                        ))}
+                      </motion.div>
+                    )}
+                  </div>
+                );
+              })}
 
               {/* Mobile CTA */}
               <MotionLink

@@ -40,12 +40,12 @@ export interface YouthTheme {
 
 export const youthThemes2025: YouthTheme[] = [
   {
-    region: "Nigeria",
-    flag: "🇳🇬",
+    region: "Africa",
+    flag: "🌍",
     title: "Built to Last",
-    subtitle: "Youth Alive Nigeria — 2025 Theme",
+    subtitle: "Youth Alive Africa — 2025 Theme",
     description:
-      "A prophetic charge to build with intentionality — rooted in faith, fortified by the wisdom of God, and designed to withstand every storm.",
+      "A prophetic charge to build with intentionality — rooted in faith, fortified by the wisdom of God, and designed to withstand every storm and stand the test of time.",
     verse:
       "Therefore whosoever heareth these sayings of mine, and doeth them, I will liken him unto a wise man, which built his house upon a rock: And the rain descended, and the floods came, and the winds blew, and beat upon that house; and it fell not: for it was founded upon a rock.",
     reference: "Matthew 7:24-25",
@@ -74,7 +74,7 @@ export const youthThemes2025: YouthTheme[] = [
   },
   {
     region: "North America",
-    flag: "🇺🇸",
+    flag: "🌎",
     title: "Sure Foundation",
     subtitle: "Youth Alive North America — 2025 Theme",
     description:

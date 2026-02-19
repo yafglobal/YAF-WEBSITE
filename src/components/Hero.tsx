@@ -86,10 +86,20 @@ export default function Hero() {
             />
           </div>
         ))}
-        {/* Dark gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/40 to-background" />
+        {/* Dark gradient overlay — uses explicit CSS vars so light mode adapts */}
+        <div
+          className="absolute inset-0"
+          style={{
+            background: `linear-gradient(to bottom, color-mix(in srgb, var(--color-background) 60%, transparent), color-mix(in srgb, var(--color-background) 40%, transparent), var(--color-background))`,
+          }}
+        />
         {/* Fire tint at bottom */}
-        <div className="absolute bottom-0 left-0 right-0 h-1/3 bg-gradient-to-t from-background via-background/80 to-transparent" />
+        <div
+          className="absolute bottom-0 left-0 right-0 h-1/3"
+          style={{
+            background: `linear-gradient(to top, var(--color-background), color-mix(in srgb, var(--color-background) 80%, transparent), transparent)`,
+          }}
+        />
       </motion.div>
 
       {/* Particles */}

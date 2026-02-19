@@ -29,8 +29,8 @@ export default function GiveSection() {
         />
       </motion.div>
 
-      {/* Dark overlay */}
-      <div className="absolute inset-0 bg-background/70" />
+      {/* Dark overlay — uses CSS var so light mode adapts */}
+      <div className="absolute inset-0" style={{ backgroundColor: "var(--color-overlay)" }} />
 
       {/* Gradient blends */}
       <div className="absolute inset-0 bg-gradient-to-b from-[var(--color-background)] via-transparent to-[var(--color-background)]" />
@@ -62,7 +62,10 @@ export default function GiveSection() {
             &ldquo;Every man according as he purposeth in his heart, so let him give; not
             grudgingly, or of necessity.&rdquo;
           </p>
-          <p className="mt-3 text-foreground/25 text-sm font-display font-medium tracking-wider">
+          <p
+            className="mt-3 text-sm font-display font-medium tracking-wider"
+            style={{ color: "color-mix(in srgb, var(--color-foreground) 25%, transparent)" }}
+          >
             2 Corinthians 9:7
           </p>
         </ScrollReveal>

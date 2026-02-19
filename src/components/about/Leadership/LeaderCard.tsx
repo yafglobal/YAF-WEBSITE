@@ -33,8 +33,13 @@ export default function LeaderCard({ leader, index }: { leader: Leader; index: n
 
           <VideoOverlay video={leader.video} isHovered={isHovered} isMuted={isMuted} />
 
-          {/* Gradient overlay */}
-          <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-background/20 to-transparent z-[3]" />
+          {/* Gradient overlay — uses color-mix so light mode adapts */}
+          <div
+            className="absolute inset-0 z-[3]"
+            style={{
+              background: `linear-gradient(to top, color-mix(in srgb, var(--color-background) 80%, transparent), color-mix(in srgb, var(--color-background) 20%, transparent), transparent)`,
+            }}
+          />
 
           {/* Hover glow */}
           <div className="absolute inset-0 bg-gradient-to-t from-plum/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-[3]" />
@@ -45,13 +50,20 @@ export default function LeaderCard({ leader, index }: { leader: Leader; index: n
               e.stopPropagation();
               setIsMuted((m) => !m);
             }}
-            className={`absolute top-4 left-4 z-[5] w-10 h-10 rounded-full bg-background/60 backdrop-blur-sm flex items-center justify-center transition-all duration-400 hover:bg-background/80 ${
+            className={`absolute top-4 left-4 z-[5] w-10 h-10 rounded-full backdrop-blur-sm flex items-center justify-center transition-all duration-400 ${
               isHovered ? "opacity-100 scale-100" : "opacity-0 scale-90 pointer-events-none"
             }`}
+            style={{
+              backgroundColor: "color-mix(in srgb, var(--color-background) 60%, transparent)",
+            }}
             aria-label={isMuted ? "Unmute video" : "Mute video"}
           >
             {isMuted ? (
-              <SpeakerSlash size={18} weight="fill" className="text-foreground/80" />
+              <SpeakerSlash
+                size={18}
+                weight="fill"
+                style={{ color: "color-mix(in srgb, var(--color-foreground) 80%, transparent)" }}
+              />
             ) : (
               <SpeakerHigh size={18} weight="fill" className="text-plum" />
             )}
@@ -59,15 +71,21 @@ export default function LeaderCard({ leader, index }: { leader: Leader; index: n
 
           {/* Play indicator */}
           <div
-            className={`absolute top-4 right-4 z-[4] flex items-center gap-2 px-3 py-1.5 rounded-full bg-background/50 backdrop-blur-sm transition-all duration-500 ${
+            className={`absolute top-4 right-4 z-[4] flex items-center gap-2 px-3 py-1.5 rounded-full backdrop-blur-sm transition-all duration-500 ${
               isHovered ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-2"
             }`}
+            style={{
+              backgroundColor: "color-mix(in srgb, var(--color-background) 50%, transparent)",
+            }}
           >
             <span className="relative flex h-2 w-2">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-plum opacity-75" />
               <span className="relative inline-flex rounded-full h-2 w-2 bg-plum" />
             </span>
-            <span className="text-foreground/80 text-[10px] tracking-widest uppercase font-semibold">
+            <span
+              className="text-[10px] tracking-widest uppercase font-semibold"
+              style={{ color: "color-mix(in srgb, var(--color-foreground) 80%, transparent)" }}
+            >
               Now Playing
             </span>
           </div>
