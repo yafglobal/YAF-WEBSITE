@@ -3,6 +3,7 @@
 import { motion, AnimatePresence } from "motion/react";
 import { X, DownloadSimple } from "@phosphor-icons/react";
 import { useEffect, useCallback } from "react";
+import { lockBodyScroll } from "@/lib/body-scroll-lock";
 
 interface BiblePlanModalProps {
   isOpen: boolean;
@@ -18,13 +19,14 @@ export default function BiblePlanModal({ isOpen, onClose }: BiblePlanModalProps)
   );
 
   useEffect(() => {
-    if (isOpen) {
-      document.addEventListener("keydown", handleEscape);
-      document.body.style.overflow = "hidden";
-    }
+    if (!isOpen) return;
+
+    document.addEventListener("keydown", handleEscape);
+    const releaseScrollLock = lockBodyScroll();
+
     return () => {
       document.removeEventListener("keydown", handleEscape);
-      document.body.style.overflow = "unset";
+      releaseScrollLock();
     };
   }, [isOpen, handleEscape]);
 

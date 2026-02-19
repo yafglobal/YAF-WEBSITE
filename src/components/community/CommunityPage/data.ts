@@ -1,6 +1,8 @@
 export interface ContinentImage {
   src: string;
   alt: string;
+  /** Override the default `object-position: center` for images that crop badly */
+  objectPosition?: string;
 }
 
 export interface ContinentData {
@@ -45,8 +47,8 @@ export const continents: ContinentData[] = [
         alt: "Youth fellowship gathering",
       },
       {
-        src: "/images/about/worship-portrait.png",
-        alt: "Worship moment at conference",
+        src: "/images/slider-5.jpeg",
+        alt: "Youth conference worship moment",
       },
       { src: "/images/slider-4.jpeg", alt: "Youth conference event" },
     ],
@@ -68,8 +70,9 @@ export const continents: ContinentData[] = [
         alt: "Joyful praise gathering in the UK",
       },
       {
-        src: "/ukyaf/ayac-europe-speaker.webp",
-        alt: "AYAC Europe speaker on stage",
+        src: "/ukyaf/ayac-worship-vocalist.webp",
+        alt: "Worship vocalist at AYAC Europe",
+        objectPosition: "center top",
       },
       {
         src: "/ukyaf/youth-worship-hands-raised.webp",
@@ -84,8 +87,9 @@ export const continents: ContinentData[] = [
         alt: "Southampton congregation in worship",
       },
       {
-        src: "/ukyaf/ayac-prayer-moment.webp",
-        alt: "Prayer moment at AYAC Europe",
+        src: "/ukyaf/ayac-keyboardist.webp",
+        alt: "Keyboardist at AYAC Europe worship",
+        objectPosition: "center top",
       },
       {
         src: "/ukyaf/youth-fellowship-friends.webp",
@@ -117,8 +121,8 @@ export const continents: ContinentData[] = [
         alt: "Joyful moment during praise night",
       },
       {
-        src: "/usayaf/worship-team-white-outfits.webp",
-        alt: "Worship team performing on stage",
+        src: "/usayaf/worship-duo-hands-raised.webp",
+        alt: "Worship duo with hands raised on stage",
       },
       {
         src: "/usayaf/woman-open-hands-worship.webp",
@@ -129,8 +133,8 @@ export const continents: ContinentData[] = [
         alt: "Worship leader during praise night",
       },
       {
-        src: "/usayaf/singer-haze-stage.webp",
-        alt: "Singer performing on stage with haze",
+        src: "/usayaf/woman-clapping-joy.webp",
+        alt: "Woman clapping with joy during service",
       },
     ],
   },
@@ -150,8 +154,8 @@ export const continents: ContinentData[] = [
         alt: "Youth with hands raised in worship",
       },
       {
-        src: "/yaf-canada/female-presenter-stage.webp",
-        alt: "Female presenter on stage",
+        src: "/yaf-canada/stage-speaker-portrait.webp",
+        alt: "Speaker portrait on stage",
       },
       {
         src: "/yaf-canada/choir-leader-band.webp",
@@ -166,8 +170,8 @@ export const continents: ContinentData[] = [
         alt: "Worship duo performing on stage",
       },
       {
-        src: "/yaf-canada/youth-taking-notes.webp",
-        alt: "Youth taking notes during session",
+        src: "/yaf-canada/youth-in-prayer.webp",
+        alt: "Youth in prayer during service",
       },
       {
         src: "/yaf-canada/peaceful-worship-moment.webp",

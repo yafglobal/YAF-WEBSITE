@@ -48,6 +48,7 @@ export default function BentoGallery({ images, continentName }: Props) {
                 alt={img.alt}
                 fill
                 className="object-cover transition-transform duration-700 group-hover:scale-110"
+                style={img.objectPosition ? { objectPosition: img.objectPosition } : undefined}
                 sizes={isWide ? "(max-width: 768px) 100vw, 50vw" : "(max-width: 768px) 50vw, 25vw"}
               />
               {/* Hover overlay with zoom icon */}

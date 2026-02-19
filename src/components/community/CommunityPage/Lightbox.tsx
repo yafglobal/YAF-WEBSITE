@@ -5,6 +5,7 @@ import Image from "next/image";
 import { AnimatePresence, motion } from "motion/react";
 import { X, CaretLeft, CaretRight } from "@phosphor-icons/react";
 import type { ContinentImage } from "./data";
+import { lockBodyScroll } from "@/lib/body-scroll-lock";
 
 interface Props {
   images: ContinentImage[];
@@ -35,7 +36,7 @@ export default function Lightbox({
   // Body scroll lock + keyboard navigation
   useEffect(() => {
     if (!isOpen) return;
-    document.body.style.overflow = "hidden";
+    const releaseScrollLock = lockBodyScroll();
 
     const handleKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") onClose();
@@ -45,7 +46,7 @@ export default function Lightbox({
     window.addEventListener("keydown", handleKey);
 
     return () => {
-      document.body.style.overflow = "";
+      releaseScrollLock();
       window.removeEventListener("keydown", handleKey);
     };
   }, [isOpen, onClose, goPrev, goNext]);

@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useCallback, useSyncExternalStore } from "react";
 import type { Phase } from "./types";
+import { lockBodyScroll } from "@/lib/body-scroll-lock";
 
 // Use useSyncExternalStore to read sessionStorage without hydration mismatch.
 // Server snapshot returns false; client reads the real value. React handles
@@ -21,12 +22,11 @@ export function useLoadingPhase() {
   const [visible, setVisible] = useState(true);
   const [progress, setProgress] = useState(0);
 
-  // Lock scroll during loading on mount
+  // Lock scroll while the loading experience is active.
   useEffect(() => {
-    if (!alreadyShown) {
-      document.body.style.overflow = "hidden";
-    }
-  }, [alreadyShown]);
+    if (alreadyShown || !visible) return;
+    return lockBodyScroll();
+  }, [alreadyShown, visible]);
 
   const handleComplete = useCallback(() => {
     // Fire phases: igniting -> burning -> blazing -> burst -> done
@@ -38,7 +38,6 @@ export function useLoadingPhase() {
       setTimeout(() => {
         setPhase("done");
         setVisible(false);
-        document.body.style.overflow = "";
         sessionStorage.setItem("yag-loaded", "1");
       }, 1000);
     }, 600);

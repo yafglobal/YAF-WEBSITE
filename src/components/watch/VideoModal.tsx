@@ -3,6 +3,7 @@
 import { motion, AnimatePresence } from "motion/react";
 import { X, ShareNetwork, ArrowSquareOut } from "@phosphor-icons/react";
 import { useEffect, useCallback } from "react";
+import { lockBodyScroll } from "@/lib/body-scroll-lock";
 
 interface VideoModalProps {
   isOpen: boolean;
@@ -20,13 +21,14 @@ export default function VideoModal({ isOpen, onClose, videoId, title }: VideoMod
   );
 
   useEffect(() => {
-    if (isOpen) {
-      document.addEventListener("keydown", handleEscape);
-      document.body.style.overflow = "hidden";
-    }
+    if (!isOpen) return;
+
+    document.addEventListener("keydown", handleEscape);
+    const releaseScrollLock = lockBodyScroll();
+
     return () => {
       document.removeEventListener("keydown", handleEscape);
-      document.body.style.overflow = "unset";
+      releaseScrollLock();
     };
   }, [isOpen, handleEscape]);
 
