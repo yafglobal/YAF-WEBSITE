@@ -29,7 +29,34 @@ export default function ReelCard({
 }: ReelCardProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const progressRef = useRef<HTMLDivElement>(null);
+  const loaderRef = useRef<HTMLDivElement>(null);
   const [tapIcon, setTapIcon] = useState<"play" | "pause" | null>(null);
+
+  // Show/hide loader via direct DOM mutation (no React state, no re-renders)
+  useEffect(() => {
+    const video = videoRef.current;
+    const loader = loaderRef.current;
+    if (!video || !loader) return;
+
+    const hide = () => {
+      loader.style.opacity = "0";
+      loader.style.pointerEvents = "none";
+    };
+    const show = () => {
+      loader.style.opacity = "1";
+      loader.style.pointerEvents = "auto";
+    };
+
+    // Already buffered (e.g. neighbor that just became active)
+    if (video.readyState >= 3) {
+      hide();
+    } else {
+      show();
+      video.addEventListener("canplay", hide, { once: true });
+    }
+
+    return () => video.removeEventListener("canplay", hide);
+  }, [reel.src]);
 
   // Play / pause based on active state
   useEffect(() => {
@@ -108,6 +135,15 @@ export default function ReelCard({
         preload="auto"
         onClick={handleTap}
       />
+
+      {/* Loading overlay — fades out via CSS transition once video can play */}
+      <div
+        ref={loaderRef}
+        className="absolute inset-0 z-20 flex flex-col items-center justify-center bg-black transition-opacity duration-300"
+      >
+        <div className="w-10 h-10 rounded-full border-2 border-white/10 border-t-plum animate-spin" />
+        <p className="mt-4 text-white/40 text-xs font-medium tracking-wide uppercase">Loading</p>
+      </div>
 
       {/* Tap play/pause feedback */}
       <AnimatePresence>
