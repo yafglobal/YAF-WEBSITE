@@ -54,17 +54,21 @@ export default function ReelsFeed({ reels }: ReelsFeedProps) {
         ref={containerRef}
         className="reels-container w-full h-full md:max-w-[420px] md:h-[calc(100dvh-40px)] md:rounded-3xl md:overflow-hidden md:shadow-2xl md:shadow-black/60 md:border md:border-white/5 relative"
       >
-        {reels.map((reel, i) => (
-          <div key={reel.id} data-index={i}>
-            <ReelCard
-              reel={reel}
-              isActive={currentIndex === i}
-              isMuted={isMuted}
-              onToggleMute={() => setIsMuted((m) => !m)}
-              onRequestNext={scrollToNext}
-            />
-          </div>
-        ))}
+        {reels.map((reel, i) => {
+          const isNeighbor = Math.abs(currentIndex - i) === 1;
+          return (
+            <div key={reel.id} data-index={i}>
+              <ReelCard
+                reel={reel}
+                isActive={currentIndex === i}
+                isNeighbor={isNeighbor}
+                isMuted={isMuted}
+                onToggleMute={() => setIsMuted((m) => !m)}
+                onRequestNext={scrollToNext}
+              />
+            </div>
+          );
+        })}
       </div>
 
       {/* Desktop side indicator dots */}

@@ -9,6 +9,8 @@ import type { ReelConfig } from "@/lib/reels-config";
 interface ReelCardProps {
   reel: ReelConfig;
   isActive: boolean;
+  /** Within ±1 of the active reel — prefetch more aggressively */
+  isNeighbor: boolean;
   isMuted: boolean;
   onToggleMute: () => void;
   onRequestNext: () => void;
@@ -17,6 +19,7 @@ interface ReelCardProps {
 export default function ReelCard({
   reel,
   isActive,
+  isNeighbor,
   isMuted,
   onToggleMute,
   onRequestNext,
@@ -83,7 +86,8 @@ export default function ReelCard({
     setTimeout(() => setTapIcon(null), 600);
   }, []);
 
-  const preloadValue = isActive ? "auto" : "metadata";
+  // Active = full download, neighbors = metadata (fast seek), rest = none
+  const preloadValue = isActive ? "auto" : isNeighbor ? "auto" : "none";
 
   return (
     <div className="reel-card relative w-full overflow-hidden bg-black">

@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from "motion/react";
 import { List, X, Play, FilmStrip } from "@phosphor-icons/react";
 
 import ThemeToggle from "@/components/ThemeToggle";
-import { navLinks, watchDropdownItems, MotionLink } from "./navConfig";
+import { navLinks, MotionLink } from "./navConfig";
 
 interface MobileNavProps {
   mobileOpen: boolean;
@@ -149,18 +149,40 @@ export default function MobileNav({
                           </MotionLink>
                         </div>
 
-                        {/* Continent pills */}
-                        <div className="flex flex-wrap justify-center gap-2">
-                          {watchDropdownItems.slice(1).map((item) => (
+                        {/* Region cards */}
+                        <div className="grid grid-cols-3 gap-1.5">
+                          {[
+                            {
+                              label: "Africa",
+                              href: "/watch/africa",
+                              gradient: "from-amber-600/80 to-orange-800/80",
+                              emoji: "\u{1F1F3}\u{1F1EC}",
+                            },
+                            {
+                              label: "N. America",
+                              href: "/watch/north-america",
+                              gradient: "from-red-600/80 to-rose-800/80",
+                              emoji: "\u{1F1E8}\u{1F1E6}",
+                            },
+                            {
+                              label: "Europe",
+                              href: "/watch/europe",
+                              gradient: "from-blue-600/80 to-indigo-800/80",
+                              emoji: "\u{1F1EC}\u{1F1E7}",
+                            },
+                          ].map((c) => (
                             <MotionLink
-                              key={item.href}
-                              href={item.href}
+                              key={c.href}
+                              href={c.href}
                               onClick={onClose}
                               initial={{ opacity: 0, scale: 0.9 }}
                               animate={{ opacity: 1, scale: 1 }}
-                              className="px-3 py-1.5 text-xs font-medium rounded-full border border-[var(--color-border)] text-[var(--color-text-muted)] hover:text-plum hover:border-plum/30 transition-colors"
+                              className={`flex items-center justify-center gap-1.5 py-2.5 rounded-lg bg-gradient-to-r ${c.gradient} text-white`}
                             >
-                              {item.flag} {item.label}
+                              <span className="text-sm leading-none">{c.emoji}</span>
+                              <span className="text-[11px] font-bold drop-shadow-sm">
+                                {c.label}
+                              </span>
                             </MotionLink>
                           ))}
                         </div>
