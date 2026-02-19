@@ -31,7 +31,7 @@ export default function Navbar() {
   const handleNavClick = (href: string) => {
     setMobileOpen(false);
     if (href === "/") {
-      window.scrollTo({ top: 0, behavior: "smooth" });
+      window.scrollTo({ top: 0 });
     }
   };
 
