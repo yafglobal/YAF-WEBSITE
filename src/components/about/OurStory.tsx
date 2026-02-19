@@ -12,8 +12,7 @@ export default function OurStory() {
     offset: ["start end", "end start"],
   });
 
-  const image1Y = useTransform(scrollYProgress, [0, 1], ["15%", "-15%"]);
-  const image2Y = useTransform(scrollYProgress, [0, 1], ["-5%", "10%"]);
+  const imageY = useTransform(scrollYProgress, [0, 1], ["8%", "-8%"]);
   const lineWidth = useTransform(scrollYProgress, [0.1, 0.5], ["0%", "100%"]);
 
   return (
@@ -47,99 +46,93 @@ export default function OurStory() {
           />
         </div>
 
-        {/* Content grid - asymmetric layout */}
-        <div className="mt-20 grid lg:grid-cols-12 gap-8 lg:gap-6 items-start">
-          {/* Overlapping images column */}
-          <div className="lg:col-span-7 relative min-h-[350px] sm:min-h-[450px] md:min-h-[640px]">
-            {/* Primary image */}
+        {/* Content: asymmetric grid */}
+        <div className="mt-20 grid lg:grid-cols-12 gap-10 lg:gap-8">
+          {/* Primary image column */}
+          <div className="lg:col-span-5">
             <ScrollReveal delay={0.2} direction="left">
               <motion.div
-                style={{ y: image1Y }}
-                className="relative w-[70%] sm:w-[75%] md:w-[65%] aspect-[3/4] rounded-2xl overflow-hidden z-10"
+                style={{ y: imageY }}
+                className="relative aspect-[3/4] rounded-2xl overflow-hidden"
               >
                 <Image
                   src="/images/about/worship-portrait.png"
                   alt="Youth worshipping at YAF"
                   fill
                   className="object-cover"
-                  sizes="(max-width: 768px) 75vw, 40vw"
+                  sizes="(max-width: 768px) 100vw, 40vw"
                 />
-                {/* Gradient overlay */}
                 <div className="absolute inset-0 bg-gradient-to-t from-[var(--color-background)]/60 via-transparent to-transparent" />
                 <div className="absolute inset-0 rounded-2xl ring-1 ring-inset ring-white/[0.06]" />
               </motion.div>
             </ScrollReveal>
+          </div>
 
-            {/* Secondary image - overlapping */}
-            <ScrollReveal delay={0.4} direction="right">
-              <motion.div
-                style={{ y: image2Y }}
-                className="absolute right-0 top-[35%] sm:top-[30%] w-[50%] md:w-[50%] aspect-[4/3] rounded-2xl overflow-hidden z-20 shadow-2xl"
-              >
+          {/* Text + secondary image column */}
+          <div className="lg:col-span-7 flex flex-col justify-between gap-10 lg:pt-8">
+            {/* Text block */}
+            <div>
+              <ScrollReveal delay={0.3}>
+                <p className="text-[var(--color-text-secondary)] text-base md:text-lg leading-[1.8] mb-6 max-w-xl">
+                  Community, development, and fellowship all in one place. Youth
+                  Alive Fellowship is your platform for spiritual edification,
+                  career advancement, and personal growth.
+                </p>
+              </ScrollReveal>
+
+              <ScrollReveal delay={0.4}>
+                <p className="text-[var(--color-text-secondary)] text-base md:text-lg leading-[1.8] mb-8 max-w-xl">
+                  We are a community of mentors, leaders, and associates who focus
+                  on balancing talents and God-given purpose. Get ready for a 360
+                  life transformation.
+                </p>
+              </ScrollReveal>
+
+              {/* Pull quote */}
+              <ScrollReveal delay={0.5}>
+                <div className="relative py-6">
+                  <span className="font-display font-extrabold text-6xl md:text-7xl leading-none text-transparent bg-clip-text bg-gradient-to-br from-fire/40 to-gold/20 select-none">
+                    &ldquo;
+                  </span>
+                  <p className="mt-1 text-[var(--color-text-primary)] font-display font-bold text-xl md:text-2xl leading-snug">
+                    Kingdom Giant, welcome to{" "}
+                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-fire to-gold">
+                      YAF
+                    </span>
+                    &rdquo;
+                  </p>
+                </div>
+              </ScrollReveal>
+
+              {/* Pillars */}
+              <ScrollReveal delay={0.6}>
+                <div className="mt-4 flex flex-wrap gap-3">
+                  {["Spiritual Growth", "Career Advancement", "Personal Development", "Community"].map(
+                    (pillar) => (
+                      <span
+                        key={pillar}
+                        className="px-4 py-2 text-sm font-medium text-[var(--color-text-secondary)] bg-[var(--color-surface)] border border-[var(--color-border)] rounded-full hover:border-fire/20 hover:text-fire transition-all duration-300"
+                      >
+                        {pillar}
+                      </span>
+                    )
+                  )}
+                </div>
+              </ScrollReveal>
+            </div>
+
+            {/* Secondary image — wide landscape, placed naturally in flow */}
+            <ScrollReveal delay={0.5} direction="right">
+              <div className="relative aspect-[16/9] rounded-2xl overflow-hidden shadow-2xl">
                 <Image
                   src="/images/about/fellowship-photo.png"
                   alt="Youth fellowship at YAF"
                   fill
                   className="object-cover"
-                  sizes="(max-width: 768px) 55vw, 35vw"
+                  sizes="(max-width: 768px) 100vw, 55vw"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[var(--color-background)]/40 via-transparent to-transparent" />
                 <div className="absolute inset-0 ring-1 ring-inset ring-white/10 rounded-2xl" />
-              </motion.div>
-            </ScrollReveal>
-
-            {/* Floating accent behind images */}
-            <div className="absolute top-[15%] left-[30%] w-60 h-60 bg-fire/10 rounded-full blur-[80px] pointer-events-none z-0" />
-          </div>
-
-          {/* Text column */}
-          <div className="lg:col-span-5 lg:pt-12">
-            <ScrollReveal delay={0.3}>
-              <p className="text-[var(--color-text-secondary)] text-base md:text-lg leading-[1.8] mb-6">
-                Community, development, and fellowship all in one place. Youth
-                Alive Fellowship is your platform for spiritual edification,
-                career advancement, and personal growth.
-              </p>
-            </ScrollReveal>
-
-            <ScrollReveal delay={0.4}>
-              <p className="text-[var(--color-text-secondary)] text-base md:text-lg leading-[1.8] mb-8">
-                We are a community of mentors, leaders, and associates who focus
-                on balancing talents and God-given purpose. Get ready for a 360
-                life transformation.
-              </p>
-            </ScrollReveal>
-
-            {/* Pull quote — decorative quotation mark treatment */}
-            <ScrollReveal delay={0.5}>
-              <div className="relative py-6">
-                {/* Large decorative opening quote */}
-                <span className="font-display font-extrabold text-6xl md:text-7xl leading-none text-transparent bg-clip-text bg-gradient-to-br from-fire/40 to-gold/20 select-none">
-                  &ldquo;
-                </span>
-                <p className="mt-1 text-[var(--color-text-primary)] font-display font-bold text-xl md:text-2xl leading-snug">
-                  Kingdom Giant, welcome to{" "}
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-fire to-gold">
-                    YAF
-                  </span>
-                  &rdquo;
-                </p>
-              </div>
-            </ScrollReveal>
-
-            {/* Pillars */}
-            <ScrollReveal delay={0.6}>
-              <div className="mt-8 flex flex-wrap gap-3">
-                {["Spiritual Growth", "Career Advancement", "Personal Development", "Community"].map(
-                  (pillar) => (
-                    <span
-                      key={pillar}
-                      className="px-4 py-2 text-sm font-medium text-[var(--color-text-secondary)] bg-[var(--color-surface)] border border-[var(--color-border)] rounded-full hover:border-fire/20 hover:text-fire transition-all duration-300"
-                    >
-                      {pillar}
-                    </span>
-                  )
-                )}
               </div>
             </ScrollReveal>
           </div>
