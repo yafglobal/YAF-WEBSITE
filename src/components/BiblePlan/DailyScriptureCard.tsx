@@ -229,7 +229,7 @@ export default function DailyScriptureCard({ onViewPlan }: DailyScriptureCardPro
           )}
 
           {/* ── Verse Display ──────────────────── */}
-          <div className="min-h-[200px] flex items-center">
+          <div className="relative">
             <AnimatePresence mode="wait">
               {todaysReading?.passages && todaysReading.passages.length > 0 ? (
                 isLoading ? (
@@ -248,56 +248,59 @@ export default function DailyScriptureCard({ onViewPlan }: DailyScriptureCardPro
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
-                    className="space-y-6"
                   >
-                    {/* Opening Quote */}
-                    <motion.span
-                      className="block text-8xl text-plum/30 leading-none -mb-6 font-display"
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 0.1 }}
-                    >
-                      &ldquo;
-                    </motion.span>
+                    {/* Capped verse area with fade-out mask */}
+                    <div className="relative max-h-[220px] overflow-hidden">
+                      {/* Opening Quote */}
+                      <motion.span
+                        className="block text-7xl text-plum/30 leading-none mb-1 font-display"
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.1 }}
+                      >
+                        &ldquo;
+                      </motion.span>
 
-                    {/* Word-by-word animated verse */}
-                    <p className="text-xl md:text-2xl text-[var(--color-text-primary)] leading-relaxed font-body">
-                      {words.map((word, i) => (
-                        <motion.span
-                          key={i}
-                          initial={{ opacity: 0, y: 10 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          transition={{
-                            delay: 0.2 + i * 0.03,
-                            duration: 0.4,
-                            ease: "easeOut",
-                          }}
-                          className="inline-block mr-[0.3em]"
-                        >
-                          {word}
-                        </motion.span>
-                      ))}
-                    </p>
+                      {/* Word-by-word animated verse */}
+                      <p className="text-base md:text-lg text-[var(--color-text-primary)] leading-relaxed font-body">
+                        {words.map((word, i) => (
+                          <motion.span
+                            key={i}
+                            initial={{ opacity: 0, y: 10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{
+                              delay: 0.2 + i * 0.03,
+                              duration: 0.4,
+                              ease: "easeOut",
+                            }}
+                            className="inline-block mr-[0.3em]"
+                          >
+                            {word}
+                          </motion.span>
+                        ))}
+                      </p>
 
-                    {/* Reference */}
+                      {/* Fade-out gradient mask */}
+                      <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-[var(--color-surface)] to-transparent pointer-events-none" />
+                    </div>
+
+                    {/* Reference + disclaimer sit below the capped area */}
                     <motion.p
-                      className="text-sm font-mono text-plum tracking-wide"
+                      className="text-xs font-mono text-plum tracking-wide mt-3"
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
-                      transition={{ delay: 0.5 + words.length * 0.03 }}
+                      transition={{ delay: 0.5 + Math.min(words.length, 30) * 0.03 }}
                     >
                       &mdash; {verse.reference} ({verse.translation})
                     </motion.p>
 
-                    {/* Disclaimer */}
                     <motion.p
-                      className="text-[11px] text-[var(--color-text-muted)] italic mt-4 leading-relaxed"
+                      className="text-[11px] text-[var(--color-text-muted)] italic mt-2 leading-relaxed"
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
-                      transition={{ delay: 0.6 + words.length * 0.03 }}
+                      transition={{ delay: 0.6 + Math.min(words.length, 30) * 0.03 }}
                     >
-                      This is a preview of the opening verses. Your full reading assignment is shown
-                      above.
+                      Preview of the opening verses. Full reading above.
                     </motion.p>
                   </motion.div>
                 ) : (
@@ -305,7 +308,7 @@ export default function DailyScriptureCard({ onViewPlan }: DailyScriptureCardPro
                     key="error"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
-                    className="text-[var(--color-text-muted)] text-lg italic"
+                    className="text-[var(--color-text-muted)] text-lg italic py-8"
                   >
                     Unable to load verse. Please try again later.
                   </motion.p>
@@ -315,7 +318,7 @@ export default function DailyScriptureCard({ onViewPlan }: DailyScriptureCardPro
                   key="no-verse"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
-                  className="text-[var(--color-text-muted)] text-lg italic"
+                  className="text-[var(--color-text-muted)] text-lg italic py-8"
                 >
                   {todaysReading?.isBeforePlanStart
                     ? "The reading plan begins January 1, 2026"
