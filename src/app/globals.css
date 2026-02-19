@@ -383,6 +383,27 @@ html.light .mesh-gradient {
   overflow: hidden;
 }
 
+/* ── Motion gradient text ─────────────────── */
+@keyframes gradient-flow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+.motion-gradient-text {
+  background: linear-gradient(90deg, #d4a0b9, #a85a8a, #861657, #d4a0b9, #a85a8a, #861657, #d4a0b9);
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradient-flow 4s ease infinite;
+}
+
 /* ── CTA shimmer ───────────────────────────── */
 @keyframes shimmer {
   0% {
@@ -632,6 +653,15 @@ html.light .mesh-gradient {
   .video-container {
     border-radius: 12px;
   }
+}
+
+/* ── Community nav scroll (hide scrollbar) ── */
+.community-nav-scroll {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.community-nav-scroll::-webkit-scrollbar {
+  display: none;
 }
 
 /* ── Reels scroll-snap ────────────────────── */

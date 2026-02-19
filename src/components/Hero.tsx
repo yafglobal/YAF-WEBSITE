@@ -128,9 +128,7 @@ export default function Hero() {
           className="font-display font-extrabold text-foreground leading-[0.9] tracking-tight"
         >
           <span className="block text-[clamp(3.5rem,12vw,10rem)] text-glow-plum">KINGDOM</span>
-          <span className="block text-[clamp(3.5rem,12vw,10rem)] text-transparent bg-clip-text bg-gradient-to-r from-plum-tint via-plum-light to-plum">
-            GIANTS
-          </span>
+          <span className="block text-[clamp(3.5rem,12vw,10rem)] motion-gradient-text">GIANTS</span>
         </motion.h1>
 
         {/* Subtitle */}
