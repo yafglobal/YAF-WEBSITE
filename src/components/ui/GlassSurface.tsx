@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useCallback, useEffect, useMemo, useRef, useSyncExternalStore, useId } from "react";
+import React, { useCallback, useEffect, useRef, useSyncExternalStore, useId } from "react";
 
 export interface GlassSurfaceProps {
   children?: React.ReactNode;
@@ -63,6 +63,10 @@ const useDarkMode = () => {
   return useSyncExternalStore(subscribeToDarkMode, getIsDarkSnapshot, getIsDarkServerSnapshot);
 };
 
+// No-op subscribe for static browser capabilities that never change
+const noopSubscribe = () => () => {};
+const falseServerSnapshot = () => false;
+
 // Browser capability checks (stable across session)
 function checkSVGFilterSupport(filterId: string) {
   if (typeof window === "undefined" || typeof document === "undefined") return false;
@@ -117,8 +121,17 @@ const GlassSurface: React.FC<GlassSurfaceProps> = ({
 
   const isDarkMode = useDarkMode();
 
-  const svgSupported = useMemo(() => checkSVGFilterSupport(filterId), [filterId]);
-  const backdropFilterSupported = useMemo(() => checkBackdropFilterSupport(), []);
+  // Use useSyncExternalStore with false server snapshot to avoid hydration mismatch
+  const svgSupported = useSyncExternalStore(
+    noopSubscribe,
+    () => checkSVGFilterSupport(filterId),
+    falseServerSnapshot
+  );
+  const backdropFilterSupported = useSyncExternalStore(
+    noopSubscribe,
+    checkBackdropFilterSupport,
+    falseServerSnapshot
+  );
 
   const generateDisplacementMap = useCallback(() => {
     const rect = containerRef.current?.getBoundingClientRect();
