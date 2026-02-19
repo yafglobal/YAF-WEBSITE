@@ -97,7 +97,7 @@ export default function Navbar() {
                   width={155}
                   height={40}
                   className="h-8 w-auto"
-                  style={{ filter: "brightness(2)" }}
+                  style={{ filter: "var(--logo-filter, brightness(2))" }}
                   priority
                 />
               </motion.div>
