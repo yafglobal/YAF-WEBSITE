@@ -12,9 +12,16 @@ export const metadata: Metadata = {
 };
 
 export default async function WatchPage() {
-  // Collect all playlist IDs across all continents
+  // Collect all playlist IDs across all continents (with country metadata)
   const allPlaylists = CONTINENTS.flatMap((c) =>
-    c.countries.flatMap((country) => country.playlists)
+    c.countries.flatMap((country) =>
+      country.playlists.map((p) => ({
+        ...p,
+        countryName: country.name,
+        countryFlag: country.flag,
+        continentName: c.name,
+      }))
+    )
   );
 
   // Fetch all playlist videos + channel playlists in parallel
@@ -24,15 +31,13 @@ export default async function WatchPage() {
   ]);
 
   // Fetch additional channel-level playlists (Canada channel)
-  const additionalChannelVideoCounts = await Promise.all(
-    channelPlaylists
-      .filter((p) => p.id !== CANADA_CHANNEL_PLAYLIST_ID)
-      .map(async (playlist) => {
-        const videos = await getPlaylistVideos(playlist.id, 15);
-        return videos.length;
-      })
+  const channelPlaylistsFiltered = channelPlaylists.filter(
+    (p) => p.id !== CANADA_CHANNEL_PLAYLIST_ID
   );
-  const additionalVideos = additionalChannelVideoCounts.reduce((a, b) => a + b, 0);
+  const channelPlaylistVideos = await Promise.all(
+    channelPlaylistsFiltered.map((playlist) => getPlaylistVideos(playlist.id, 15))
+  );
+  const additionalVideos = channelPlaylistVideos.reduce((sum, vids) => sum + vids.length, 0);
 
   // Build video count per continent
   const continentData = CONTINENTS.map((continent) => {
@@ -43,7 +48,6 @@ export default async function WatchPage() {
         if (idx !== -1) videoCount += allVideoArrays[idx]?.length || 0;
       }
     }
-    // Add channel playlist videos to Canada's continent
     if (continent.slug === "north-america") {
       videoCount += additionalVideos;
     }
@@ -55,6 +59,32 @@ export default async function WatchPage() {
     };
   });
 
+  // Build playlist entries with videos for display
+  const playlistEntries = allPlaylists
+    .map((p, i) => ({
+      id: p.id,
+      title: p.title,
+      videos: allVideoArrays[i] || [],
+      countryName: p.countryName,
+      countryFlag: p.countryFlag,
+      continentName: p.continentName,
+    }))
+    .filter((p) => p.videos.length > 0);
+
+  // Add Canada channel-level playlists
+  const channelEntries = channelPlaylistsFiltered
+    .map((p, i) => ({
+      id: p.id,
+      title: p.title,
+      videos: channelPlaylistVideos[i] || [],
+      countryName: "Canada",
+      countryFlag: "🇨🇦",
+      continentName: "North America",
+    }))
+    .filter((p) => p.videos.length > 0);
+
+  const allPlaylistEntries = [...playlistEntries, ...channelEntries];
+
   // Collect all videos for "Recently Added" and featured hero
   const allVideos = allVideoArrays
     .flat()
@@ -64,7 +94,7 @@ export default async function WatchPage() {
   return (
     <main className="relative grain min-h-screen">
       <Navbar />
-      <WatchHub continents={continentData} allVideos={allVideos} />
+      <WatchHub continents={continentData} allVideos={allVideos} playlists={allPlaylistEntries} />
       <Footer />
     </main>
   );

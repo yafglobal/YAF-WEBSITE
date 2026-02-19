@@ -41,7 +41,7 @@ export default function Footer({ transparent = false }: FooterProps) {
   return (
     <footer
       id="contact"
-      className={`relative overflow-hidden footer-video min-h-[60vh] md:min-h-[80vh] flex flex-col ${transparent ? "bg-transparent" : ""}`}
+      className={`relative overflow-hidden min-h-[60vh] md:min-h-[80vh] flex flex-col ${transparent ? "bg-transparent" : "footer-video"}`}
     >
       {/* Mux Video Background — skipped when transparent (parent provides video) */}
       {!transparent && (

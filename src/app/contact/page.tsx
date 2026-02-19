@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 
 export default function ContactRoute() {
   return (
-    <main className="relative grain">
+    <main className="relative grain footer-video">
       <Navbar />
       <ContactPage />
       <Footer transparent />
