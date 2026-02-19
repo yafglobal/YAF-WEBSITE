@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, AnimatePresence } from "motion/react";
-import { List, X } from "@phosphor-icons/react";
+import { List, X, Play, FilmStrip } from "@phosphor-icons/react";
 
 import ThemeToggle from "@/components/ThemeToggle";
 import { navLinks, watchDropdownItems, MotionLink } from "./navConfig";
@@ -108,26 +108,62 @@ export default function MobileNav({
                       {link.label}
                     </MotionLink>
 
-                    {/* Watch sub-items */}
+                    {/* Watch sub-items: visual cards + continent pills */}
                     {isWatch && (
                       <motion.div
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ delay: 0.12 + i * 0.06 + 0.1 }}
-                        className="flex flex-wrap justify-center gap-2 mt-1 mb-2"
+                        className="mt-2 mb-3 space-y-2"
                       >
-                        {watchDropdownItems.slice(1).map((item) => (
+                        {/* Visual buttons */}
+                        <div className="grid grid-cols-2 gap-2">
                           <MotionLink
-                            key={item.href}
-                            href={item.href}
+                            href="/watch"
                             onClick={onClose}
                             initial={{ opacity: 0, scale: 0.9 }}
                             animate={{ opacity: 1, scale: 1 }}
-                            className="px-3 py-1.5 text-xs font-medium rounded-full border border-[var(--color-border)] text-[var(--color-text-muted)] hover:text-plum hover:border-plum/30 transition-colors"
+                            className="flex flex-col items-center gap-2 py-4 rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] hover:border-plum/30 transition-colors"
                           >
-                            {item.flag} {item.label}
+                            <div className="w-10 h-10 rounded-full bg-plum/10 flex items-center justify-center">
+                              <Play size={20} weight="fill" className="text-plum ml-0.5" />
+                            </div>
+                            <span className="text-xs font-bold text-[var(--color-text-primary)]">
+                              Video Library
+                            </span>
                           </MotionLink>
-                        ))}
+                          <MotionLink
+                            href="/reels"
+                            onClick={onClose}
+                            initial={{ opacity: 0, scale: 0.9 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            transition={{ delay: 0.05 }}
+                            className="flex flex-col items-center gap-2 py-4 rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] hover:border-plum/30 transition-colors"
+                          >
+                            <div className="w-10 h-10 rounded-full bg-plum/10 flex items-center justify-center">
+                              <FilmStrip size={20} weight="fill" className="text-plum" />
+                            </div>
+                            <span className="text-xs font-bold text-[var(--color-text-primary)]">
+                              Reels
+                            </span>
+                          </MotionLink>
+                        </div>
+
+                        {/* Continent pills */}
+                        <div className="flex flex-wrap justify-center gap-2">
+                          {watchDropdownItems.slice(1).map((item) => (
+                            <MotionLink
+                              key={item.href}
+                              href={item.href}
+                              onClick={onClose}
+                              initial={{ opacity: 0, scale: 0.9 }}
+                              animate={{ opacity: 1, scale: 1 }}
+                              className="px-3 py-1.5 text-xs font-medium rounded-full border border-[var(--color-border)] text-[var(--color-text-muted)] hover:text-plum hover:border-plum/30 transition-colors"
+                            >
+                              {item.flag} {item.label}
+                            </MotionLink>
+                          ))}
+                        </div>
                       </motion.div>
                     )}
                   </div>

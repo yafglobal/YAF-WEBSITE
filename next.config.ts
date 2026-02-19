@@ -18,6 +18,11 @@ const nextConfig: NextConfig = {
         hostname: "i.ytimg.com",
         pathname: "/**",
       },
+      {
+        protocol: "https",
+        hostname: "globalreels.winnerschapelsudbury.org",
+        pathname: "/**",
+      },
     ],
   },
 };

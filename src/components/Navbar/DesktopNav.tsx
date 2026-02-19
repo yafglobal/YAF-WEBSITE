@@ -6,41 +6,14 @@ import { ArrowRight, CaretDown } from "@phosphor-icons/react";
 import { useState, useRef } from "react";
 
 import ThemeToggle from "@/components/ThemeToggle";
-import { navLinks, watchDropdownItems } from "./navConfig";
+import { navLinks } from "./navConfig";
+import WatchMegaDropdown from "./WatchMegaDropdown";
 
 interface DesktopNavProps {
   activeSection: number;
   scrolled: boolean;
   pathname: string;
   onNavClick: (href: string, index: number) => void;
-}
-
-function WatchDropdown() {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 8, scale: 0.96 }}
-      animate={{ opacity: 1, y: 0, scale: 1 }}
-      exit={{ opacity: 0, y: 8, scale: 0.96 }}
-      transition={{ duration: 0.15 }}
-      className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-52 py-2 rounded-xl bg-[var(--color-surface)] border border-[var(--color-border)] shadow-xl shadow-black/20 backdrop-blur-xl overflow-hidden z-50"
-    >
-      {watchDropdownItems.map((item, i) => (
-        <Link
-          key={item.href}
-          href={item.href}
-          className={`
-            flex items-center gap-2.5 px-4 py-2.5 text-[13px] font-medium
-            transition-colors duration-150
-            text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] hover:bg-[var(--color-surface-hover)]
-            ${i === 0 ? "border-b border-[var(--color-border)] mb-1 pb-3" : ""}
-          `}
-        >
-          {item.flag && <span className="text-base">{item.flag}</span>}
-          {item.label}
-        </Link>
-      ))}
-    </motion.div>
-  );
 }
 
 export default function DesktopNav({
@@ -122,7 +95,9 @@ export default function DesktopNav({
                 </Link>
 
                 {/* Watch dropdown */}
-                {isWatch && <AnimatePresence>{watchHovered && <WatchDropdown />}</AnimatePresence>}
+                {isWatch && (
+                  <AnimatePresence>{watchHovered && <WatchMegaDropdown />}</AnimatePresence>
+                )}
               </div>
             );
           })}
