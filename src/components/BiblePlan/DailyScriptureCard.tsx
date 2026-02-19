@@ -103,6 +103,7 @@ export default function DailyScriptureCard({ onViewPlan }: DailyScriptureCardPro
   const [todaysReading] = useState<TodaysReading>(() => getTodaysReading());
   const [verse, setVerse] = useState<VerseData | null>(null);
   const [translation, setTranslation] = useState<Translation>("kjv");
+  const [expanded, setExpanded] = useState(false);
   const [verseIndex, setVerseIndex] = useState(0);
   const [fetchKey, setFetchKey] = useState<string | null>(null);
 
@@ -135,7 +136,15 @@ export default function DailyScriptureCard({ onViewPlan }: DailyScriptureCardPro
     };
   }, [todaysReading, translation, verseIndex]);
 
-  const toggleTranslation = () => setTranslation((t) => (t === "kjv" ? "web" : "kjv"));
+  const toggleTranslation = () => {
+    setExpanded(false);
+    setTranslation((t) => (t === "kjv" ? "web" : "kjv"));
+  };
+
+  const selectPassage = (idx: number) => {
+    setExpanded(false);
+    setVerseIndex(idx);
+  };
 
   // Split for word-by-word animation
   const words = verse?.text?.split(" ") || [];
@@ -215,7 +224,7 @@ export default function DailyScriptureCard({ onViewPlan }: DailyScriptureCardPro
               {todaysReading.passages.map((passage, idx) => (
                 <button
                   key={idx}
-                  onClick={() => setVerseIndex(idx)}
+                  onClick={() => selectPassage(idx)}
                   className={`px-4 py-2 rounded-full text-xs font-bold tracking-wide transition-all ${
                     verseIndex === idx
                       ? "bg-plum text-white"
@@ -249,8 +258,11 @@ export default function DailyScriptureCard({ onViewPlan }: DailyScriptureCardPro
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
                   >
-                    {/* Capped verse area with fade-out mask */}
-                    <div className="relative max-h-[220px] overflow-hidden">
+                    {/* Verse area — capped when collapsed, full when expanded */}
+                    <div
+                      className="relative overflow-hidden transition-[max-height] duration-500 ease-in-out"
+                      style={{ maxHeight: expanded ? "2000px" : "220px" }}
+                    >
                       {/* Opening Quote */}
                       <motion.span
                         className="block text-7xl text-plum/30 leading-none mb-1 font-display"
@@ -280,11 +292,21 @@ export default function DailyScriptureCard({ onViewPlan }: DailyScriptureCardPro
                         ))}
                       </p>
 
-                      {/* Fade-out gradient mask */}
-                      <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-[var(--color-surface)] to-transparent pointer-events-none" />
+                      {/* Fade-out gradient — only visible when collapsed */}
+                      {!expanded && (
+                        <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-[var(--color-surface)] to-transparent pointer-events-none" />
+                      )}
                     </div>
 
-                    {/* Reference + disclaimer sit below the capped area */}
+                    {/* Read more / less toggle */}
+                    <button
+                      onClick={() => setExpanded((e) => !e)}
+                      className="text-xs font-bold text-plum hover:text-plum-light transition-colors mt-2 uppercase tracking-wider"
+                    >
+                      {expanded ? "Read less" : "Read more"}
+                    </button>
+
+                    {/* Reference */}
                     <motion.p
                       className="text-xs font-mono text-plum tracking-wide mt-3"
                       initial={{ opacity: 0 }}
