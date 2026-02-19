@@ -123,8 +123,8 @@ export default function Navbar() {
                   alt="Youth Alive Global"
                   width={155}
                   height={40}
-                  className="h-8 w-auto brightness-200"
-                  style={{ filter: "var(--logo-filter, brightness(2))" }}
+                  className="h-8 w-auto"
+                  style={{ filter: "brightness(2)" }}
                   priority
                 />
               </motion.div>
