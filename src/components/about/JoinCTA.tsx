@@ -60,7 +60,7 @@ export default function JoinCTA() {
         style={{
           background: `
             radial-gradient(ellipse at 50% 55%, rgba(255, 77, 0, 0.12) 0%, transparent 55%),
-            linear-gradient(to top, rgba(10, 10, 10, 0.3), transparent)
+            linear-gradient(to top, var(--color-overlay), transparent)
           `,
         }}
       />

@@ -125,7 +125,7 @@ export default function ImpactStats() {
             </p>
           </ScrollReveal>
           <ScrollReveal delay={0.1}>
-            <h2 className="font-display font-extrabold text-4xl md:text-5xl lg:text-6xl leading-[1.05] tracking-tight text-white">
+            <h2 className="font-display font-extrabold text-4xl md:text-5xl lg:text-6xl leading-[1.05] tracking-tight text-foreground">
               Setting the World{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-fire via-fire-light to-gold text-glow-fire">
                 Ablaze
@@ -147,7 +147,7 @@ export default function ImpactStats() {
               <div className="relative group text-center py-8 md:py-10 px-3">
                 {/* Vertical divider between items (desktop only) */}
                 {i > 0 && (
-                  <div className="hidden md:block absolute left-0 top-1/2 -translate-y-1/2 w-[1px] h-[55%] bg-gradient-to-b from-transparent via-white/[0.06] to-transparent" />
+                  <div className="hidden md:block absolute left-0 top-1/2 -translate-y-1/2 w-[1px] h-[55%] bg-gradient-to-b from-transparent via-[var(--color-border)] to-transparent" />
                 )}
 
                 {/* Icon */}
@@ -156,7 +156,7 @@ export default function ImpactStats() {
                 </div>
 
                 {/* Giant number */}
-                <p className="font-display font-extrabold text-4xl sm:text-5xl lg:text-6xl text-white tracking-tight leading-none">
+                <p className="font-display font-extrabold text-4xl sm:text-5xl lg:text-6xl text-foreground tracking-tight leading-none">
                   <AnimatedCounter
                     value={stat.value}
                     suffix={stat.suffix}

@@ -246,7 +246,7 @@ function FeaturedCard({ leader }: { leader: Leader }) {
 
             {/* Play indicator */}
             <div
-              className={`absolute bottom-4 left-4 z-[4] flex items-center gap-2 px-3 py-1.5 rounded-full bg-black/50 backdrop-blur-sm transition-all duration-500 ${
+              className={`absolute bottom-4 left-4 z-[4] flex items-center gap-2 px-3 py-1.5 rounded-full bg-background/50 backdrop-blur-sm transition-all duration-500 ${
                 isHovered
                   ? "opacity-100 translate-y-0"
                   : "opacity-0 translate-y-2"
@@ -256,7 +256,7 @@ function FeaturedCard({ leader }: { leader: Leader }) {
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-fire opacity-75" />
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-fire" />
               </span>
-              <span className="text-white/80 text-[10px] tracking-widest uppercase font-semibold">
+              <span className="text-foreground/80 text-[10px] tracking-widest uppercase font-semibold">
                 Now Playing
               </span>
             </div>
@@ -326,14 +326,14 @@ function LeaderCard({ leader, index }: { leader: Leader; index: number }) {
           <VideoOverlay video={leader.video} isHovered={isHovered} />
 
           {/* Gradient overlay */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent z-[3]" />
+          <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-background/20 to-transparent z-[3]" />
 
           {/* Hover glow */}
           <div className="absolute inset-0 bg-gradient-to-t from-fire/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-[3]" />
 
           {/* Play indicator */}
           <div
-            className={`absolute top-4 right-4 z-[4] flex items-center gap-2 px-3 py-1.5 rounded-full bg-black/50 backdrop-blur-sm transition-all duration-500 ${
+            className={`absolute top-4 right-4 z-[4] flex items-center gap-2 px-3 py-1.5 rounded-full bg-background/50 backdrop-blur-sm transition-all duration-500 ${
               isHovered
                 ? "opacity-100 translate-y-0"
                 : "opacity-0 -translate-y-2"
@@ -343,7 +343,7 @@ function LeaderCard({ leader, index }: { leader: Leader; index: number }) {
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-fire opacity-75" />
               <span className="relative inline-flex rounded-full h-2 w-2 bg-fire" />
             </span>
-            <span className="text-white/80 text-[10px] tracking-widest uppercase font-semibold">
+            <span className="text-foreground/80 text-[10px] tracking-widest uppercase font-semibold">
               Now Playing
             </span>
           </div>
@@ -357,14 +357,14 @@ function LeaderCard({ leader, index }: { leader: Leader; index: number }) {
               </span>
             </div>
 
-            <h3 className="font-display font-bold text-xl md:text-2xl text-white leading-tight">
+            <h3 className="font-display font-bold text-xl md:text-2xl text-foreground leading-tight">
               {leader.name}
             </h3>
 
-            <p className="mt-1 text-white/60 text-sm">{leader.subtitle}</p>
+            <p className="mt-1 text-foreground/60 text-sm">{leader.subtitle}</p>
 
             {/* Bio on hover */}
-            <p className="mt-3 text-white/50 text-xs leading-relaxed max-h-0 overflow-hidden group-hover:max-h-24 transition-all duration-500 ease-out">
+            <p className="mt-3 text-foreground/50 text-xs leading-relaxed max-h-0 overflow-hidden group-hover:max-h-24 transition-all duration-500 ease-out">
               {leader.bio}
             </p>
           </div>
@@ -376,7 +376,7 @@ function LeaderCard({ leader, index }: { leader: Leader; index: number }) {
           </div>
 
           {/* Ring */}
-          <div className="absolute inset-0 rounded-2xl ring-1 ring-inset ring-white/[0.06] group-hover:ring-fire/20 transition-all duration-500 z-[4]" />
+          <div className="absolute inset-0 rounded-2xl ring-1 ring-inset ring-[var(--color-border)] group-hover:ring-fire/20 transition-all duration-500 z-[4]" />
         </div>
 
         {/* Number indicator */}

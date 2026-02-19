@@ -87,9 +87,9 @@ export default function Hero() {
           </div>
         ))}
         {/* Dark gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-[#0A0A0A]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/40 to-background" />
         {/* Fire tint at bottom */}
-        <div className="absolute bottom-0 left-0 right-0 h-1/3 bg-gradient-to-t from-[#0A0A0A] via-[#0A0A0A]/80 to-transparent" />
+        <div className="absolute bottom-0 left-0 right-0 h-1/3 bg-gradient-to-t from-background via-background/80 to-transparent" />
       </motion.div>
 
       {/* Particles */}
@@ -115,7 +115,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.7, duration: 1, ease: [0.22, 1, 0.36, 1] }}
-          className="font-display font-extrabold text-white leading-[0.9] tracking-tight"
+          className="font-display font-extrabold text-foreground leading-[0.9] tracking-tight"
         >
           <span className="block text-[clamp(3.5rem,12vw,10rem)] text-glow-fire">
             KINGDOM
@@ -130,7 +130,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.1, duration: 0.8 }}
-          className="mt-6 md:mt-8 text-white/60 text-sm md:text-lg max-w-md font-light leading-relaxed px-2 sm:px-0"
+          className="mt-6 md:mt-8 text-[var(--color-text-muted)] text-sm md:text-lg max-w-md font-light leading-relaxed px-2 sm:px-0"
         >
           An enfired community of young people committed to spiritual growth and
           purpose-driven living.

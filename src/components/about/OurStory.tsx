@@ -63,7 +63,7 @@ export default function OurStory() {
                   sizes="(max-width: 768px) 100vw, 40vw"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[var(--color-background)]/60 via-transparent to-transparent" />
-                <div className="absolute inset-0 rounded-2xl ring-1 ring-inset ring-white/[0.06]" />
+                <div className="absolute inset-0 rounded-2xl ring-1 ring-inset ring-[var(--color-border)]" />
               </motion.div>
             </ScrollReveal>
           </div>
@@ -132,7 +132,7 @@ export default function OurStory() {
                   sizes="(max-width: 768px) 100vw, 55vw"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[var(--color-background)]/40 via-transparent to-transparent" />
-                <div className="absolute inset-0 ring-1 ring-inset ring-white/10 rounded-2xl" />
+                <div className="absolute inset-0 ring-1 ring-inset ring-[var(--color-border)] rounded-2xl" />
               </div>
             </ScrollReveal>
           </div>

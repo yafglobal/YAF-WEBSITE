@@ -73,7 +73,7 @@ export default function Community() {
       <div className="relative z-10 max-w-[1400px] mx-auto px-6 md:px-10 text-center">
         {/* Icon */}
         <ScrollReveal>
-          <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-white/10 border border-white/20 mb-8">
+          <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-[var(--color-surface)]/50 border border-[var(--color-border)] mb-8">
             <Image
               src="/images/yaf-pc.svg"
               alt="YAF Professional Community"
@@ -85,7 +85,7 @@ export default function Community() {
         </ScrollReveal>
 
         <ScrollReveal delay={0.1}>
-          <h2 className="font-display font-extrabold text-4xl md:text-5xl lg:text-7xl leading-[1.05] tracking-tight text-white max-w-4xl mx-auto">
+          <h2 className="font-display font-extrabold text-4xl md:text-5xl lg:text-7xl leading-[1.05] tracking-tight text-foreground max-w-4xl mx-auto">
             Connect with our{" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-fire to-gold">
               Professional
@@ -95,7 +95,7 @@ export default function Community() {
         </ScrollReveal>
 
         <ScrollReveal delay={0.2}>
-          <p className="mt-8 text-white/60 text-base md:text-lg leading-relaxed max-w-2xl mx-auto">
+          <p className="mt-8 text-[var(--color-text-secondary)] text-base md:text-lg leading-relaxed max-w-2xl mx-auto">
             Get more information from our community page, connect with
             vision-driven individuals to get inspired, participate in job fairs,
             attend workshops and so many more valuable resources to get you ahead
@@ -107,13 +107,13 @@ export default function Community() {
         <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-6 max-w-4xl mx-auto">
           {features.map((feat, i) => (
             <ScrollReveal key={feat.title} delay={0.3 + i * 0.1}>
-              <div className="p-4 md:p-6 bg-white/5 backdrop-blur-sm border border-white/8 rounded-2xl hover:border-fire/20 hover:bg-white/8 transition-all duration-300 group">
+              <div className="p-4 md:p-6 bg-[var(--color-surface)]/30 backdrop-blur-sm border border-[var(--color-border)] rounded-2xl hover:border-fire/20 hover:bg-[var(--color-surface)]/50 transition-all duration-300 group">
                 <feat.icon
                   size={28}
                   className="text-fire mx-auto mb-3 group-hover:scale-110 transition-transform"
                   weight="duotone"
                 />
-                <p className="font-display font-bold text-white text-sm">
+                <p className="font-display font-bold text-foreground text-sm">
                   {feat.title}
                 </p>
                 <p className="mt-1 text-ash text-xs leading-relaxed">

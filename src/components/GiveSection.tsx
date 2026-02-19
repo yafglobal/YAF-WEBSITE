@@ -34,7 +34,7 @@ export default function GiveSection() {
       </motion.div>
 
       {/* Dark overlay */}
-      <div className="absolute inset-0 bg-black/70" />
+      <div className="absolute inset-0 bg-background/70" />
 
       {/* Gradient blends */}
       <div className="absolute inset-0 bg-gradient-to-b from-[var(--color-background)] via-transparent to-[var(--color-background)]" />
@@ -53,7 +53,7 @@ export default function GiveSection() {
         </ScrollReveal>
 
         <ScrollReveal delay={0.1}>
-          <h2 className="font-display font-extrabold text-4xl md:text-6xl lg:text-7xl leading-[1.05] tracking-tight text-white">
+          <h2 className="font-display font-extrabold text-4xl md:text-6xl lg:text-7xl leading-[1.05] tracking-tight text-foreground">
             For God loveth a{" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-gold to-fire">
               cheerful giver
@@ -62,11 +62,11 @@ export default function GiveSection() {
         </ScrollReveal>
 
         <ScrollReveal delay={0.2}>
-          <p className="mt-8 text-white/50 text-base md:text-xl leading-relaxed max-w-xl mx-auto italic font-light">
+          <p className="mt-8 text-[var(--color-text-muted)] text-base md:text-xl leading-relaxed max-w-xl mx-auto italic font-light">
             &ldquo;Every man according as he purposeth in his heart, so let him
             give; not grudgingly, or of necessity.&rdquo;
           </p>
-          <p className="mt-3 text-white/25 text-sm font-display font-medium tracking-wider">
+          <p className="mt-3 text-foreground/25 text-sm font-display font-medium tracking-wider">
             2 Corinthians 9:7
           </p>
         </ScrollReveal>
@@ -94,7 +94,7 @@ export default function GiveSection() {
             </a>
             <a
               href="#"
-              className="px-6 py-4 md:px-8 md:py-5 border border-white/20 text-white/70 font-display font-medium text-xs md:text-sm tracking-wide uppercase rounded-full hover:border-white/40 hover:text-white transition-all duration-300"
+              className="px-6 py-4 md:px-8 md:py-5 border border-[var(--color-border)] text-[var(--color-text-secondary)] font-display font-medium text-xs md:text-sm tracking-wide uppercase rounded-full hover:border-[var(--color-border-hover)] hover:text-[var(--color-text-primary)] transition-all duration-300"
             >
               Learn About Giving
             </a>

@@ -146,7 +146,7 @@ export default function Navbar() {
                           ? "text-white"
                           : scrolled
                             ? "text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)]"
-                            : "text-white/70 hover:text-white"
+                            : "text-fire hover:text-fire-light text-glow-fire"
                       }
                     `}
                   >
@@ -184,7 +184,7 @@ export default function Navbar() {
                       ? "text-fire"
                       : scrolled
                         ? "text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] hover:bg-[var(--color-surface-hover)]"
-                        : "text-white/70 hover:text-white"
+                        : "text-fire hover:text-fire-light text-glow-fire"
                   }
                 `}
               >
@@ -283,7 +283,7 @@ export default function Navbar() {
                     rounded-2xl transition-colors duration-300
                     ${
                       activeSection === i
-                        ? "text-white bg-fire/10"
+                        ? "text-fire bg-fire/10"
                         : "text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] hover:bg-[var(--color-surface)]"
                     }
                   `}

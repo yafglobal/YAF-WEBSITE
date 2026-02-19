@@ -41,7 +41,7 @@ export default function AboutHero() {
       <div
         className="absolute inset-0 z-[1]"
         style={{
-          background: `radial-gradient(ellipse at 50% 40%, transparent 30%, rgba(10,10,10,0.65) 100%)`,
+          background: `radial-gradient(ellipse at 50% 40%, transparent 30%, var(--color-overlay) 100%)`,
         }}
       />
       <div className="absolute inset-0 z-[1] bg-gradient-to-t from-[var(--color-background)] via-[var(--color-background)]/50 to-transparent" />
@@ -81,7 +81,7 @@ export default function AboutHero() {
         transition={{ duration: 1.5, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
         className="absolute bottom-0 -left-2 md:left-4 z-[4] pointer-events-none select-none"
       >
-        <span className="font-display font-extrabold text-[11rem] md:text-[17rem] lg:text-[22rem] leading-[0.75] tracking-tighter text-white/[0.03]">
+        <span className="font-display font-extrabold text-[11rem] md:text-[17rem] lg:text-[22rem] leading-[0.75] tracking-tighter text-foreground/[0.03]">
           YA
         </span>
       </motion.div>
