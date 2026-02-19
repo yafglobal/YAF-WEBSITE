@@ -117,7 +117,7 @@ export default function Community() {
 
         <ScrollReveal delay={0.6}>
           <a
-            href="#"
+            href="/community"
             className="inline-flex items-center gap-2 mt-12 px-6 py-3.5 md:px-10 md:py-4 bg-plum text-white font-display font-semibold text-xs md:text-sm tracking-wide uppercase rounded-full hover:bg-plum-light transition-all duration-300 hover:shadow-[0_0_40px_rgba(134,22,87,0.4)] group text-center"
           >
             Explore our Professional Community

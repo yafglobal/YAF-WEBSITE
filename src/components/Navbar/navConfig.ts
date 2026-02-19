@@ -8,7 +8,7 @@ export const navLinks = [
   { label: "About", href: "/about" },
   { label: "Watch", href: "/watch" },
   { label: "Bible Plan", href: "/bible-plan" },
-  { label: "Community", href: "/#community" },
+  { label: "Community", href: "/community" },
 ];
 
 export const sectionIds = ["", "about", "watch", "bible-plan", "community"];
