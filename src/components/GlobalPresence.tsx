@@ -27,7 +27,7 @@ export default function GlobalPresence() {
   return (
     <section id="locations" ref={sectionRef} className="relative py-32 md:py-44 overflow-hidden">
       {/* Background map texture */}
-      <motion.div style={{ y: bgY }} className="absolute inset-0 opacity-20">
+      <motion.div style={{ y: bgY }} className="absolute inset-0 opacity-40">
         <Image src="/images/global-bg.png" alt="" fill className="object-cover" sizes="100vw" />
       </motion.div>
 
