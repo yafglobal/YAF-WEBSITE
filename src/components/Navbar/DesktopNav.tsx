@@ -13,7 +13,7 @@ interface DesktopNavProps {
   activeSection: number;
   scrolled: boolean;
   pathname: string;
-  onNavClick: (href: string, index: number) => void;
+  onNavClick: (href: string) => void;
 }
 
 export default function DesktopNav({
@@ -57,7 +57,7 @@ export default function DesktopNav({
               >
                 <Link
                   href={link.href}
-                  onClick={() => onNavClick(link.href, index)}
+                  onClick={() => onNavClick(link.href)}
                   className={`
                     relative z-10 px-4 py-2 text-[13px] font-medium tracking-wide
                     transition-colors duration-300 rounded-full inline-flex items-center gap-1

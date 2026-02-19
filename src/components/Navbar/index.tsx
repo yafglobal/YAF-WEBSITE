@@ -1,59 +1,34 @@
 "use client";
 
-import { useState, useMemo, useEffect } from "react";
+import { useState, useMemo } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, useMotionValueEvent, useScroll } from "motion/react";
 
 import GlassSurface from "@/components/ui/GlassSurface";
-import { navLinks, sectionIds } from "./navConfig";
+import { navLinks } from "./navConfig";
 import DesktopNav from "./DesktopNav";
 import MobileNav from "./MobileNav";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [scrollActiveSection, setScrollActiveSection] = useState(0);
   const { scrollY } = useScroll();
   const pathname = usePathname();
-  const isHomepage = pathname === "/";
 
-  const routeActiveIndex = useMemo(() => {
+  const activeSection = useMemo(() => {
     return navLinks.findIndex((link) => {
       if (link.href === "/") return pathname === "/";
       return pathname.startsWith(link.href.split("#")[0]) && link.href.split("#")[0] !== "/";
     });
   }, [pathname]);
 
-  const activeSection = isHomepage ? scrollActiveSection : routeActiveIndex;
-
   useMotionValueEvent(scrollY, "change", (latest) => {
     setScrolled(latest > 60);
   });
 
-  useEffect(() => {
-    if (!isHomepage) return;
-    const observers: IntersectionObserver[] = [];
-    sectionIds.forEach((id, index) => {
-      const el = id ? document.getElementById(id) : document.querySelector("section");
-      if (!el) return;
-
-      const observer = new IntersectionObserver(
-        ([entry]) => {
-          if (entry.isIntersecting) setScrollActiveSection(index);
-        },
-        { rootMargin: "-40% 0px -55% 0px" }
-      );
-      observer.observe(el);
-      observers.push(observer);
-    });
-
-    return () => observers.forEach((obs) => obs.disconnect());
-  }, [isHomepage]);
-
-  const handleNavClick = (href: string, index: number) => {
-    setScrollActiveSection(index);
+  const handleNavClick = (href: string) => {
     setMobileOpen(false);
     if (href === "/") {
       window.scrollTo({ top: 0, behavior: "smooth" });
@@ -114,7 +89,7 @@ export default function Navbar() {
             {/* Logo */}
             <Link
               href="/"
-              onClick={() => handleNavClick("/", 0)}
+              onClick={() => handleNavClick("/")}
               className="relative z-10 flex items-center shrink-0"
             >
               <motion.div animate={{ scale: scrolled ? 0.85 : 1 }} transition={{ duration: 0.3 }}>
