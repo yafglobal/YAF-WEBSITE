@@ -1,21 +1,16 @@
 "use client";
 
-import { DownloadSimple, Eye, BookOpen } from "@phosphor-icons/react";
+import Link from "next/link";
+import { DownloadSimple, BookOpenText, BookOpen } from "@phosphor-icons/react";
 import { motion } from "motion/react";
-import { useState } from "react";
-import BiblePlanModal from "./BiblePlanModal";
 import DailyScriptureCard from "./DailyScriptureCard";
 
 export default function BibleReadingPlanSection() {
-  const [isPreviewOpen, setIsPreviewOpen] = useState(false);
-
   return (
     <section
       id="bible-plan"
       className="relative z-20 py-24 pb-16 bg-[var(--color-background)] overflow-hidden"
     >
-      <BiblePlanModal isOpen={isPreviewOpen} onClose={() => setIsPreviewOpen(false)} />
-
       {/* Background Stylized 2026 */}
       <div className="absolute inset-0 flex items-center justify-center opacity-[0.03] pointer-events-none">
         <span className="text-[20rem] md:text-[45rem] font-black text-[var(--color-text-primary)] select-none leading-none tracking-tighter">
@@ -48,17 +43,17 @@ export default function BibleReadingPlanSection() {
               </p>
 
               <div className="flex flex-col sm:flex-row items-center gap-6 justify-center lg:justify-start">
-                <button
-                  onClick={() => setIsPreviewOpen(true)}
+                <Link
+                  href="/bible-plan"
                   className="group flex items-center gap-4 bg-plum text-white px-10 py-6 rounded-2xl font-bold uppercase text-[10px] tracking-[0.3em] hover:bg-plum-light transition-all duration-500 shadow-xl active:scale-95"
                 >
-                  <Eye
+                  <BookOpenText
                     weight="bold"
                     size={20}
                     className="group-hover:scale-110 transition-transform"
                   />
-                  View Online
-                </button>
+                  Explore Plan
+                </Link>
 
                 <a
                   href="/bible-plan-2026.pdf"
@@ -90,7 +85,7 @@ export default function BibleReadingPlanSection() {
             </motion.div>
           </div>
 
-          <DailyScriptureCard onViewPlan={() => setIsPreviewOpen(true)} />
+          <DailyScriptureCard />
         </div>
       </div>
     </section>

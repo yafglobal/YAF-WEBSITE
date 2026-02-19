@@ -2,6 +2,7 @@
 
 import { motion, AnimatePresence } from "motion/react";
 import { useState, useEffect } from "react";
+import Link from "next/link";
 import {
   BookBookmark,
   ArrowRight,
@@ -95,11 +96,7 @@ function useCountdown() {
 
 /* ── Component ─────────────────────────────── */
 
-interface DailyScriptureCardProps {
-  onViewPlan: () => void;
-}
-
-export default function DailyScriptureCard({ onViewPlan }: DailyScriptureCardProps) {
+export default function DailyScriptureCard() {
   const [todaysReading] = useState<TodaysReading>(() => getTodaysReading());
   const [verse, setVerse] = useState<VerseData | null>(null);
   const [translation, setTranslation] = useState<Translation>("kjv");
@@ -415,15 +412,13 @@ export default function DailyScriptureCard({ onViewPlan }: DailyScriptureCardPro
                 </p>
               </div>
             </div>
-            <motion.button
-              onClick={onViewPlan}
-              className="group flex items-center gap-2 px-5 py-3 rounded-full bg-plum text-white font-bold text-xs uppercase tracking-wider hover:shadow-[var(--shadow-plum-sm)] transition-all"
-              whileHover={{ scale: 1.05, x: 5 }}
-              whileTap={{ scale: 0.95 }}
+            <Link
+              href="/bible-plan"
+              className="group flex items-center gap-2 px-5 py-3 rounded-full bg-plum text-white font-bold text-xs uppercase tracking-wider hover:shadow-[var(--shadow-plum-sm)] transition-all hover:scale-105 active:scale-95"
             >
               View Full Plan
               <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
-            </motion.button>
+            </Link>
           </motion.div>
         </div>
       </motion.div>

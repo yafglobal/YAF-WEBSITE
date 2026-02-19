@@ -7,7 +7,7 @@ export const navLinks = [
   { label: "Home", href: "/" },
   { label: "About", href: "/about" },
   { label: "Watch", href: "/watch" },
-  { label: "Bible Plan", href: "/#bible-plan" },
+  { label: "Bible Plan", href: "/bible-plan" },
   { label: "Community", href: "/#community" },
 ];
 
