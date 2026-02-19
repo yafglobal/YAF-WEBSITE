@@ -55,17 +55,12 @@ export default function PlanHero() {
 
   return (
     <section className="relative min-h-[90vh] flex items-center overflow-hidden pt-28 pb-16">
-      {/* Ambient background */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-[20%] left-[15%] w-[600px] h-[600px] bg-plum/8 rounded-full blur-[180px]" />
-        <div className="absolute bottom-[20%] right-[10%] w-[400px] h-[400px] bg-plum-tint/5 rounded-full blur-[140px]" />
-        <div className="absolute inset-0 flex items-center justify-center opacity-[0.015]">
-          <span className="text-[16rem] md:text-[28rem] font-black text-[var(--color-text-primary)] select-none leading-none tracking-tighter">
-            2026
-          </span>
-        </div>
+      {/* Faint watermark */}
+      <div className="absolute inset-0 pointer-events-none flex items-center justify-center opacity-[0.03]">
+        <span className="text-[16rem] md:text-[28rem] font-black text-[var(--color-text-primary)] select-none leading-none tracking-tighter">
+          2026
+        </span>
       </div>
-      <div className="grain absolute inset-0 pointer-events-none" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 w-full">
         <div className="grid lg:grid-cols-[1.3fr_auto] gap-16 lg:gap-24 items-center">
@@ -98,7 +93,7 @@ export default function PlanHero() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-              className="relative overflow-hidden rounded-3xl bg-[var(--color-surface)] border border-[var(--color-border)] shadow-xl max-w-2xl"
+              className="relative overflow-hidden rounded-3xl bg-[var(--color-surface)] backdrop-blur-md border border-[var(--color-border)] shadow-xl max-w-2xl"
             >
               <div
                 className="absolute inset-0 opacity-20 mix-blend-overlay pointer-events-none"
@@ -251,7 +246,7 @@ export default function PlanHero() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.6 }}
-          className="lg:hidden mt-12 flex items-center gap-6 p-5 rounded-2xl bg-[var(--color-surface)] border border-[var(--color-border)]"
+          className="lg:hidden mt-12 flex items-center gap-6 p-5 rounded-2xl bg-[var(--color-surface)] backdrop-blur-md border border-[var(--color-border)]"
         >
           <div className="relative w-16 h-16 shrink-0">
             <svg viewBox="0 0 200 200" className="w-full h-full -rotate-90">

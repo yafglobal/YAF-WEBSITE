@@ -27,7 +27,7 @@ export default function DayGrid({ selectedWeek, expandedDay, onExpandDay }: DayG
   const expandedReading = weekData.readings.find((r) => r.day === expandedDay) || null;
 
   return (
-    <section className="relative z-20 pb-24 bg-[var(--color-background)]">
+    <section className="relative z-20 pb-24">
       <div className="max-w-7xl mx-auto px-6">
         {/* Section heading */}
         <motion.div
@@ -60,7 +60,7 @@ export default function DayGrid({ selectedWeek, expandedDay, onExpandDay }: DayG
                 transition={{ delay: idx * 0.05, duration: 0.4 }}
                 onClick={() => onExpandDay(isExpanded ? null : reading.day)}
                 className={`
-                  relative text-left p-5 rounded-2xl border
+                  relative text-left p-5 rounded-2xl border backdrop-blur-md
                   transition-all duration-300 group
                   ${
                     isExpanded

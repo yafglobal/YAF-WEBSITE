@@ -86,7 +86,7 @@ export default function VerseDrawer({
           transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
           className="overflow-hidden"
         >
-          <div className="mt-6 p-7 md:p-8 rounded-3xl bg-[var(--color-surface)] border border-[var(--color-border)] relative overflow-hidden">
+          <div className="mt-6 p-7 md:p-8 rounded-3xl bg-[var(--color-surface)] backdrop-blur-md border border-[var(--color-border)] relative overflow-hidden">
             {/* Noise texture */}
             <div
               className="absolute inset-0 rounded-3xl opacity-15 mix-blend-overlay pointer-events-none"

@@ -33,7 +33,7 @@ export default function WeekTimeline({ selectedWeek, onSelectWeek }: WeekTimelin
   }, []);
 
   return (
-    <section className="relative z-20 py-10 bg-[var(--color-background)]">
+    <section className="relative z-20 py-10">
       <div className="max-w-7xl mx-auto px-6">
         {/* Header */}
         <div className="flex items-center justify-between mb-6">
@@ -48,13 +48,13 @@ export default function WeekTimeline({ selectedWeek, onSelectWeek }: WeekTimelin
           <div className="flex gap-2">
             <button
               onClick={() => scroll("left")}
-              className="w-10 h-10 rounded-xl bg-[var(--color-surface)] border border-[var(--color-border)] flex items-center justify-center hover:bg-[var(--color-surface-hover)] transition-colors"
+              className="w-10 h-10 rounded-xl bg-[var(--color-surface)] backdrop-blur-md border border-[var(--color-border)] flex items-center justify-center hover:bg-[var(--color-surface-hover)] transition-colors"
             >
               <CaretLeft size={18} className="text-[var(--color-text-secondary)]" />
             </button>
             <button
               onClick={() => scroll("right")}
-              className="w-10 h-10 rounded-xl bg-[var(--color-surface)] border border-[var(--color-border)] flex items-center justify-center hover:bg-[var(--color-surface-hover)] transition-colors"
+              className="w-10 h-10 rounded-xl bg-[var(--color-surface)] backdrop-blur-md border border-[var(--color-border)] flex items-center justify-center hover:bg-[var(--color-surface-hover)] transition-colors"
             >
               <CaretRight size={18} className="text-[var(--color-text-secondary)]" />
             </button>
@@ -81,7 +81,7 @@ export default function WeekTimeline({ selectedWeek, onSelectWeek }: WeekTimelin
                 whileTap={{ scale: 0.95 }}
                 className={`
                   relative shrink-0 flex flex-col items-center gap-1
-                  px-4 py-3 rounded-2xl border transition-all duration-300
+                  px-4 py-3 rounded-2xl border backdrop-blur-md transition-all duration-300
                   ${
                     isSelected
                       ? "bg-plum text-white border-plum shadow-[var(--shadow-plum-sm)]"
