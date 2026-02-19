@@ -50,7 +50,7 @@ export default function GlobalPresence() {
           {/* Left: Text */}
           <div>
             <ScrollReveal>
-              <p className="text-fire font-display text-xs tracking-[0.4em] uppercase font-semibold mb-4 flex items-center gap-2">
+              <p className="text-fire font-display text-xs tracking-[0.2em] md:tracking-[0.4em] uppercase font-semibold mb-4 flex items-center gap-2">
                 <MapPin size={14} weight="fill" />
                 Our Global Reach
               </p>
@@ -77,7 +77,7 @@ export default function GlobalPresence() {
             <div className="mt-10 flex flex-wrap gap-3">
               {regions.map((region, i) => (
                 <ScrollReveal key={region.name} delay={0.3 + i * 0.08}>
-                  <div className="px-5 py-3 bg-[var(--color-surface)] border border-[var(--color-border)] rounded-2xl hover:border-fire/20 hover:bg-fire/5 transition-all duration-300 cursor-default">
+                  <div className="px-3 py-2 md:px-5 md:py-3 bg-[var(--color-surface)] border border-[var(--color-border)] rounded-2xl hover:border-fire/20 hover:bg-fire/5 transition-all duration-300 cursor-default">
                     <p className="text-[var(--color-text-primary)] font-display font-semibold text-sm">
                       {region.name}
                     </p>
@@ -104,7 +104,7 @@ export default function GlobalPresence() {
           {/* Right: Globe visual */}
           <div className="relative flex items-center justify-center">
             <ScrollReveal delay={0.2} direction="right">
-              <div className="relative w-[300px] h-[300px] md:w-[420px] md:h-[420px]">
+              <div className="relative w-[min(300px,80vw)] h-[min(300px,80vw)] md:w-[420px] md:h-[420px]">
                 {/* Glow ring */}
                 <div className="absolute inset-0 rounded-full border border-fire/10 animate-pulse" />
                 <div className="absolute inset-4 rounded-full border border-gold/10" />

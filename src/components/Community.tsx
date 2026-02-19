@@ -104,10 +104,10 @@ export default function Community() {
         </ScrollReveal>
 
         {/* Feature grid */}
-        <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 max-w-4xl mx-auto">
+        <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-6 max-w-4xl mx-auto">
           {features.map((feat, i) => (
             <ScrollReveal key={feat.title} delay={0.3 + i * 0.1}>
-              <div className="p-6 bg-white/5 backdrop-blur-sm border border-white/8 rounded-2xl hover:border-fire/20 hover:bg-white/8 transition-all duration-300 group">
+              <div className="p-4 md:p-6 bg-white/5 backdrop-blur-sm border border-white/8 rounded-2xl hover:border-fire/20 hover:bg-white/8 transition-all duration-300 group">
                 <feat.icon
                   size={28}
                   className="text-fire mx-auto mb-3 group-hover:scale-110 transition-transform"
@@ -127,7 +127,7 @@ export default function Community() {
         <ScrollReveal delay={0.6}>
           <a
             href="#"
-            className="inline-flex items-center gap-2 mt-12 px-10 py-4 bg-fire text-white font-display font-semibold text-sm tracking-wide uppercase rounded-full hover:bg-fire-light transition-all duration-300 hover:shadow-[0_0_40px_rgba(255,77,0,0.4)] group"
+            className="inline-flex items-center gap-2 mt-12 px-6 py-3.5 md:px-10 md:py-4 bg-fire text-white font-display font-semibold text-xs md:text-sm tracking-wide uppercase rounded-full hover:bg-fire-light transition-all duration-300 hover:shadow-[0_0_40px_rgba(255,77,0,0.4)] group text-center"
           >
             Explore our Professional Community
             <span className="inline-block transition-transform group-hover:translate-x-1">

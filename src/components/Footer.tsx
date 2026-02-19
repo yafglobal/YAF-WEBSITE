@@ -45,7 +45,7 @@ export default function Footer() {
       <div className="relative border-b border-[var(--color-border)]">
         <div className="max-w-[1400px] mx-auto px-6 md:px-10 py-20 md:py-28">
           <ScrollReveal>
-            <h2 className="font-display font-extrabold text-4xl md:text-6xl lg:text-8xl leading-[0.95] tracking-tight max-w-5xl">
+            <h2 className="font-display font-extrabold text-3xl sm:text-4xl md:text-6xl lg:text-8xl leading-[0.95] tracking-tight max-w-5xl">
               Ready to become a{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-fire via-fire-light to-gold">
                 Kingdom Giant
@@ -57,7 +57,7 @@ export default function Footer() {
             <div className="mt-10 flex flex-col sm:flex-row items-start gap-4">
               <a
                 href="#"
-                className="group inline-flex items-center gap-3 px-8 py-4 bg-fire text-white font-display font-semibold text-sm tracking-wide uppercase rounded-full hover:bg-fire-light transition-all duration-300 hover:shadow-[0_0_40px_rgba(255,77,0,0.4)]"
+                className="group inline-flex items-center gap-3 px-6 py-3.5 md:px-8 md:py-4 bg-fire text-white font-display font-semibold text-xs md:text-sm tracking-wide uppercase rounded-full hover:bg-fire-light transition-all duration-300 hover:shadow-[0_0_40px_rgba(255,77,0,0.4)]"
               >
                 Connect with us globally
                 <ArrowUpRight
@@ -68,7 +68,7 @@ export default function Footer() {
               </a>
               <a
                 href="#"
-                className="inline-flex items-center gap-2 px-8 py-4 border border-[var(--color-border)] text-[var(--color-text-secondary)] font-display font-medium text-sm tracking-wide uppercase rounded-full hover:border-fire/30 hover:text-fire transition-all duration-300"
+                className="inline-flex items-center gap-2 px-6 py-3.5 md:px-8 md:py-4 border border-[var(--color-border)] text-[var(--color-text-secondary)] font-display font-medium text-xs md:text-sm tracking-wide uppercase rounded-full hover:border-fire/30 hover:text-fire transition-all duration-300"
               >
                 Find a location
               </a>
@@ -79,7 +79,7 @@ export default function Footer() {
 
       {/* Main footer content */}
       <div className="max-w-[1400px] mx-auto px-6 md:px-10 pt-16 pb-8">
-        <div className="grid md:grid-cols-12 gap-12 md:gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-12 gap-10 md:gap-8">
           {/* Brand column */}
           <div className="md:col-span-4">
             <ScrollReveal>
@@ -186,7 +186,7 @@ export default function Footer() {
               <h4 className="font-display font-bold text-[var(--color-text-primary)] text-xs tracking-[0.2em] uppercase mb-6">
                 Follow Us
               </h4>
-              <div className="grid grid-cols-2 gap-2">
+              <div className="grid grid-cols-2 gap-2.5 md:gap-2">
                 {socialLinks.map((link) => (
                   <a
                     key={link.label}

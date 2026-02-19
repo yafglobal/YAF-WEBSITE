@@ -75,7 +75,7 @@ export default function GiveSection() {
           <div className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-4">
             <a
               href="#"
-              className="group relative inline-flex items-center gap-3 px-12 py-5 overflow-hidden rounded-full transition-all duration-500"
+              className="group relative inline-flex items-center gap-3 px-8 py-4 md:px-12 md:py-5 overflow-hidden rounded-full transition-all duration-500"
             >
               {/* Shimmer background */}
               <div className="absolute inset-0 bg-gradient-to-r from-fire via-fire-light to-fire shimmer-btn rounded-full" />

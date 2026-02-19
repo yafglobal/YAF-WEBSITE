@@ -29,7 +29,7 @@ export default function AppSection() {
     <section ref={sectionRef} className="relative py-32 md:py-44 overflow-hidden">
       {/* Subtle gradient background */}
       <div className="absolute inset-0 bg-gradient-to-br from-charcoal via-background to-charcoal" />
-      <div className="absolute top-1/2 right-0 w-[500px] h-[500px] bg-fire/5 rounded-full blur-[180px] pointer-events-none" />
+      <div className="absolute top-1/2 right-0 w-[300px] h-[300px] md:w-[500px] md:h-[500px] bg-fire/5 rounded-full blur-[180px] pointer-events-none" />
 
       <div className="relative z-10 max-w-[1400px] mx-auto px-6 md:px-10">
         <div className="grid md:grid-cols-2 gap-16 md:gap-24 items-center">
@@ -40,7 +40,7 @@ export default function AppSection() {
                 style={{ y: phoneY, rotate: phoneRotate }}
                 className="relative"
               >
-                <div className="relative w-[280px] md:w-[360px]">
+                <div className="relative w-[min(280px,85vw)] md:w-[360px]">
                   <Image
                     src="/images/app-mockup.png"
                     alt="Youth Alive Mobile App"
@@ -51,7 +51,7 @@ export default function AppSection() {
                 </div>
 
                 {/* Floating glow behind phone */}
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] h-[350px] bg-fire/10 rounded-full blur-[100px] -z-10" />
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[280px] h-[280px] md:w-[350px] md:h-[350px] bg-fire/10 rounded-full blur-[100px] -z-10" />
               </motion.div>
             </ScrollReveal>
           </div>

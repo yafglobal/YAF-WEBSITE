@@ -50,12 +50,12 @@ export default function OurStory() {
         {/* Content grid - asymmetric layout */}
         <div className="mt-20 grid lg:grid-cols-12 gap-8 lg:gap-6 items-start">
           {/* Overlapping images column */}
-          <div className="lg:col-span-7 relative min-h-[500px] md:min-h-[640px]">
+          <div className="lg:col-span-7 relative min-h-[350px] sm:min-h-[450px] md:min-h-[640px]">
             {/* Primary image */}
             <ScrollReveal delay={0.2} direction="left">
               <motion.div
                 style={{ y: image1Y }}
-                className="relative w-[75%] md:w-[65%] aspect-[3/4] rounded-2xl overflow-hidden z-10"
+                className="relative w-[70%] sm:w-[75%] md:w-[65%] aspect-[3/4] rounded-2xl overflow-hidden z-10"
               >
                 <Image
                   src="/images/about/worship-portrait.png"
@@ -73,7 +73,7 @@ export default function OurStory() {
             <ScrollReveal delay={0.4} direction="right">
               <motion.div
                 style={{ y: image2Y }}
-                className="absolute right-0 top-[30%] w-[55%] md:w-[50%] aspect-[4/3] rounded-2xl overflow-hidden z-20 shadow-2xl"
+                className="absolute right-0 top-[35%] sm:top-[30%] w-[50%] md:w-[50%] aspect-[4/3] rounded-2xl overflow-hidden z-20 shadow-2xl"
               >
                 <Image
                   src="/images/about/fellowship-photo.png"

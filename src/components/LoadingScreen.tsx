@@ -404,7 +404,7 @@ export default function LoadingScreen() {
 
           {/* Progress bar */}
           <motion.div
-            className="absolute bottom-16 md:bottom-20 left-1/2 -translate-x-1/2 w-48 md:w-56"
+            className="absolute bottom-16 md:bottom-20 left-1/2 -translate-x-1/2 w-[min(12rem,60vw)] md:w-56"
             animate={{
               opacity: phase === "burst" || phase === "done" ? 0 : 1,
             }}

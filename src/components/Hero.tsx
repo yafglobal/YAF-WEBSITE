@@ -130,7 +130,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.1, duration: 0.8 }}
-          className="mt-8 text-white/60 text-base md:text-lg max-w-md font-light leading-relaxed"
+          className="mt-6 md:mt-8 text-white/60 text-sm md:text-lg max-w-md font-light leading-relaxed px-2 sm:px-0"
         >
           An enfired community of young people committed to spiritual growth and
           purpose-driven living.

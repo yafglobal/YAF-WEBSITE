@@ -133,7 +133,7 @@ export default function ProgramsSection() {
                   )}
                 </AnimatePresence>
 
-                <div className="relative z-10 flex items-center gap-6 md:gap-10 p-6 md:p-8">
+                <div className="relative z-10 flex items-center gap-4 md:gap-10 p-4 md:p-8">
                   {/* Number */}
                   <span className="hidden md:block font-display font-bold text-3xl text-[var(--color-border-hover)] group-hover:text-fire/30 transition-colors w-12">
                     0{i + 1}
@@ -185,13 +185,13 @@ export default function ProgramsSection() {
 
         {/* YouTube CTA */}
         <ScrollReveal delay={0.5}>
-          <div className="mt-16 flex flex-col md:flex-row items-center gap-8 p-8 md:p-10 rounded-3xl bg-[var(--color-surface)] border border-[var(--color-border)]">
+          <div className="mt-16 flex flex-col md:flex-row items-center gap-5 md:gap-8 p-5 md:p-10 rounded-3xl bg-[var(--color-surface)] border border-[var(--color-border)]">
             <Image
               src="/images/sermon-image.png"
               alt="Youth Alive Music"
               width={120}
               height={120}
-              className="w-20 h-20 rounded-2xl shadow-lg"
+              className="w-16 h-16 md:w-20 md:h-20 rounded-2xl shadow-lg"
             />
             <div className="flex-1 text-center md:text-left">
               <h3 className="font-display font-bold text-xl text-[var(--color-text-primary)]">
@@ -206,7 +206,7 @@ export default function ProgramsSection() {
               href="https://www.youtube.com/@YouthAliveGlobal"
               target="_blank"
               rel="noopener noreferrer"
-              className="shrink-0 inline-flex items-center gap-2 px-8 py-4 bg-fire text-white font-display font-semibold text-sm rounded-full hover:bg-fire-light transition-all duration-300 hover:shadow-[0_0_30px_rgba(255,77,0,0.3)] group"
+              className="shrink-0 inline-flex items-center gap-2 px-6 py-3.5 md:px-8 md:py-4 bg-fire text-white font-display font-semibold text-xs md:text-sm rounded-full hover:bg-fire-light transition-all duration-300 hover:shadow-[0_0_30px_rgba(255,77,0,0.3)] group w-full md:w-auto justify-center"
             >
               <YoutubeLogo size={20} weight="fill" />
               Watch on YouTube
