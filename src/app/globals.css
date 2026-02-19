@@ -206,6 +206,19 @@ html.light .text-glow-plum-tint {
   z-index: 1;
 }
 
+/* ── About section image glow ────────────────── */
+@keyframes aboutGlow {
+  0%,
+  100% {
+    opacity: 0.5;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.03);
+  }
+}
+
 /* ── Hero slider crossfade ─────────────────── */
 @keyframes heroFade {
   0%,
@@ -634,6 +647,25 @@ html.light .mesh-gradient {
   .video-container {
     border-radius: 12px;
   }
+}
+
+/* ── Reels scroll-snap ────────────────────── */
+.reels-container {
+  height: 100vh;
+  height: 100dvh;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.reels-container::-webkit-scrollbar {
+  display: none;
+}
+.reel-card {
+  height: 100vh;
+  height: 100dvh;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
 }
 
 /* Mux Player — fill container without black bars */

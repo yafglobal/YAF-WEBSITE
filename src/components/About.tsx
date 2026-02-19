@@ -80,20 +80,32 @@ export default function About() {
           <div className="order-1 md:order-2 relative">
             <ScrollReveal delay={0.2} direction="right">
               <div className="relative aspect-[3/4] max-w-md mx-auto md:max-w-none">
-                <motion.div
-                  style={{ y: imageY }}
-                  className="relative w-full h-full rounded-3xl overflow-hidden"
-                >
-                  <Image
-                    src="/images/theme-image.png"
-                    alt="Youth Alive Leadership"
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                  />
-                  {/* Gradient fade on edges */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-[var(--color-background)] via-transparent to-transparent opacity-60" />
-                </motion.div>
+                {/* Animated glow behind frame */}
+                <div className="absolute -inset-4 bg-gradient-to-br from-plum/25 via-plum-tint/10 to-plum/20 rounded-[2rem] blur-2xl animate-[aboutGlow_6s_ease-in-out_infinite]" />
+
+                {/* Gradient border frame */}
+                <div className="relative rounded-[1.75rem] p-[2px] bg-gradient-to-br from-plum/60 via-plum-tint/30 to-plum/50">
+                  <motion.div
+                    style={{ y: imageY }}
+                    className="relative w-full h-full rounded-[calc(1.75rem-2px)] overflow-hidden bg-[var(--color-background)]"
+                  >
+                    <Image
+                      src="/images/theme-image.png"
+                      alt="Youth Alive Leadership"
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                    />
+                    {/* Gradient fade on edges */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-[var(--color-background)] via-transparent to-transparent opacity-60" />
+                  </motion.div>
+                </div>
+
+                {/* Corner accent marks */}
+                <div className="absolute -top-2 -left-2 w-8 h-8 border-t-2 border-l-2 border-plum/50 rounded-tl-lg" />
+                <div className="absolute -top-2 -right-2 w-8 h-8 border-t-2 border-r-2 border-plum-tint/40 rounded-tr-lg" />
+                <div className="absolute -bottom-2 -left-2 w-8 h-8 border-b-2 border-l-2 border-plum-tint/40 rounded-bl-lg" />
+                <div className="absolute -bottom-2 -right-2 w-8 h-8 border-b-2 border-r-2 border-plum/50 rounded-br-lg" />
 
                 {/* Decorative plum accent */}
                 <div className="absolute -bottom-6 -left-6 w-32 h-32 bg-plum/20 rounded-full blur-[60px]" />
