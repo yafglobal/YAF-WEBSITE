@@ -14,7 +14,7 @@ export default function ContactRoute() {
     <main className="relative grain">
       <Navbar />
       <ContactPage />
-      <Footer />
+      <Footer transparent />
     </main>
   );
 }

@@ -1,44 +1,59 @@
 "use client";
 
-import Grainient from "@/components/contact/Grainient";
-import { darkColors, lightColors } from "./colorPresets";
+import dynamic from "next/dynamic";
+import { useEffect, useRef, useState } from "react";
 import { useContactForm } from "./useContactForm";
 import ContactInfoSection from "./ContactInfoSection";
 import ContactFormCard from "./ContactFormCard";
 
-export default function ContactPage() {
-  const { form, submitted, sending, isLight, handleChange, handleSubmit } = useContactForm();
+const MuxPlayer = dynamic(() => import("@mux/mux-player-react"), {
+  ssr: false,
+  loading: () => <div className="absolute inset-0 bg-black/60 animate-pulse" />,
+});
 
-  const colors = isLight ? lightColors : darkColors;
+export default function ContactPage() {
+  const { form, submitted, sending, handleChange, handleSubmit } = useContactForm();
+  const videoRef = useRef<HTMLDivElement | null>(null);
+  const [shouldLoadVideo, setShouldLoadVideo] = useState(false);
+
+  useEffect(() => {
+    // Load video immediately since it's the page background
+    const rafId = requestAnimationFrame(() => setShouldLoadVideo(true));
+    return () => cancelAnimationFrame(rafId);
+  }, []);
 
   return (
     <section className="relative min-h-screen">
-      {/* Grainient background -- fixed, full page */}
-      <div className="fixed inset-0 pointer-events-none" aria-hidden="true">
-        <Grainient
-          color1={colors.color1}
-          color2={colors.color2}
-          color3={colors.color3}
-          timeSpeed={0.2}
-          colorBalance={0}
-          warpStrength={1}
-          warpFrequency={4}
-          warpSpeed={1.5}
-          warpAmplitude={40}
-          blendAngle={0}
-          blendSoftness={0.08}
-          rotationAmount={400}
-          noiseScale={2}
-          grainAmount={0.08}
-          grainScale={2}
-          grainAnimated={false}
-          contrast={isLight ? 1.2 : 1.4}
-          gamma={1}
-          saturation={isLight ? 0.9 : 1.1}
-          centerX={0}
-          centerY={0}
-          zoom={0.85}
-        />
+      {/* Mux Video — fixed full-page background (shared with footer) */}
+      <div ref={videoRef} className="fixed inset-0 z-0" aria-hidden="true">
+        {shouldLoadVideo ? (
+          <MuxPlayer
+            playbackId="ibkeVQItsSzwuxf013QDq9Elj00pwRYGXkfZT00Q5dCExs"
+            metadata={{
+              video_id: "yaf-contact-page-bg",
+              video_title: "Youth Alive Background",
+              viewer_user_id: "contact-bg-visitor",
+            }}
+            style={{
+              width: "100%",
+              height: "100%",
+              objectFit: "cover",
+              position: "absolute",
+              top: "0",
+              left: "0",
+            }}
+            className="w-full h-full"
+            autoPlay={true}
+            muted={true}
+            loop={true}
+            playsInline={true}
+          />
+        ) : (
+          <div className="absolute inset-0 bg-black/60 animate-pulse" />
+        )}
+
+        {/* Dark overlay for readability */}
+        <div className="absolute inset-0 bg-black/55" />
       </div>
 
       <div className="relative z-10 max-w-[1400px] mx-auto px-6 md:px-10 pt-32 md:pt-40 pb-20 md:pb-32">
