@@ -8,6 +8,7 @@ import { motion, AnimatePresence, useMotionValueEvent, useScroll } from "motion/
 import { List, X, ArrowRight } from "@phosphor-icons/react";
 
 import ThemeToggle from "./ThemeToggle";
+import GlassSurface from "./ui/GlassSurface";
 
 const MotionLink = motion.create(Link);
 
@@ -24,9 +25,10 @@ const sectionIds = ["", "about", "sermons", "events", "community"];
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState(0);
+  const [scrollActiveSection, setScrollActiveSection] = useState(0);
   const { scrollY } = useScroll();
   const pathname = usePathname();
+  const isHomepage = pathname === "/";
 
   // Derive active nav index from route
   const routeActiveIndex = useMemo(() => {
@@ -36,6 +38,9 @@ export default function Navbar() {
     });
   }, [pathname]);
 
+  // Use scroll-based detection on homepage, route-based index elsewhere
+  const activeSection = isHomepage ? scrollActiveSection : routeActiveIndex;
+
   // Track scroll position — always visible, just morphs appearance
   useMotionValueEvent(scrollY, "change", (latest) => {
     setScrolled(latest > 60);
@@ -43,7 +48,7 @@ export default function Navbar() {
 
   // Scroll-based section detection (only works on homepage where sections exist)
   useEffect(() => {
-    if (pathname !== "/") return;
+    if (!isHomepage) return;
 
     const observers: IntersectionObserver[] = [];
 
@@ -53,7 +58,7 @@ export default function Navbar() {
 
       const observer = new IntersectionObserver(
         ([entry]) => {
-          if (entry.isIntersecting) setActiveSection(index);
+          if (entry.isIntersecting) setScrollActiveSection(index);
         },
         { rootMargin: "-40% 0px -55% 0px" }
       );
@@ -62,10 +67,10 @@ export default function Navbar() {
     });
 
     return () => observers.forEach((obs) => obs.disconnect());
-  }, [pathname]);
+  }, [isHomepage]);
 
   const handleNavClick = (href: string, index: number) => {
-    setActiveSection(index);
+    setScrollActiveSection(index);
     setMobileOpen(false);
     if (href === "/") {
       window.scrollTo({ top: 0, behavior: "smooth" });
@@ -94,23 +99,43 @@ export default function Navbar() {
             className={`
               relative flex items-center justify-between
               transition-all duration-500 ease-out
-              ${
-                scrolled
-                  ? "bg-[var(--color-surface)]/70 backdrop-blur-2xl border border-[var(--color-border)] shadow-[0_8px_32px_rgba(0,0,0,0.3)] rounded-full px-3 py-1.5 md:px-4 md:py-2"
-                  : "bg-transparent px-2 py-2"
-              }
+              ${scrolled ? "rounded-full px-3 py-1.5 md:px-4 md:py-2" : "bg-transparent px-2 py-2"}
             `}
           >
+            {/* GlassSurface background — fades in when scrolled */}
+            <div
+              className={`
+                absolute inset-0 rounded-full overflow-hidden
+                transition-opacity duration-500 ease-out
+                ${scrolled ? "opacity-100" : "opacity-0 pointer-events-none"}
+              `}
+            >
+              <GlassSurface
+                width="100%"
+                height="100%"
+                borderRadius={9999}
+                brightness={25}
+                opacity={0.9}
+                blur={14}
+                displace={0.3}
+                backgroundOpacity={0.05}
+                saturation={1.2}
+                distortionScale={-180}
+                redOffset={0}
+                greenOffset={8}
+                blueOffset={16}
+                mixBlendMode="difference"
+                style={{ position: "absolute", inset: 0 }}
+              />
+            </div>
+
             {/* Logo */}
             <Link
               href="/"
               onClick={() => handleNavClick("/", 0)}
               className="relative z-10 flex items-center shrink-0"
             >
-              <motion.div
-                animate={{ scale: scrolled ? 0.85 : 1 }}
-                transition={{ duration: 0.3 }}
-              >
+              <motion.div animate={{ scale: scrolled ? 0.85 : 1 }} transition={{ duration: 0.3 }}>
                 <Image
                   src="/images/logo.png"
                   alt="Youth Alive Global"
@@ -124,12 +149,12 @@ export default function Navbar() {
             </Link>
 
             {/* Desktop Pill Links */}
-            <div className="hidden md:flex items-center">
+            <div className="hidden md:flex items-center relative z-10">
               <div
                 className={`
                   relative flex items-center gap-0.5 p-1
                   transition-all duration-500
-                  ${scrolled ? "bg-[var(--color-background)]/50 rounded-full" : ""}
+                  ${scrolled ? "rounded-full" : ""}
                 `}
               >
                 {navLinks.map((link, index) => (
@@ -144,7 +169,7 @@ export default function Navbar() {
                         activeSection === index
                           ? "text-white"
                           : scrolled
-                            ? "text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)]"
+                            ? "text-white/70 hover:text-white"
                             : "text-fire hover:text-fire-light text-glow-fire"
                       }
                     `}
@@ -155,7 +180,8 @@ export default function Navbar() {
                         layoutId="nav-pill"
                         className="absolute inset-0 bg-fire rounded-full"
                         style={{
-                          boxShadow: "0 0 20px rgba(255, 77, 0, 0.35), inset 0 1px 0 rgba(255,255,255,0.15)",
+                          boxShadow:
+                            "0 0 20px rgba(255, 77, 0, 0.35), inset 0 1px 0 rgba(255,255,255,0.15)",
                         }}
                         transition={{
                           type: "spring",
@@ -171,7 +197,7 @@ export default function Navbar() {
             </div>
 
             {/* Desktop CTA */}
-            <div className="hidden md:flex items-center gap-2">
+            <div className="hidden md:flex items-center gap-2 relative z-10">
               <ThemeToggle />
               <Link
                 href="/contact"
@@ -182,7 +208,7 @@ export default function Navbar() {
                     pathname === "/contact"
                       ? "text-fire"
                       : scrolled
-                        ? "text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] hover:bg-[var(--color-surface-hover)]"
+                        ? "text-white/70 hover:text-white"
                         : "text-fire hover:text-fire-light text-glow-fire"
                   }
                 `}
@@ -212,7 +238,7 @@ export default function Navbar() {
             </div>
 
             {/* Mobile toggle */}
-            <div className="md:hidden flex items-center gap-2">
+            <div className="md:hidden flex items-center gap-2 relative z-10">
               <ThemeToggle />
               <motion.button
                 onClick={() => setMobileOpen(!mobileOpen)}

@@ -80,12 +80,16 @@ function VideoOverlay({
       if (video.type === "local" && localRef.current) {
         localRef.current.play().catch(() => {});
       } else if (muxRef.current) {
-        try { muxRef.current.play(); } catch { /* noop */ }
+        try {
+          muxRef.current.play();
+        } catch {
+          /* noop */
+        }
       }
     } else {
       localRef.current?.pause();
       muxRef.current?.pause();
-      setIsPlaying(false);
+      // isPlaying is reset via the onPause event handler
     }
   }, [isHovered, video.type]);
 
@@ -120,6 +124,7 @@ function VideoOverlay({
 
   return (
     <MuxPlayer
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       ref={muxRef as React.RefObject<any>}
       playbackId={video.playbackId}
       muted={isMuted}
@@ -163,10 +168,7 @@ export default function Leadership() {
   const others = leaders.slice(1);
 
   return (
-    <section
-      ref={sectionRef}
-      className="relative py-32 md:py-44 overflow-hidden"
-    >
+    <section ref={sectionRef} className="relative py-32 md:py-44 overflow-hidden">
       {/* Ambient glow */}
       <div className="absolute top-1/3 right-0 w-[500px] h-[500px] bg-gold/4 rounded-full blur-[160px] pointer-events-none" />
       <div className="absolute bottom-1/4 left-0 w-[400px] h-[400px] bg-fire/5 rounded-full blur-[140px] pointer-events-none" />
@@ -192,8 +194,8 @@ export default function Leadership() {
 
           <ScrollReveal delay={0.2}>
             <p className="text-[var(--color-text-secondary)] text-base md:text-lg max-w-md leading-relaxed">
-              Visionary leaders raising a generation of kingdom giants who are
-              equipped for global impact.
+              Visionary leaders raising a generation of kingdom giants who are equipped for global
+              impact.
             </p>
           </ScrollReveal>
         </div>
@@ -261,9 +263,7 @@ function FeaturedCard({ leader }: { leader: Leader }) {
                 setIsMuted((m) => !m);
               }}
               className={`absolute top-4 left-4 z-[5] w-10 h-10 rounded-full bg-background/60 backdrop-blur-sm flex items-center justify-center transition-all duration-400 hover:bg-background/80 ${
-                isHovered
-                  ? "opacity-100 scale-100"
-                  : "opacity-0 scale-90 pointer-events-none"
+                isHovered ? "opacity-100 scale-100" : "opacity-0 scale-90 pointer-events-none"
               }`}
               aria-label={isMuted ? "Unmute video" : "Mute video"}
             >
@@ -277,9 +277,7 @@ function FeaturedCard({ leader }: { leader: Leader }) {
             {/* Play indicator */}
             <div
               className={`absolute bottom-4 left-4 z-[4] flex items-center gap-2 px-3 py-1.5 rounded-full bg-background/50 backdrop-blur-sm transition-all duration-500 ${
-                isHovered
-                  ? "opacity-100 translate-y-0"
-                  : "opacity-0 translate-y-2"
+                isHovered ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2"
               }`}
             >
               <span className="relative flex h-2 w-2">
@@ -309,9 +307,7 @@ function FeaturedCard({ leader }: { leader: Leader }) {
               {leader.name}
             </h3>
 
-            <p className="mt-2 text-[var(--color-text-secondary)] text-sm">
-              {leader.subtitle}
-            </p>
+            <p className="mt-2 text-[var(--color-text-secondary)] text-sm">{leader.subtitle}</p>
 
             <p className="mt-6 text-[var(--color-text-secondary)] text-base leading-relaxed max-w-lg">
               {leader.bio}
@@ -369,9 +365,7 @@ function LeaderCard({ leader, index }: { leader: Leader; index: number }) {
               setIsMuted((m) => !m);
             }}
             className={`absolute top-4 left-4 z-[5] w-10 h-10 rounded-full bg-background/60 backdrop-blur-sm flex items-center justify-center transition-all duration-400 hover:bg-background/80 ${
-              isHovered
-                ? "opacity-100 scale-100"
-                : "opacity-0 scale-90 pointer-events-none"
+              isHovered ? "opacity-100 scale-100" : "opacity-0 scale-90 pointer-events-none"
             }`}
             aria-label={isMuted ? "Unmute video" : "Mute video"}
           >
@@ -385,9 +379,7 @@ function LeaderCard({ leader, index }: { leader: Leader; index: number }) {
           {/* Play indicator */}
           <div
             className={`absolute top-4 right-4 z-[4] flex items-center gap-2 px-3 py-1.5 rounded-full bg-background/50 backdrop-blur-sm transition-all duration-500 ${
-              isHovered
-                ? "opacity-100 translate-y-0"
-                : "opacity-0 -translate-y-2"
+              isHovered ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-2"
             }`}
           >
             <span className="relative flex h-2 w-2">

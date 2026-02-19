@@ -2,22 +2,22 @@
 
 @theme inline {
   /* ── Dark mode (default) ─────────────────── */
-  --color-background: #0A0A0A;
-  --color-foreground: #F5F5F5;
-  --color-fire: #FF4D00;
-  --color-fire-light: #FF6B2B;
-  --color-gold: #FFD700;
-  --color-gold-dim: #B8960C;
+  --color-background: #0a0a0a;
+  --color-foreground: #f5f5f5;
+  --color-fire: #ff4d00;
+  --color-fire-light: #ff6b2b;
+  --color-gold: #ffd700;
+  --color-gold-dim: #b8960c;
   --color-charcoal: #141414;
-  --color-charcoal-light: #1E1E1E;
-  --color-smoke: #2A2A2A;
-  --color-ash: #8A8A8A;
+  --color-charcoal-light: #1e1e1e;
+  --color-smoke: #2a2a2a;
+  --color-ash: #8a8a8a;
   --color-surface: #141414;
-  --color-surface-hover: #1E1E1E;
+  --color-surface-hover: #1e1e1e;
   --color-border: rgba(255, 255, 255, 0.06);
   --color-border-hover: rgba(255, 255, 255, 0.12);
-  --color-text-primary: #F5F5F5;
-  --color-text-secondary: #8A8A8A;
+  --color-text-primary: #f5f5f5;
+  --color-text-secondary: #8a8a8a;
   --color-text-muted: rgba(255, 255, 255, 0.5);
   --color-overlay: rgba(10, 10, 10, 0.7);
   --font-display: var(--font-unbounded);
@@ -27,31 +27,63 @@
 /* ── Light mode variables ──────────────────── */
 html.light {
   --logo-filter: brightness(0.2);
-  --color-background: #FAFAF8;
-  --color-foreground: #1A1A1A;
-  --color-charcoal: #F0EDE8;
-  --color-charcoal-light: #F5F3EF;
-  --color-smoke: #E8E5E0;
-  --color-ash: #6B6B6B;
-  --color-surface: #FFFFFF;
-  --color-surface-hover: #F5F3EF;
+  --color-background: #fafaf8;
+  --color-foreground: #1a1a1a;
+  --color-charcoal: #f0ede8;
+  --color-charcoal-light: #f5f3ef;
+  --color-smoke: #e8e5e0;
+  --color-ash: #6b6b6b;
+  --color-surface: #ffffff;
+  --color-surface-hover: #f5f3ef;
   --color-border: rgba(0, 0, 0, 0.08);
   --color-border-hover: rgba(0, 0, 0, 0.15);
-  --color-text-primary: #1A1A1A;
-  --color-text-secondary: #6B6B6B;
+  --color-text-primary: #1a1a1a;
+  --color-text-secondary: #6b6b6b;
   --color-text-muted: rgba(0, 0, 0, 0.45);
+  --color-overlay: rgba(250, 250, 248, 0.7);
+}
+
+/* ── Always-light footer ─────────────────────
+   Forces light-mode palette inside the footer
+   regardless of the global theme, so text stays
+   readable on every page and over the contact
+   page gradient. */
+.footer-light {
+  --logo-filter: brightness(0.2);
+  --color-background: #fafaf8;
+  --color-foreground: #1a1a1a;
+  --color-charcoal: #f0ede8;
+  --color-charcoal-light: #f5f3ef;
+  --color-smoke: #e8e5e0;
+  --color-surface: #ffffff;
+  --color-surface-hover: #f0ede8;
+  --color-border: rgba(0, 0, 0, 0.1);
+  --color-border-hover: rgba(0, 0, 0, 0.18);
+  --color-text-primary: #1a1a1a;
+  --color-text-secondary: #4a4a4a;
+  --color-text-muted: rgba(0, 0, 0, 0.5);
   --color-overlay: rgba(250, 250, 248, 0.7);
 }
 
 /* ── View Transitions ──────────────────────── */
 @keyframes view-fade-out {
-  from { opacity: 1; }
-  to { opacity: 0; }
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
 }
 
 @keyframes view-fade-in {
-  from { opacity: 0; transform: translateY(8px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 ::view-transition-old(root) {
@@ -72,7 +104,9 @@ body {
   color: var(--color-text-primary);
   font-family: var(--font-body), system-ui, sans-serif;
   overflow-x: hidden;
-  transition: background-color 0s, color 0s;
+  transition:
+    background-color 0s,
+    color 0s;
 }
 
 /* ── Selection ─────────────────────────────── */
@@ -95,13 +129,17 @@ body {
 
 /* ── Glow text utility ─────────────────────── */
 .text-glow-fire {
-  text-shadow: 0 0 40px rgba(255, 77, 0, 0.5), 0 0 80px rgba(255, 77, 0, 0.2);
+  text-shadow:
+    0 0 40px rgba(255, 77, 0, 0.5),
+    0 0 80px rgba(255, 77, 0, 0.2);
 }
 html.light .text-glow-fire {
   text-shadow: 0 0 30px rgba(255, 77, 0, 0.3);
 }
 .text-glow-gold {
-  text-shadow: 0 0 40px rgba(255, 215, 0, 0.4), 0 0 80px rgba(255, 215, 0, 0.15);
+  text-shadow:
+    0 0 40px rgba(255, 215, 0, 0.4),
+    0 0 80px rgba(255, 215, 0, 0.15);
 }
 html.light .text-glow-gold {
   text-shadow: 0 0 30px rgba(255, 215, 0, 0.25);
@@ -119,25 +157,53 @@ html.light .text-glow-gold {
 
 /* ── Hero slider crossfade ─────────────────── */
 @keyframes heroFade {
-  0%, 18% { opacity: 1; }
-  20%, 98% { opacity: 0; }
-  100% { opacity: 1; }
+  0%,
+  18% {
+    opacity: 1;
+  }
+  20%,
+  98% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 .hero-slide {
   animation: heroFade 25s infinite;
 }
-.hero-slide:nth-child(1) { animation-delay: 0s; }
-.hero-slide:nth-child(2) { animation-delay: 5s; }
-.hero-slide:nth-child(3) { animation-delay: 10s; }
-.hero-slide:nth-child(4) { animation-delay: 15s; }
-.hero-slide:nth-child(5) { animation-delay: 20s; }
+.hero-slide:nth-child(1) {
+  animation-delay: 0s;
+}
+.hero-slide:nth-child(2) {
+  animation-delay: 5s;
+}
+.hero-slide:nth-child(3) {
+  animation-delay: 10s;
+}
+.hero-slide:nth-child(4) {
+  animation-delay: 15s;
+}
+.hero-slide:nth-child(5) {
+  animation-delay: 20s;
+}
 
 /* ── Floating particles ────────────────────── */
 @keyframes float-up {
-  0% { transform: translateY(100vh) scale(0); opacity: 0; }
-  10% { opacity: 1; }
-  90% { opacity: 0.6; }
-  100% { transform: translateY(-20vh) scale(1); opacity: 0; }
+  0% {
+    transform: translateY(100vh) scale(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateY(-20vh) scale(1);
+    opacity: 0;
+  }
 }
 .particle {
   position: absolute;
@@ -151,8 +217,12 @@ html.light .text-glow-gold {
 
 /* ── Marquee ───────────────────────────────── */
 @keyframes marquee {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
 }
 .animate-marquee {
   animation: marquee 30s linear infinite;
@@ -174,8 +244,15 @@ html.light .mesh-gradient {
 
 /* ── Ember pulse ───────────────────────────── */
 @keyframes ember-pulse {
-  0%, 100% { opacity: 0.3; transform: scale(1); }
-  50% { opacity: 0.7; transform: scale(1.2); }
+  0%,
+  100% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.2);
+  }
 }
 .ember {
   animation: ember-pulse 3s ease-in-out infinite;
@@ -198,11 +275,14 @@ html.light .mesh-gradient {
   border: none;
 }
 
-
 /* ── Fire border ──────────────────────────── */
 @keyframes fire-rotate {
-  0% { --fire-angle: 0deg; }
-  100% { --fire-angle: 360deg; }
+  0% {
+    --fire-angle: 0deg;
+  }
+  100% {
+    --fire-angle: 360deg;
+  }
 }
 
 @property --fire-angle {
@@ -217,13 +297,13 @@ html.light .mesh-gradient {
   padding: 3px;
   background: conic-gradient(
     from var(--fire-angle),
-    #FF4D00,
-    #FFD700,
-    #FF6B2B,
-    #FF4D00,
-    #FFD700,
-    #FF6B2B,
-    #FF4D00
+    #ff4d00,
+    #ffd700,
+    #ff6b2b,
+    #ff4d00,
+    #ffd700,
+    #ff6b2b,
+    #ff4d00
   );
   animation: fire-rotate 4s linear infinite;
 }
@@ -235,13 +315,13 @@ html.light .mesh-gradient {
   border-radius: 24px;
   background: conic-gradient(
     from var(--fire-angle),
-    #FF4D00,
-    #FFD700,
-    #FF6B2B,
-    #FF4D00,
-    #FFD700,
-    #FF6B2B,
-    #FF4D00
+    #ff4d00,
+    #ffd700,
+    #ff6b2b,
+    #ff4d00,
+    #ffd700,
+    #ff6b2b,
+    #ff4d00
   );
   animation: fire-rotate 4s linear infinite;
   filter: blur(16px);
@@ -256,8 +336,12 @@ html.light .mesh-gradient {
 
 /* ── CTA shimmer ───────────────────────────── */
 @keyframes shimmer {
-  0% { background-position: -200% center; }
-  100% { background-position: 200% center; }
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
 }
 .shimmer-btn {
   background-size: 200% auto;
@@ -270,9 +354,9 @@ html.light .mesh-gradient {
 
 .btn3d {
   /* Fire variant (default) */
-  --btn-front: linear-gradient(180deg, #FF6B2B 0%, #FF4D00 50%, #CC3D00 100%);
-  --btn-edge: #8A2900;
-  --btn-edge-bottom: #5C1B00;
+  --btn-front: linear-gradient(180deg, #ff6b2b 0%, #ff4d00 50%, #cc3d00 100%);
+  --btn-edge: #8a2900;
+  --btn-edge-bottom: #5c1b00;
   --btn-glow: rgba(255, 77, 0, 0.7);
 
   position: relative;
@@ -281,16 +365,18 @@ html.light .mesh-gradient {
   background: transparent;
   padding: 0;
   cursor: pointer;
-  transition: filter 250ms, transform 250ms;
+  transition:
+    filter 250ms,
+    transform 250ms;
   -webkit-tap-highlight-color: transparent;
   transform-style: preserve-3d;
   transform: perspective(600px) rotateX(18deg) rotateY(10deg) rotateZ(-2deg);
 }
 
 .btn3d.btn3d--gold {
-  --btn-front: linear-gradient(180deg, #FFE066 0%, #FFD700 50%, #C9A227 100%);
-  --btn-edge: #8A6D15;
-  --btn-edge-bottom: #5C4A0F;
+  --btn-front: linear-gradient(180deg, #ffe066 0%, #ffd700 50%, #c9a227 100%);
+  --btn-edge: #8a6d15;
+  --btn-edge-bottom: #5c4a0f;
   --btn-glow: rgba(255, 215, 0, 0.7);
 }
 
@@ -335,7 +421,9 @@ html.light .mesh-gradient {
     0 10px 0 0 var(--btn-edge-bottom),
     0 12px 0 0 var(--btn-edge),
     0 14px 6px rgba(0, 0, 0, 0.3);
-  transition: transform 250ms cubic-bezier(0.3, 0.7, 0.4, 1), box-shadow 250ms;
+  transition:
+    transform 250ms cubic-bezier(0.3, 0.7, 0.4, 1),
+    box-shadow 250ms;
   will-change: transform;
   overflow: hidden;
 }

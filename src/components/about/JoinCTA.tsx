@@ -2,6 +2,7 @@
 
 import { useRef } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { motion, useScroll, useTransform } from "motion/react";
 import { ArrowRight } from "@phosphor-icons/react";
 import ScrollReveal from "@/components/ScrollReveal";
@@ -30,22 +31,10 @@ export default function JoinCTA() {
   const overlayOpacity = useTransform(scrollYProgress, [0, 0.5], [0.85, 0.7]);
 
   return (
-    <section
-      ref={sectionRef}
-      className="relative py-36 md:py-52 overflow-hidden"
-    >
+    <section ref={sectionRef} className="relative py-36 md:py-52 overflow-hidden">
       {/* Background image with parallax */}
-      <motion.div
-        style={{ y: bgY }}
-        className="absolute inset-0 -top-20 -bottom-20 z-0"
-      >
-        <Image
-          src="/images/about/hero-bg.jpg"
-          alt=""
-          fill
-          className="object-cover"
-          sizes="100vw"
-        />
+      <motion.div style={{ y: bgY }} className="absolute inset-0 -top-20 -bottom-20 z-0">
+        <Image src="/images/about/hero-bg.jpg" alt="" fill className="object-cover" sizes="100vw" />
       </motion.div>
 
       {/* Dark overlay */}
@@ -102,15 +91,15 @@ export default function JoinCTA() {
 
         <ScrollReveal delay={0.2}>
           <p className="mt-8 text-[var(--color-text-secondary)] text-base md:text-xl max-w-2xl mx-auto leading-relaxed">
-            Join a vibrant community of purpose-driven youth making waves across
-            the globe. Your journey to greatness starts here.
+            Join a vibrant community of purpose-driven youth making waves across the globe. Your
+            journey to greatness starts here.
           </p>
         </ScrollReveal>
 
         <ScrollReveal delay={0.3}>
           <div className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-4">
             {/* Primary CTA */}
-            <a
+            <Link
               href="/"
               className="group relative inline-flex items-center gap-3 px-10 py-5 bg-fire text-white font-display font-bold text-base tracking-wide rounded-full overflow-hidden transition-all duration-500 hover:shadow-[0_0_60px_rgba(255,77,0,0.5)]"
             >
@@ -122,10 +111,10 @@ export default function JoinCTA() {
                 weight="bold"
                 className="relative transition-transform group-hover:translate-x-1"
               />
-            </a>
+            </Link>
 
             {/* Secondary CTA */}
-            <a
+            <Link
               href="/#give"
               className="group inline-flex items-center gap-3 px-10 py-5 bg-transparent border border-[var(--color-border)] text-[var(--color-text-primary)] font-display font-bold text-base tracking-wide rounded-full hover:border-gold/40 hover:bg-gold/5 transition-all duration-300"
             >
@@ -135,7 +124,7 @@ export default function JoinCTA() {
                 weight="bold"
                 className="text-gold transition-transform group-hover:translate-x-1"
               />
-            </a>
+            </Link>
           </div>
         </ScrollReveal>
 

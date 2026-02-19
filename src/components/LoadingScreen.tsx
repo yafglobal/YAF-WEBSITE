@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback, useRef } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "motion/react";
 
 // Pre-computed ember data to avoid hydration mismatches
@@ -53,19 +53,20 @@ const burstEmberData = [
   { angle: 345, dist: 120, size: 5, delay: 0.02 },
 ];
 
+// Check sessionStorage once at module load to avoid ref-in-render warnings
+const getAlreadyShown = () =>
+  typeof window !== "undefined" && sessionStorage.getItem("yag-loaded") === "1";
+
 export default function LoadingScreen() {
-  const alreadyShown = useRef(
-    typeof window !== "undefined" && sessionStorage.getItem("yag-loaded") === "1"
+  const [phase, setPhase] = useState<"igniting" | "burning" | "blazing" | "burst" | "done">(() =>
+    getAlreadyShown() ? "done" : "igniting"
   );
-  const [phase, setPhase] = useState<
-    "igniting" | "burning" | "blazing" | "burst" | "done"
-  >(alreadyShown.current ? "done" : "igniting");
-  const [visible, setVisible] = useState(!alreadyShown.current);
+  const [visible, setVisible] = useState(() => !getAlreadyShown());
   const [progress, setProgress] = useState(0);
 
   // Lock scroll during loading on mount
   useEffect(() => {
-    if (!alreadyShown.current) {
+    if (!getAlreadyShown()) {
       document.body.style.overflow = "hidden";
     }
   }, []);
@@ -309,12 +310,7 @@ export default function LoadingScreen() {
                     style={{
                       width: b.size,
                       height: b.size,
-                      background:
-                        i % 3 === 0
-                          ? "#FFD700"
-                          : i % 3 === 1
-                            ? "#FF6B2B"
-                            : "#FFFBE6",
+                      background: i % 3 === 0 ? "#FFD700" : i % 3 === 1 ? "#FF6B2B" : "#FFFBE6",
                       boxShadow: `0 0 ${b.size * 3}px rgba(255,165,0,0.8)`,
                     }}
                   />
@@ -325,12 +321,7 @@ export default function LoadingScreen() {
             <motion.div
               className="relative z-10 flex flex-col items-center gap-2 select-none"
               animate={{
-                opacity:
-                  phase === "igniting"
-                    ? 0
-                    : phase === "burst"
-                      ? 0
-                      : [0.7, 1, 0.7],
+                opacity: phase === "igniting" ? 0 : phase === "burst" ? 0 : [0.7, 1, 0.7],
                 scale: phase === "burst" ? 1.5 : 1,
                 y: phase === "igniting" ? 10 : 0,
               }}
@@ -354,13 +345,7 @@ export default function LoadingScreen() {
                 transition={{ duration: 0.8 }}
               >
                 <defs>
-                  <linearGradient
-                    id="flameGrad"
-                    x1="0"
-                    y1="1"
-                    x2="0"
-                    y2="0"
-                  >
+                  <linearGradient id="flameGrad" x1="0" y1="1" x2="0" y2="0">
                     <stop offset="0%" stopColor="#FF4D00" />
                     <stop offset="50%" stopColor="#FF8C00" />
                     <stop offset="85%" stopColor="#FFD700" />
@@ -382,8 +367,7 @@ export default function LoadingScreen() {
               <motion.span
                 className="font-display text-xs md:text-sm tracking-[0.4em] uppercase font-bold"
                 style={{
-                  background:
-                    "linear-gradient(to right, #FF4D00, #FFD700, #FF6B2B)",
+                  background: "linear-gradient(to right, #FF4D00, #FFD700, #FF6B2B)",
                   WebkitBackgroundClip: "text",
                   WebkitTextFillColor: "transparent",
                   backgroundClip: "text",
@@ -408,8 +392,7 @@ export default function LoadingScreen() {
               <motion.div
                 className="absolute top-0 left-0 h-full rounded-full"
                 style={{
-                  background:
-                    "linear-gradient(90deg, #FF4D00, #FF8C00, #FFD700)",
+                  background: "linear-gradient(90deg, #FF4D00, #FF8C00, #FFD700)",
                   boxShadow: "0 0 12px rgba(255, 77, 0, 0.6)",
                 }}
                 animate={{ width: `${progress}%` }}
