@@ -7,11 +7,13 @@ import { Play, FilmStrip, GlobeHemisphereWest } from "@phosphor-icons/react";
 import { useEffect, useState } from "react";
 import { NAVBAR_PREVIEW_REEL } from "@/lib/reels-config";
 
-/** YouTube video IDs for the auto-rotating thumbnail carousel */
+/** Real video IDs from the channel's playlists for the auto-rotating carousel */
 const CAROUSEL_THUMBS = [
-  "optmgB8AZDI", // Jubilee 1.0
-  "dQw4w9WgXcQ", // placeholder — replace with actual channel video IDs
-  "jNQXAC9IVRw", // placeholder
+  "optmgB8AZDI", // Jubilee 1.0 — main channel
+  "97PvDJ3Sfpw", // Exploring The Virtue Of Love — AYAC 2025
+  "JogLQdBPR-I", // AYAC 2025 Word Sessions — Canada
+  "tXsXRNt6tRQ", // SHABACH End-of-Year Praise — Kenya
+  "o8uezl05-vc", // Understanding The Power Of Obedience — AYAC 2025
 ];
 
 const CONTINENTS = [
