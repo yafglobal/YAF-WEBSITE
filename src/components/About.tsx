@@ -65,7 +65,7 @@ export default function About() {
 
             <ScrollReveal delay={0.4}>
               <a
-                href="#"
+                href="/about"
                 className="inline-flex items-center gap-2 mt-10 px-8 py-4 bg-[var(--color-surface)] border border-[var(--color-border)] text-[var(--color-text-primary)] font-display font-semibold text-sm tracking-wide uppercase rounded-full hover:bg-[var(--color-surface-hover)] hover:border-plum/30 transition-all duration-300 group"
               >
                 Learn more about us
