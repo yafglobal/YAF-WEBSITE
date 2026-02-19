@@ -206,19 +206,6 @@ html.light .text-glow-plum-tint {
   z-index: 1;
 }
 
-/* ── About section image glow ────────────────── */
-@keyframes aboutGlow {
-  0%,
-  100% {
-    opacity: 0.5;
-    transform: scale(1);
-  }
-  50% {
-    opacity: 0.8;
-    transform: scale(1.03);
-  }
-}
-
 /* ── Hero slider crossfade ─────────────────── */
 @keyframes heroFade {
   0%,
