@@ -61,8 +61,8 @@ html.light {
   --color-border-subtle: rgba(0, 0, 0, 0.06);
   --color-border-medium: rgba(0, 0, 0, 0.12);
   --color-text-primary: #1a1a1a;
-  --color-text-secondary: #6b6b6b;
-  --color-text-muted: rgba(0, 0, 0, 0.45);
+  --color-text-secondary: #3a3a3a;
+  --color-text-muted: rgba(0, 0, 0, 0.6);
   --color-overlay: rgba(250, 250, 248, 0.7);
 
   --shadow-plum-sm: 0 0 12px rgba(134, 22, 87, 0.25);
