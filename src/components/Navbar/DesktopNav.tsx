@@ -124,7 +124,9 @@ export default function DesktopNav({
           Contact
         </Link>
         <Link
-          href="/#give"
+          href="https://business.payaza.africa/pay/livingfaithchurch-youthalive"
+          target="_blank"
+          rel="noopener noreferrer"
           className="
             group relative px-5 py-2.5 text-[13px] font-semibold
             bg-gradient-to-b from-plum-tint to-plum-muted text-[#1A1A00]

@@ -6,7 +6,7 @@ export const resourceLinks = [
   { label: "Sermons", href: "#sermons" },
   { label: "Events", href: "#events" },
   { label: "Blogs", href: "#" },
-  { label: "Give online", href: "#give" },
+  { label: "Give online", href: "https://business.payaza.africa/pay/livingfaithchurch-youthalive" },
 ];
 
 export const socialLinks = [

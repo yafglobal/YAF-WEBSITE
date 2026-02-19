@@ -10,20 +10,24 @@ export default function ResourcesColumn() {
           Resources
         </h4>
         <ul className="space-y-3">
-          {resourceLinks.map((link) => (
-            <li key={link.label}>
-              <a
-                href={link.href}
-                className="text-[var(--color-text-secondary)] text-sm hover:text-plum transition-colors duration-300 inline-flex items-center gap-1 group"
-              >
-                {link.label}
-                <ArrowUpRight
-                  size={12}
-                  className="opacity-0 group-hover:opacity-100 transition-opacity"
-                />
-              </a>
-            </li>
-          ))}
+          {resourceLinks.map((link) => {
+            const isExternal = link.href.startsWith("http");
+            return (
+              <li key={link.label}>
+                <a
+                  href={link.href}
+                  {...(isExternal && { target: "_blank", rel: "noopener noreferrer" })}
+                  className="text-[var(--color-text-secondary)] text-sm hover:text-plum transition-colors duration-300 inline-flex items-center gap-1 group"
+                >
+                  {link.label}
+                  <ArrowUpRight
+                    size={12}
+                    className="opacity-0 group-hover:opacity-100 transition-opacity"
+                  />
+                </a>
+              </li>
+            );
+          })}
         </ul>
       </ScrollReveal>
     </div>

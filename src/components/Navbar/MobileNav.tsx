@@ -194,7 +194,9 @@ export default function MobileNav({
 
               {/* Mobile CTA */}
               <MotionLink
-                href="/#give"
+                href="https://business.payaza.africa/pay/livingfaithchurch-youthalive"
+                target="_blank"
+                rel="noopener noreferrer"
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 0.45 }}

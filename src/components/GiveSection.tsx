@@ -91,12 +91,6 @@ export default function GiveSection() {
                 Give Online
               </span>
             </a>
-            <a
-              href="#"
-              className="px-6 py-4 md:px-8 md:py-5 border border-[var(--color-border)] text-[var(--color-text-secondary)] font-display font-medium text-xs md:text-sm tracking-wide uppercase rounded-full hover:border-[var(--color-border-hover)] hover:text-[var(--color-text-primary)] transition-all duration-300"
-            >
-              Learn About Giving
-            </a>
           </div>
         </ScrollReveal>
       </motion.div>

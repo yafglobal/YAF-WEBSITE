@@ -149,7 +149,11 @@ export default function Hero() {
           transition={{ delay: 1.4, duration: 0.8 }}
           className="mt-10 flex flex-col sm:flex-row gap-6 justify-center items-center px-4 sm:px-0"
         >
-          <Link href="#give">
+          <Link
+            href="https://business.payaza.africa/pay/livingfaithchurch-youthalive"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <ThreeDButton variant="plum">Give</ThreeDButton>
           </Link>
 
