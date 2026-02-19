@@ -122,7 +122,7 @@ export default function ImpactStats() {
             </p>
           </ScrollReveal>
           <ScrollReveal delay={0.1}>
-            <h2 className="font-display font-extrabold text-4xl md:text-5xl lg:text-6xl leading-[1.05] tracking-tight text-foreground">
+            <h2 className="font-display font-extrabold text-4xl md:text-5xl lg:text-6xl leading-[1.05] tracking-tight text-[var(--color-text-primary)]">
               Setting the World{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-plum via-plum-light to-plum-tint text-glow-plum">
                 Ablaze
@@ -153,7 +153,7 @@ export default function ImpactStats() {
                 </div>
 
                 {/* Giant number */}
-                <p className="font-display font-extrabold text-4xl sm:text-5xl lg:text-6xl text-foreground tracking-tight leading-none">
+                <p className="font-display font-extrabold text-4xl sm:text-5xl lg:text-6xl text-[var(--color-text-primary)] tracking-tight leading-none">
                   <AnimatedCounter value={stat.value} suffix={stat.suffix} inView={isInView} />
                 </p>
 
