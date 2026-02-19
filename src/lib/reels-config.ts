@@ -132,12 +132,6 @@ export const REELS: ReelConfig[] = [
   },
 ];
 
-/**
- * First 3 reel URLs — used for prefetching on the homepage
- * so videos are already in the browser cache when users open /reels.
- */
-export const PREFETCH_REELS = REELS.slice(0, 3).map((r) => r.src);
-
 /** The preview reel shown in the navbar dropdown */
 export const NAVBAR_PREVIEW_REEL = REELS[3].src; // ayac-2025-spirit-tunnel
 

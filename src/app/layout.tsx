@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
-import { PREFETCH_REELS, NAVBAR_PREVIEW_REEL } from "@/lib/reels-config";
+import { NAVBAR_PREVIEW_REEL } from "@/lib/reels-config";
 import "./globals.css";
 
 const montserrat = Montserrat({
@@ -31,10 +31,8 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        {/* Prefetch reel videos so they're cached before the user visits /reels */}
-        {[NAVBAR_PREVIEW_REEL, ...PREFETCH_REELS].map((url) => (
-          <link key={url} rel="prefetch" href={url} as="video" />
-        ))}
+        {/* Prefetch the navbar dropdown preview reel for instant playback on hover */}
+        <link rel="prefetch" href={NAVBAR_PREVIEW_REEL} as="video" />
         <script
           dangerouslySetInnerHTML={{
             __html: `

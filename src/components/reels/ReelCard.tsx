@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, useEffect, useCallback, useState } from "react";
-import { motion, AnimatePresence } from "motion/react";
+import { AnimatePresence, motion } from "motion/react";
 import { Play, Pause, SpeakerHigh, SpeakerSlash, House, MapPin } from "@phosphor-icons/react";
 import Link from "next/link";
 import type { ReelConfig } from "@/lib/reels-config";
@@ -9,24 +9,26 @@ import type { ReelConfig } from "@/lib/reels-config";
 interface ReelCardProps {
   reel: ReelConfig;
   isActive: boolean;
-  /** Within ±1 of the active reel — prefetch more aggressively */
-  isNeighbor: boolean;
   isMuted: boolean;
   onToggleMute: () => void;
   onRequestNext: () => void;
 }
 
+/**
+ * Renders the video + overlays for a single reel.
+ * No wrapper div — the parent in ReelsFeed provides the positioned container
+ * so this component can be virtualized (mounted/unmounted) without affecting
+ * the scroll-snap layout.
+ */
 export default function ReelCard({
   reel,
   isActive,
-  isNeighbor,
   isMuted,
   onToggleMute,
   onRequestNext,
 }: ReelCardProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
-  const [progress, setProgress] = useState(0);
-  // Track tap feedback: "play" | "pause" | null
+  const progressRef = useRef<HTMLDivElement>(null);
   const [tapIcon, setTapIcon] = useState<"play" | "pause" | null>(null);
 
   // Play / pause based on active state
@@ -47,21 +49,29 @@ export default function ReelCard({
     if (videoRef.current) videoRef.current.muted = isMuted;
   }, [isMuted]);
 
-  // Progress tracking via timeupdate event callback (setState in callback is fine)
+  // Smooth 60fps progress bar — direct DOM mutation via rAF, no React re-renders.
+  // Uses GPU-composited scaleX transform instead of width to avoid layout thrash.
   useEffect(() => {
     const video = videoRef.current;
-    if (!video || !isActive) return;
+    const bar = progressRef.current;
+    if (!video || !bar || !isActive) {
+      if (bar) bar.style.transform = "scaleX(0)";
+      return;
+    }
 
-    const onTime = () => {
-      if (video.duration) {
-        setProgress(video.currentTime / video.duration);
+    let rafId: number;
+    const tick = () => {
+      if (video.duration > 0) {
+        bar.style.transform = `scaleX(${video.currentTime / video.duration})`;
       }
+      rafId = requestAnimationFrame(tick);
     };
-    video.addEventListener("timeupdate", onTime);
-    return () => video.removeEventListener("timeupdate", onTime);
+    rafId = requestAnimationFrame(tick);
+
+    return () => cancelAnimationFrame(rafId);
   }, [isActive]);
 
-  // Auto-advance on video end
+  // Auto-advance when video ends (no loop attr — plays once then advances)
   useEffect(() => {
     const video = videoRef.current;
     if (!video || !isActive) return;
@@ -71,7 +81,7 @@ export default function ReelCard({
     return () => video.removeEventListener("ended", onEnded);
   }, [isActive, onRequestNext]);
 
-  // Tap to play/pause — setState only in event handler (not in effect)
+  // Tap to play/pause
   const handleTap = useCallback(() => {
     const video = videoRef.current;
     if (!video) return;
@@ -86,24 +96,20 @@ export default function ReelCard({
     setTimeout(() => setTapIcon(null), 600);
   }, []);
 
-  // Active = full download, neighbors = metadata (fast seek), rest = none
-  const preloadValue = isActive ? "auto" : isNeighbor ? "auto" : "none";
-
   return (
-    <div className="reel-card relative w-full overflow-hidden bg-black">
-      {/* Video */}
+    <>
+      {/* Video — no loop so the ended event fires for auto-advance */}
       <video
         ref={videoRef}
         src={reel.src}
         className="absolute inset-0 w-full h-full object-cover"
         playsInline
         muted
-        loop
-        preload={preloadValue}
+        preload="auto"
         onClick={handleTap}
       />
 
-      {/* Tap play/pause icon */}
+      {/* Tap play/pause feedback */}
       <AnimatePresence>
         {tapIcon && (
           <motion.div
@@ -163,14 +169,14 @@ export default function ReelCard({
         </span>
       </div>
 
-      {/* Progress bar */}
+      {/* Progress bar — GPU-composited scaleX, no React re-renders */}
       <div className="absolute bottom-0 left-0 right-0 h-1 bg-white/10 z-30">
-        <motion.div
-          className="h-full bg-plum"
-          style={{ width: `${progress * 100}%` }}
-          transition={{ duration: 0.1, ease: "linear" }}
+        <div
+          ref={progressRef}
+          className="h-full w-full origin-left bg-plum"
+          style={{ transform: "scaleX(0)" }}
         />
       </div>
-    </div>
+    </>
   );
 }
