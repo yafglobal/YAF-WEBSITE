@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import {
   MapPin,
@@ -10,7 +10,20 @@ import {
   CheckCircle,
 } from "@phosphor-icons/react";
 import ScrollReveal from "@/components/ScrollReveal";
-import WebGLBackground from "./WebGLBackground";
+import Grainient from "./Grainient";
+
+// Theme-adaptive color presets
+const darkColors = {
+  color1: "#FF4D00", // fire
+  color2: "#FFD700", // gold
+  color3: "#1A0500", // deep ember-black
+};
+
+const lightColors = {
+  color1: "#FF8C42", // soft fire
+  color2: "#FFBF00", // warm gold
+  color3: "#FFF3E0", // warm cream
+};
 
 export default function ContactPage() {
   const [form, setForm] = useState({
@@ -21,6 +34,23 @@ export default function ContactPage() {
   });
   const [submitted, setSubmitted] = useState(false);
   const [sending, setSending] = useState(false);
+  const [isLight, setIsLight] = useState(false);
+
+  // Track theme changes for Grainient color adaptation
+  useEffect(() => {
+    const checkTheme = () =>
+      setIsLight(document.documentElement.classList.contains("light"));
+    checkTheme();
+
+    const mo = new MutationObserver(checkTheme);
+    mo.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["class"],
+    });
+    return () => mo.disconnect();
+  }, []);
+
+  const colors = isLight ? lightColors : darkColors;
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -31,7 +61,6 @@ export default function ContactPage() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setSending(true);
-    // Simulated submission
     setTimeout(() => {
       setSending(false);
       setSubmitted(true);
@@ -47,8 +76,33 @@ export default function ContactPage() {
 
   return (
     <section className="relative min-h-screen">
-      {/* WebGL background — fixed, full viewport */}
-      <WebGLBackground />
+      {/* Grainient background — fixed, full viewport */}
+      <div className="fixed inset-0 pointer-events-none" aria-hidden="true">
+        <Grainient
+          color1={colors.color1}
+          color2={colors.color2}
+          color3={colors.color3}
+          timeSpeed={0.2}
+          colorBalance={0}
+          warpStrength={1}
+          warpFrequency={4}
+          warpSpeed={1.5}
+          warpAmplitude={40}
+          blendAngle={0}
+          blendSoftness={0.08}
+          rotationAmount={400}
+          noiseScale={2}
+          grainAmount={0.08}
+          grainScale={2}
+          grainAnimated={false}
+          contrast={isLight ? 1.2 : 1.4}
+          gamma={1}
+          saturation={isLight ? 0.9 : 1.1}
+          centerX={0}
+          centerY={0}
+          zoom={0.85}
+        />
+      </div>
 
       <div className="relative z-10 max-w-[1400px] mx-auto px-6 md:px-10 pt-32 md:pt-40 pb-20 md:pb-32">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20 items-start">
@@ -71,7 +125,6 @@ export default function ContactPage() {
             </ScrollReveal>
 
             <ScrollReveal delay={0.1}>
-              {/* Fire-to-gold separator */}
               <div className="w-24 h-1 rounded-full bg-gradient-to-r from-fire to-gold" />
             </ScrollReveal>
 
@@ -88,11 +141,7 @@ export default function ContactPage() {
               <ScrollReveal delay={0.2}>
                 <div className="flex items-start gap-4 group">
                   <div className="shrink-0 w-11 h-11 rounded-xl bg-fire/10 flex items-center justify-center group-hover:bg-fire/20 transition-colors">
-                    <MapPin
-                      size={22}
-                      className="text-fire"
-                      weight="fill"
-                    />
+                    <MapPin size={22} className="text-fire" weight="fill" />
                   </div>
                   <div>
                     <p className="font-display font-bold text-sm text-[var(--color-text-primary)] mb-1">
@@ -110,11 +159,7 @@ export default function ContactPage() {
               <ScrollReveal delay={0.25}>
                 <div className="flex items-start gap-4 group">
                   <div className="shrink-0 w-11 h-11 rounded-xl bg-fire/10 flex items-center justify-center group-hover:bg-fire/20 transition-colors">
-                    <Phone
-                      size={22}
-                      className="text-fire"
-                      weight="fill"
-                    />
+                    <Phone size={22} className="text-fire" weight="fill" />
                   </div>
                   <div>
                     <p className="font-display font-bold text-sm text-[var(--color-text-primary)] mb-1">
@@ -158,7 +203,6 @@ export default function ContactPage() {
           {/* Right column — Form card */}
           <ScrollReveal direction="right" delay={0.15}>
             <div className="relative bg-[var(--color-surface)]/80 backdrop-blur-xl border border-[var(--color-border)] rounded-2xl p-8 md:p-10">
-              {/* Subtle glow behind card */}
               <div className="absolute -inset-px rounded-2xl bg-gradient-to-br from-fire/5 via-transparent to-gold/5 -z-10 blur-sm" />
 
               <h2 className="font-display font-bold text-xl md:text-2xl text-[var(--color-text-primary)] mb-2">
@@ -315,7 +359,6 @@ export default function ContactPage() {
                           </>
                         )}
                       </span>
-                      {/* Shimmer effect */}
                       <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
                     </button>
                   </motion.form>
