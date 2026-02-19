@@ -28,7 +28,10 @@ const leaders: Leader[] = [
     subtitle: "Living Faith Church Worldwide",
     image: "/images/about/BISHOPYAF.png",
     bio: "Bishop David Oyedepo is the founder and presiding Bishop of Living Faith Church Worldwide (Winners Chapel International), one of the largest church networks in Africa with presence in over 80 nations.",
-    video: { type: "local", src: "/videos/bishop-oyedepo.mp4" },
+    video: {
+      type: "mux",
+      playbackId: "dyUZdkR01qkwL3ZAr8x4Z7Oiw3EX4UOHZG8DSCYlNJpo",
+    },
   },
   {
     name: "Pastor David Oyedepo Jnr.",
