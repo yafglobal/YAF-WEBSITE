@@ -243,7 +243,7 @@ export function DiagonalGallery() {
 
         {/* Top row — slides left */}
         <div className="mb-4 sm:mb-8">
-          <InfiniteSlider duration={40} gap={24} className="overflow-visible">
+          <InfiniteSlider duration={120} gap={24} className="overflow-visible">
             {topRowImages.map((image) => (
               <div
                 key={`top-${image.id}`}
@@ -267,7 +267,7 @@ export function DiagonalGallery() {
 
         {/* Bottom row — slides right */}
         <div>
-          <InfiniteSlider duration={45} gap={24} reverse className="overflow-visible">
+          <InfiniteSlider duration={130} gap={24} reverse className="overflow-visible">
             {bottomRowImages.map((image) => (
               <div
                 key={`bottom-${image.id}`}
