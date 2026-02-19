@@ -42,15 +42,19 @@ export default function WatchHub({ continents, allVideos, playlists }: WatchHubP
 
   const recentVideos = allVideos.slice(0, 12);
 
-  // Group playlists by continent
-  const playlistsByContinent = playlists.reduce<Record<string, PlaylistEntry[]>>(
-    (acc, playlist) => {
+  // Separate older AYAC playlists to render at the bottom
+  const isArchiveAyac = (p: PlaylistEntry) => /AYAC\s+20(2[0-4]|1\d)/i.test(p.title);
+
+  const mainPlaylists = playlists.filter((p) => !isArchiveAyac(p));
+  const archivePlaylists = playlists.filter((p) => isArchiveAyac(p));
+
+  // Group main playlists by continent
+  const groupByContinent = (list: PlaylistEntry[]) =>
+    list.reduce<Record<string, PlaylistEntry[]>>((acc, playlist) => {
       if (!acc[playlist.continentName]) acc[playlist.continentName] = [];
       acc[playlist.continentName].push(playlist);
       return acc;
-    },
-    {}
-  );
+    }, {});
 
   return (
     <div className="min-h-screen">
@@ -70,10 +74,10 @@ export default function WatchHub({ continents, allVideos, playlists }: WatchHubP
         {/* Browse by Continent */}
         <ContinentCards continents={continents} />
 
-        {/* All Playlists */}
-        {Object.keys(playlistsByContinent).length > 0 && (
+        {/* All Playlists — main first, archive AYAC at the bottom */}
+        {playlists.length > 0 && (
           <div className="mt-8 md:mt-12">
-            {Object.entries(playlistsByContinent).map(([continent, entries]) => (
+            {Object.entries(groupByContinent(mainPlaylists)).map(([continent, entries]) => (
               <div key={continent} className="mt-6 md:mt-10">
                 <motion.div
                   initial={{ opacity: 0, x: -20 }}
@@ -98,6 +102,19 @@ export default function WatchHub({ continents, allVideos, playlists }: WatchHubP
                   />
                 ))}
               </div>
+            ))}
+
+            {/* Older AYAC playlists */}
+            {archivePlaylists.map((playlist) => (
+              <VideoRow
+                key={playlist.id}
+                title={playlist.title}
+                videos={playlist.videos}
+                onPlayVideo={handlePlayVideo}
+                playlistId={playlist.id}
+                regionLabel={playlist.countryName}
+                flag={<span className="text-base">{playlist.countryFlag}</span>}
+              />
             ))}
           </div>
         )}
