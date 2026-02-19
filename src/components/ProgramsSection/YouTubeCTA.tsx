@@ -28,7 +28,7 @@ export default function YouTubeCTA() {
           href="https://www.youtube.com/@youthaliveglobal?sub_confirmation=1"
           target="_blank"
           rel="noopener noreferrer"
-          className="shrink-0 inline-flex items-center gap-2 px-6 py-3.5 md:px-8 md:py-4 bg-plum text-[var(--color-text-primary)] font-display font-semibold text-xs md:text-sm rounded-full hover:bg-plum-light transition-all duration-300 hover:shadow-[0_0_30px_rgba(134,22,87,0.3)] group w-full md:w-auto justify-center"
+          className="shrink-0 inline-flex items-center gap-2 px-6 py-3.5 md:px-8 md:py-4 bg-plum text-white font-display font-semibold text-xs md:text-sm rounded-full hover:bg-plum-light transition-all duration-300 hover:shadow-[0_0_30px_rgba(134,22,87,0.3)] group w-full md:w-auto justify-center"
         >
           <YoutubeLogo size={20} weight="fill" />
           Watch on YouTube
