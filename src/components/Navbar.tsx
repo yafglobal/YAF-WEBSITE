@@ -160,7 +160,7 @@ export default function Navbar() {
             <div className="hidden md:flex items-center gap-2">
               <ThemeToggle />
               <Link
-                href="/#contact"
+                href="/contact"
                 className={`
                   px-4 py-2 text-[13px] font-medium rounded-full
                   transition-all duration-300
@@ -297,7 +297,7 @@ export default function Navbar() {
               </MotionLink>
 
               <MotionLink
-                href="/#contact"
+                href="/contact"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.5 }}
