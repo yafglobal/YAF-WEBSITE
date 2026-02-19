@@ -42,8 +42,18 @@ export default function AboutHero() {
           background: `radial-gradient(ellipse at 50% 40%, transparent 30%, var(--color-overlay) 100%)`,
         }}
       />
-      <div className="absolute inset-0 z-[1] bg-gradient-to-t from-[var(--color-background)] via-[var(--color-background)]/50 to-transparent" />
-      <div className="absolute inset-0 z-[1] bg-gradient-to-r from-[var(--color-background)]/60 via-transparent to-transparent" />
+      <div
+        className="absolute inset-0 z-[1]"
+        style={{
+          background: `linear-gradient(to top, var(--color-background), color-mix(in srgb, var(--color-background) 50%, transparent), transparent)`,
+        }}
+      />
+      <div
+        className="absolute inset-0 z-[1]"
+        style={{
+          background: `linear-gradient(to right, color-mix(in srgb, var(--color-background) 60%, transparent), transparent, transparent)`,
+        }}
+      />
       <FireParticles />
 
       {/* Large ghosted watermark */}
@@ -53,7 +63,10 @@ export default function AboutHero() {
         transition={{ duration: 1.5, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
         className="absolute bottom-0 -left-2 md:left-4 z-[4] pointer-events-none select-none"
       >
-        <span className="font-display font-extrabold text-[11rem] md:text-[17rem] lg:text-[22rem] leading-[0.75] tracking-tighter text-foreground/[0.03]">
+        <span
+          className="font-display font-extrabold text-[11rem] md:text-[17rem] lg:text-[22rem] leading-[0.75] tracking-tighter"
+          style={{ color: "color-mix(in srgb, var(--color-foreground) 3%, transparent)" }}
+        >
           YA
         </span>
       </motion.div>
@@ -118,22 +131,6 @@ export default function AboutHero() {
           Your vibrant community of kingdom-focused high-flyers equipped to take the world by a
           storm.
         </motion.p>
-
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.8 }}
-          className="mt-14 flex items-center gap-3"
-        >
-          <motion.div
-            animate={{ y: [0, 8, 0] }}
-            transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-            className="w-[1px] h-10 bg-gradient-to-b from-plum to-transparent"
-          />
-          <span className="text-[var(--color-text-muted)] text-xs tracking-[0.3em] uppercase">
-            Scroll to explore
-          </span>
-        </motion.div>
       </motion.div>
 
       <motion.div
