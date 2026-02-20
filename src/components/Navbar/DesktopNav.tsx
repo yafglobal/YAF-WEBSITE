@@ -8,6 +8,7 @@ import { useState, useRef } from "react";
 import ThemeToggle from "@/components/ThemeToggle";
 import { navLinks } from "./navConfig";
 import WatchMegaDropdown from "./WatchMegaDropdown";
+import BranchesMegaDropdown from "./BranchesMegaDropdown";
 
 interface DesktopNavProps {
   activeSection: number;
@@ -25,15 +26,26 @@ export default function DesktopNav({
   lightHero = false,
 }: DesktopNavProps) {
   const [watchHovered, setWatchHovered] = useState(false);
-  const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const [communityHovered, setCommunityHovered] = useState(false);
+  const watchTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const communityTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const handleMouseEnter = () => {
-    if (timeoutRef.current) clearTimeout(timeoutRef.current);
+    if (watchTimeoutRef.current) clearTimeout(watchTimeoutRef.current);
     setWatchHovered(true);
   };
 
   const handleMouseLeave = () => {
-    timeoutRef.current = setTimeout(() => setWatchHovered(false), 150);
+    watchTimeoutRef.current = setTimeout(() => setWatchHovered(false), 150);
+  };
+
+  const handleCommunityEnter = () => {
+    if (communityTimeoutRef.current) clearTimeout(communityTimeoutRef.current);
+    setCommunityHovered(true);
+  };
+
+  const handleCommunityLeave = () => {
+    communityTimeoutRef.current = setTimeout(() => setCommunityHovered(false), 150);
   };
 
   return (
@@ -49,13 +61,19 @@ export default function DesktopNav({
         >
           {navLinks.map((link, index) => {
             const isWatch = link.label === "Watch";
+            const isCommunity = link.label === "Community";
+            const hasDropdown = isWatch || isCommunity;
 
             return (
               <div
                 key={link.label}
                 className="relative"
-                onMouseEnter={isWatch ? handleMouseEnter : undefined}
-                onMouseLeave={isWatch ? handleMouseLeave : undefined}
+                onMouseEnter={
+                  isWatch ? handleMouseEnter : isCommunity ? handleCommunityEnter : undefined
+                }
+                onMouseLeave={
+                  isWatch ? handleMouseLeave : isCommunity ? handleCommunityLeave : undefined
+                }
               >
                 <Link
                   href={link.href}
@@ -90,10 +108,14 @@ export default function DesktopNav({
                     />
                   )}
                   <span className="relative z-10">{link.label}</span>
-                  {isWatch && (
+                  {hasDropdown && (
                     <CaretDown
                       weight="bold"
-                      className={`relative z-10 w-3 h-3 transition-transform duration-200 ${watchHovered ? "rotate-180" : ""}`}
+                      className={`relative z-10 w-3 h-3 transition-transform duration-200 ${
+                        (isWatch && watchHovered) || (isCommunity && communityHovered)
+                          ? "rotate-180"
+                          : ""
+                      }`}
                     />
                   )}
                 </Link>
@@ -101,6 +123,11 @@ export default function DesktopNav({
                 {/* Watch dropdown */}
                 {isWatch && (
                   <AnimatePresence>{watchHovered && <WatchMegaDropdown />}</AnimatePresence>
+                )}
+
+                {/* Community / Branches dropdown */}
+                {isCommunity && (
+                  <AnimatePresence>{communityHovered && <BranchesMegaDropdown />}</AnimatePresence>
                 )}
               </div>
             );

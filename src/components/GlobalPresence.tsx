@@ -1,9 +1,9 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import Image from "next/image";
-import { motion, useScroll, useTransform, AnimatePresence } from "motion/react";
-import { MapPin, Compass, Airplane, X, GlobeHemisphereWest } from "@phosphor-icons/react";
+import { motion, useScroll, useTransform } from "motion/react";
+import { MapPin, Compass, Airplane } from "@phosphor-icons/react";
 import ScrollReveal from "./ScrollReveal";
 
 const regions = [
@@ -15,7 +15,6 @@ const regions = [
 ];
 
 export default function GlobalPresence() {
-  const [showModal, setShowModal] = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: sectionRef,
@@ -81,7 +80,9 @@ export default function GlobalPresence() {
 
             <ScrollReveal delay={0.6}>
               <button
-                onClick={() => setShowModal(true)}
+                onClick={() => {
+                  document.getElementById("branches")?.scrollIntoView({ behavior: "smooth" });
+                }}
                 className="inline-flex items-center gap-2 mt-10 text-plum font-display font-semibold text-sm tracking-wide uppercase group cursor-pointer"
               >
                 <Compass size={18} weight="fill" />
@@ -152,61 +153,6 @@ export default function GlobalPresence() {
           </div>
         </div>
       </div>
-      {/* Coming Soon Modal */}
-      <AnimatePresence>
-        {showModal && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.25 }}
-            className="fixed inset-0 z-50 flex items-center justify-center px-6"
-            onClick={() => setShowModal(false)}
-          >
-            {/* Backdrop */}
-            <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" />
-
-            {/* Modal */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9, y: 20 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.9, y: 20 }}
-              transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-              onClick={(e) => e.stopPropagation()}
-              className="relative w-full max-w-sm bg-[var(--color-surface)] border border-[var(--color-border)] rounded-2xl p-8 text-center shadow-[var(--shadow-plum-lg)]"
-            >
-              {/* Close button */}
-              <button
-                onClick={() => setShowModal(false)}
-                className="absolute top-4 right-4 text-[var(--color-text-muted)] hover:text-[var(--color-text-primary)] transition-colors cursor-pointer"
-              >
-                <X size={20} weight="bold" />
-              </button>
-
-              {/* Icon */}
-              <div className="mx-auto mb-5 w-16 h-16 rounded-full bg-plum/10 flex items-center justify-center">
-                <GlobeHemisphereWest size={32} weight="duotone" className="text-plum" />
-              </div>
-
-              <h3 className="font-display font-bold text-xl text-[var(--color-text-primary)]">
-                Coming Soon
-              </h3>
-
-              <p className="mt-3 text-[var(--color-text-secondary)] text-sm leading-relaxed">
-                Our global location directory is currently being built. Check back soon to find a
-                Youth Alive community near you.
-              </p>
-
-              <button
-                onClick={() => setShowModal(false)}
-                className="mt-6 px-6 py-2.5 bg-plum hover:bg-plum-light text-white font-display font-semibold text-sm rounded-xl transition-colors cursor-pointer"
-              >
-                Got it
-              </button>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
     </section>
   );
 }

@@ -8,6 +8,7 @@ import LoadingScreen from "@/components/LoadingScreen";
 const About = dynamic(() => import("@/components/About"));
 const ThemeSection = dynamic(() => import("@/components/ThemeSection"));
 const GlobalPresence = dynamic(() => import("@/components/GlobalPresence"));
+const BranchesMenu = dynamic(() => import("@/components/FlowingMenu"));
 const Community = dynamic(() => import("@/components/Community"));
 const PhotoGallery = dynamic(() => import("@/components/PhotoGallery"));
 const ProgramsSection = dynamic(() => import("@/components/ProgramsSection"));
@@ -30,6 +31,7 @@ export default function Home() {
         <About />
         <ThemeSection />
         <GlobalPresence />
+        <BranchesMenu />
         <Community />
         <PhotoGallery />
         <ProgramsSection />

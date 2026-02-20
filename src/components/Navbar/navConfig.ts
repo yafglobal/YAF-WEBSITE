@@ -17,3 +17,10 @@ export const watchDropdownItems = [
   { label: "North America", href: "/watch/north-america", flag: "🇨🇦" },
   { label: "Europe", href: "/watch/europe", flag: "🇬🇧" },
 ];
+
+export const branchDropdownItems = [
+  { label: "Africa", href: "/branches/africa", tagline: "Where the Fire Began" },
+  { label: "Europe", href: "/branches/europe", tagline: "Burning Across Borders" },
+  { label: "USA", href: "/branches/usa", tagline: "Ablaze in America" },
+  { label: "Canada", href: "/branches/canada", tagline: "Northern Fire" },
+];

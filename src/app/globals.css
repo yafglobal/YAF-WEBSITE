@@ -273,8 +273,10 @@ html.light .text-glow-plum-tint {
 @media (prefers-reduced-motion: reduce) {
   .particle,
   .ember,
-  .animate-marquee {
+  .animate-marquee,
+  .flowing-menu-marquee {
     animation: none;
+    transform: none;
   }
 }
 

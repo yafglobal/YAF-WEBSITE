@@ -80,6 +80,7 @@ export default function MobileNav({
             >
               {navLinks.map((link, i) => {
                 const isWatch = link.label === "Watch";
+                const isCommunity = link.label === "Community";
 
                 return (
                   <div key={link.label} className="w-full">
@@ -181,6 +182,54 @@ export default function MobileNav({
                             >
                               <span className="text-sm leading-none">{c.emoji}</span>
                               <span className="text-[11px] font-bold drop-shadow-sm">
+                                {c.label}
+                              </span>
+                            </MotionLink>
+                          ))}
+                        </div>
+                      </motion.div>
+                    )}
+
+                    {/* Community sub-items: branch cards */}
+                    {isCommunity && (
+                      <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ delay: 0.12 + i * 0.06 + 0.1 }}
+                        className="mt-2 mb-3"
+                      >
+                        <div className="grid grid-cols-2 gap-1.5">
+                          {[
+                            {
+                              label: "Africa",
+                              href: "/branches/africa",
+                              gradient: "from-amber-600/80 to-orange-800/80",
+                            },
+                            {
+                              label: "Europe",
+                              href: "/branches/europe",
+                              gradient: "from-blue-600/80 to-indigo-800/80",
+                            },
+                            {
+                              label: "USA",
+                              href: "/branches/usa",
+                              gradient: "from-red-600/80 to-rose-800/80",
+                            },
+                            {
+                              label: "Canada",
+                              href: "/branches/canada",
+                              gradient: "from-emerald-600/80 to-teal-800/80",
+                            },
+                          ].map((c) => (
+                            <MotionLink
+                              key={c.href}
+                              href={c.href}
+                              onClick={onClose}
+                              initial={{ opacity: 0, scale: 0.9 }}
+                              animate={{ opacity: 1, scale: 1 }}
+                              className={`flex items-center justify-center gap-1.5 py-3 rounded-lg bg-gradient-to-r ${c.gradient} text-white`}
+                            >
+                              <span className="text-[12px] font-bold drop-shadow-sm">
                                 {c.label}
                               </span>
                             </MotionLink>
