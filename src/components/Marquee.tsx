@@ -11,9 +11,9 @@ const words = [
   "EMPOWERED",
 ];
 
-export default function Marquee() {
-  const repeatedWords = [...words, ...words, ...words, ...words];
+const repeatedWords = [...words, ...words, ...words, ...words];
 
+export default function Marquee() {
   return (
     <div className="relative py-4 md:py-6 overflow-hidden bg-[var(--color-charcoal)] border-y border-[var(--color-border)]">
       <div className="animate-marquee flex whitespace-nowrap">

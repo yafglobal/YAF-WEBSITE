@@ -1,12 +1,16 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState } from "react";
+import Image from "next/image";
 import { motion, useScroll, useTransform } from "motion/react";
 import { Play } from "@phosphor-icons/react";
 import ScrollReveal from "./ScrollReveal";
 
+const VIDEO_ID = "optmgB8AZDI";
+
 export default function VideoSection() {
   const sectionRef = useRef<HTMLDivElement>(null);
+  const [iframeLoaded, setIframeLoaded] = useState(false);
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ["start end", "end start"],
@@ -42,18 +46,41 @@ export default function VideoSection() {
           </ScrollReveal>
         </div>
 
-        {/* Video embed with plum border */}
+        {/* Video embed with plum border — uses a facade to avoid loading ~1MB of YouTube JS until clicked */}
         <ScrollReveal delay={0.3}>
           <motion.div style={{ scale: videoScale }} className="relative">
             {/* Plum border wrapper */}
             <div className="plum-border">
               <div className="video-container bg-[var(--color-surface)]">
-                <iframe
-                  src="https://www.youtube.com/embed/optmgB8AZDI?si=JO3ZUiv-qZIMWffu"
-                  title="JUBILEE 1.0 | YOUTHALIVE GLOBAL"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                  allowFullScreen
-                />
+                {iframeLoaded ? (
+                  <iframe
+                    src={`https://www.youtube.com/embed/${VIDEO_ID}?autoplay=1&rel=0`}
+                    title="JUBILEE 1.0 | YOUTHALIVE GLOBAL"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowFullScreen
+                    loading="lazy"
+                  />
+                ) : (
+                  <button
+                    onClick={() => setIframeLoaded(true)}
+                    className="absolute inset-0 w-full h-full cursor-pointer group"
+                    aria-label="Play video"
+                  >
+                    <Image
+                      src={`https://img.youtube.com/vi/${VIDEO_ID}/maxresdefault.jpg`}
+                      alt="JUBILEE 1.0 | YOUTHALIVE GLOBAL"
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 1200px) 100vw, 1200px"
+                    />
+                    {/* Play button overlay */}
+                    <div className="absolute inset-0 flex items-center justify-center bg-black/20 group-hover:bg-black/30 transition-colors duration-300">
+                      <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-plum/90 flex items-center justify-center shadow-[0_0_40px_rgba(134,22,87,0.5)] group-hover:scale-110 transition-transform duration-300">
+                        <Play size={32} weight="fill" className="text-white ml-1" />
+                      </div>
+                    </div>
+                  </button>
+                )}
               </div>
             </div>
 

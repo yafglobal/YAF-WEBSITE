@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useCallback, useEffect, useRef, useSyncExternalStore, useId } from "react";
+import React, { useCallback, useEffect, useMemo, useRef, useSyncExternalStore, useId } from "react";
 
 export interface GlassSurfaceProps {
   children?: React.ReactNode;
@@ -192,24 +192,30 @@ const GlassSurface: React.FC<GlassSurfaceProps> = ({
     yChannel,
   ]);
 
-  // Observe container resize to regenerate displacement map
+  // Observe container resize to regenerate displacement map (debounced via rAF)
   useEffect(() => {
     if (!containerRef.current) return;
 
+    let rafId: number;
     const resizeObserver = new ResizeObserver(() => {
-      setTimeout(updateDisplacementMap, 0);
+      cancelAnimationFrame(rafId);
+      rafId = requestAnimationFrame(updateDisplacementMap);
     });
 
     resizeObserver.observe(containerRef.current);
-    return () => resizeObserver.disconnect();
+    return () => {
+      resizeObserver.disconnect();
+      cancelAnimationFrame(rafId);
+    };
   }, [updateDisplacementMap]);
 
-  // Recalculate on explicit size changes
+  // Recalculate on explicit size prop changes
   useEffect(() => {
-    setTimeout(updateDisplacementMap, 0);
+    const rafId = requestAnimationFrame(updateDisplacementMap);
+    return () => cancelAnimationFrame(rafId);
   }, [width, height, updateDisplacementMap]);
 
-  const getContainerStyles = (): React.CSSProperties => {
+  const containerStyles = useMemo((): React.CSSProperties => {
     const baseStyles: React.CSSProperties = {
       ...style,
       width: typeof width === "number" ? `${width}px` : width,
@@ -289,13 +295,24 @@ const GlassSurface: React.FC<GlassSurfaceProps> = ({
         }
       }
     }
-  };
+  }, [
+    style,
+    width,
+    height,
+    borderRadius,
+    backgroundOpacity,
+    saturation,
+    svgSupported,
+    isDarkMode,
+    filterId,
+    backdropFilterSupported,
+  ]);
 
   return (
     <div
       ref={containerRef}
       className={`relative flex items-center justify-center overflow-hidden transition-opacity duration-[260ms] ease-out ${className}`}
-      style={getContainerStyles()}
+      style={containerStyles}
     >
       <svg
         className="w-full h-full pointer-events-none absolute inset-0 opacity-0 -z-10"

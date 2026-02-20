@@ -118,7 +118,6 @@ const galleryImages = [
     alt: "Youth fellowship friends at Winners Middlesbrough",
   },
   { id: "29", src: "/images/slider-1.jpeg", alt: "Youth worship gathering" },
-  { id: "30", src: "/yaf-canada/women-in-worship.webp", alt: "Women in worship at YAF Canada" },
   { id: "31", src: "/images/about/fellowship-photo.png", alt: "Fellowship gathering" },
   {
     id: "32",
@@ -175,21 +174,11 @@ const galleryImages = [
   },
   { id: "49", src: "/usayaf/singer-haze-stage.webp", alt: "Singer on hazy stage at AYAC USA" },
   {
-    id: "50",
-    src: "/yaf-canada/youth-member-portrait.webp",
-    alt: "Youth member portrait at YAF Canada",
-  },
-  {
     id: "51",
     src: "/yaf-canada/pastor-preaching-wide.webp",
     alt: "Pastor preaching at YAF Canada conference",
   },
   { id: "52", src: "/images/slider-5.jpeg", alt: "Youth community outreach" },
-  {
-    id: "53",
-    src: "/yaf-canada/worship-portrait-closeup.webp",
-    alt: "Worship portrait closeup at YAF Canada",
-  },
   { id: "54", src: "/images/about/worship-portrait.png", alt: "Worship portrait" },
   {
     id: "55",
@@ -238,7 +227,7 @@ export function DiagonalGallery() {
 
         {/* Top row — slides left */}
         <div className="mb-4 sm:mb-8">
-          <InfiniteSlider duration={120} gap={24} className="overflow-visible">
+          <InfiniteSlider duration={120} gap={24}>
             {topRowImages.map((image) => (
               <div
                 key={`top-${image.id}`}
@@ -262,7 +251,7 @@ export function DiagonalGallery() {
 
         {/* Bottom row — slides right */}
         <div>
-          <InfiniteSlider duration={130} gap={24} reverse className="overflow-visible">
+          <InfiniteSlider duration={130} gap={24} reverse>
             {bottomRowImages.map((image) => (
               <div
                 key={`bottom-${image.id}`}

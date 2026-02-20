@@ -6,6 +6,13 @@ import { motion, useScroll, useTransform } from "motion/react";
 import { Bell, DeviceMobileCamera, ChatCircleDots, CalendarCheck } from "@phosphor-icons/react";
 import ScrollReveal from "./ScrollReveal";
 
+const appFeatures = [
+  { icon: CalendarCheck, text: "Events & Programs" },
+  { icon: ChatCircleDots, text: "Community Chats" },
+  { icon: Bell, text: "Devotionals Daily" },
+  { icon: DeviceMobileCamera, text: "Live Streaming" },
+];
+
 export default function AppSection() {
   const sectionRef = useRef<HTMLDivElement>(null);
   const [email, setEmail] = useState("");
@@ -17,13 +24,6 @@ export default function AppSection() {
 
   const phoneY = useTransform(scrollYProgress, [0, 1], ["20%", "-10%"]);
   const phoneRotate = useTransform(scrollYProgress, [0, 0.5, 1], [-5, 0, 5]);
-
-  const appFeatures = [
-    { icon: CalendarCheck, text: "Events & Programs" },
-    { icon: ChatCircleDots, text: "Community Chats" },
-    { icon: Bell, text: "Devotionals Daily" },
-    { icon: DeviceMobileCamera, text: "Live Streaming" },
-  ];
 
   return (
     <section ref={sectionRef} className="relative overflow-hidden">

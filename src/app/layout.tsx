@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
-import { NAVBAR_PREVIEW_REEL } from "@/lib/reels-config";
 import "./globals.css";
 
 const montserrat = Montserrat({
@@ -31,8 +30,10 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        {/* Prefetch the navbar dropdown preview reel for instant playback on hover */}
-        <link rel="prefetch" href={NAVBAR_PREVIEW_REEL} as="video" />
+        {/* Warm up connections for video CDNs used by the navbar reel and footer */}
+        <link rel="preconnect" href="https://globalreels.winnerschapelsudbury.org" />
+        <link rel="preconnect" href="https://stream.mux.com" />
+        <link rel="preconnect" href="https://cdn.mux.com" />
         <script
           dangerouslySetInnerHTML={{
             __html: `

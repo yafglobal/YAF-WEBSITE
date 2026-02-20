@@ -159,16 +159,26 @@ body {
   color: white;
 }
 
-/* ── Custom scrollbar ──────────────────────── */
-::-webkit-scrollbar {
-  width: 6px;
+/* ── Custom scrollbar (desktop only) ──────── */
+@media (min-width: 768px) {
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--color-charcoal);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-plum);
+    border-radius: 3px;
+  }
 }
-::-webkit-scrollbar-track {
-  background: var(--color-charcoal);
-}
-::-webkit-scrollbar-thumb {
-  background: var(--color-plum);
-  border-radius: 3px;
+
+/* Hide custom scrollbar on mobile — use native overlay scrollbar */
+@media (max-width: 767px) {
+  ::-webkit-scrollbar {
+    width: 0;
+    display: none;
+  }
 }
 
 /* ── Glow text utility ─────────────────────── */
@@ -257,6 +267,15 @@ html.light .text-glow-plum-tint {
   border-radius: 50%;
   animation: float-up linear infinite;
   pointer-events: none;
+}
+
+/* Respect user motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .particle,
+  .ember,
+  .animate-marquee {
+    animation: none;
+  }
 }
 
 /* ── Marquee ───────────────────────────────── */

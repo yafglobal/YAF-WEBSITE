@@ -1,5 +1,6 @@
 "use client";
 
+import { memo } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "motion/react";
 import { ArrowRight } from "@phosphor-icons/react";
@@ -18,7 +19,7 @@ interface ProgramRowProps {
   onTap: () => void;
 }
 
-export default function ProgramRow({
+function ProgramRow({
   icon: IconComponent,
   title,
   description,
@@ -103,3 +104,5 @@ export default function ProgramRow({
     </motion.div>
   );
 }
+
+export default memo(ProgramRow);
