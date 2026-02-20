@@ -8,6 +8,7 @@ interface MenuItemData {
   link: string;
   text: string;
   image: string;
+  images?: string[];
 }
 
 interface FlowingMenuDesktopProps {
@@ -18,7 +19,8 @@ interface MenuItemProps extends MenuItemData {
   isFirst: boolean;
 }
 
-function MenuItem({ link, text, image, isFirst }: MenuItemProps) {
+function MenuItem({ link, text, image, images, isFirst }: MenuItemProps) {
+  const allImages = images && images.length > 1 ? images : [image];
   const itemRef = useRef<HTMLDivElement>(null);
   const marqueeRef = useRef<HTMLDivElement>(null);
   const marqueeInnerRef = useRef<HTMLDivElement>(null);
@@ -145,7 +147,7 @@ function MenuItem({ link, text, image, isFirst }: MenuItemProps) {
               </span>
               <div
                 className="w-[200px] h-[7vh] my-[2em] mx-[2vw] py-[1em] rounded-[50px] bg-cover bg-center"
-                style={{ backgroundImage: `url(${image})` }}
+                style={{ backgroundImage: `url(${allImages[idx % allImages.length]})` }}
               />
             </div>
           ))}
