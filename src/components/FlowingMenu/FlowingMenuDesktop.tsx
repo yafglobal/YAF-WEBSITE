@@ -51,6 +51,7 @@ function MenuItem({ link, text, image, images, isFirst }: MenuItemProps) {
       const marqueeContent = marqueeInnerRef.current.querySelector(".marquee-part") as HTMLElement;
       if (!marqueeContent) return;
       const contentWidth = marqueeContent.offsetWidth;
+      if (contentWidth === 0) return; // Element is hidden (display:none on mobile) — skip
       const viewportWidth = window.innerWidth;
       const needed = Math.ceil(viewportWidth / contentWidth) + 2;
       setRepetitions(Math.max(4, needed));
