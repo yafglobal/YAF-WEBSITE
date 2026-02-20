@@ -67,7 +67,7 @@ export default function MobileNav({
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-40 bg-[var(--color-background)] flex flex-col items-center overflow-y-auto overscroll-contain"
+            className="fixed inset-0 z-40 bg-[#1a1a1a] flex flex-col items-center overflow-y-auto overscroll-contain"
             style={{ WebkitOverflowScrolling: "touch" }}
           >
             {/* Decorative ember glow */}
