@@ -24,12 +24,12 @@ export default function Navbar({ lightHero = false }: NavbarProps) {
   const branchAccent = useMemo(() => {
     const accents: Record<string, { src: string; size: number; rotate: number }> = {
       "/branches/africa": {
-        src: "/images/branch-accents/africa-continent.svg",
-        size: 18,
+        src: "/images/branch-accents/africa-continent.png",
+        size: 20,
         rotate: 0,
       },
-      "/branches/europe": { src: "/images/branch-accents/europe-star.svg", size: 18, rotate: 0 },
-      "/branches/usa": { src: "/images/branch-accents/usa-star.svg", size: 18, rotate: 0 },
+      "/branches/europe": { src: "/images/branch-accents/europe-flag.png", size: 20, rotate: 0 },
+      "/branches/usa": { src: "/images/branch-accents/usa-flag.png", size: 22, rotate: 0 },
       "/branches/canada": { src: "/yaf-canada/mapleleaf.png", size: 20, rotate: 12 },
     };
     return accents[pathname] ?? null;

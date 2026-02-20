@@ -7,9 +7,9 @@ import { UsersThree } from "@phosphor-icons/react";
 import { BRANCHES } from "@/lib/branches-config";
 
 const BRANCH_ACCENTS: Record<string, { src: string; size: number; rotate: string }> = {
-  africa: { src: "/images/branch-accents/africa-continent.svg", size: 16, rotate: "rotate-0" },
-  europe: { src: "/images/branch-accents/europe-star.svg", size: 16, rotate: "rotate-0" },
-  usa: { src: "/images/branch-accents/usa-star.svg", size: 16, rotate: "rotate-0" },
+  africa: { src: "/images/branch-accents/africa-continent.png", size: 18, rotate: "rotate-0" },
+  europe: { src: "/images/branch-accents/europe-flag.png", size: 18, rotate: "rotate-0" },
+  usa: { src: "/images/branch-accents/usa-flag.png", size: 20, rotate: "rotate-0" },
   canada: { src: "/yaf-canada/mapleleaf.png", size: 18, rotate: "rotate-12" },
 };
 
