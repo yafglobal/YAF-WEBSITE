@@ -27,46 +27,40 @@ export default function Hero() {
   const contentY = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
 
   return (
-    <section ref={containerRef} className="relative h-screen overflow-hidden">
+    <section ref={containerRef} className="relative h-[100dvh] min-h-screen overflow-hidden">
       {/* ── Diagonal image strip mosaic ──
           Desktop: strips drift up/down independently.
           Mobile: static strips for smooth scrolling. */}
-      <div className="absolute inset-0 -rotate-12 scale-[1.6] origin-center">
-        <div className="flex h-full">
-          {slides.map((src, i) =>
-            isMobile ? (
-              <div key={i} className="relative flex-1 overflow-hidden">
-                <Image
-                  src={src}
-                  alt={`Youth Alive event ${i + 1}`}
-                  fill
-                  className="object-cover"
-                  priority={i === 0}
-                  sizes="25vw"
-                />
-              </div>
-            ) : (
-              <motion.div
-                key={i}
-                className="relative flex-1 overflow-hidden"
-                animate={{ y: i % 2 === 0 ? [0, -40, 0] : [0, 40, 0] }}
-                transition={{
-                  duration: 10 + i * 2,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                }}
-              >
-                <Image
-                  src={src}
-                  alt={`Youth Alive event ${i + 1}`}
-                  fill
-                  className="object-cover"
-                  priority={i === 0}
-                  sizes="25vw"
-                />
-              </motion.div>
-            )
-          )}
+      <div
+        className="absolute inset-0 origin-center"
+        style={{ transform: "rotate(-12deg) scale(1.6) translateZ(0)", willChange: "transform" }}
+      >
+        <div className="flex w-full h-full">
+          {slides.map((src, i) => (
+            <motion.div
+              key={i}
+              className="relative flex-1 h-full overflow-hidden"
+              animate={isMobile ? { y: 0 } : { y: i % 2 === 0 ? [0, -40, 0] : [0, 40, 0] }}
+              transition={
+                isMobile
+                  ? { duration: 0 }
+                  : {
+                      duration: 10 + i * 2,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                    }
+              }
+            >
+              <Image
+                src={src}
+                alt={`Youth Alive event ${i + 1}`}
+                fill
+                className="object-cover"
+                priority={i === 0}
+                sizes="25vw"
+              />
+            </motion.div>
+          ))}
         </div>
       </div>
 
