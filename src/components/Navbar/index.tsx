@@ -102,17 +102,13 @@ export default function Navbar({ lightHero = false }: NavbarProps) {
               />
             </div>
 
-            {/* Logo */}
+            {/* Logo + branch accent */}
             <Link
               href="/"
               onClick={handleNavClick}
-              className="relative z-10 flex items-center shrink-0"
+              className="relative z-10 flex items-center gap-1 shrink-0"
             >
-              <motion.div
-                animate={{ scale: scrolled ? 0.85 : 1 }}
-                transition={{ duration: 0.3 }}
-                className="relative"
-              >
+              <motion.div animate={{ scale: scrolled ? 0.85 : 1 }} transition={{ duration: 0.3 }}>
                 <Image
                   src="/images/logo.png"
                   alt="Youth Alive Global"
@@ -122,25 +118,25 @@ export default function Navbar({ lightHero = false }: NavbarProps) {
                   style={{ filter: "var(--logo-filter, brightness(2))" }}
                   priority
                 />
-                {/* Branch accent icon on logo — branch pages only */}
-                {branchAccent && (
-                  <motion.span
-                    key={branchAccent.src}
-                    initial={{ opacity: 0, scale: 0.5, rotate: -20 }}
-                    animate={{ opacity: 1, scale: 1, rotate: branchAccent.rotate }}
-                    transition={{ type: "spring", stiffness: 300, damping: 20, delay: 0.3 }}
-                    className="pointer-events-none absolute -top-1.5 -right-1 md:-right-0.5"
-                  >
-                    <Image
-                      src={branchAccent.src}
-                      alt=""
-                      width={branchAccent.size}
-                      height={branchAccent.size}
-                      className="w-4.5 h-4.5 md:w-5 md:h-5 drop-shadow-sm"
-                    />
-                  </motion.span>
-                )}
               </motion.div>
+              {/* Branch accent to the right of logo — branch pages only */}
+              {branchAccent && (
+                <motion.div
+                  key={branchAccent.src}
+                  initial={{ opacity: 0, scale: 0.5, x: -4 }}
+                  animate={{ opacity: 1, scale: 1, x: 0, rotate: branchAccent.rotate }}
+                  transition={{ type: "spring", stiffness: 300, damping: 20, delay: 0.3 }}
+                  className="pointer-events-none -ml-1"
+                >
+                  <Image
+                    src={branchAccent.src}
+                    alt=""
+                    width={branchAccent.size}
+                    height={branchAccent.size}
+                    className="w-5 h-5 md:w-5.5 md:h-5.5 drop-shadow-md rounded-sm"
+                  />
+                </motion.div>
+              )}
             </Link>
 
             <DesktopNav
