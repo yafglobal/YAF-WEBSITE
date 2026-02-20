@@ -27,8 +27,11 @@ export default function BranchHero({ branch }: Props) {
       ref={sectionRef}
       className="relative h-[100svh] min-h-[700px] flex items-end overflow-hidden"
     >
-      {/* Parallax Background */}
-      <motion.div style={{ y: bgY, scale: bgScale }} className="absolute inset-0 z-0">
+      {/* Parallax Background — will-change + backface-visibility fix iOS clipping */}
+      <motion.div
+        style={{ y: bgY, scale: bgScale }}
+        className="absolute inset-0 z-0 will-change-transform [backface-visibility:hidden] [-webkit-backface-visibility:hidden]"
+      >
         <Image
           src={branch.heroImage}
           alt={`Youth Alive ${branch.name}`}
