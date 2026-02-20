@@ -10,43 +10,35 @@ const collageImages = [
     src: "/usayaf/singer-haze-stage.webp",
     alt: "Singer in haze on stage",
     label: "Praise Night",
-    area: "a",
-    aspect: "aspect-[3/4]",
   },
   {
     src: "/usayaf/crowd-worship-phones-up.webp",
     alt: "Crowd worshipping with phones up",
     label: "The Atmosphere",
-    area: "b",
-    aspect: "aspect-[16/10]",
   },
   {
     src: "/usayaf/worship-team-white-outfits.webp",
     alt: "Worship team in white outfits",
     label: "The Expression",
-    area: "c",
-    aspect: "aspect-[4/5]",
+    objectPosition: "center 25%",
   },
   {
     src: "/usayaf/praise-night-singer-laughing.webp",
     alt: "Singer laughing during praise night",
     label: "Joy Overflowing",
-    area: "d",
-    aspect: "aspect-[3/4]",
+    objectPosition: "center top",
   },
   {
-    src: "/usayaf/woman-reading-bible-service.webp",
-    alt: "Woman reading Bible during service",
-    label: "The Word",
-    area: "e",
-    aspect: "aspect-[16/10]",
+    src: "/usayaf/woman-open-hands-worship.webp",
+    alt: "Woman worshipping with open hands",
+    label: "Surrender",
+    objectPosition: "center 30%",
   },
   {
     src: "/usayaf/worship-singers-stage.webp",
     alt: "Worship singers on stage",
     label: "United Voices",
-    area: "f",
-    aspect: "aspect-[4/5]",
+    objectPosition: "center 25%",
   },
 ];
 
@@ -149,7 +141,12 @@ export default function USAPraiseCollage() {
                 src={collageImages[2].src}
                 alt={collageImages[2].alt}
                 fill
-                className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                className="object-cover transition-transform duration-700 group-hover:scale-105"
+                style={
+                  collageImages[2].objectPosition
+                    ? { objectPosition: collageImages[2].objectPosition }
+                    : undefined
+                }
                 sizes="(max-width: 768px) 50vw, 33vw"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
@@ -174,6 +171,11 @@ export default function USAPraiseCollage() {
                 alt={collageImages[3].alt}
                 fill
                 className="object-cover transition-transform duration-700 group-hover:scale-105"
+                style={
+                  collageImages[3].objectPosition
+                    ? { objectPosition: collageImages[3].objectPosition }
+                    : undefined
+                }
                 sizes="(max-width: 768px) 50vw, 33vw"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
@@ -199,6 +201,11 @@ export default function USAPraiseCollage() {
                 alt={collageImages[4].alt}
                 fill
                 className="object-cover transition-transform duration-700 group-hover:scale-105"
+                style={
+                  collageImages[4].objectPosition
+                    ? { objectPosition: collageImages[4].objectPosition }
+                    : undefined
+                }
                 sizes="(max-width: 768px) 100vw, 66vw"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
@@ -222,7 +229,12 @@ export default function USAPraiseCollage() {
                 src={collageImages[5].src}
                 alt={collageImages[5].alt}
                 fill
-                className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                className="object-cover transition-transform duration-700 group-hover:scale-105"
+                style={
+                  collageImages[5].objectPosition
+                    ? { objectPosition: collageImages[5].objectPosition }
+                    : undefined
+                }
                 sizes="(max-width: 768px) 50vw, 33vw"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />

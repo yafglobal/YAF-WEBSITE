@@ -32,7 +32,7 @@ const expressions: Expression[] = [
   {
     title: "Fellowship",
     desc: "True community that goes beyond Sunday — real friendships forged through shared faith, meals, conversations, and life together across cities.",
-    image: "/ukyaf/youth-fellowship-friends.webp",
+    image: "/ukyaf/joyful-praise-gathering.webp",
     icon: Users,
     accent: "text-emerald-400",
   },

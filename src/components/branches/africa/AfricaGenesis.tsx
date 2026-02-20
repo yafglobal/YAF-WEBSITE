@@ -55,7 +55,7 @@ export default function AfricaGenesis() {
               <div className="relative aspect-[3/4] lg:aspect-[4/5] rounded-[2rem] overflow-hidden shadow-2xl">
                 <motion.div style={{ y: smoothY }} className="absolute inset-0 h-[124%] -top-[12%]">
                   <Image
-                    src="/images/slider-3.jpeg"
+                    src="/images/slider-5.jpeg"
                     alt="Youth Alive conference at Canaanland"
                     fill
                     className="object-cover"
@@ -93,8 +93,8 @@ export default function AfricaGenesis() {
               className="hidden lg:block absolute -bottom-12 -right-8 w-52 h-52 rounded-2xl overflow-hidden shadow-xl z-[-1] border-2 border-[var(--color-surface)]"
             >
               <Image
-                src="/images/slider-1.jpeg"
-                alt="Youth worship at Canaanland"
+                src="/images/slider-4.jpeg"
+                alt="Youth conference event at Canaanland"
                 fill
                 className="object-cover"
                 sizes="208px"

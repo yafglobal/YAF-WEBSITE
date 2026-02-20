@@ -8,23 +8,18 @@ import ScrollReveal from "@/components/ScrollReveal";
 
 const showcaseItems = [
   {
-    src: "/ukyaf/joyful-praise-gathering.webp",
-    alt: "Joyful praise gathering",
+    src: "/ukyaf/ayac-praise-singer.webp",
+    alt: "AYAC praise singer on stage",
     label: "AYAC Conference",
     city: "Dartford, UK",
+    objectPosition: "center top",
   },
   {
     src: "/ukyaf/ayac-worship-leader.webp",
     alt: "AYAC worship leader",
     label: "Worship Night",
     city: "London, UK",
-    objectPosition: "center top",
-  },
-  {
-    src: "/ukyaf/youth-fellowship-friends.webp",
-    alt: "Youth fellowship friends",
-    label: "Fellowship Hour",
-    city: "Manchester, UK",
+    objectPosition: "center 25%",
   },
   {
     src: "/ukyaf/ayac-prayer-session.webp",
@@ -37,6 +32,13 @@ const showcaseItems = [
     alt: "Southampton congregation",
     label: "Sunday Encounter",
     city: "Southampton, UK",
+  },
+  {
+    src: "/ukyaf/ayac-keyboardist.webp",
+    alt: "Keyboardist at AYAC Europe worship",
+    label: "The Sound",
+    city: "Dartford, UK",
+    objectPosition: "center top",
   },
   {
     src: "/ukyaf/ayac-europe-speaker.webp",

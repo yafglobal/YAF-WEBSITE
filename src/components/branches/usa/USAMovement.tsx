@@ -64,8 +64,8 @@ export default function USAMovement() {
               <div className="relative rounded-3xl overflow-hidden shadow-2xl">
                 <div className="aspect-[4/5] relative">
                   <Image
-                    src="/usayaf/pastor-white-outfit-preaching.webp"
-                    alt="Pastor preaching at YAF USA"
+                    src="/usayaf/pastor-at-podium.webp"
+                    alt="Pastor at the podium at YAF USA"
                     fill
                     className="object-cover"
                     sizes="(max-width: 768px) 100vw, 50vw"
