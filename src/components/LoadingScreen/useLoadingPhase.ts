@@ -101,7 +101,7 @@ export function useLoadingPhase(isMobile = false) {
       clearInterval(progressInterval);
       window.removeEventListener("load", onReady);
     };
-  }, [alreadyShown, visible, phase, handleComplete]);
+  }, [alreadyShown, visible, phase, handleComplete, isMobile]);
 
   // Short-circuit for return visits — all hooks are called above
   if (alreadyShown) {

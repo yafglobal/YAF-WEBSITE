@@ -4,7 +4,6 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "motion/react";
 import { ArrowRight, BookOpen, DownloadSimple, ShareNetwork, Fire } from "@phosphor-icons/react";
-import ScrollReveal from "@/components/ScrollReveal";
 
 interface ScriptureTranslation {
   reference: string;

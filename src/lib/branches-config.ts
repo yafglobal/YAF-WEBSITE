@@ -45,12 +45,8 @@ export const BRANCHES: BranchConfig[] = [
     images: [
       { src: "/images/community-bg.jpg", alt: "Youth Alive community gathering in Africa" },
       { src: "/images/slider-1.jpeg", alt: "Youth worship at Canaanland" },
-      {
-        src: "/images/about/fellowship-photo.png",
-        alt: "Youth fellowship gathering at Canaanland",
-        objectPosition: "center 40%",
-      },
       { src: "/images/slider-3.jpeg", alt: "Fellowship at Living Faith Church" },
+      { src: "/images/about/fellowship-photo.png", alt: "Youth fellowship gathering" },
       {
         src: "/images/about/worship-portrait.png",
         alt: "Youth worshipper at Canaanland",
