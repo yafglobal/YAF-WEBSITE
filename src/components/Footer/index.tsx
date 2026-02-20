@@ -1,11 +1,14 @@
 "use client";
 
+import { useRef } from "react";
 import dynamic from "next/dynamic";
+import { useInView } from "motion/react";
 import BrandColumn from "./BrandColumn";
 import ResourcesColumn from "./ResourcesColumn";
 import ContactColumn from "./ContactColumn";
 import SocialLinks from "./SocialLinks";
 import BottomBar from "./BottomBar";
+import { useIsMobile } from "@/hooks/useIsMobile";
 
 const MuxPlayer = dynamic(() => import("@mux/mux-player-react"), {
   ssr: false,
@@ -17,13 +20,20 @@ interface FooterProps {
 }
 
 export default function Footer({ transparent = false }: FooterProps) {
+  const footerRef = useRef<HTMLElement>(null);
+  const isMobile = useIsMobile();
+  // On mobile, only mount MuxPlayer when the footer scrolls into view
+  const isInView = useInView(footerRef, { once: true, margin: "200px" });
+  const shouldLoadVideo = !transparent && (!isMobile || isInView);
+
   return (
     <footer
+      ref={footerRef}
       id="contact"
       className={`relative overflow-hidden min-h-[60vh] md:min-h-[80vh] flex flex-col ${transparent ? "bg-transparent" : "footer-video"}`}
     >
-      {/* Mux Video Background — loads immediately so it's ready when scrolled into view */}
-      {!transparent && (
+      {/* Mux Video Background — deferred on mobile until footer is near viewport */}
+      {shouldLoadVideo && (
         <>
           <div className="absolute inset-0 z-0 overflow-hidden">
             <MuxPlayer

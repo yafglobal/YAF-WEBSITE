@@ -1,11 +1,12 @@
 "use client";
 
 import { useEffect } from "react";
-import { motion } from "motion/react";
+import { motion, useReducedMotion } from "motion/react";
 import { usePathname } from "next/navigation";
 
 export default function Template({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
+  const prefersReducedMotion = useReducedMotion();
 
   // Scroll to top on page navigation (not anchor links)
   useEffect(() => {
@@ -13,6 +14,10 @@ export default function Template({ children }: { children: React.ReactNode }) {
       window.scrollTo(0, 0);
     }
   }, [pathname]);
+
+  if (prefersReducedMotion) {
+    return <>{children}</>;
+  }
 
   return (
     <motion.div

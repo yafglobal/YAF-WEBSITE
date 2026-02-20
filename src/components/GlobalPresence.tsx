@@ -5,6 +5,7 @@ import Image from "next/image";
 import { motion, useScroll, useTransform } from "motion/react";
 import { MapPin, Compass, Airplane } from "@phosphor-icons/react";
 import ScrollReveal from "./ScrollReveal";
+import { useIsMobile } from "@/hooks/useIsMobile";
 
 const regions = [
   { name: "Africa", count: "25+ Nations" },
@@ -16,6 +17,7 @@ const regions = [
 
 export default function GlobalPresence() {
   const sectionRef = useRef<HTMLDivElement>(null);
+  const isMobile = useIsMobile();
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ["start end", "end start"],
@@ -27,7 +29,7 @@ export default function GlobalPresence() {
   return (
     <section id="locations" ref={sectionRef} className="relative py-32 md:py-44 overflow-hidden">
       {/* Background map texture */}
-      <motion.div style={{ y: bgY }} className="absolute inset-0 opacity-40">
+      <motion.div style={isMobile ? undefined : { y: bgY }} className="absolute inset-0 opacity-40">
         <Image src="/images/global-bg.png" alt="" fill className="object-cover" sizes="100vw" />
       </motion.div>
 
@@ -103,9 +105,9 @@ export default function GlobalPresence() {
                 <div className="absolute inset-4 rounded-full border border-plum-tint/10" />
                 <div className="absolute inset-8 rounded-full border border-[var(--color-border)]" />
 
-                {/* Globe image */}
+                {/* Globe image — rotates on scroll (desktop), static on mobile */}
                 <motion.div
-                  style={{ rotate: globeRotate }}
+                  style={isMobile ? undefined : { rotate: globeRotate }}
                   className="absolute inset-12 flex items-center justify-center"
                 >
                   <Image
@@ -138,16 +140,18 @@ export default function GlobalPresence() {
                   </motion.div>
                 ))}
 
-                {/* Airplane icon orbiting */}
-                <motion.div
-                  animate={{ rotate: 360 }}
-                  transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                  className="absolute inset-0"
-                >
-                  <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2">
-                    <Airplane size={20} className="text-plum-tint/60" weight="fill" />
-                  </div>
-                </motion.div>
+                {/* Airplane icon orbiting — desktop only */}
+                {!isMobile && (
+                  <motion.div
+                    animate={{ rotate: 360 }}
+                    transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                    className="absolute inset-0"
+                  >
+                    <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2">
+                      <Airplane size={20} className="text-plum-tint/60" weight="fill" />
+                    </div>
+                  </motion.div>
+                )}
               </div>
             </ScrollReveal>
           </div>

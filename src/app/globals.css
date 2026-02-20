@@ -274,8 +274,13 @@ html.light .text-glow-plum-tint {
   .particle,
   .ember,
   .animate-marquee,
-  .flowing-menu-marquee {
-    animation: none;
+  .flowing-menu-marquee,
+  .hero-slide,
+  .plum-border,
+  .plum-border::before,
+  .motion-gradient-text,
+  .shimmer-btn {
+    animation: none !important;
     transform: none;
   }
 }

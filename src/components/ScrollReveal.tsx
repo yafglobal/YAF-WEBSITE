@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef } from "react";
-import { motion, useInView } from "motion/react";
+import { motion, useInView, useReducedMotion } from "motion/react";
 
 interface ScrollRevealProps {
   children: React.ReactNode;
@@ -22,6 +22,13 @@ export default function ScrollReveal({
 }: ScrollRevealProps) {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once, margin: "-80px" });
+  const prefersReducedMotion = useReducedMotion();
+
+  // Skip animation entirely when user prefers reduced motion —
+  // avoids the flash of invisible content waiting for IntersectionObserver
+  if (prefersReducedMotion) {
+    return <div className={className}>{children}</div>;
+  }
 
   const directionMap = {
     up: { y: 40, x: 0 },

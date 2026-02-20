@@ -11,7 +11,7 @@ const noopSubscribe = () => () => {};
 const getAlreadyShownSnapshot = () => sessionStorage.getItem("yag-loaded") === "1";
 const getAlreadyShownServerSnapshot = () => false;
 
-export function useLoadingPhase() {
+export function useLoadingPhase(isMobile = false) {
   const alreadyShown = useSyncExternalStore(
     noopSubscribe,
     getAlreadyShownSnapshot,
@@ -67,11 +67,15 @@ export function useLoadingPhase() {
       }
     };
 
-    // Minimum display time for the animation to feel impactful (2.5s)
-    setTimeout(() => {
-      minTimeReached = true;
-      checkReady();
-    }, 2500);
+    // Minimum display time for the animation to feel impactful
+    // Shorter on mobile (1.2s) for a snappier experience
+    setTimeout(
+      () => {
+        minTimeReached = true;
+        checkReady();
+      },
+      isMobile ? 1200 : 2500
+    );
 
     // Move to "burning" phase after initial ignition
     setTimeout(() => {

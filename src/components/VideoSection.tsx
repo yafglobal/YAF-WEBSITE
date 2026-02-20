@@ -5,11 +5,13 @@ import Image from "next/image";
 import { motion, useScroll, useTransform } from "motion/react";
 import { Play } from "@phosphor-icons/react";
 import ScrollReveal from "./ScrollReveal";
+import { useIsMobile } from "@/hooks/useIsMobile";
 
 const VIDEO_ID = "optmgB8AZDI";
 
 export default function VideoSection() {
   const sectionRef = useRef<HTMLDivElement>(null);
+  const isMobile = useIsMobile();
   const [iframeLoaded, setIframeLoaded] = useState(false);
   const { scrollYProgress } = useScroll({
     target: sectionRef,
@@ -48,7 +50,7 @@ export default function VideoSection() {
 
         {/* Video embed with plum border — uses a facade to avoid loading ~1MB of YouTube JS until clicked */}
         <ScrollReveal delay={0.3}>
-          <motion.div style={{ scale: videoScale }} className="relative">
+          <motion.div style={isMobile ? undefined : { scale: videoScale }} className="relative">
             {/* Plum border wrapper */}
             <div className="plum-border">
               <div className="video-container bg-[var(--color-surface)]">

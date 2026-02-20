@@ -5,6 +5,7 @@ import Image from "next/image";
 import { motion, useScroll, useTransform } from "motion/react";
 import { Briefcase, Handshake, ChalkboardTeacher, Trophy } from "@phosphor-icons/react";
 import ScrollReveal from "./ScrollReveal";
+import { useIsMobile } from "@/hooks/useIsMobile";
 
 const features = [
   {
@@ -31,6 +32,7 @@ const features = [
 
 export default function Community() {
   const sectionRef = useRef<HTMLDivElement>(null);
+  const isMobile = useIsMobile();
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ["start end", "end start"],
@@ -41,8 +43,11 @@ export default function Community() {
 
   return (
     <section id="community" ref={sectionRef} className="relative py-40 md:py-52 overflow-hidden">
-      {/* Parallax background image */}
-      <motion.div style={{ y: bgY }} className="absolute inset-0 -inset-y-20">
+      {/* Parallax background image — static on mobile */}
+      <motion.div
+        style={isMobile ? undefined : { y: bgY }}
+        className="absolute inset-0 -inset-y-20"
+      >
         <Image
           src="/images/community-bg.jpg"
           alt="Professional Community"
@@ -53,7 +58,10 @@ export default function Community() {
       </motion.div>
 
       {/* Dark overlay — always dark for readability over the photo, regardless of theme */}
-      <motion.div style={{ opacity: overlayOpacity }} className="absolute inset-0 bg-[#0A0A0A]" />
+      <motion.div
+        style={isMobile ? { opacity: 0.6 } : { opacity: overlayOpacity }}
+        className="absolute inset-0 bg-[#0A0A0A]"
+      />
 
       {/* Gradient overlays for seamless blending into surrounding sections */}
       <div className="absolute inset-0 bg-gradient-to-b from-[var(--color-background)] via-transparent to-[var(--color-background)]" />

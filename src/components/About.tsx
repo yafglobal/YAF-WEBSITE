@@ -4,9 +4,11 @@ import Image from "next/image";
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "motion/react";
 import ScrollReveal from "./ScrollReveal";
+import { useIsMobile } from "@/hooks/useIsMobile";
 
 export default function About() {
   const sectionRef = useRef<HTMLDivElement>(null);
+  const isMobile = useIsMobile();
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ["start end", "end start"],
@@ -75,7 +77,10 @@ export default function About() {
                 {/* Animated plum border (same as video section) */}
                 <div className="plum-border">
                   <div className="aspect-[3/4] relative">
-                    <motion.div style={{ y: imageY }} className="absolute inset-0">
+                    <motion.div
+                      style={isMobile ? undefined : { y: imageY }}
+                      className="absolute inset-0"
+                    >
                       <Image
                         src="/images/theme-image.png"
                         alt="Youth Alive Leadership"
