@@ -203,27 +203,31 @@ export default function MobileNav({
                           {[
                             {
                               label: "Africa",
-                              slug: "africa",
                               href: "/branches/africa",
                               gradient: "from-amber-600/80 to-orange-800/80",
+                              accent: "/images/branch-accents/africa-continent.svg",
+                              accentRotate: "",
                             },
                             {
                               label: "Europe",
-                              slug: "europe",
                               href: "/branches/europe",
                               gradient: "from-blue-600/80 to-indigo-800/80",
+                              accent: "/images/branch-accents/europe-star.svg",
+                              accentRotate: "",
                             },
                             {
                               label: "USA",
-                              slug: "usa",
                               href: "/branches/usa",
                               gradient: "from-red-600/80 to-rose-800/80",
+                              accent: "/images/branch-accents/usa-star.svg",
+                              accentRotate: "",
                             },
                             {
                               label: "Canada",
-                              slug: "canada",
                               href: "/branches/canada",
                               gradient: "from-emerald-600/80 to-teal-800/80",
+                              accent: "/yaf-canada/mapleleaf.png",
+                              accentRotate: "rotate-12",
                             },
                           ].map((c) => (
                             <MotionLink
@@ -234,19 +238,15 @@ export default function MobileNav({
                               animate={{ opacity: 1, scale: 1 }}
                               className={`flex items-center justify-center gap-1.5 py-3 rounded-lg bg-gradient-to-r ${c.gradient} text-white`}
                             >
-                              <span className="relative text-[12px] font-bold drop-shadow-sm">
+                              <Image
+                                src={c.accent}
+                                alt=""
+                                width={14}
+                                height={14}
+                                className={`w-3.5 h-3.5 drop-shadow-sm ${c.accentRotate}`}
+                              />
+                              <span className="text-[12px] font-bold drop-shadow-sm">
                                 {c.label}
-                                {c.slug === "canada" && (
-                                  <span className="pointer-events-none absolute right-0 top-0 translate-x-[50%] -translate-y-[55%]">
-                                    <Image
-                                      src="/yaf-canada/mapleleaf.png"
-                                      alt=""
-                                      width={14}
-                                      height={14}
-                                      className="w-3.5 h-3.5 rotate-12 drop-shadow-sm"
-                                    />
-                                  </span>
-                                )}
                               </span>
                             </MotionLink>
                           ))}

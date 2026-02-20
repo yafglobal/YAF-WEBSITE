@@ -6,6 +6,13 @@ import { motion } from "motion/react";
 import { UsersThree } from "@phosphor-icons/react";
 import { BRANCHES } from "@/lib/branches-config";
 
+const BRANCH_ACCENTS: Record<string, { src: string; size: number; rotate: string }> = {
+  africa: { src: "/images/branch-accents/africa-continent.svg", size: 16, rotate: "rotate-0" },
+  europe: { src: "/images/branch-accents/europe-star.svg", size: 16, rotate: "rotate-0" },
+  usa: { src: "/images/branch-accents/usa-star.svg", size: 16, rotate: "rotate-0" },
+  canada: { src: "/yaf-canada/mapleleaf.png", size: 18, rotate: "rotate-12" },
+};
+
 const BRANCH_COLORS = [
   { gradient: "from-amber-600/80 to-orange-800/80", accent: "group-hover:shadow-amber-500/30" },
   { gradient: "from-blue-600/80 to-indigo-800/80", accent: "group-hover:shadow-blue-500/30" },
@@ -42,21 +49,23 @@ export default function BranchesMegaDropdown() {
               <div
                 className={`absolute inset-0 bg-gradient-to-t ${BRANCH_COLORS[i].gradient} opacity-60`}
               />
-              <div className="absolute bottom-2 left-3">
-                <span className="relative text-white font-display font-bold text-sm drop-shadow-md">
+              <div className="absolute bottom-2 left-3 flex items-center gap-1.5">
+                <span className="text-white font-display font-bold text-sm drop-shadow-md">
                   {branch.name}
-                  {branch.slug === "canada" && (
-                    <span className="pointer-events-none absolute right-0 top-0 translate-x-[40%] -translate-y-[50%]">
-                      <Image
-                        src="/yaf-canada/mapleleaf.png"
-                        alt=""
-                        width={18}
-                        height={18}
-                        className="w-[18px] h-[18px] rotate-12 drop-shadow-sm"
-                      />
-                    </span>
-                  )}
                 </span>
+                {BRANCH_ACCENTS[branch.slug] && (
+                  <Image
+                    src={BRANCH_ACCENTS[branch.slug].src}
+                    alt=""
+                    width={BRANCH_ACCENTS[branch.slug].size}
+                    height={BRANCH_ACCENTS[branch.slug].size}
+                    className={`drop-shadow-sm ${BRANCH_ACCENTS[branch.slug].rotate}`}
+                    style={{
+                      width: BRANCH_ACCENTS[branch.slug].size,
+                      height: BRANCH_ACCENTS[branch.slug].size,
+                    }}
+                  />
+                )}
               </div>
             </div>
 

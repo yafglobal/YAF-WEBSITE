@@ -21,7 +21,19 @@ export default function Navbar({ lightHero = false }: NavbarProps) {
   const { scrollY } = useScroll();
   const pathname = usePathname();
 
-  const isCanadaPage = pathname === "/branches/canada";
+  const branchAccent = useMemo(() => {
+    const accents: Record<string, { src: string; size: number; rotate: number }> = {
+      "/branches/africa": {
+        src: "/images/branch-accents/africa-continent.svg",
+        size: 18,
+        rotate: 0,
+      },
+      "/branches/europe": { src: "/images/branch-accents/europe-star.svg", size: 18, rotate: 0 },
+      "/branches/usa": { src: "/images/branch-accents/usa-star.svg", size: 18, rotate: 0 },
+      "/branches/canada": { src: "/yaf-canada/mapleleaf.png", size: 20, rotate: 12 },
+    };
+    return accents[pathname] ?? null;
+  }, [pathname]);
 
   const activeSection = useMemo(() => {
     return navLinks.findIndex((link) => {
@@ -110,19 +122,20 @@ export default function Navbar({ lightHero = false }: NavbarProps) {
                   style={{ filter: "var(--logo-filter, brightness(2))" }}
                   priority
                 />
-                {/* Maple leaf on "Youth" — Canada branch only */}
-                {isCanadaPage && (
+                {/* Branch accent icon on logo — branch pages only */}
+                {branchAccent && (
                   <motion.span
+                    key={branchAccent.src}
                     initial={{ opacity: 0, scale: 0.5, rotate: -20 }}
-                    animate={{ opacity: 1, scale: 1, rotate: 12 }}
+                    animate={{ opacity: 1, scale: 1, rotate: branchAccent.rotate }}
                     transition={{ type: "spring", stiffness: 300, damping: 20, delay: 0.3 }}
                     className="pointer-events-none absolute -top-1.5 -right-1 md:-right-0.5"
                   >
                     <Image
-                      src="/yaf-canada/mapleleaf.png"
+                      src={branchAccent.src}
                       alt=""
-                      width={20}
-                      height={20}
+                      width={branchAccent.size}
+                      height={branchAccent.size}
                       className="w-4.5 h-4.5 md:w-5 md:h-5 drop-shadow-sm"
                     />
                   </motion.span>
