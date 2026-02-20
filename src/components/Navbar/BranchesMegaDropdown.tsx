@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "motion/react";
-import { GlobeHemisphereWest, UsersThree } from "@phosphor-icons/react";
+import { UsersThree } from "@phosphor-icons/react";
 import { BRANCHES } from "@/lib/branches-config";
 
 const BRANCH_COLORS = [
@@ -59,23 +59,16 @@ export default function BranchesMegaDropdown() {
         ))}
       </div>
 
-      {/* Footer links */}
-      <div className="pt-2.5 border-t border-[var(--color-border)] flex gap-3">
+      {/* Footer link */}
+      <div className="pt-2.5 border-t border-[var(--color-border)]">
         <Link
           href="/community"
-          className="flex-1 flex items-center gap-2 px-3 py-2.5 rounded-lg hover:bg-[var(--color-surface-hover)] transition-colors"
+          className="flex items-center gap-2 px-3 py-2.5 rounded-lg hover:bg-[var(--color-surface-hover)] transition-colors"
         >
           <UsersThree size={14} weight="bold" className="text-plum" />
           <span className="text-xs font-bold text-[var(--color-text-primary)]">
             All Communities
           </span>
-        </Link>
-        <Link
-          href="/#branches"
-          className="flex-1 flex items-center gap-2 px-3 py-2.5 rounded-lg hover:bg-[var(--color-surface-hover)] transition-colors"
-        >
-          <GlobeHemisphereWest size={14} weight="bold" className="text-plum" />
-          <span className="text-xs font-bold text-[var(--color-text-primary)]">Explore Map</span>
         </Link>
       </div>
     </motion.div>
