@@ -105,9 +105,9 @@ export default function GlobalPresence() {
                 <div className="absolute inset-4 rounded-full border border-plum-tint/10" />
                 <div className="absolute inset-8 rounded-full border border-[var(--color-border)]" />
 
-                {/* Globe image — rotates on scroll (desktop), static on mobile */}
+                {/* Globe image */}
                 <motion.div
-                  style={isMobile ? undefined : { rotate: globeRotate }}
+                  style={{ rotate: globeRotate }}
                   className="absolute inset-12 flex items-center justify-center"
                 >
                   <Image
@@ -140,18 +140,16 @@ export default function GlobalPresence() {
                   </motion.div>
                 ))}
 
-                {/* Airplane icon orbiting — desktop only */}
-                {!isMobile && (
-                  <motion.div
-                    animate={{ rotate: 360 }}
-                    transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                    className="absolute inset-0"
-                  >
-                    <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2">
-                      <Airplane size={20} className="text-plum-tint/60" weight="fill" />
-                    </div>
-                  </motion.div>
-                )}
+                {/* Airplane icon orbiting */}
+                <motion.div
+                  animate={{ rotate: 360 }}
+                  transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                  className="absolute inset-0"
+                >
+                  <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2">
+                    <Airplane size={20} className="text-plum-tint/60" weight="fill" />
+                  </div>
+                </motion.div>
               </div>
             </ScrollReveal>
           </div>
