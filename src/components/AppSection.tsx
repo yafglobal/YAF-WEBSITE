@@ -41,7 +41,14 @@ export default function AppSection() {
           />
         </svg>
         {/* Plum glow at the curve boundary */}
-        <div className="absolute left-1/2 -translate-x-1/2 top-1/2 w-[500px] h-24 bg-plum/6 rounded-full blur-[60px] pointer-events-none" />
+        <div
+          className="absolute left-1/2 -translate-x-1/2 top-1/2 w-[500px] h-24 rounded-full pointer-events-none"
+          style={{
+            background:
+              "radial-gradient(ellipse at center, rgba(134,22,87,0.1) 0%, rgba(0,0,0,0) 70%)",
+            transform: "translateZ(0)",
+          }}
+        />
       </div>
 
       {/* ── Main section content ───────────────────────────────── */}
@@ -53,7 +60,14 @@ export default function AppSection() {
             background: `linear-gradient(to bottom right, var(--color-charcoal), var(--color-background), var(--color-charcoal))`,
           }}
         />
-        <div className="absolute top-1/2 right-0 w-[300px] h-[300px] md:w-[500px] md:h-[500px] bg-plum/5 rounded-full blur-[180px] pointer-events-none" />
+        <div
+          className="absolute top-1/2 right-0 w-[300px] h-[300px] md:w-[500px] md:h-[500px] rounded-full pointer-events-none"
+          style={{
+            background:
+              "radial-gradient(ellipse at center, rgba(134,22,87,0.08) 0%, rgba(0,0,0,0) 70%)",
+            transform: "translateZ(0)",
+          }}
+        />
 
         <div className="relative z-10 max-w-[1400px] mx-auto px-6 md:px-10">
           <div className="grid md:grid-cols-2 gap-16 md:gap-24 items-center">
@@ -67,12 +81,20 @@ export default function AppSection() {
                       alt="Youth Alive Mobile App"
                       width={717}
                       height={580}
-                      className="w-full h-auto drop-shadow-[0_20px_60px_rgba(134,22,87,0.15)]"
+                      className="w-full h-auto"
+                      style={{ transform: "translateZ(0)", willChange: "transform" }}
                     />
                   </div>
 
                   {/* Floating glow behind phone */}
-                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[280px] h-[280px] md:w-[350px] md:h-[350px] bg-plum/10 rounded-full blur-[100px] -z-10" />
+                  <div
+                    className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[280px] h-[280px] md:w-[350px] md:h-[350px] rounded-full -z-10"
+                    style={{
+                      background:
+                        "radial-gradient(circle, rgba(134,22,87,0.2) 0%, rgba(0,0,0,0) 70%)",
+                      transform: "translateZ(0)",
+                    }}
+                  />
                 </motion.div>
               </ScrollReveal>
             </div>

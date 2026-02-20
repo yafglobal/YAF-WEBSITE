@@ -36,7 +36,14 @@ export default function GiveSection() {
       <div className="absolute inset-0 bg-gradient-to-b from-[var(--color-background)] via-transparent to-[var(--color-background)]" />
 
       {/* Plum glow at center */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-plum/10 rounded-full blur-[120px]" />
+      <div
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] rounded-full pointer-events-none"
+        style={{
+          background:
+            "radial-gradient(ellipse at center, rgba(134,22,87,0.1) 0%, rgba(0,0,0,0) 70%)",
+          transform: "translateZ(0)",
+        }}
+      />
 
       <motion.div
         style={{ y: textY }}

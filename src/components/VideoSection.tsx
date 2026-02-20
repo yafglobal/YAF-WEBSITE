@@ -87,7 +87,14 @@ export default function VideoSection() {
             </div>
 
             {/* Decorative glow beneath */}
-            <div className="absolute -bottom-10 left-1/2 -translate-x-1/2 w-2/3 h-20 bg-plum/15 blur-[60px] rounded-full" />
+            <div
+              className="absolute -bottom-10 left-1/2 -translate-x-1/2 w-2/3 h-20 rounded-full"
+              style={{
+                background:
+                  "radial-gradient(ellipse at center, rgba(134,22,87,0.2) 0%, rgba(0,0,0,0) 70%)",
+                transform: "translateZ(0)",
+              }}
+            />
           </motion.div>
         </ScrollReveal>
       </div>

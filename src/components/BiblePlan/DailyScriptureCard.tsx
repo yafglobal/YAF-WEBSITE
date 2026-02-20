@@ -164,8 +164,20 @@ export default function DailyScriptureCard() {
         />
 
         {/* Ambient Glows */}
-        <div className="absolute -top-32 -right-32 w-64 h-64 bg-plum/20 rounded-full blur-[100px]" />
-        <div className="absolute -bottom-32 -left-32 w-64 h-64 bg-plum-tint/15 rounded-full blur-[100px]" />
+        <div
+          className="absolute -top-32 -right-32 w-64 h-64 rounded-full pointer-events-none"
+          style={{
+            background: "radial-gradient(circle, rgba(134,22,87,0.2) 0%, rgba(0,0,0,0) 70%)",
+            transform: "translateZ(0)",
+          }}
+        />
+        <div
+          className="absolute -bottom-32 -left-32 w-64 h-64 rounded-full pointer-events-none"
+          style={{
+            background: "radial-gradient(circle, rgba(212,160,185,0.15) 0%, rgba(0,0,0,0) 70%)",
+            transform: "translateZ(0)",
+          }}
+        />
 
         <div className="relative z-10 p-8 md:p-10">
           {/* ── Header ─────────────────────────── */}

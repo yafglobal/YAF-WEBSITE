@@ -28,7 +28,13 @@ export default function BranchesMenu() {
   return (
     <section id="branches" className="relative py-24 md:py-32 overflow-hidden">
       {/* Ambient glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-plum/5 blur-[120px] pointer-events-none" />
+      <div
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full pointer-events-none"
+        style={{
+          background: "radial-gradient(circle, rgba(134,22,87,0.08) 0%, rgba(0,0,0,0) 70%)",
+          transform: "translateZ(0)",
+        }}
+      />
 
       <div className="relative z-10 max-w-[1400px] mx-auto px-6 md:px-10">
         {/* Section heading */}

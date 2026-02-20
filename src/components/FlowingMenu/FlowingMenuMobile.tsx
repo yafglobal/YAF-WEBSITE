@@ -51,7 +51,7 @@ export default function FlowingMenuMobile({ items }: FlowingMenuMobileProps) {
             </div>
 
             {/* Arrow indicator */}
-            <div className="absolute right-4 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-plum/60 backdrop-blur-sm flex items-center justify-center">
+            <div className="absolute right-4 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-[var(--color-plum)]/90 flex items-center justify-center shadow-lg">
               <span className="text-white text-sm">&rarr;</span>
             </div>
           </Link>

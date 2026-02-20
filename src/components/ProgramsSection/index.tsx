@@ -21,8 +21,20 @@ export default function ProgramsSection() {
   return (
     <section id="sermons" ref={sectionRef} className="relative py-32 md:py-44 overflow-hidden">
       {/* Ambient glows */}
-      <div className="absolute top-20 left-0 w-[500px] h-[500px] bg-plum-tint/3 rounded-full blur-[200px] pointer-events-none" />
-      <div className="absolute bottom-20 right-0 w-[400px] h-[400px] bg-plum/5 rounded-full blur-[150px] pointer-events-none" />
+      <div
+        className="absolute top-20 left-0 w-[500px] h-[500px] rounded-full pointer-events-none"
+        style={{
+          background: "radial-gradient(circle, rgba(212,160,185,0.06) 0%, rgba(0,0,0,0) 70%)",
+          transform: "translateZ(0)",
+        }}
+      />
+      <div
+        className="absolute bottom-20 right-0 w-[400px] h-[400px] rounded-full pointer-events-none"
+        style={{
+          background: "radial-gradient(circle, rgba(134,22,87,0.08) 0%, rgba(0,0,0,0) 70%)",
+          transform: "translateZ(0)",
+        }}
+      />
 
       <div className="relative z-10 max-w-[1400px] mx-auto px-6 md:px-10">
         {/* Header */}

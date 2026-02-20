@@ -67,8 +67,15 @@ export default function Community() {
       <div className="absolute inset-0 bg-gradient-to-b from-[var(--color-background)] via-transparent to-[var(--color-background)]" />
 
       {/* Mesh glow */}
-      <div className="absolute inset-0">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-plum/8 rounded-full blur-[150px]" />
+      <div className="absolute inset-0 pointer-events-none">
+        <div
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] rounded-full"
+          style={{
+            background:
+              "radial-gradient(ellipse at center, rgba(134,22,87,0.1) 0%, rgba(0,0,0,0) 70%)",
+            transform: "translateZ(0)",
+          }}
+        />
       </div>
 
       {/* Force light-on-dark text since this section always has a dark overlay */}
@@ -107,7 +114,7 @@ export default function Community() {
         <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-6 max-w-4xl mx-auto">
           {features.map((feat, i) => (
             <ScrollReveal key={feat.title} delay={0.3 + i * 0.1}>
-              <div className="p-4 md:p-6 bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl hover:border-plum/30 hover:bg-white/10 transition-all duration-300 group">
+              <div className="p-4 md:p-6 bg-white/5 border border-white/10 rounded-2xl hover:border-plum/30 hover:bg-white/10 transition-all duration-300 group">
                 <feat.icon
                   size={28}
                   className="text-plum-tint mx-auto mb-3 group-hover:scale-110 transition-transform"

@@ -105,17 +105,28 @@ export default function GlobalPresence() {
                 <div className="absolute inset-4 rounded-full border border-plum-tint/10" />
                 <div className="absolute inset-8 rounded-full border border-[var(--color-border)]" />
 
+                {/* Static globe glow behind the rotating image */}
+                <div
+                  className="absolute inset-20 rounded-full pointer-events-none"
+                  style={{
+                    background:
+                      "radial-gradient(circle, rgba(134,22,87,0.3) 0%, rgba(0,0,0,0) 70%)",
+                    transform: "translateZ(0)",
+                  }}
+                />
+
                 {/* Globe image */}
                 <motion.div
                   style={{ rotate: globeRotate }}
-                  className="absolute inset-12 flex items-center justify-center"
+                  className="absolute inset-12 flex items-center justify-center pointer-events-none"
                 >
                   <Image
                     src="/images/globe.png"
                     alt="Global Presence"
                     width={300}
                     height={300}
-                    className="w-full h-full object-contain drop-shadow-[0_0_40px_rgba(134,22,87,0.2)]"
+                    className="w-full h-full object-contain"
+                    style={{ transform: "translateZ(0)", willChange: "transform" }}
                   />
                 </motion.div>
 

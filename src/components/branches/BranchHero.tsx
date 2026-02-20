@@ -41,21 +41,21 @@ export default function BranchHero({ branch }: Props) {
 
       {/* Cinematic vignette */}
       <div
-        className="absolute inset-0 z-[1]"
+        className="absolute inset-0 z-[1] pointer-events-none"
         style={{
-          background: `radial-gradient(ellipse at 50% 40%, transparent 30%, var(--color-overlay) 100%)`,
+          background: `radial-gradient(ellipse at 50% 40%, rgba(0,0,0,0) 30%, var(--color-overlay) 100%)`,
         }}
       />
       <div
-        className="absolute inset-0 z-[1]"
+        className="absolute inset-0 z-[1] pointer-events-none"
         style={{
-          background: `linear-gradient(to top, var(--color-background), color-mix(in srgb, var(--color-background) 50%, transparent), transparent)`,
+          background: `linear-gradient(to top, var(--color-background) 0%, rgba(0,0,0,0) 100%)`,
         }}
       />
       <div
-        className="absolute inset-0 z-[1]"
+        className="absolute inset-0 z-[1] pointer-events-none opacity-60"
         style={{
-          background: `linear-gradient(to right, color-mix(in srgb, var(--color-background) 60%, transparent), transparent, transparent)`,
+          background: `linear-gradient(to right, var(--color-background) 0%, rgba(0,0,0,0) 100%)`,
         }}
       />
 

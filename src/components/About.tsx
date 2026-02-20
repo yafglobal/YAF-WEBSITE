@@ -19,8 +19,20 @@ export default function About() {
   return (
     <section id="about" ref={sectionRef} className="relative py-32 md:py-44 overflow-hidden">
       {/* Ambient glow */}
-      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-plum/5 rounded-full blur-[150px] pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-plum-tint/5 rounded-full blur-[120px] pointer-events-none" />
+      <div
+        className="absolute top-0 right-0 w-[600px] h-[600px] rounded-full pointer-events-none"
+        style={{
+          background: "radial-gradient(circle, rgba(134,22,87,0.06) 0%, rgba(0,0,0,0) 70%)",
+          transform: "translateZ(0)",
+        }}
+      />
+      <div
+        className="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full pointer-events-none"
+        style={{
+          background: "radial-gradient(circle, rgba(212,160,185,0.06) 0%, rgba(0,0,0,0) 70%)",
+          transform: "translateZ(0)",
+        }}
+      />
 
       <div className="max-w-[1400px] mx-auto px-6 md:px-10">
         {/* Section label */}
@@ -95,7 +107,14 @@ export default function About() {
                 </div>
 
                 {/* Decorative glow beneath */}
-                <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 w-2/3 h-20 bg-plum/15 blur-[60px] rounded-full" />
+                <div
+                  className="absolute -bottom-8 left-1/2 -translate-x-1/2 w-2/3 h-20 rounded-full"
+                  style={{
+                    background:
+                      "radial-gradient(ellipse at center, rgba(134,22,87,0.2) 0%, rgba(0,0,0,0) 70%)",
+                    transform: "translateZ(0)",
+                  }}
+                />
               </div>
             </ScrollReveal>
           </div>
