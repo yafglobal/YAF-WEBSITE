@@ -108,7 +108,11 @@ export default function Navbar({ lightHero = false }: NavbarProps) {
               onClick={handleNavClick}
               className="relative z-10 flex items-center gap-1 shrink-0"
             >
-              <motion.div animate={{ scale: scrolled ? 0.85 : 1 }} transition={{ duration: 0.3 }}>
+              <motion.div
+                animate={{ scale: scrolled ? 0.85 : 1 }}
+                transition={{ duration: 0.3 }}
+                className="relative"
+              >
                 <Image
                   src="/images/logo.png"
                   alt="Youth Alive Global"
@@ -118,13 +122,31 @@ export default function Navbar({ lightHero = false }: NavbarProps) {
                   style={{ filter: "var(--logo-filter, brightness(2))" }}
                   priority
                 />
+                {/* Maple leaf overlapping logo — Canada only */}
+                {branchAccent && pathname === "/branches/canada" && (
+                  <motion.span
+                    key="canada-leaf"
+                    initial={{ opacity: 0, scale: 0.5, rotate: -20 }}
+                    animate={{ opacity: 1, scale: 1, rotate: 12 }}
+                    transition={{ type: "spring", stiffness: 300, damping: 20, delay: 0.3 }}
+                    className="pointer-events-none absolute -top-1.5 -right-1 md:-right-0.5"
+                  >
+                    <Image
+                      src="/yaf-canada/mapleleaf.png"
+                      alt=""
+                      width={20}
+                      height={20}
+                      className="w-4.5 h-4.5 md:w-5 md:h-5 drop-shadow-sm"
+                    />
+                  </motion.span>
+                )}
               </motion.div>
-              {/* Branch accent to the right of logo — branch pages only */}
-              {branchAccent && (
+              {/* Other branch accents inline to the right of logo */}
+              {branchAccent && pathname !== "/branches/canada" && (
                 <motion.div
                   key={branchAccent.src}
                   initial={{ opacity: 0, scale: 0.5, x: -4 }}
-                  animate={{ opacity: 1, scale: 1, x: 0, rotate: branchAccent.rotate }}
+                  animate={{ opacity: 1, scale: 1, x: 0 }}
                   transition={{ type: "spring", stiffness: 300, damping: 20, delay: 0.3 }}
                   className="pointer-events-none -ml-1"
                 >
