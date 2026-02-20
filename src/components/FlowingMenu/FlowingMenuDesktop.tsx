@@ -146,7 +146,7 @@ function MenuItem({ link, text, image, images, isFirst }: MenuItemProps) {
                 {text}
               </span>
               <div
-                className="w-[200px] h-[7vh] my-[2em] mx-[2vw] py-[1em] rounded-[50px] bg-cover bg-center"
+                className="w-[200px] h-[7vh] my-[2em] mx-[2vw] py-[1em] rounded-[50px] bg-cover bg-top"
                 style={{ backgroundImage: `url(${allImages[idx % allImages.length]})` }}
               />
             </div>
