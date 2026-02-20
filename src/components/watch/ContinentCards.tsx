@@ -27,7 +27,7 @@ const gradients: Record<string, string> = {
 
 export default function ContinentCards({ continents }: ContinentCardsProps) {
   return (
-    <section className="px-6 md:px-12 py-12 md:py-20">
+    <section className="hidden md:block px-6 md:px-12 py-12 md:py-20">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}

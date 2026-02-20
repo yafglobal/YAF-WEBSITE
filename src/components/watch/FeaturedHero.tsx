@@ -36,7 +36,7 @@ export default function FeaturedHero({ videos, onPlayVideo }: FeaturedHeroProps)
     : featuredVideo.thumbnail;
 
   return (
-    <section className="relative h-[85vh] md:h-[90vh] overflow-hidden">
+    <section className="relative h-[55vh] min-h-[400px] md:h-[85vh] overflow-hidden">
       {/* Crossfade: both old and new images render simultaneously */}
       <AnimatePresence>
         <motion.div
@@ -64,22 +64,27 @@ export default function FeaturedHero({ videos, onPlayVideo }: FeaturedHeroProps)
       <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/20 to-transparent" />
       <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-[var(--color-background)] to-transparent" />
 
-      <div className="relative z-10 h-full flex flex-col justify-end pb-32 md:pb-40 px-6 md:px-12">
+      <div className="relative z-10 h-full flex flex-col justify-end pb-24 md:pb-40 px-6 md:px-12">
         <div className="max-w-3xl">
-          <div className="flex items-center gap-3 mb-4">
-            <span className="px-3 py-1 rounded bg-plum text-white text-[10px] font-bold uppercase tracking-widest">
+          <div className="flex items-center gap-3 mb-2 md:mb-4">
+            <span className="px-2.5 py-1 rounded-full bg-plum text-white text-[9px] md:text-[10px] font-bold uppercase tracking-widest">
               Featured
             </span>
-            <span className="text-white/60 text-sm font-medium">Youth Alive Global</span>
+            <span className="text-white/80 text-xs md:text-sm font-medium">Youth Alive Global</span>
           </div>
+
+          <h2 className="text-white font-display font-extrabold text-2xl sm:text-3xl md:text-5xl mb-4 md:mb-6 leading-tight line-clamp-2">
+            {featuredVideo.title}
+          </h2>
+
           <div className="flex flex-wrap items-center gap-4 mt-2">
             <button
               onClick={() =>
                 onPlayVideo(stableVideoRef.current.videoId, stableVideoRef.current.title)
               }
-              className="flex items-center gap-3 bg-plum text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-plum-light transition-colors shadow-xl"
+              className="flex items-center gap-3 bg-plum text-white px-6 md:px-8 py-3 md:py-4 rounded-lg font-bold text-base md:text-lg hover:bg-plum-light transition-colors shadow-xl"
             >
-              <Play weight="fill" className="w-6 h-6" /> Play
+              <Play weight="fill" className="w-5 h-5 md:w-6 md:h-6" /> Play
             </button>
           </div>
         </div>

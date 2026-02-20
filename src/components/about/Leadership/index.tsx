@@ -36,9 +36,9 @@ export default function Leadership() {
             </ScrollReveal>
             <ScrollReveal delay={0.1}>
               <h2 className="font-display font-extrabold text-4xl md:text-5xl lg:text-6xl leading-[1.05] tracking-tight">
-                Introducing Our{" "}
+                Introducing The{" "}
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-plum via-plum-light to-plum-tint">
-                  Pastors
+                  Leadership
                 </span>
               </h2>
             </ScrollReveal>

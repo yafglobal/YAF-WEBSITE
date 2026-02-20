@@ -35,14 +35,14 @@ export default function LeaderCard({ leader, index }: { leader: Leader; index: n
 
           {/* Gradient overlay — uses color-mix so light mode adapts */}
           <div
-            className="absolute inset-0 z-[3]"
+            className="absolute inset-0 z-[3] transition-opacity duration-500 group-hover:opacity-0"
             style={{
               background: `linear-gradient(to top, color-mix(in srgb, var(--color-background) 80%, transparent), color-mix(in srgb, var(--color-background) 20%, transparent), transparent)`,
             }}
           />
 
           {/* Hover glow */}
-          <div className="absolute inset-0 bg-gradient-to-t from-plum/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-[3]" />
+          <div className="absolute inset-0 bg-gradient-to-t from-plum/20 via-transparent to-transparent opacity-0 transition-opacity duration-500 z-[3]" />
 
           {/* Audio toggle */}
           <button
@@ -91,7 +91,7 @@ export default function LeaderCard({ leader, index }: { leader: Leader; index: n
           </div>
 
           {/* Content at bottom */}
-          <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8 z-[4]">
+          <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8 z-[4] transition-opacity duration-500 group-hover:opacity-0">
             <div className="inline-flex items-center gap-2 mb-3">
               <div className="w-5 h-[1.5px] bg-plum" />
               <span className="text-plum text-xs font-semibold tracking-wider uppercase">

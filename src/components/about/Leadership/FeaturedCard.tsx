@@ -35,11 +35,11 @@ export default function FeaturedCard({ leader }: { leader: Leader }) {
             <VideoOverlay video={leader.video} isHovered={isHovered} isMuted={isMuted} />
 
             {/* Fade into text side */}
-            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-[var(--color-surface)] hidden md:block z-[3]" />
-            <div className="absolute inset-0 bg-gradient-to-t from-[var(--color-surface)] via-transparent to-transparent md:hidden z-[3]" />
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-[var(--color-surface)] hidden md:block z-[3] transition-opacity duration-500 group-hover:opacity-0" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[var(--color-surface)] via-transparent to-transparent md:hidden z-[3] transition-opacity duration-500 group-hover:opacity-0" />
 
             {/* Hover glow */}
-            <div className="absolute inset-0 bg-gradient-to-r from-plum/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-[3]" />
+            <div className="absolute inset-0 bg-gradient-to-r from-plum/10 to-transparent opacity-0 transition-opacity duration-500 z-[3]" />
 
             {/* Audio toggle */}
             <button
