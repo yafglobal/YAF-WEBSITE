@@ -14,7 +14,7 @@ const desktopItems = BRANCHES.map((b) => ({
   link: `/branches/${b.slug}`,
   text: b.menuLabel,
   image: b.menuImage,
-  images: b.images.map((img) => img.src),
+  images: b.images.map((img) => ({ src: img.src, objectPosition: img.objectPosition })),
 }));
 
 const mobileItems = BRANCHES.map((b) => ({
