@@ -21,6 +21,8 @@ export default function Navbar({ lightHero = false }: NavbarProps) {
   const { scrollY } = useScroll();
   const pathname = usePathname();
 
+  const isCanadaPage = pathname === "/branches/canada";
+
   const activeSection = useMemo(() => {
     return navLinks.findIndex((link) => {
       if (link.href === "/") return pathname === "/";
@@ -92,7 +94,7 @@ export default function Navbar({ lightHero = false }: NavbarProps) {
             <Link
               href="/"
               onClick={handleNavClick}
-              className="relative z-10 flex items-center shrink-0"
+              className="relative z-10 flex items-center gap-2 shrink-0"
             >
               <motion.div animate={{ scale: scrolled ? 0.85 : 1 }} transition={{ duration: 0.3 }}>
                 <Image
@@ -105,6 +107,24 @@ export default function Navbar({ lightHero = false }: NavbarProps) {
                   priority
                 />
               </motion.div>
+              {isCanadaPage && (
+                <motion.span
+                  initial={{ opacity: 0, x: -8 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  className="relative inline-block pr-2 font-display font-extrabold text-sm md:text-base tracking-tight text-plum"
+                >
+                  Canada
+                  <span className="pointer-events-none absolute right-0 top-0 translate-x-[12%] -translate-y-[45%]">
+                    <Image
+                      src="/yaf-canada/mapleleaf.png"
+                      alt=""
+                      width={20}
+                      height={20}
+                      className="w-5 h-5 rotate-12 drop-shadow-sm"
+                    />
+                  </span>
+                </motion.span>
+              )}
             </Link>
 
             <DesktopNav
