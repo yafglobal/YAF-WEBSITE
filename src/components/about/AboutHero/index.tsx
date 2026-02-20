@@ -23,8 +23,11 @@ export default function AboutHero() {
       ref={sectionRef}
       className="relative h-[100svh] min-h-[700px] flex items-end overflow-hidden"
     >
-      {/* Parallax Background */}
-      <motion.div style={{ y: bgY, scale: bgScale }} className="absolute inset-0 z-0">
+      {/* Parallax Background — will-change + backface-visibility fix iOS Safari clipping */}
+      <motion.div
+        style={{ y: bgY, scale: bgScale }}
+        className="absolute inset-0 z-0 will-change-transform [backface-visibility:hidden] [-webkit-backface-visibility:hidden]"
+      >
         <Image
           src="/images/about/hero-bg.jpg"
           alt="Youth Alive Fellowship community"

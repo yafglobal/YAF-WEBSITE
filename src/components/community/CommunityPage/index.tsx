@@ -38,8 +38,11 @@ export default function CommunityPage() {
       {/* ═══════ Hero ═══════ */}
       <div className="relative min-h-[92vh] flex items-center justify-center overflow-hidden">
         {/* Photo mosaic background — community images from all regions */}
-        <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
-          <div className="absolute inset-0 grid grid-cols-4 md:grid-cols-6 grid-rows-3 gap-1 opacity-[0.07] blur-[1px]">
+        <div
+          className="absolute inset-0 pointer-events-none will-change-transform [backface-visibility:hidden] [-webkit-backface-visibility:hidden]"
+          aria-hidden="true"
+        >
+          <div className="absolute inset-0 grid grid-cols-4 md:grid-cols-6 auto-rows-fr gap-1 opacity-[0.07] blur-[1px]">
             {[
               "/images/community-bg.jpg",
               "/ukyaf/joyful-praise-gathering.webp",
@@ -60,7 +63,7 @@ export default function CommunityPage() {
               "/images/about/fellowship-photo.png",
               "/usayaf/pastor-white-outfit-preaching.webp",
             ].map((src) => (
-              <div key={src} className="relative w-full h-full">
+              <div key={src} className="relative w-full h-full min-h-0">
                 <Image
                   src={src}
                   alt=""

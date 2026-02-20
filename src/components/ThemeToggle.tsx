@@ -31,10 +31,12 @@ export default function ThemeToggle() {
   const toggleTheme = useCallback(async () => {
     const nextDark = !isDark;
 
-    // Fallback for browsers without View Transitions or reduced motion
+    // Fallback for browsers without View Transitions, reduced motion, or mobile viewports
+    const isMobile = window.innerWidth < 768;
     if (
       !document.startViewTransition ||
-      window.matchMedia("(prefers-reduced-motion: reduce)").matches
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches ||
+      isMobile
     ) {
       flushSync(() => {
         document.documentElement.classList.toggle("light", !nextDark);
