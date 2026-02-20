@@ -41,6 +41,11 @@ export default function BranchGatherings({ branch }: Props) {
             alt={`Gatherings at Youth Alive ${branch.name}`}
             fill
             className="object-cover"
+            style={
+              branch.images[2]?.objectPosition
+                ? { objectPosition: branch.images[2].objectPosition }
+                : undefined
+            }
             sizes="100vw"
           />
 

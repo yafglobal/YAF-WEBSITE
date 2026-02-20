@@ -45,9 +45,17 @@ export const BRANCHES: BranchConfig[] = [
     images: [
       { src: "/images/community-bg.jpg", alt: "Youth Alive community gathering in Africa" },
       { src: "/images/slider-1.jpeg", alt: "Youth worship at Canaanland" },
-      { src: "/images/slider-2.jpeg", alt: "Youth Alive conference in Nigeria" },
+      {
+        src: "/images/about/fellowship-photo.png",
+        alt: "Youth fellowship gathering at Canaanland",
+        objectPosition: "center 40%",
+      },
       { src: "/images/slider-3.jpeg", alt: "Fellowship at Living Faith Church" },
-      { src: "/images/about/fellowship-photo.png", alt: "Youth fellowship gathering" },
+      {
+        src: "/images/about/worship-portrait.png",
+        alt: "Youth worshipper at Canaanland",
+        objectPosition: "center 15%",
+      },
       { src: "/images/slider-5.jpeg", alt: "Youth conference worship moment" },
       { src: "/images/slider-4.jpeg", alt: "Youth conference event" },
     ],
@@ -124,7 +132,7 @@ export const BRANCHES: BranchConfig[] = [
       {
         src: "/usayaf/praise-night-joyful-moment.webp",
         alt: "Joyful moment during praise night",
-        objectPosition: "center 30%",
+        objectPosition: "center 20%",
       },
       {
         src: "/usayaf/worship-duo-hands-raised.webp",

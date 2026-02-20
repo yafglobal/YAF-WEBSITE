@@ -55,8 +55,8 @@ export default function AfricaGenesis() {
               <div className="relative aspect-[3/4] lg:aspect-[4/5] rounded-[2rem] overflow-hidden shadow-2xl">
                 <motion.div style={{ y: smoothY }} className="absolute inset-0 h-[124%] -top-[12%]">
                   <Image
-                    src="/images/slider-5.jpeg"
-                    alt="Youth Alive conference at Canaanland"
+                    src="/images/about/hero-bg.jpg"
+                    alt="Youth Alive fellowship at Canaanland"
                     fill
                     className="object-cover"
                     sizes="(max-width: 768px) 100vw, 60vw"
@@ -83,23 +83,6 @@ export default function AfricaGenesis() {
                 </div>
               </div>
             </ScrollReveal>
-
-            {/* Floating accent image — layered behind main, offset */}
-            <motion.div
-              initial={{ opacity: 0, y: 30, rotate: 3 }}
-              whileInView={{ opacity: 1, y: 0, rotate: 3 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.4, duration: 0.8 }}
-              className="hidden lg:block absolute -bottom-12 -right-8 w-52 h-52 rounded-2xl overflow-hidden shadow-xl z-[-1] border-2 border-[var(--color-surface)]"
-            >
-              <Image
-                src="/images/slider-4.jpeg"
-                alt="Youth conference event at Canaanland"
-                fill
-                className="object-cover"
-                sizes="208px"
-              />
-            </motion.div>
           </div>
 
           {/* Text content — editorial right panel */}

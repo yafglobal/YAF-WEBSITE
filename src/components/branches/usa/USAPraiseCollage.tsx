@@ -78,173 +78,52 @@ export default function USAPraiseCollage() {
         </div>
 
         {/* Asymmetric masonry collage */}
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
-          {/* Row 1 — tall + wide + medium */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="row-span-2 group relative rounded-2xl md:rounded-3xl overflow-hidden shadow-xl"
-          >
-            <div className="aspect-[3/5] relative">
-              <Image
-                src={collageImages[0].src}
-                alt={collageImages[0].alt}
-                fill
-                className="object-cover transition-transform duration-700 group-hover:scale-105"
-                sizes="(max-width: 768px) 50vw, 33vw"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-              <div className="absolute bottom-5 left-5">
-                <span className="text-xs font-bold uppercase tracking-[0.3em] text-red-300/80">
-                  {collageImages[0].label}
-                </span>
-              </div>
-            </div>
-          </motion.div>
+        <div className="grid grid-cols-2 md:grid-cols-3 auto-rows-[220px] md:auto-rows-[280px] gap-3 md:gap-4">
+          {collageImages.map((img, i) => {
+            // Grid placement classes per item
+            const gridClasses = [
+              "row-span-2", // 0: Praise Night — tall left
+              "md:col-span-2", // 1: Atmosphere — wide top right
+              "", // 2: Expression — medium
+              "", // 3: Joy Overflowing — medium
+              "md:col-span-2", // 4: Surrender — wide bottom left
+              "", // 5: United Voices — medium right
+            ][i];
 
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="md:col-span-2 group relative rounded-2xl md:rounded-3xl overflow-hidden shadow-xl"
-          >
-            <div className="aspect-[16/9] md:aspect-[2/1] relative">
-              <Image
-                src={collageImages[1].src}
-                alt={collageImages[1].alt}
-                fill
-                className="object-cover transition-transform duration-700 group-hover:scale-105"
-                sizes="(max-width: 768px) 50vw, 66vw"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-              <div className="absolute bottom-5 left-5">
-                <span className="text-xs font-bold uppercase tracking-[0.3em] text-red-300/80">
-                  {collageImages[1].label}
-                </span>
-              </div>
-            </div>
-          </motion.div>
-
-          {/* Row 2 — two medium images */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.15 }}
-            className="group relative rounded-2xl md:rounded-3xl overflow-hidden shadow-xl"
-          >
-            <div className="aspect-[4/5] relative">
-              <Image
-                src={collageImages[2].src}
-                alt={collageImages[2].alt}
-                fill
-                className="object-cover transition-transform duration-700 group-hover:scale-105"
-                style={
-                  collageImages[2].objectPosition
-                    ? { objectPosition: collageImages[2].objectPosition }
-                    : undefined
-                }
-                sizes="(max-width: 768px) 50vw, 33vw"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-              <div className="absolute bottom-5 left-5">
-                <span className="text-xs font-bold uppercase tracking-[0.3em] text-red-300/80">
-                  {collageImages[2].label}
-                </span>
-              </div>
-            </div>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="group relative rounded-2xl md:rounded-3xl overflow-hidden shadow-xl"
-          >
-            <div className="aspect-[4/5] relative">
-              <Image
-                src={collageImages[3].src}
-                alt={collageImages[3].alt}
-                fill
-                className="object-cover transition-transform duration-700 group-hover:scale-105"
-                style={
-                  collageImages[3].objectPosition
-                    ? { objectPosition: collageImages[3].objectPosition }
-                    : undefined
-                }
-                sizes="(max-width: 768px) 50vw, 33vw"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-              <div className="absolute bottom-5 left-5">
-                <span className="text-xs font-bold uppercase tracking-[0.3em] text-red-300/80">
-                  {collageImages[3].label}
-                </span>
-              </div>
-            </div>
-          </motion.div>
-
-          {/* Row 3 — wide + tall */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.25 }}
-            className="md:col-span-2 group relative rounded-2xl md:rounded-3xl overflow-hidden shadow-xl"
-          >
-            <div className="aspect-[16/9] md:aspect-[5/2] relative">
-              <Image
-                src={collageImages[4].src}
-                alt={collageImages[4].alt}
-                fill
-                className="object-cover transition-transform duration-700 group-hover:scale-105"
-                style={
-                  collageImages[4].objectPosition
-                    ? { objectPosition: collageImages[4].objectPosition }
-                    : undefined
-                }
-                sizes="(max-width: 768px) 100vw, 66vw"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-              <div className="absolute bottom-5 left-5">
-                <span className="text-xs font-bold uppercase tracking-[0.3em] text-red-300/80">
-                  {collageImages[4].label}
-                </span>
-              </div>
-            </div>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="group relative rounded-2xl md:rounded-3xl overflow-hidden shadow-xl"
-          >
-            <div className="aspect-[4/5] md:aspect-[3/4] relative">
-              <Image
-                src={collageImages[5].src}
-                alt={collageImages[5].alt}
-                fill
-                className="object-cover transition-transform duration-700 group-hover:scale-105"
-                style={
-                  collageImages[5].objectPosition
-                    ? { objectPosition: collageImages[5].objectPosition }
-                    : undefined
-                }
-                sizes="(max-width: 768px) 50vw, 33vw"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-              <div className="absolute bottom-5 left-5">
-                <span className="text-xs font-bold uppercase tracking-[0.3em] text-red-300/80">
-                  {collageImages[5].label}
-                </span>
-              </div>
-            </div>
-          </motion.div>
+            return (
+              <motion.div
+                key={img.label}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: i * 0.05 }}
+                className={`${gridClasses} group relative rounded-2xl md:rounded-3xl overflow-hidden shadow-xl`}
+              >
+                <div className="relative h-full">
+                  <Image
+                    src={img.src}
+                    alt={img.alt}
+                    fill
+                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                    style={img.objectPosition ? { objectPosition: img.objectPosition } : undefined}
+                    sizes={
+                      i === 0
+                        ? "(max-width: 768px) 50vw, 33vw"
+                        : i === 1 || i === 4
+                          ? "(max-width: 768px) 50vw, 66vw"
+                          : "(max-width: 768px) 50vw, 33vw"
+                    }
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                  <div className="absolute bottom-5 left-5">
+                    <span className="text-xs font-bold uppercase tracking-[0.3em] text-red-300/80">
+                      {img.label}
+                    </span>
+                  </div>
+                </div>
+              </motion.div>
+            );
+          })}
         </div>
       </div>
     </section>
