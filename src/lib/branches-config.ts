@@ -114,19 +114,38 @@ export const BRANCHES: BranchConfig[] = [
       {
         src: "/usayaf/crowd-hands-phones-praise.webp",
         alt: "Crowd with hands and phones raised in praise",
+        objectPosition: "center 55%",
       },
-      { src: "/usayaf/pastor-white-outfit-preaching.webp", alt: "Pastor preaching at YAF USA" },
-      { src: "/usayaf/praise-night-joyful-moment.webp", alt: "Joyful moment during praise night" },
+      {
+        src: "/usayaf/pastor-white-outfit-preaching.webp",
+        alt: "Pastor preaching at YAF USA",
+        objectPosition: "center 25%",
+      },
+      {
+        src: "/usayaf/praise-night-joyful-moment.webp",
+        alt: "Joyful moment during praise night",
+        objectPosition: "center 30%",
+      },
       {
         src: "/usayaf/worship-duo-hands-raised.webp",
         alt: "Worship duo with hands raised on stage",
+        objectPosition: "center 35%",
       },
-      { src: "/usayaf/woman-open-hands-worship.webp", alt: "Woman worshipping with open hands" },
+      {
+        src: "/usayaf/woman-open-hands-worship.webp",
+        alt: "Woman worshipping with open hands",
+        objectPosition: "center 40%",
+      },
       {
         src: "/usayaf/praise-night-worship-leader.webp",
         alt: "Worship leader during praise night",
+        objectPosition: "center 30%",
       },
-      { src: "/usayaf/woman-clapping-joy.webp", alt: "Woman clapping with joy during service" },
+      {
+        src: "/usayaf/woman-clapping-joy.webp",
+        alt: "Woman clapping with joy during service",
+        objectPosition: "center 40%",
+      },
     ],
   },
   {
@@ -150,10 +169,22 @@ export const BRANCHES: BranchConfig[] = [
         src: "/yaf-canada/youth-hands-raised-worship.webp",
         alt: "Youth with hands raised in worship",
       },
-      { src: "/yaf-canada/stage-speaker-portrait.webp", alt: "Speaker portrait on stage" },
-      { src: "/yaf-canada/choir-leader-band.webp", alt: "Choir leader with band" },
+      {
+        src: "/yaf-canada/stage-speaker-portrait.webp",
+        alt: "Speaker portrait on stage",
+        objectPosition: "center 30%",
+      },
+      {
+        src: "/yaf-canada/choir-leader-band.webp",
+        alt: "Choir leader with band",
+        objectPosition: "center 35%",
+      },
       { src: "/yaf-canada/smiling-friends-audience.webp", alt: "Smiling friends in audience" },
-      { src: "/yaf-canada/worship-duo-stage.webp", alt: "Worship duo performing on stage" },
+      {
+        src: "/yaf-canada/worship-duo-stage.webp",
+        alt: "Worship duo performing on stage",
+        objectPosition: "center 30%",
+      },
       { src: "/yaf-canada/youth-in-prayer.webp", alt: "Youth in prayer during service" },
       { src: "/yaf-canada/peaceful-worship-moment.webp", alt: "Peaceful worship moment" },
     ],
