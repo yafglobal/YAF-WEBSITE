@@ -67,11 +67,11 @@ export default function MobileNav({
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-40 bg-[#1a1a1a] flex flex-col items-center overflow-y-auto overscroll-contain"
+            className="fixed inset-0 z-40 bg-[#F0E4F3] flex flex-col items-center overflow-y-auto overscroll-contain"
             style={{ WebkitOverflowScrolling: "touch" }}
           >
-            {/* Decorative ember glow */}
-            <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[300px] h-[300px] rounded-full bg-plum/5 blur-[100px]" />
+            {/* Decorative plum glow */}
+            <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[300px] h-[300px] rounded-full bg-plum/8 blur-[100px]" />
 
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -98,7 +98,7 @@ export default function MobileNav({
                         ${
                           activeSection === i
                             ? "text-plum bg-plum/10"
-                            : "text-[var(--color-text-primary)]/70 hover:text-[var(--color-text-primary)] hover:bg-[var(--color-surface)]"
+                            : "text-[#2D1035] hover:text-plum hover:bg-white/40"
                         }
                       `}
                     >
@@ -126,14 +126,12 @@ export default function MobileNav({
                             onClick={onClose}
                             initial={{ opacity: 0, scale: 0.9 }}
                             animate={{ opacity: 1, scale: 1 }}
-                            className="flex flex-col items-center gap-2 py-4 rounded-xl border border-white/10 bg-white/5 hover:border-plum/30 transition-colors"
+                            className="flex flex-col items-center gap-2 py-4 rounded-xl border border-plum/12 bg-white/50 hover:border-plum/30 transition-colors"
                           >
-                            <div className="w-10 h-10 rounded-full bg-plum/15 flex items-center justify-center">
+                            <div className="w-10 h-10 rounded-full bg-plum/10 flex items-center justify-center">
                               <Play size={20} weight="fill" className="text-plum ml-0.5" />
                             </div>
-                            <span className="text-xs font-bold text-[var(--color-text-primary)]">
-                              Video Library
-                            </span>
+                            <span className="text-xs font-bold text-[#2D1035]">Video Library</span>
                           </MotionLink>
                           <MotionLink
                             href="/reels"
@@ -141,14 +139,12 @@ export default function MobileNav({
                             initial={{ opacity: 0, scale: 0.9 }}
                             animate={{ opacity: 1, scale: 1 }}
                             transition={{ delay: 0.05 }}
-                            className="flex flex-col items-center gap-2 py-4 rounded-xl border border-white/10 bg-white/5 hover:border-plum/30 transition-colors"
+                            className="flex flex-col items-center gap-2 py-4 rounded-xl border border-plum/12 bg-white/50 hover:border-plum/30 transition-colors"
                           >
-                            <div className="w-10 h-10 rounded-full bg-plum/15 flex items-center justify-center">
+                            <div className="w-10 h-10 rounded-full bg-plum/10 flex items-center justify-center">
                               <FilmStrip size={20} weight="fill" className="text-plum" />
                             </div>
-                            <span className="text-xs font-bold text-[var(--color-text-primary)]">
-                              Reels
-                            </span>
+                            <span className="text-xs font-bold text-[#2D1035]">Reels</span>
                           </MotionLink>
                         </div>
 
@@ -158,19 +154,19 @@ export default function MobileNav({
                             {
                               label: "Africa",
                               href: "/watch/africa",
-                              gradient: "from-amber-600/80 to-orange-800/80",
+                              gradient: "from-amber-500 to-orange-600",
                               emoji: "\u{1F1F3}\u{1F1EC}",
                             },
                             {
                               label: "N. America",
                               href: "/watch/north-america",
-                              gradient: "from-red-600/80 to-rose-800/80",
+                              gradient: "from-red-500 to-rose-600",
                               emoji: "\u{1F1E8}\u{1F1E6}",
                             },
                             {
                               label: "Europe",
                               href: "/watch/europe",
-                              gradient: "from-blue-600/80 to-indigo-800/80",
+                              gradient: "from-blue-500 to-indigo-600",
                               emoji: "\u{1F1EC}\u{1F1E7}",
                             },
                           ].map((c) => (
@@ -180,7 +176,7 @@ export default function MobileNav({
                               onClick={onClose}
                               initial={{ opacity: 0, scale: 0.9 }}
                               animate={{ opacity: 1, scale: 1 }}
-                              className={`flex items-center justify-center gap-1.5 py-2.5 rounded-lg bg-gradient-to-r ${c.gradient} text-white`}
+                              className={`flex items-center justify-center gap-1.5 py-2.5 rounded-lg bg-gradient-to-r ${c.gradient} text-white shadow-sm`}
                             >
                               <span className="text-sm leading-none">{c.emoji}</span>
                               <span className="text-[11px] font-bold drop-shadow-sm">
@@ -205,28 +201,28 @@ export default function MobileNav({
                             {
                               label: "Africa",
                               href: "/branches/africa",
-                              gradient: "from-amber-600/80 to-orange-800/80",
+                              gradient: "from-amber-500 to-orange-600",
                               accent: "/images/branch-accents/africa-continent.png",
                               accentRotate: "",
                             },
                             {
                               label: "Europe",
                               href: "/branches/europe",
-                              gradient: "from-blue-600/80 to-indigo-800/80",
+                              gradient: "from-blue-500 to-indigo-600",
                               accent: "/images/branch-accents/europe-flag.png",
                               accentRotate: "",
                             },
                             {
                               label: "USA",
                               href: "/branches/usa",
-                              gradient: "from-red-600/80 to-rose-800/80",
+                              gradient: "from-red-500 to-rose-600",
                               accent: "/images/branch-accents/usa-flag.png",
                               accentRotate: "",
                             },
                             {
                               label: "Canada",
                               href: "/branches/canada",
-                              gradient: "from-emerald-600/80 to-teal-800/80",
+                              gradient: "from-emerald-500 to-teal-600",
                               accent: "/yaf-canada/mapleleaf.png",
                               accentRotate: "rotate-12",
                             },
@@ -237,7 +233,7 @@ export default function MobileNav({
                               onClick={onClose}
                               initial={{ opacity: 0, scale: 0.9 }}
                               animate={{ opacity: 1, scale: 1 }}
-                              className={`flex items-center justify-center gap-1.5 py-3 rounded-lg bg-gradient-to-r ${c.gradient} text-white`}
+                              className={`flex items-center justify-center gap-1.5 py-3 rounded-lg bg-gradient-to-r ${c.gradient} text-white shadow-sm`}
                             >
                               <Image
                                 src={c.accent}
@@ -269,9 +265,9 @@ export default function MobileNav({
                 onClick={onClose}
                 className="
                   mt-6 w-full text-center py-4 text-lg font-semibold
-                  bg-gradient-to-b from-plum-tint to-plum-muted text-[#1A1A00]
-                  rounded-2xl
-                  hover:shadow-[var(--shadow-plum-tint-md)]
+                  bg-plum text-white
+                  rounded-2xl shadow-lg shadow-plum/25
+                  hover:bg-plum/90
                   transition-all duration-300 active:scale-95
                 "
               >
@@ -284,7 +280,7 @@ export default function MobileNav({
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.5 }}
                 onClick={onClose}
-                className="mt-2 text-sm text-[var(--color-text-secondary)] hover:text-plum transition-colors"
+                className="mt-2 text-sm text-[#5A3D62] hover:text-plum transition-colors"
               >
                 Contact Us
               </MotionLink>
