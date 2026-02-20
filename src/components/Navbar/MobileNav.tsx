@@ -71,7 +71,7 @@ export default function MobileNav({
             style={{ WebkitOverflowScrolling: "touch" }}
           >
             {/* Decorative plum glow */}
-            <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[300px] h-[300px] rounded-full bg-plum/8 blur-[100px]" />
+            <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[300px] h-[300px] rounded-full bg-plum/8 blur-[100px] pointer-events-none" />
 
             <motion.div
               initial={{ opacity: 0, y: 30 }}
