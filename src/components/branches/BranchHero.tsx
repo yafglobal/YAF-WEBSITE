@@ -39,23 +39,24 @@ export default function BranchHero({ branch }: Props) {
         />
       </motion.div>
 
-      {/* Cinematic vignette */}
+      {/* Cinematic vignette — uses color-matched transparent vars to
+           avoid Safari's gradient interpolation bug (transparent = black) */}
       <div
         className="absolute inset-0 z-[1] pointer-events-none"
         style={{
-          background: `radial-gradient(ellipse at 50% 40%, rgba(0,0,0,0) 30%, var(--color-overlay) 100%)`,
+          background: `radial-gradient(ellipse at 50% 40%, var(--color-overlay-fade) 30%, var(--color-overlay) 100%)`,
         }}
       />
       <div
         className="absolute inset-0 z-[1] pointer-events-none"
         style={{
-          background: `linear-gradient(to top, var(--color-background) 0%, rgba(0,0,0,0) 100%)`,
+          background: `linear-gradient(to top, var(--color-background) 0%, var(--color-background-fade) 100%)`,
         }}
       />
       <div
         className="absolute inset-0 z-[1] pointer-events-none opacity-60"
         style={{
-          background: `linear-gradient(to right, var(--color-background) 0%, rgba(0,0,0,0) 100%)`,
+          background: `linear-gradient(to right, var(--color-background) 0%, var(--color-background-fade) 100%)`,
         }}
       />
 
@@ -68,7 +69,9 @@ export default function BranchHero({ branch }: Props) {
       >
         <span
           className="font-display font-extrabold text-[11rem] md:text-[17rem] lg:text-[22rem] leading-[0.75] tracking-tighter"
-          style={{ color: "color-mix(in srgb, var(--color-foreground) 3%, transparent)" }}
+          style={{
+            color: "color-mix(in srgb, var(--color-foreground) 3%, var(--color-background-fade))",
+          }}
         >
           {branch.watermark}
         </span>
