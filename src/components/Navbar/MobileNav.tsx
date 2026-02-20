@@ -67,7 +67,8 @@ export default function MobileNav({
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-40 bg-[var(--color-background)]/98 backdrop-blur-2xl flex flex-col items-center justify-center"
+            className="fixed inset-0 z-40 bg-[var(--color-background)] flex flex-col items-center overflow-y-auto overscroll-contain"
+            style={{ WebkitOverflowScrolling: "touch" }}
           >
             {/* Decorative ember glow */}
             <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[300px] h-[300px] rounded-full bg-plum/5 blur-[100px]" />
@@ -77,7 +78,7 @@ export default function MobileNav({
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: 30 }}
               transition={{ delay: 0.1 }}
-              className="flex flex-col items-center gap-2 w-full max-w-xs"
+              className="flex flex-col items-center gap-2 w-full max-w-xs pt-24 pb-12"
             >
               {navLinks.map((link, i) => {
                 const isWatch = link.label === "Watch";
@@ -97,7 +98,7 @@ export default function MobileNav({
                         ${
                           activeSection === i
                             ? "text-plum bg-plum/10"
-                            : "text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] hover:bg-[var(--color-surface)]"
+                            : "text-[var(--color-text-primary)]/70 hover:text-[var(--color-text-primary)] hover:bg-[var(--color-surface)]"
                         }
                       `}
                     >
@@ -125,9 +126,9 @@ export default function MobileNav({
                             onClick={onClose}
                             initial={{ opacity: 0, scale: 0.9 }}
                             animate={{ opacity: 1, scale: 1 }}
-                            className="flex flex-col items-center gap-2 py-4 rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] hover:border-plum/30 transition-colors"
+                            className="flex flex-col items-center gap-2 py-4 rounded-xl border border-white/10 bg-white/5 hover:border-plum/30 transition-colors"
                           >
-                            <div className="w-10 h-10 rounded-full bg-plum/10 flex items-center justify-center">
+                            <div className="w-10 h-10 rounded-full bg-plum/15 flex items-center justify-center">
                               <Play size={20} weight="fill" className="text-plum ml-0.5" />
                             </div>
                             <span className="text-xs font-bold text-[var(--color-text-primary)]">
@@ -140,9 +141,9 @@ export default function MobileNav({
                             initial={{ opacity: 0, scale: 0.9 }}
                             animate={{ opacity: 1, scale: 1 }}
                             transition={{ delay: 0.05 }}
-                            className="flex flex-col items-center gap-2 py-4 rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] hover:border-plum/30 transition-colors"
+                            className="flex flex-col items-center gap-2 py-4 rounded-xl border border-white/10 bg-white/5 hover:border-plum/30 transition-colors"
                           >
-                            <div className="w-10 h-10 rounded-full bg-plum/10 flex items-center justify-center">
+                            <div className="w-10 h-10 rounded-full bg-plum/15 flex items-center justify-center">
                               <FilmStrip size={20} weight="fill" className="text-plum" />
                             </div>
                             <span className="text-xs font-bold text-[var(--color-text-primary)]">
