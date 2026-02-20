@@ -43,8 +43,19 @@ export default function BranchesMegaDropdown() {
                 className={`absolute inset-0 bg-gradient-to-t ${BRANCH_COLORS[i].gradient} opacity-60`}
               />
               <div className="absolute bottom-2 left-3">
-                <span className="text-white font-display font-bold text-sm drop-shadow-md">
+                <span className="relative text-white font-display font-bold text-sm drop-shadow-md">
                   {branch.name}
+                  {branch.slug === "canada" && (
+                    <span className="pointer-events-none absolute right-0 top-0 translate-x-[40%] -translate-y-[50%]">
+                      <Image
+                        src="/yaf-canada/mapleleaf.png"
+                        alt=""
+                        width={18}
+                        height={18}
+                        className="w-[18px] h-[18px] rotate-12 drop-shadow-sm"
+                      />
+                    </span>
+                  )}
                 </span>
               </div>
             </div>

@@ -2,6 +2,7 @@
 
 import { motion, AnimatePresence } from "motion/react";
 import { List, X, Play, FilmStrip } from "@phosphor-icons/react";
+import Image from "next/image";
 
 import ThemeToggle from "@/components/ThemeToggle";
 import { navLinks, MotionLink } from "./navConfig";
@@ -202,21 +203,25 @@ export default function MobileNav({
                           {[
                             {
                               label: "Africa",
+                              slug: "africa",
                               href: "/branches/africa",
                               gradient: "from-amber-600/80 to-orange-800/80",
                             },
                             {
                               label: "Europe",
+                              slug: "europe",
                               href: "/branches/europe",
                               gradient: "from-blue-600/80 to-indigo-800/80",
                             },
                             {
                               label: "USA",
+                              slug: "usa",
                               href: "/branches/usa",
                               gradient: "from-red-600/80 to-rose-800/80",
                             },
                             {
                               label: "Canada",
+                              slug: "canada",
                               href: "/branches/canada",
                               gradient: "from-emerald-600/80 to-teal-800/80",
                             },
@@ -229,8 +234,19 @@ export default function MobileNav({
                               animate={{ opacity: 1, scale: 1 }}
                               className={`flex items-center justify-center gap-1.5 py-3 rounded-lg bg-gradient-to-r ${c.gradient} text-white`}
                             >
-                              <span className="text-[12px] font-bold drop-shadow-sm">
+                              <span className="relative text-[12px] font-bold drop-shadow-sm">
                                 {c.label}
+                                {c.slug === "canada" && (
+                                  <span className="pointer-events-none absolute right-0 top-0 translate-x-[50%] -translate-y-[55%]">
+                                    <Image
+                                      src="/yaf-canada/mapleleaf.png"
+                                      alt=""
+                                      width={14}
+                                      height={14}
+                                      className="w-3.5 h-3.5 rotate-12 drop-shadow-sm"
+                                    />
+                                  </span>
+                                )}
                               </span>
                             </MotionLink>
                           ))}
