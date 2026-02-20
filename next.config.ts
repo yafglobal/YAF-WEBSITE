@@ -23,6 +23,11 @@ const nextConfig: NextConfig = {
         hostname: "globalreels.winnerschapelsudbury.org",
         pathname: "/**",
       },
+      {
+        protocol: "https",
+        hostname: "winnerschapelcanada.ca",
+        pathname: "/**",
+      },
     ],
   },
 };
