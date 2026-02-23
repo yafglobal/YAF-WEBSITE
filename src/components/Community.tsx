@@ -80,19 +80,6 @@ export default function Community() {
 
       {/* Force light-on-dark text since this section always has a dark overlay */}
       <div className="relative z-10 max-w-[1400px] mx-auto px-6 md:px-10 text-center">
-        {/* Icon */}
-        <ScrollReveal>
-          <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-white/10 border border-white/10 mb-8">
-            <Image
-              src="/images/yaf-pc.svg"
-              alt="YAF Professional Community"
-              width={32}
-              height={32}
-              className="brightness-200"
-            />
-          </div>
-        </ScrollReveal>
-
         <ScrollReveal delay={0.1}>
           <h2 className="font-display font-extrabold text-4xl md:text-5xl lg:text-7xl leading-[1.05] tracking-tight text-white max-w-4xl mx-auto">
             Connect with our{" "}

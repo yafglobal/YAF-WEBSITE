@@ -162,13 +162,6 @@ export default function AppSection() {
               {/* Store badges */}
               <ScrollReveal delay={0.6}>
                 <div className="mt-6 flex items-center gap-3">
-                  <Image
-                    src="/images/yaf-pc.svg"
-                    alt="Play Store"
-                    width={28}
-                    height={28}
-                    className="opacity-30 hover:opacity-50 transition-opacity cursor-pointer"
-                  />
                   <span className="text-[var(--color-text-muted)] text-xs">
                     Available soon on iOS & Android
                   </span>

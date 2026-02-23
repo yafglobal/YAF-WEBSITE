@@ -107,35 +107,6 @@ export default function Hero() {
         style={isMobile ? undefined : { opacity: contentOpacity, y: contentY }}
         className="relative z-10 flex flex-col items-center justify-center h-full text-center px-6"
       >
-        {/* YAF-PC Logo — replaces crown */}
-        <motion.div
-          initial={{ opacity: 0, y: -80, scale: 1.5 }}
-          animate={{ opacity: 1, y: 0, scale: 1 }}
-          transition={{ duration: 1.5, ease: [0.22, 1, 0.36, 1] }}
-          className="relative mb-6"
-        >
-          <div className="inline-flex items-center justify-center w-16 h-16 md:w-20 md:h-20 rounded-full bg-white/10 border border-white/10">
-            <Image
-              src="/images/yaf-pc.svg"
-              alt="Youth Alive Global"
-              width={36}
-              height={36}
-              className="brightness-200 md:w-11 md:h-11"
-            />
-          </div>
-          {/* Radial glow pulse behind logo — desktop only */}
-          {!isMobile && (
-            <motion.div
-              className="absolute inset-0 -inset-6 rounded-full pointer-events-none"
-              style={{
-                background: "radial-gradient(circle, rgba(212,160,185,0.4), transparent 70%)",
-              }}
-              animate={{ scale: [1, 1.5, 1], opacity: [0.6, 0.2, 0.6] }}
-              transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-            />
-          )}
-        </motion.div>
-
         {/* Main headline */}
         <motion.h1
           initial={{ opacity: 0, y: 50, scale: 0.9 }}
