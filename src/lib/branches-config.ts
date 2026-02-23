@@ -115,6 +115,72 @@ export const BRANCHES: BranchConfig[] = [
     serviceTime: "Sundays",
     watchHref: "/watch/north-america",
     images: [
+      // ── Bento hero (slot 0 — large, landscape) ──────────────────────────
+      {
+        src: "/usayaf/newusatwo/108A2860-Enhanced-NR.jpg",
+        alt: "YAF USA community gathered inside the venue",
+        objectPosition: "center 40%",
+      },
+      // ── Bento squares (slots 1–2) ────────────────────────────────────────
+      {
+        src: "/usayaf/newusatwo/85127808.png",
+        alt: "Crowd with hands raised at YAF USA praise night",
+        objectPosition: "center 20%",
+      },
+      {
+        src: "/usayaf/newusatwo/85123194.png",
+        alt: "Two young women smiling at YAF USA",
+        objectPosition: "center 20%",
+      },
+      // ── Bento wide rows (slots 3–4) ──────────────────────────────────────
+      {
+        src: "/usayaf/newusatwo/108A2729.jpg",
+        alt: "YAF USA youth group celebrating outside at night",
+        objectPosition: "center 45%",
+      },
+      {
+        src: "/usayaf/newusatwo/85105618.jpg",
+        alt: "Kingdom Giants crew representing YAF USA outdoors",
+        objectPosition: "center 30%",
+      },
+      // ── Bento squares (slots 5–6) ────────────────────────────────────────
+      {
+        src: "/usayaf/newusatwo/85127670.png",
+        alt: "Three young women jumping with joy at YAF USA",
+        objectPosition: "center top",
+      },
+      {
+        src: "/usayaf/newusatwo/85127642.png",
+        alt: "Three young men in Kingdom Giant tees at YAF USA",
+        objectPosition: "center 20%",
+      },
+      // ── Lightbox-only extras ─────────────────────────────────────────────
+      {
+        src: "/usayaf/newusatwo/85122861.png",
+        alt: "Young man in a powerful moment of worship",
+        objectPosition: "center 20%",
+      },
+      {
+        src: "/usayaf/newusatwo/85123166.png",
+        alt: "Three friends smiling together at YAF USA",
+        objectPosition: "center 25%",
+      },
+      {
+        src: "/usayaf/newusatwo/85124954.png",
+        alt: "Men worshipping in black and white",
+        objectPosition: "center 25%",
+      },
+      {
+        src: "/usayaf/newusatwo/85124967.png",
+        alt: "Woman in white dress bowed in worship under stage lights",
+        objectPosition: "center 30%",
+      },
+      {
+        src: "/usayaf/newusatwo/85127623.png",
+        alt: "Three women in Kingdom Giant tees at community outreach",
+        objectPosition: "center 20%",
+      },
+      // ── Existing images (lightbox) ───────────────────────────────────────
       {
         src: "/usayaf/crowd-hands-phones-praise.webp",
         alt: "Crowd with hands and phones raised in praise",
