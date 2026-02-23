@@ -1,18 +1,24 @@
 "use client";
 
 import { useRef } from "react";
-import Image from "next/image";
 import Link from "next/link";
 import { motion, useScroll, useTransform } from "motion/react";
 import ThreeDButton from "./ui/ThreeDButton";
+import SlideStrip from "./ui/SlideStrip";
 import { useIsMobile } from "@/hooks/useIsMobile";
 
-const slides = [
-  "/images/slider-1.jpeg",
-  "/images/slider-2.jpeg",
-  "/images/slider-3.jpeg",
-  "/images/slider-4.jpeg",
-  "/images/slider-5.jpeg",
+// Each inner array is one vertical strip — images crossfade within each strip.
+// 11 images total spread across 5 strips so variety appears gradually.
+const stripGroups = [
+  ["/images/slider-1.jpeg", "/usayaf/newimagesherousa/85128700.png"],
+  ["/images/slider-2.jpeg", "/usayaf/newimagesherousa/85125223.png"],
+  ["/images/slider-3.jpeg", "/usayaf/newimagesherousa/85129682.png"],
+  [
+    "/images/slider-4.jpeg",
+    "/usayaf/newimagesherousa/85128588.png",
+    "/usayaf/newimagesherousa/AYAC-154-2.jpg",
+  ],
+  ["/images/slider-5.jpeg", "/usayaf/newimagesherousa/85128566.png"],
 ];
 
 export default function Hero() {
@@ -36,30 +42,8 @@ export default function Hero() {
         style={{ transform: "rotate(-12deg) scale(1.6) translateZ(0)", willChange: "transform" }}
       >
         <div className="flex w-full h-full">
-          {slides.map((src, i) => (
-            <motion.div
-              key={i}
-              className="relative flex-1 h-full overflow-hidden"
-              animate={isMobile ? { y: 0 } : { y: i % 2 === 0 ? [0, -40, 0] : [0, 40, 0] }}
-              transition={
-                isMobile
-                  ? { duration: 0 }
-                  : {
-                      duration: 10 + i * 2,
-                      repeat: Infinity,
-                      ease: "easeInOut",
-                    }
-              }
-            >
-              <Image
-                src={src}
-                alt={`Youth Alive event ${i + 1}`}
-                fill
-                className="object-cover"
-                priority={i === 0}
-                sizes="25vw"
-              />
-            </motion.div>
+          {stripGroups.map((images, i) => (
+            <SlideStrip key={i} images={images} stripIndex={i} startDelay={i * 1400} />
           ))}
         </div>
       </div>
