@@ -15,7 +15,7 @@ const collageImages = [
     src: "/usayaf/crowd-worship-phones-up.webp",
     alt: "Crowd worshipping with phones up",
     label: "The Atmosphere",
-    objectPosition: "center 20%",
+    objectPosition: "center 35%",
   },
   {
     src: "/usayaf/newimagesherousa/85128588.png",
