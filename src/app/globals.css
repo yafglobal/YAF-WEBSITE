@@ -1,0 +1,727 @@
+@import "tailwindcss";
+
+@theme inline {
+  /* ── Dark mode (default) ─────────────────── */
+  --color-background: #0a0a0a;
+  --color-foreground: #f5f5f5;
+  --color-plum: #861657;
+  --color-plum-light: #a85a8a;
+  --color-plum-dark: #5c0e3b;
+  --color-plum-mid: #9b3d70;
+  --color-plum-tint: #d4a0b9;
+  --color-plum-muted: #b06a96;
+  --color-plum-cream: #f5e6ef;
+  --color-charcoal: #141414;
+  --color-charcoal-light: #1e1e1e;
+  --color-charcoal-deep: #050505;
+  --color-smoke: #2a2a2a;
+  --color-ash: #8a8a8a;
+  --color-surface: #141414;
+  --color-surface-hover: #1e1e1e;
+  --color-border: rgba(255, 255, 255, 0.06);
+  --color-border-hover: rgba(255, 255, 255, 0.12);
+  --color-border-subtle: rgba(255, 255, 255, 0.1);
+  --color-border-medium: rgba(255, 255, 255, 0.2);
+  --color-text-primary: #f5f5f5;
+  --color-text-secondary: #8a8a8a;
+  --color-text-muted: rgba(255, 255, 255, 0.5);
+  --color-overlay: rgba(10, 10, 10, 0.7);
+  --color-background-fade: rgba(10, 10, 10, 0);
+  --color-overlay-fade: rgba(10, 10, 10, 0);
+
+  /* ── Glow / shadow tokens ─── */
+  --shadow-plum-sm: 0 0 12px rgba(134, 22, 87, 0.4);
+  --shadow-plum-md: 0 0 30px rgba(134, 22, 87, 0.3);
+  --shadow-plum-lg: 0 0 60px rgba(134, 22, 87, 0.5);
+  --shadow-plum-tint-sm: 0 0 12px rgba(212, 160, 185, 0.3);
+  --shadow-plum-tint-md: 0 0 30px rgba(212, 160, 185, 0.3);
+  --shadow-plum-tint-lg: 0 0 40px rgba(212, 160, 185, 0.4);
+
+  /* ── Glass / frosted tokens ─── */
+  --glass-bg: rgba(255, 255, 255, 0.1);
+  --glass-border: rgba(255, 255, 255, 0.2);
+  --glass-highlight: rgba(255, 255, 255, 0.15);
+
+  --font-display: var(--font-montserrat);
+  --font-body: var(--font-montserrat);
+}
+
+/* ── Light mode variables ──────────────────── */
+html.light {
+  --logo-filter: brightness(0.2);
+  --color-background: #fafaf8;
+  --color-foreground: #1a1a1a;
+  --color-charcoal: #f0ede8;
+  --color-charcoal-light: #f5f3ef;
+  --color-charcoal-deep: #e8e5e0;
+  --color-smoke: #e8e5e0;
+  --color-ash: #6b6b6b;
+  --color-surface: #ffffff;
+  --color-surface-hover: #f5f3ef;
+  --color-border: rgba(0, 0, 0, 0.08);
+  --color-border-hover: rgba(0, 0, 0, 0.15);
+  --color-border-subtle: rgba(0, 0, 0, 0.06);
+  --color-border-medium: rgba(0, 0, 0, 0.12);
+  --color-text-primary: #1a1a1a;
+  --color-text-secondary: #3a3a3a;
+  --color-text-muted: rgba(0, 0, 0, 0.6);
+  --color-overlay: rgba(250, 250, 248, 0.7);
+  --color-background-fade: rgba(250, 250, 248, 0);
+  --color-overlay-fade: rgba(250, 250, 248, 0);
+
+  --shadow-plum-sm: 0 0 12px rgba(134, 22, 87, 0.25);
+  --shadow-plum-md: 0 0 30px rgba(134, 22, 87, 0.2);
+  --shadow-plum-lg: 0 0 60px rgba(134, 22, 87, 0.3);
+  --shadow-plum-tint-sm: 0 0 12px rgba(212, 160, 185, 0.2);
+  --shadow-plum-tint-md: 0 0 24px rgba(212, 160, 185, 0.2);
+  --shadow-plum-tint-lg: 0 0 40px rgba(212, 160, 185, 0.25);
+
+  --glass-bg: rgba(0, 0, 0, 0.05);
+  --glass-border: rgba(0, 0, 0, 0.1);
+  --glass-highlight: rgba(0, 0, 0, 0.08);
+}
+
+/* ── Always-light footer ─────────────────────
+   Forces light-mode palette inside the footer
+   regardless of the global theme, so text stays
+   readable on every page and over the contact
+   page gradient. */
+.footer-light {
+  --logo-filter: brightness(0.2);
+  --color-background: #fafaf8;
+  --color-foreground: #1a1a1a;
+  --color-charcoal: #f0ede8;
+  --color-charcoal-light: #f5f3ef;
+  --color-smoke: #e8e5e0;
+  --color-surface: #ffffff;
+  --color-surface-hover: #f0ede8;
+  --color-border: rgba(0, 0, 0, 0.1);
+  --color-border-hover: rgba(0, 0, 0, 0.18);
+  --color-text-primary: #1a1a1a;
+  --color-text-secondary: #4a4a4a;
+  --color-text-muted: rgba(0, 0, 0, 0.5);
+  --color-overlay: rgba(250, 250, 248, 0.7);
+}
+
+/* ── Video-background footer ─────────────────
+   Forces dark-mode palette inside the footer
+   so text stays readable over the Mux video
+   background with dark overlay. */
+.footer-video {
+  --logo-filter: brightness(2);
+  --color-background: transparent;
+  --color-foreground: #ffffff;
+  --color-surface: rgba(255, 255, 255, 0.08);
+  --color-surface-hover: rgba(255, 255, 255, 0.12);
+  --color-border: rgba(255, 255, 255, 0.12);
+  --color-border-hover: rgba(255, 255, 255, 0.2);
+  --color-text-primary: #ffffff;
+  --color-text-secondary: rgba(255, 255, 255, 0.7);
+  --color-text-muted: rgba(255, 255, 255, 0.4);
+}
+
+/* ── Bible Plan glass layer ─────────────────
+   Makes surfaces semi-transparent so the
+   Grainient shader shows through on the
+   Bible Plan page. Dark mode by default;
+   light mode override below. */
+.bible-plan-glass {
+  --color-background: transparent;
+  --color-surface: rgba(255, 255, 255, 0.07);
+  --color-surface-hover: rgba(255, 255, 255, 0.12);
+  --color-border: rgba(255, 255, 255, 0.12);
+  --color-border-hover: rgba(255, 255, 255, 0.2);
+  --color-charcoal: rgba(255, 255, 255, 0.06);
+  --color-text-primary: #ffffff;
+  --color-text-secondary: rgba(255, 255, 255, 0.7);
+  --color-text-muted: rgba(255, 255, 255, 0.4);
+}
+html.light .bible-plan-glass {
+  --color-surface: rgba(255, 255, 255, 0.45);
+  --color-surface-hover: rgba(255, 255, 255, 0.55);
+  --color-border: rgba(0, 0, 0, 0.1);
+  --color-border-hover: rgba(0, 0, 0, 0.18);
+  --color-charcoal: rgba(255, 255, 255, 0.35);
+  --color-text-primary: #1a1a1a;
+  --color-text-secondary: #3a3a3a;
+  --color-text-muted: rgba(0, 0, 0, 0.5);
+}
+
+body {
+  background: var(--color-background);
+  color: var(--color-text-primary);
+  font-family: var(--font-body), system-ui, sans-serif;
+  overflow-x: hidden;
+  transition:
+    background-color 0s,
+    color 0s;
+}
+
+/* ── Selection ─────────────────────────────── */
+::selection {
+  background: var(--color-plum);
+  color: white;
+}
+
+/* ── Custom scrollbar (desktop only) ──────── */
+@media (min-width: 768px) {
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--color-charcoal);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-plum);
+    border-radius: 3px;
+  }
+}
+
+/* Hide custom scrollbar on mobile — use native overlay scrollbar */
+@media (max-width: 767px) {
+  ::-webkit-scrollbar {
+    width: 0;
+    display: none;
+  }
+}
+
+/* ── Glow text utility ─────────────────────── */
+.text-glow-plum {
+  text-shadow:
+    0 0 40px rgba(134, 22, 87, 0.5),
+    0 0 80px rgba(134, 22, 87, 0.2);
+}
+html.light .text-glow-plum {
+  text-shadow: 0 0 30px rgba(134, 22, 87, 0.3);
+}
+.text-glow-plum-tint {
+  text-shadow:
+    0 0 40px rgba(212, 160, 185, 0.4),
+    0 0 80px rgba(212, 160, 185, 0.15);
+}
+html.light .text-glow-plum-tint {
+  text-shadow: 0 0 30px rgba(212, 160, 185, 0.25);
+}
+
+/* ── Grain overlay ─────────────────────────── */
+.grain::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ── Hero slider crossfade ─────────────────── */
+@keyframes heroFade {
+  0%,
+  18% {
+    opacity: 1;
+  }
+  20%,
+  98% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.hero-slide {
+  animation: heroFade 25s infinite;
+}
+.hero-slide:nth-child(1) {
+  animation-delay: 0s;
+}
+.hero-slide:nth-child(2) {
+  animation-delay: 5s;
+}
+.hero-slide:nth-child(3) {
+  animation-delay: 10s;
+}
+.hero-slide:nth-child(4) {
+  animation-delay: 15s;
+}
+.hero-slide:nth-child(5) {
+  animation-delay: 20s;
+}
+
+/* ── Floating particles ────────────────────── */
+@keyframes float-up {
+  0% {
+    transform: translateY(100vh) scale(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateY(-20vh) scale(1);
+    opacity: 0;
+  }
+}
+.particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: var(--color-plum);
+  border-radius: 50%;
+  animation: float-up linear infinite;
+  pointer-events: none;
+}
+
+/* Respect user motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .particle,
+  .ember,
+  .animate-marquee,
+  .flowing-menu-marquee,
+  .hero-slide,
+  .plum-border,
+  .plum-border::before,
+  .motion-gradient-text,
+  .shimmer-btn {
+    animation: none !important;
+    transform: none;
+  }
+}
+
+/* ── Marquee ───────────────────────────────── */
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+}
+
+/* ── Gradient mesh background ──────────────── */
+.mesh-gradient {
+  background:
+    radial-gradient(ellipse at 20% 50%, rgba(134, 22, 87, 0.08) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 20%, rgba(212, 160, 185, 0.05) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 80%, rgba(168, 90, 138, 0.06) 0%, transparent 50%);
+}
+html.light .mesh-gradient {
+  background:
+    radial-gradient(ellipse at 20% 50%, rgba(134, 22, 87, 0.04) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 20%, rgba(212, 160, 185, 0.03) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 80%, rgba(168, 90, 138, 0.03) 0%, transparent 50%);
+}
+
+/* ── Ember pulse ───────────────────────────── */
+@keyframes ember-pulse {
+  0%,
+  100% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.2);
+  }
+}
+.ember {
+  animation: ember-pulse 3s ease-in-out infinite;
+}
+
+/* ── Video container ───────────────────────── */
+.video-container {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+  border-radius: 16px;
+}
+.video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* ── Plum border ──────────────────────────── */
+@keyframes plum-rotate {
+  0% {
+    --plum-angle: 0deg;
+  }
+  100% {
+    --plum-angle: 360deg;
+  }
+}
+
+@property --plum-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+.plum-border {
+  position: relative;
+  border-radius: 20px;
+  padding: 3px;
+  background: conic-gradient(
+    from var(--plum-angle),
+    #861657,
+    #d4a0b9,
+    #a85a8a,
+    #861657,
+    #d4a0b9,
+    #a85a8a,
+    #861657
+  );
+  animation: plum-rotate 4s linear infinite;
+}
+
+.plum-border::before {
+  content: "";
+  position: absolute;
+  inset: -4px;
+  border-radius: 24px;
+  background: conic-gradient(
+    from var(--plum-angle),
+    #861657,
+    #d4a0b9,
+    #a85a8a,
+    #861657,
+    #d4a0b9,
+    #a85a8a,
+    #861657
+  );
+  animation: plum-rotate 4s linear infinite;
+  filter: blur(16px);
+  opacity: 0.6;
+  z-index: -1;
+}
+
+.plum-border > * {
+  border-radius: 17px;
+  overflow: hidden;
+}
+
+/* ── Motion gradient text ─────────────────── */
+@keyframes gradient-flow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+.motion-gradient-text {
+  background: linear-gradient(90deg, #d4a0b9, #a85a8a, #861657, #d4a0b9, #a85a8a, #861657, #d4a0b9);
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradient-flow 4s ease infinite;
+}
+
+/* ── CTA shimmer ───────────────────────────── */
+@keyframes shimmer {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+.shimmer-btn {
+  background-size: 200% auto;
+  animation: shimmer 3s linear infinite;
+}
+
+/* ================================
+   3D Button Styles
+   ================================ */
+
+.btn3d {
+  /* Plum variant (default) */
+  --btn-front: linear-gradient(180deg, #a85a8a 0%, #861657 50%, #5c0e3b 100%);
+  --btn-edge: #3d0a29;
+  --btn-edge-bottom: #2a071c;
+  --btn-glow: rgba(134, 22, 87, 0.7);
+
+  position: relative;
+  border: none;
+  outline: none;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+  transition:
+    filter 250ms,
+    transform 250ms;
+  -webkit-tap-highlight-color: transparent;
+  transform-style: preserve-3d;
+  transform: perspective(600px) rotateX(18deg) rotateY(10deg) rotateZ(-2deg);
+}
+
+.btn3d.btn3d--plum-tint {
+  --btn-front: linear-gradient(180deg, #e0b8cf 0%, #d4a0b9 50%, #b06a96 100%);
+  --btn-edge: #7a4865;
+  --btn-edge-bottom: #5a3549;
+  --btn-glow: rgba(212, 160, 185, 0.7);
+}
+
+.btn3d:hover {
+  filter: brightness(110%);
+  transform: perspective(600px) rotateX(18deg) rotateY(10deg) rotateZ(-2deg) translateY(-3px);
+}
+
+.btn3d:active {
+  transform: perspective(600px) rotateX(18deg) rotateY(10deg) rotateZ(-2deg) translateY(2px);
+}
+
+/* Glow shadow underneath */
+.btn3d .btn3d-bg {
+  position: absolute;
+  top: 8px;
+  left: -10px;
+  width: calc(100% + 20px);
+  height: calc(100% + 16px);
+  border-radius: 24px;
+  background: var(--btn-glow);
+  filter: blur(25px);
+  transform: translateZ(-40px);
+  opacity: 0.8;
+  transition: all 250ms;
+}
+
+.btn3d:hover .btn3d-bg {
+  opacity: 1;
+  filter: blur(30px);
+  transform: translateZ(-40px) scale(1.1);
+}
+
+/* Front face of button */
+.btn3d .btn3d-wrap {
+  position: relative;
+  padding: 18px 48px 18px 56px;
+  border-radius: 14px;
+  background: var(--btn-front);
+  transform: translateY(0);
+  box-shadow:
+    0 10px 0 0 var(--btn-edge-bottom),
+    0 12px 0 0 var(--btn-edge),
+    0 14px 6px rgba(0, 0, 0, 0.3);
+  transition:
+    transform 250ms cubic-bezier(0.3, 0.7, 0.4, 1),
+    box-shadow 250ms;
+  will-change: transform;
+  overflow: hidden;
+}
+
+.btn3d:hover .btn3d-wrap {
+  transform: translateY(-3px);
+  box-shadow:
+    0 13px 0 0 var(--btn-edge-bottom),
+    0 15px 0 0 var(--btn-edge),
+    0 18px 10px rgba(0, 0, 0, 0.3);
+}
+
+.btn3d:active .btn3d-wrap {
+  transform: translateY(6px);
+  box-shadow:
+    0 3px 0 0 var(--btn-edge-bottom),
+    0 4px 0 0 var(--btn-edge),
+    0 5px 3px rgba(0, 0, 0, 0.2);
+}
+
+/* Logo watermark - embossed effect */
+.btn3d .btn3d-watermark {
+  position: absolute;
+  left: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  opacity: 0.15;
+  filter: blur(0.5px);
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.btn3d .btn3d-watermark-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 1px 0 rgba(0, 0, 0, 0.3)) drop-shadow(0 -1px 0 rgba(255, 255, 255, 0.1));
+}
+
+/* Hover: logo glows and lifts */
+.btn3d:hover .btn3d-watermark {
+  opacity: 1;
+  transform: translateY(-50%) translateX(4px) translateY(-3px) scale(1.1);
+  filter: blur(0) drop-shadow(0 0 12px var(--btn-glow));
+}
+
+/* Active: logo settles */
+.btn3d:active .btn3d-watermark {
+  opacity: 0.2;
+  transform: translateY(-50%) scale(0.95);
+}
+
+.btn3d .btn3d-content {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  color: white;
+  font-size: 18px;
+  font-weight: 600;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+  letter-spacing: 0.02em;
+  z-index: 1;
+}
+
+.btn3d .btn3d-label {
+  display: flex;
+}
+
+.btn3d .btn3d-arrow {
+  color: white;
+  opacity: 0.9;
+  filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.2));
+  transition: transform 0.3s ease;
+}
+
+.btn3d:hover .btn3d-arrow {
+  transform: translateX(4px);
+}
+
+/* Responsive sizing for 3D buttons */
+@media (max-width: 640px) {
+  .btn3d {
+    transform: perspective(600px) rotateX(16deg) rotateY(8deg) rotateZ(-1deg);
+  }
+
+  .btn3d:hover {
+    transform: perspective(600px) rotateX(16deg) rotateY(8deg) rotateZ(-1deg) translateY(-3px);
+  }
+
+  .btn3d .btn3d-wrap {
+    padding: 14px 32px 14px 44px;
+  }
+
+  .btn3d .btn3d-content {
+    font-size: 16px;
+    gap: 10px;
+  }
+
+  .btn3d .btn3d-watermark {
+    width: 32px;
+    height: 32px;
+    left: 6px;
+  }
+}
+
+/* Extra small devices */
+@media (max-width: 374px) {
+  .btn3d {
+    transform: perspective(500px) rotateX(14deg) rotateY(6deg) rotateZ(-1deg);
+  }
+
+  .btn3d:hover {
+    transform: perspective(500px) rotateX(14deg) rotateY(6deg) rotateZ(-1deg) translateY(-2px);
+  }
+
+  .btn3d .btn3d-wrap {
+    padding: 12px 24px 12px 36px;
+  }
+
+  .btn3d .btn3d-content {
+    font-size: 14px;
+    gap: 8px;
+  }
+
+  .btn3d .btn3d-watermark {
+    width: 26px;
+    height: 26px;
+    left: 5px;
+  }
+}
+
+/* Reduce plum border padding on small screens */
+@media (max-width: 640px) {
+  .plum-border {
+    padding: 2px;
+    border-radius: 14px;
+  }
+
+  .plum-border::before {
+    inset: -3px;
+    border-radius: 18px;
+    filter: blur(10px);
+  }
+
+  .plum-border > * {
+    border-radius: 12px;
+  }
+}
+
+/* Reduce video container border radius on mobile */
+@media (max-width: 640px) {
+  .video-container {
+    border-radius: 12px;
+  }
+}
+
+/* ── Community nav scroll (hide scrollbar) ── */
+.community-nav-scroll {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.community-nav-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+/* ── Reels scroll-snap ────────────────────── */
+.reels-container {
+  height: 100vh;
+  height: 100dvh;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.reels-container::-webkit-scrollbar {
+  display: none;
+}
+.reel-card {
+  height: 100vh;
+  height: 100dvh;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+
+/* Mux Player — fill container without black bars */
+mux-player {
+  --media-object-fit: cover;
+  --media-object-position: center center;
+  --controls: none;
+  aspect-ratio: unset !important;
+}
+
+mux-player::part(video) {
+  object-fit: cover;
+  object-position: center center;
+}
+
+mux-player video {
+  object-fit: cover !important;
+  object-position: center center !important;
+}
