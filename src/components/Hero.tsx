@@ -10,15 +10,15 @@ import { useIsMobile } from "@/hooks/useIsMobile";
 // Each inner array is one vertical strip — images crossfade within each strip.
 // 11 images total spread across 5 strips so variety appears gradually.
 const stripGroups = [
-  ["/images/slider-1.jpeg", "/usayaf/newimagesherousa/85128700.png"],
-  ["/images/slider-2.jpeg", "/usayaf/newimagesherousa/85125223.png"],
-  ["/images/slider-3.jpeg", "/usayaf/newimagesherousa/85129682.png"],
+  ["/images/slider-1.jpeg", "/usayaf/newimagesherousa/85128700.webp"],
+  ["/images/slider-2.jpeg", "/usayaf/newimagesherousa/85125223.webp"],
+  ["/images/slider-3.jpeg", "/usayaf/newimagesherousa/85129682.webp"],
   [
     "/images/slider-4.jpeg",
-    "/usayaf/newimagesherousa/85128588.png",
-    "/usayaf/newimagesherousa/AYAC-154-2.jpg",
+    "/usayaf/newimagesherousa/85128588.webp",
+    "/usayaf/newimagesherousa/AYAC-154-2.webp",
   ],
-  ["/images/slider-5.jpeg", "/usayaf/newimagesherousa/85128566.png"],
+  ["/images/slider-5.jpeg", "/usayaf/newimagesherousa/85128566.webp"],
 ];
 
 export default function Hero() {

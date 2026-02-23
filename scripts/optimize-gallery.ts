@@ -13,7 +13,12 @@ import sharp from "sharp";
 import { readdir, unlink, stat } from "fs/promises";
 import { join, extname, basename } from "path";
 
-const GALLERY_DIRS = ["public/ukyaf", "public/yaf-canada", "public/usayaf"];
+const GALLERY_DIRS = [
+  "public/ukyaf",
+  "public/yaf-canada",
+  "public/usayaf",
+  "public/usayaf/newimagesherousa",
+];
 const MAX_WIDTH = 800;
 const WEBP_QUALITY = 80;
 
