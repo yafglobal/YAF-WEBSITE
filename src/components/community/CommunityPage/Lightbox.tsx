@@ -64,15 +64,18 @@ export default function Lightbox({
         >
           {/* Close */}
           <button
-            onClick={onClose}
-            className="absolute top-5 right-5 z-10 p-2.5 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
+            onClick={(e) => {
+              e.stopPropagation();
+              onClose();
+            }}
+            className="absolute top-5 right-5 z-30 p-2.5 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
             aria-label="Close lightbox"
           >
             <X size={22} weight="bold" className="text-white" />
           </button>
 
           {/* Counter */}
-          <div className="absolute top-6 left-6 z-10 text-white/50 text-sm font-display font-medium">
+          <div className="absolute top-6 left-6 z-30 text-white/50 text-sm font-display font-medium">
             {continentName} &mdash; {currentIndex + 1} / {total}
           </div>
 
@@ -82,7 +85,7 @@ export default function Lightbox({
               e.stopPropagation();
               goPrev();
             }}
-            className="absolute left-3 md:left-8 z-10 p-3 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
+            className="absolute left-3 md:left-8 top-1/2 -translate-y-1/2 z-30 p-3 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
             aria-label="Previous image"
           >
             <CaretLeft size={22} weight="bold" className="text-white" />
@@ -94,7 +97,7 @@ export default function Lightbox({
               e.stopPropagation();
               goNext();
             }}
-            className="absolute right-3 md:right-8 z-10 p-3 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
+            className="absolute right-3 md:right-8 top-1/2 -translate-y-1/2 z-30 p-3 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
             aria-label="Next image"
           >
             <CaretRight size={22} weight="bold" className="text-white" />
