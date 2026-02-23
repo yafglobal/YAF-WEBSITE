@@ -1,11 +1,28 @@
 "use client";
 
 import { useState } from "react";
-import { Eye, X, Export, House, Airplane, HandHeart } from "@phosphor-icons/react";
+import { Eye, X, House, Airplane, HandHeart } from "@phosphor-icons/react";
 import { AdminHeader } from "@/components/admin/AdminHeader";
 import { StatsCard } from "@/components/admin/StatsCard";
+import { ExportMenu } from "@/components/admin/ExportMenu";
 import { Star, Users, Globe } from "@phosphor-icons/react";
 import { mockAYAC } from "@/components/admin/mockData";
+
+const exportCols = [
+  { label: "Name", key: "name" },
+  { label: "Gender", key: "gender" },
+  { label: "Email", key: "email" },
+  { label: "Phone", key: "phone" },
+  { label: "Member Type", key: "memberType" },
+  { label: "Branch", key: "branch" },
+  { label: "Province", key: "province" },
+  { label: "Attendance", key: "attendance" },
+  { label: "Accommodation", key: "accommodation" },
+  { label: "Transportation", key: "transportation" },
+  { label: "Volunteering", key: "volunteering" },
+  { label: "Dietary", key: "dietary" },
+  { label: "Registered", key: "registered" },
+];
 
 const attendanceBadge: Record<string, string> = {
   Yes: "bg-emerald-50 text-emerald-700",
@@ -28,6 +45,22 @@ export default function AYACPage() {
     return matchAtt && matchMember && matchProvince;
   });
 
+  const exportData = filtered.map((r) => ({
+    name: r.name,
+    gender: r.gender === "M" ? "Male" : "Female",
+    email: r.email,
+    phone: r.phone,
+    memberType: r.memberType,
+    branch: r.branch,
+    province: r.province,
+    attendance: r.attendance,
+    accommodation: r.accommodation ? "Yes" : "No",
+    transportation: r.transportation ? "Yes" : "No",
+    volunteering: r.volunteering ? "Yes" : "No",
+    dietary: r.dietary,
+    registered: r.registered,
+  }));
+
   const entry = mockAYAC.find((r) => r.id === viewId);
 
   return (
@@ -36,9 +69,11 @@ export default function AYACPage() {
         title="AYAC 2026 Registrations"
         description="Africa Youth Aflame Conference registrations"
         actions={
-          <button className="flex items-center gap-1.5 px-3 py-2 border border-gray-200 bg-white text-gray-600 rounded-lg text-sm font-medium hover:bg-gray-50">
-            <Export size={16} /> Export
-          </button>
+          <ExportMenu
+            data={exportData as Record<string, unknown>[]}
+            columns={exportCols}
+            filename="ayac-2026-registrations"
+          />
         }
       />
 

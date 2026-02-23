@@ -1,9 +1,19 @@
 "use client";
 
 import { useState } from "react";
-import { Eye, X, Export } from "@phosphor-icons/react";
+import { Eye, X } from "@phosphor-icons/react";
 import { AdminHeader } from "@/components/admin/AdminHeader";
+import { ExportMenu } from "@/components/admin/ExportMenu";
 import { mockWaitlist } from "@/components/admin/mockData";
+
+const exportCols = [
+  { label: "Name", key: "name" },
+  { label: "Email", key: "email" },
+  { label: "Phone", key: "phone" },
+  { label: "Track", key: "track" },
+  { label: "Signed Up", key: "signedUp" },
+  { label: "Message", key: "message" },
+];
 
 const tracks = ["All", "Leadership", "Ministry", "Career", "Marriage", "General"];
 
@@ -28,6 +38,15 @@ export default function WaitlistPage() {
     return matchTrack && matchSearch;
   });
 
+  const exportData = filtered.map((e) => ({
+    name: e.name,
+    email: e.email,
+    phone: e.phone,
+    track: e.track,
+    signedUp: e.signedUp,
+    message: e.message,
+  }));
+
   const entry = mockWaitlist.find((e) => e.id === viewId);
 
   return (
@@ -36,9 +55,11 @@ export default function WaitlistPage() {
         title="SOD Waitlist"
         description="School of Destiny registration waitlist"
         actions={
-          <button className="flex items-center gap-1.5 px-3 py-2 border border-gray-200 bg-white text-gray-600 rounded-lg text-sm font-medium hover:bg-gray-50">
-            <Export size={16} /> Export
-          </button>
+          <ExportMenu
+            data={exportData as Record<string, unknown>[]}
+            columns={exportCols}
+            filename="sod-waitlist"
+          />
         }
       />
 
