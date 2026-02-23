@@ -15,12 +15,13 @@ const collageImages = [
     src: "/usayaf/crowd-worship-phones-up.webp",
     alt: "Crowd worshipping with phones up",
     label: "The Atmosphere",
+    objectPosition: "center 20%",
   },
   {
-    src: "/usayaf/worship-team-white-outfits.webp",
-    alt: "Worship team in white outfits",
+    src: "/usayaf/newimagesherousa/85128588.png",
+    alt: "Young woman in fervent worship",
     label: "The Expression",
-    objectPosition: "center 25%",
+    objectPosition: "center 60%",
   },
   {
     src: "/usayaf/praise-night-singer-laughing.webp",
