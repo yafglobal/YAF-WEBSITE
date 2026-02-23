@@ -133,7 +133,7 @@ export default function Hero() {
           living.
         </motion.p>
 
-        {/* 3D CTA Buttons — preserved from original */}
+        {/* 3D CTA Buttons */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}

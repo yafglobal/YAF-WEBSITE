@@ -1,6 +1,7 @@
 "use client";
 
 import { ReactNode } from "react";
+import Image from "next/image";
 
 interface ThreeDButtonProps {
   children: ReactNode;
@@ -22,6 +23,17 @@ export default function ThreeDButton({
     >
       <div className="btn3d-bg" />
       <div className="btn3d-wrap">
+        {/* Logo watermark */}
+        <div className="btn3d-watermark">
+          <Image
+            src="/images/WHITELOGO.png"
+            alt=""
+            width={40}
+            height={40}
+            className="btn3d-watermark-img"
+            aria-hidden="true"
+          />
+        </div>
         <div className="btn3d-content">
           <span className="btn3d-label">{children}</span>
           <svg
