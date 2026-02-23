@@ -4,6 +4,9 @@ import React, { useCallback, useEffect, useMemo, useRef, useSyncExternalStore, u
 
 export interface GlassSurfaceProps {
   children?: React.ReactNode;
+  /** Stable ID to use instead of React's useId(). Pass this when the component
+   *  is always rendered (not conditional) to avoid server/client useId() drift. */
+  instanceId?: string;
   width?: number | string;
   height?: number | string;
   borderRadius?: number;
@@ -87,6 +90,7 @@ function checkBackdropFilterSupport() {
 
 const GlassSurface: React.FC<GlassSurfaceProps> = ({
   children,
+  instanceId,
   width = 200,
   height = 80,
   borderRadius = 20,
@@ -107,7 +111,8 @@ const GlassSurface: React.FC<GlassSurfaceProps> = ({
   className = "",
   style = {},
 }) => {
-  const uniqueId = useId().replace(/:/g, "-");
+  const reactId = useId().replace(/:/g, "-");
+  const uniqueId = instanceId ?? reactId;
   const filterId = `glass-filter-${uniqueId}`;
   const redGradId = `red-grad-${uniqueId}`;
   const blueGradId = `blue-grad-${uniqueId}`;

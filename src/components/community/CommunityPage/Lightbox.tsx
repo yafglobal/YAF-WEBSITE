@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useCallback } from "react";
+import { createPortal } from "react-dom";
 import Image from "next/image";
 import { AnimatePresence, motion } from "motion/react";
 import { X, CaretLeft, CaretRight } from "@phosphor-icons/react";
@@ -51,7 +52,7 @@ export default function Lightbox({
     };
   }, [isOpen, onClose, goPrev, goNext]);
 
-  return (
+  const overlay = (
     <AnimatePresence>
       {isOpen && currentIndex !== null && (
         <motion.div
@@ -128,4 +129,8 @@ export default function Lightbox({
       )}
     </AnimatePresence>
   );
+
+  // Portal to document.body so position:fixed escapes any ancestor transform/stacking context
+  if (typeof document === "undefined") return null;
+  return createPortal(overlay, document.body);
 }
