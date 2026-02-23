@@ -19,12 +19,14 @@ import {
   X,
   SignOut,
   Flame,
+  ClockCounterClockwise,
 } from "@phosphor-icons/react";
 import { useAdmin } from "./AdminContext";
 
 const topNav = [
   { label: "Dashboard", href: "/admin", icon: House },
   { label: "Users", href: "/admin/users", icon: Users },
+  { label: "Activity", href: "/admin/activity", icon: ClockCounterClockwise },
   { label: "Prayer Requests", href: "/admin/prayers", icon: HandsPraying },
   { label: "Notifications", href: "/admin/notifications", icon: Bell },
   { label: "SOD Waitlist", href: "/admin/waitlist", icon: ListBullets },

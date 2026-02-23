@@ -900,3 +900,212 @@ export const mockBranches = [
     twitter: "",
   },
 ];
+
+// ── Activity Timeline ────────────────────────────────────────────────────────
+export type ActivityEventType =
+  | "login"
+  | "logout"
+  | "role_change"
+  | "ban"
+  | "unban"
+  | "account_delete"
+  | "prayer_responded"
+  | "post_removed"
+  | "post_approved"
+  | "report_resolved"
+  | "registration"
+  | "notification_sent"
+  | "content_uploaded"
+  | "category_added";
+
+export interface ActivityEvent {
+  id: string;
+  type: ActivityEventType;
+  actor: string;
+  description: string;
+  target?: string;
+  timestamp: string; // ISO string
+  meta?: string;
+}
+
+export const mockActivity: ActivityEvent[] = [
+  // ── Today: 2026-02-23 ──
+  {
+    id: "a1",
+    type: "login",
+    actor: "Praise Egbo",
+    description: "Signed in to the admin dashboard",
+    timestamp: "2026-02-23T15:36:00",
+  },
+  {
+    id: "a2",
+    type: "post_removed",
+    actor: "Praise Egbo",
+    description: "Removed a community post",
+    target: "Emmanuel Adu",
+    timestamp: "2026-02-23T14:14:00",
+    meta: "Reason: Community guidelines violation",
+  },
+  {
+    id: "a3",
+    type: "role_change",
+    actor: "Praise Egbo",
+    description: "Promoted account to Admin",
+    target: "Sarah Thompson",
+    timestamp: "2026-02-23T13:50:00",
+    meta: "User → Admin",
+  },
+  {
+    id: "a4",
+    type: "prayer_responded",
+    actor: "Sarah Thompson",
+    description: "Responded to a prayer request",
+    target: "Faith Adesanya",
+    timestamp: "2026-02-23T11:23:00",
+  },
+  {
+    id: "a5",
+    type: "ban",
+    actor: "Praise Egbo",
+    description: "Banned account for policy violation",
+    target: "Daniel Park",
+    timestamp: "2026-02-23T10:05:00",
+    meta: "Reason: Spam & harassment",
+  },
+  {
+    id: "a6",
+    type: "notification_sent",
+    actor: "Praise Egbo",
+    description: "Sent push notification to all members",
+    timestamp: "2026-02-23T09:30:00",
+    meta: '"AYAC 2026 registration is now open!"',
+  },
+  {
+    id: "a7",
+    type: "login",
+    actor: "Sarah Thompson",
+    description: "Signed in to the admin dashboard",
+    timestamp: "2026-02-23T09:15:00",
+  },
+  // ── Yesterday: 2026-02-22 ──
+  {
+    id: "a8",
+    type: "account_delete",
+    actor: "Praise Egbo",
+    description: "Permanently deleted an account",
+    target: "guest_temp@example.com",
+    timestamp: "2026-02-22T19:45:00",
+    meta: "Reason: Duplicate / test account",
+  },
+  {
+    id: "a9",
+    type: "registration",
+    actor: "System",
+    description: "New AYAC 2026 registration received",
+    target: "Victor Chukwu",
+    timestamp: "2026-02-22T18:30:00",
+    meta: "Province: Lagos · Attendance: Yes",
+  },
+  {
+    id: "a10",
+    type: "report_resolved",
+    actor: "Sarah Thompson",
+    description: "Resolved a content report",
+    timestamp: "2026-02-22T16:22:00",
+    meta: "Action: Post removed",
+  },
+  {
+    id: "a11",
+    type: "post_approved",
+    actor: "Sarah Thompson",
+    description: "Approved 3 community posts from moderation queue",
+    timestamp: "2026-02-22T15:10:00",
+  },
+  {
+    id: "a12",
+    type: "content_uploaded",
+    actor: "Praise Egbo",
+    description: "Uploaded Word of the Week",
+    timestamp: "2026-02-22T14:00:00",
+    meta: 'Episode 12 — "Walking in the Spirit"',
+  },
+  {
+    id: "a13",
+    type: "login",
+    actor: "Praise Egbo",
+    description: "Signed in to the admin dashboard",
+    timestamp: "2026-02-22T13:23:00",
+  },
+  {
+    id: "a14",
+    type: "category_added",
+    actor: "Praise Egbo",
+    description: "Added a new community category",
+    timestamp: "2026-02-22T11:00:00",
+    meta: 'Category: "Testimony Thursday"',
+  },
+  {
+    id: "a15",
+    type: "login",
+    actor: "Sarah Thompson",
+    description: "Signed in to the admin dashboard",
+    timestamp: "2026-02-22T08:55:00",
+  },
+  // ── Feb 21, 2026 ──
+  {
+    id: "a16",
+    type: "role_change",
+    actor: "Praise Egbo",
+    description: "Demoted account role",
+    target: "Michael Chen",
+    timestamp: "2026-02-21T18:10:00",
+    meta: "Admin → User",
+  },
+  {
+    id: "a17",
+    type: "ban",
+    actor: "Sarah Thompson",
+    description: "Banned a spam account",
+    target: "spammer_001@mail.com",
+    timestamp: "2026-02-21T16:50:00",
+    meta: "Reason: Automated spam",
+  },
+  {
+    id: "a18",
+    type: "unban",
+    actor: "Praise Egbo",
+    description: "Reinstated a previously banned account",
+    target: "Joy Mensah",
+    timestamp: "2026-02-21T15:30:00",
+    meta: "Appeal approved",
+  },
+  {
+    id: "a19",
+    type: "login",
+    actor: "Praise Egbo",
+    description: "Signed in to the admin dashboard",
+    timestamp: "2026-02-21T14:22:00",
+  },
+  {
+    id: "a20",
+    type: "prayer_responded",
+    actor: "Praise Egbo",
+    description: "Responded to 5 prayer requests",
+    timestamp: "2026-02-21T12:30:00",
+  },
+  {
+    id: "a21",
+    type: "login",
+    actor: "Grace Williams",
+    description: "Signed in to the admin dashboard",
+    timestamp: "2026-02-21T10:46:00",
+  },
+  {
+    id: "a22",
+    type: "registration",
+    actor: "System",
+    description: "4 new AYAC 2026 registrations processed",
+    timestamp: "2026-02-21T09:00:00",
+    meta: "Lagos (2), Nairobi (1), London (1)",
+  },
+];
