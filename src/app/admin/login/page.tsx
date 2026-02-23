@@ -67,9 +67,6 @@ export default function AdminLoginPage() {
           variants={itemVariants}
           className="overflow-hidden rounded-3xl border border-gray-200/80 bg-white/95 shadow-2xl shadow-gray-300/30 backdrop-blur-sm"
         >
-          {/* Top stripe */}
-          <div className="h-1.5 w-full bg-gradient-to-r from-[#861657] via-[#D4A0B9] to-[#861657]" />
-
           <div className="p-8 sm:p-10">
             {/* Logo + heading */}
             <motion.div
