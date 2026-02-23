@@ -12,7 +12,7 @@ interface SlideStripProps {
 }
 
 // Interval between image swaps within a single strip (ms)
-const CYCLE_INTERVAL = 7000;
+const CYCLE_INTERVAL = 3000;
 
 export default function SlideStrip({ images, stripIndex, startDelay = 0 }: SlideStripProps) {
   const [imageIndex, setImageIndex] = useState(0);
