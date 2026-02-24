@@ -18,7 +18,7 @@ const collageImages = [
     objectPosition: "center 35%",
   },
   {
-    src: "/usayaf/newimagesherousa/85128588.png",
+    src: "/usayaf/newimagesherousa/85128588.webp",
     alt: "Young woman in fervent worship",
     label: "The Expression",
     objectPosition: "center 60%",
