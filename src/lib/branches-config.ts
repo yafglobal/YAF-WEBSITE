@@ -240,9 +240,9 @@ export const BRANCHES: BranchConfig[] = [
         alt: "Youth with hands raised in worship",
       },
       {
-        src: "/yaf-canada/stage-speaker-portrait.webp",
-        alt: "Speaker portrait on stage",
-        objectPosition: "center 30%",
+        src: "/yaf-canada/senior-pastor-closeup.webp",
+        alt: "National Pastor of Canada",
+        objectPosition: "center 20%",
       },
       {
         src: "/yaf-canada/choir-leader-band.webp",
