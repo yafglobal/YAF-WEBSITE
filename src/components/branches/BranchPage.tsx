@@ -10,7 +10,6 @@ import BranchCTA from "./BranchCTA";
 import NationalPastorSpotlight from "./NationalPastorSpotlight";
 import CanadaAtmosphere from "./canada/CanadaAtmosphere";
 import CanadaWisdom from "./canada/CanadaWisdom";
-import CanadaLeaders from "./canada/CanadaLeaders";
 import AfricaGenesis from "./africa/AfricaGenesis";
 import AfricaImpact from "./africa/AfricaImpact";
 import EuropeShowcase from "./europe/EuropeShowcase";
@@ -41,9 +40,7 @@ export default function BranchPage({ branch }: Props) {
 
       <BranchAbout branch={branch} />
 
-      {/* Canada has a full leadership grid; it appears before the pastor spotlight */}
       {slug === "canada" && <CanadaWisdom />}
-      {slug === "canada" && <CanadaLeaders />}
 
       {/* National Youth Pastor spotlight — rendered for all four branches */}
       {nationalPastor && <NationalPastorSpotlight {...nationalPastor} />}
