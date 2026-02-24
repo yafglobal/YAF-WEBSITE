@@ -28,7 +28,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" className="light" suppressHydrationWarning>
       <head>
         {/* Warm up connections for video CDNs used by the navbar reel and footer */}
         <link rel="preconnect" href="https://globalreels.winnerschapelsudbury.org" />
@@ -40,10 +40,15 @@ export default function RootLayout({
               (function() {
                 try {
                   var theme = localStorage.getItem('theme');
-                  if (theme === 'light') {
+                  if (theme === 'dark') {
+                    document.documentElement.classList.remove('light');
+                  } else {
+                    // Default to light mode for all new/returning visitors
                     document.documentElement.classList.add('light');
                   }
-                } catch(e) {}
+                } catch(e) {
+                  document.documentElement.classList.add('light');
+                }
               })();
             `,
           }}

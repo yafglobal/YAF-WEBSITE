@@ -18,9 +18,9 @@ function getThemeSnapshot() {
   return document.documentElement.classList.contains("light") ? "light" : "dark";
 }
 
-// Server always renders dark (matches the inline script default)
+// Server always renders light (matches the inline script default)
 function getServerSnapshot() {
-  return "dark" as const;
+  return "light" as const;
 }
 
 export default function ThemeToggle() {
