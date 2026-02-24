@@ -16,23 +16,9 @@ interface Leader {
 
 const leaders: Leader[] = [
   {
-    name: "Pastor David Oladosu",
-    role: "National Pastor, Canada",
-    image: "/yaf-canada/leaders/1.png",
-    focus: "Missionary Strategy & Vision",
-    bio: "Pastor David Oladosu serves as the National Pastor for the Mission to Canada, overseeing multiple Winners Chapel International churches while also functioning as a resident pastor and conference speaker. His ministry emphasizes strong Word-based teaching, multicultural outreach and church planting, helping to strengthen the denomination's footprint across Canadian cities.",
-  },
-  {
-    name: "Pastor Steve Ogah",
-    role: "Global Youth Pastor",
-    image: "/yaf-canada/leaders/2.png",
-    focus: "Global Youth Empowerment",
-    bio: "Pastor Steve Ogah is the National Youth Pastor of Living Faith Church Worldwide and also Chief of Staff to Bishop David Oyedepo. A Covenant University pioneer graduate, he is known for mentoring young adults through teachings on purposeful living, vision, planning and the help of the Holy Spirit.",
-  },
-  {
     name: "Pastor Aanuoluwapo Akinyera",
     role: "National Youth Pastor, Canada",
-    image: "/yaf-canada/leaders/3.png",
+    image: "/leadership/pastor-aanuoluwapo-akinyera.png",
     focus: "Spiritual Growth & Leadership",
     bio: "Pastor Aanuoluwapo Akinyera represents the emerging generation of Youth Alive leaders focused on discipling teenagers and young adults within the Canadian expression of the ministry. Focused on national coordination, he works to raise Christ-centered young people who are grounded in faith and influence society for God.",
   },
@@ -94,52 +80,54 @@ export default function CanadaLeaders() {
           </motion.p>
         </div>
 
-        {/* Leader Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
-          {leaders.map((leader, i) => (
-            <motion.div
-              key={leader.name}
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: i * 0.2 }}
-              className="group relative cursor-pointer"
-              onClick={() => setSelectedLeader(i)}
-            >
-              <div className="relative aspect-[4/5] rounded-3xl overflow-hidden mb-8 shadow-xl transition-all duration-700 group-hover:shadow-plum/20 group-hover:-translate-y-4">
-                <Image
-                  src={leader.image}
-                  fill
-                  alt={leader.name}
-                  className="object-cover transition-transform duration-1000 group-hover:scale-110"
-                  sizes="(max-width: 768px) 100vw, 33vw"
-                />
+        {/* Leader Card */}
+        <div className="flex justify-center">
+          <div className="w-full max-w-sm">
+            {leaders.map((leader, i) => (
+              <motion.div
+                key={leader.name}
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: i * 0.2 }}
+                className="group relative cursor-pointer"
+                onClick={() => setSelectedLeader(i)}
+              >
+                <div className="relative aspect-[4/5] rounded-3xl overflow-hidden mb-8 shadow-xl transition-all duration-700 group-hover:shadow-plum/20 group-hover:-translate-y-4">
+                  <Image
+                    src={leader.image}
+                    fill
+                    alt={leader.name}
+                    className="object-cover transition-transform duration-1000 group-hover:scale-110"
+                    sizes="(max-width: 768px) 100vw, 384px"
+                  />
 
-                {/* Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent opacity-80 group-hover:opacity-90 transition-opacity" />
+                  {/* Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent opacity-80 group-hover:opacity-90 transition-opacity" />
 
-                <div className="absolute inset-0 p-6 md:p-8 flex flex-col justify-end">
-                  <p className="text-plum-tint text-[10px] font-bold uppercase tracking-widest mb-2">
-                    {leader.focus}
-                  </p>
-                  <div className="h-px w-full bg-plum/70 mb-4" />
-                  <div className="flex items-center gap-2 text-white/80 text-[10px] font-bold uppercase tracking-widest">
-                    <span>Read Bio</span>
-                    <ArrowRight weight="bold" className="w-3 h-3" />
+                  <div className="absolute inset-0 p-6 md:p-8 flex flex-col justify-end">
+                    <p className="text-plum-tint text-[10px] font-bold uppercase tracking-widest mb-2">
+                      {leader.focus}
+                    </p>
+                    <div className="h-px w-full bg-plum/70 mb-4" />
+                    <div className="flex items-center gap-2 text-white/80 text-[10px] font-bold uppercase tracking-widest">
+                      <span>Read Bio</span>
+                      <ArrowRight weight="bold" className="w-3 h-3" />
+                    </div>
                   </div>
                 </div>
-              </div>
 
-              <div className="space-y-2">
-                <h3 className="text-2xl md:text-3xl font-display font-bold italic text-[var(--color-text-primary)] group-hover:text-plum-tint transition-colors">
-                  {leader.name}
-                </h3>
-                <p className="text-[11px] font-bold text-plum uppercase tracking-[0.2em]">
-                  {leader.role}
-                </p>
-              </div>
-            </motion.div>
-          ))}
+                <div className="space-y-2">
+                  <h3 className="text-2xl md:text-3xl font-display font-bold italic text-[var(--color-text-primary)] group-hover:text-plum-tint transition-colors">
+                    {leader.name}
+                  </h3>
+                  <p className="text-[11px] font-bold text-plum uppercase tracking-[0.2em]">
+                    {leader.role}
+                  </p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
         </div>
 
         {/* Bio Drawer */}
