@@ -1,11 +1,13 @@
 "use client";
 
 import type { BranchConfig } from "@/lib/branches-config";
+import { NATIONAL_PASTORS } from "@/lib/national-pastors-config";
 import BranchHero from "./BranchHero";
 import BranchAbout from "./BranchAbout";
 import BranchGatherings from "./BranchGatherings";
 import BranchGallery from "./BranchGallery";
 import BranchCTA from "./BranchCTA";
+import NationalPastorSpotlight from "./NationalPastorSpotlight";
 import CanadaAtmosphere from "./canada/CanadaAtmosphere";
 import CanadaWisdom from "./canada/CanadaWisdom";
 import CanadaLeaders from "./canada/CanadaLeaders";
@@ -22,12 +24,13 @@ interface Props {
 
 export default function BranchPage({ branch }: Props) {
   const { slug } = branch;
+  const nationalPastor = NATIONAL_PASTORS[slug];
 
   return (
     <>
       <BranchHero branch={branch} />
 
-      {/* Branch-specific sections */}
+      {/* Branch-specific content sections */}
       {slug === "africa" && <AfricaGenesis />}
       {slug === "africa" && <AfricaImpact />}
       {slug === "canada" && <CanadaAtmosphere />}
@@ -38,8 +41,12 @@ export default function BranchPage({ branch }: Props) {
 
       <BranchAbout branch={branch} />
 
+      {/* Canada has a full leadership grid; it appears before the pastor spotlight */}
       {slug === "canada" && <CanadaWisdom />}
       {slug === "canada" && <CanadaLeaders />}
+
+      {/* National Youth Pastor spotlight — rendered for all four branches */}
+      {nationalPastor && <NationalPastorSpotlight {...nationalPastor} />}
 
       <BranchGatherings branch={branch} />
       <BranchGallery branch={branch} />
