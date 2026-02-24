@@ -76,7 +76,7 @@ export const NATIONAL_PASTORS: Record<string, NationalPastorConfig> = {
     leader: {
       name: "Pastor David Ekwueme",
       title: "National Youth Pastor · Europe",
-      image: "/ukyaf/ayac-europe-speaker.webp",
+      image: "/leadership/PSTREUROPE.png",
       imagePosition: "center top",
       quote: "Across every border and every culture, the fire of God burns without restraint.",
       bio: "Pastor David Ekwueme leads Youth Alive Fellowship across Europe, discipling and mobilising young people from every nation for kingdom impact. His ministry bridges cultures and continents — raising a generation of purpose-driven believers who carry the light of God into every corner of the continent.",
