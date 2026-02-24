@@ -44,7 +44,7 @@ export const NATIONAL_PASTORS: Record<string, NationalPastorConfig> = {
     leader: {
       name: "Pastor Aanuoluwapo Akinyera",
       title: "National Youth Pastor · Canada",
-      image: "/yaf-canada/leaders/3.png",
+      image: "/leadership/pastor-aanuoluwapo-akinyera.png",
       imagePosition: "center top",
       quote:
         "We are raising young people who don't just attend church — they carry it wherever they go.",
