@@ -60,8 +60,7 @@ export const NATIONAL_PASTORS: Record<string, NationalPastorConfig> = {
     leader: {
       name: "Pastor Adekunle Adewuyi",
       title: "National Youth Pastor · USA",
-      image: "/usayaf/pastor-white-outfit-preaching.webp",
-      imagePosition: "center 20%",
+      image: "/leadership/PSTRUSA.png",
       quote: "A generation on fire for God doesn't just change churches — it changes nations.",
       bio: "Pastor Adekunle Adewuyi leads Youth Alive Fellowship across the United States, overseeing the spiritual formation of a generation of faith-filled young adults. His ministry focuses on raising kingdom giants who are equipped not just for Sunday, but for every sphere of life.",
     },
